@@ -1,0 +1,233 @@
+/internal/v1/admin/users:
+  get:
+    tags:
+    - admin
+    operationId: listAdminUsers
+    responses:
+      '200':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/admin/AdminUsers.yaml#/AdminUsers
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+    security:
+    - session: []
+      serviceJwt: []
+    parameters:
+    - name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    - name: size
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+    - name: search
+      in: query
+      schema:
+        type: string
+        maxLength: 254
+/internal/v1/admin/users/{id}/access:
+  put:
+    tags:
+    - admin
+    operationId: updateUserAccess
+    responses:
+      '200':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/admin/AdminUser.yaml#/AdminUser
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '409':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/admin/UpdateAccess.yaml#/UpdateAccess
+    security:
+    - session: []
+      serviceJwt: []
+    parameters: &id001
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+/internal/v1/admin/users/{id}/sessions:
+  get:
+    tags:
+      - admin
+    operationId: listUserSessions
+    summary: List active user sessions and their connection details
+    security:
+      - session: []
+        serviceJwt: []
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Active sessions
+        content:
+          application/json:
+            schema:
+              $ref: ./models/id/Sessions.yaml#/Sessions
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+  delete:
+    tags:
+    - admin
+    operationId: revokeUserSessions
+    responses:
+      '204':
+        description: Success
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+    security:
+    - session: []
+      serviceJwt: []
+    parameters: *id001
+
+/internal/v1/admin/users/{id}/profile:
+  put:
+    tags: [admin]
+    operationId: updateUserProfile
+    summary: Update an account name as an administrator
+    security:
+      - session: []
+        serviceJwt: []
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/id/ChangeProfile.yaml#/ChangeProfile
+    responses:
+      '200':
+        description: Account name updated
+        content:
+          application/json:
+            schema:
+              $ref: ./models/admin/AdminUser.yaml#/AdminUser
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse

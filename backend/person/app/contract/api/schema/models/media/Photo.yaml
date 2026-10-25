@@ -1,0 +1,35 @@
+Photo:
+  type: object
+  required:
+    - id
+    - mediaId
+    - title
+    - createdAt
+    - canRemove
+  properties:
+    id:
+      type: string
+      format: uuid
+    mediaId:
+      type: string
+      format: uuid
+    title:
+      type: string
+      maxLength: 200
+    createdAt:
+      type: string
+      format: date-time
+    canRemove:
+      type: boolean
+    durationSeconds:
+      type: number
+      format: double
+      minimum: 0
+    previewAvailable:
+      type: boolean
+    views:
+      type: integer
+      format: int64
+      minimum: 0
+    moderationStatus:
+      $ref: ../moderation/ModerationStatus.yaml#/ModerationStatus

@@ -1,0 +1,5 @@
+RestrictionResult:
+  type: object
+  properties:
+    restriction:
+      $ref: ./AccountRestriction.yaml#/AccountRestriction

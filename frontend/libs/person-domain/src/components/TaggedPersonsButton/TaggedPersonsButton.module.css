@@ -1,0 +1,34 @@
+.popup {
+    --g-popup-border-radius: 20px;
+
+    width: min(300px, calc(100vw - 32px));
+}
+
+.content {
+    max-height: min(360px, calc(100dvh - 64px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 20px;
+}
+
+.trigger {
+    --g-button-border-radius: 999px;
+    --g-button-padding: 8px;
+
+    color: var(--g-color-text-secondary);
+}
+
+.trigger > :global([class~="g-button__text"]) {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.person {
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.person:hover {
+    background: var(--g-color-base-generic);
+}

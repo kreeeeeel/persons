@@ -1,0 +1,93 @@
+/v1/oauth/{provider}/authorization:
+  post:
+    tags:
+    - oauth
+    operationId: beginOAuth
+    responses:
+      '200':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/oauth/OAuthAuthorization.yaml#/OAuthAuthorization
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '429':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/oauth/OAuthStart.yaml#/OAuthStart
+    parameters: &id001
+    - name: provider
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+        - yandex
+/v1/oauth/{provider}/complete:
+  post:
+    tags:
+    - oauth
+    operationId: completeOAuth
+    responses:
+      '201':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/id/SessionToken.yaml#/SessionToken
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '409':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/oauth/OAuthComplete.yaml#/OAuthComplete
+    parameters: *id001

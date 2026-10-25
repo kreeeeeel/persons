@@ -1,0 +1,135 @@
+openapi: "3.0.3"
+info:
+  title: "Dynamic Properties library API"
+  version: "0.1.0"
+paths:
+  "/v1/admin/variables":
+    get:
+      tags:
+        - "variables"
+      operationId: "listVariables"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            "application/json":
+              schema:
+                type: "array"
+                items:
+                  $ref: "./models/DynamicProperty.yaml#/DynamicProperty"
+        "400":
+          description: "Invalid property value"
+        "401":
+          description: "Authentication required"
+        "403":
+          description: "Administrator or service authorization required"
+        "409":
+          description: "The property was changed"
+        "503":
+          description: "Property storage unavailable"
+  "/v1/admin/variables/{key}":
+    parameters:
+      -
+        name: "key"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+          maxLength: 120
+    put:
+      tags:
+        - "variables"
+      operationId: "updateVariable"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema:
+              $ref: "./models/DynamicPropertyUpdate.yaml#/DynamicPropertyUpdate"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            "application/json":
+              schema:
+                $ref: "./models/DynamicProperty.yaml#/DynamicProperty"
+        "400":
+          description: "Invalid property value"
+        "401":
+          description: "Authentication required"
+        "403":
+          description: "Administrator or service authorization required"
+        "409":
+          description: "The property was changed"
+        "503":
+          description: "Property storage unavailable"
+  "/v1/dynamic-properties/public":
+    get:
+      tags:
+        - "dynamic-properties"
+      operationId: "getPublicProperties"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            "application/json":
+              schema:
+                type: "array"
+                items:
+                  $ref: "./models/DynamicProperty.yaml#/DynamicProperty"
+        "503":
+          description: "Property storage unavailable"
+  "/v1/dynamic-properties/registrations/{scope}":
+    parameters:
+      -
+        name: "scope"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+          maxLength: 120
+          pattern: "^frontend-[a-z0-9-]+$"
+    put:
+      tags:
+        - "dynamic-properties"
+      operationId: "registerFrontendProperties"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema:
+              type: "array"
+              maxItems: 200
+              items:
+                $ref: "./models/DynDefinitionInput.yaml#/DynDefinitionInput"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            "application/json":
+              schema:
+                type: "array"
+                items:
+                  $ref: "./models/DynamicProperty.yaml#/DynamicProperty"
+        "400":
+          description: "Invalid property value"
+        "401":
+          description: "Authentication required"
+        "403":
+          description: "Administrator or service authorization required"
+        "409":
+          description: "The property was changed"
+        "503":
+          description: "Property storage unavailable"
+  "/v1/dynamic-properties/events":
+    get:
+      tags:
+        - "property-events"
+      operationId: "streamPublicProperties"
+      responses:
+        "200":
+          description: "Public property snapshots and removals. EventSource reconnect requests a fresh snapshot."
+          content:
+            "text/event-stream":
+              schema:
+                type: "string"

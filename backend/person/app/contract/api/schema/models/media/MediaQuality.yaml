@@ -1,0 +1,17 @@
+MediaQuality:
+  type: object
+  required:
+    - height
+    - width
+    - sizeBytes
+  properties:
+    height:
+      type: integer
+      minimum: 1
+    width:
+      type: integer
+      minimum: 1
+    sizeBytes:
+      type: integer
+      format: int64
+      minimum: 1

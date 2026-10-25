@@ -1,0 +1,10 @@
+CatalogUpdate:
+  type: object
+  required: [messages]
+  properties:
+    messages:
+      type: object
+      maxProperties: 1000
+      additionalProperties:
+        type: string
+        maxLength: 10000

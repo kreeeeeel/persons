@@ -1,0 +1,12 @@
+project:
+  internal:
+    jwt-secret: ${PROJECT_INTERNAL_JWT_SECRET:local-development-internal-jwt-secret-change-before-deploy}
+  gateway:
+    id-uri: ${ID_BASE_URL:http://localhost:8081}
+    person-uri: ${PERSON_BASE_URL:http://localhost:8085}
+    jwt-secret: ${PROJECT_GATEWAY_JWT_SECRET:local-development-gateway-jwt-secret-change-before-deploy}
+  id-client:
+    base-uri: ${ID_BASE_URL:http://localhost:8081}
+    read-timeout-ms: 20000
+  restrictions-client:
+    base-uri: ${RESTRICTIONS_BASE_URL:http://localhost:8088}

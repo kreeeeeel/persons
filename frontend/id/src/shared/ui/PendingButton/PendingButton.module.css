@@ -1,0 +1,11 @@
+.button {
+    --g-button-border-radius: 12px;
+}
+
+.progress {
+    height: 100%;
+}
+
+.spinner {
+    --g-spin-color: var(--g-color-text-primary);
+}

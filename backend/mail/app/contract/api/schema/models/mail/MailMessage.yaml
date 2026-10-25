@@ -1,0 +1,23 @@
+MailMessage:
+  type: object
+  required:
+  - id
+  - recipient
+  - subject
+  - html
+  properties:
+    id:
+      type: string
+      format: uuid
+    recipient:
+      type: string
+      format: email
+      maxLength: 254
+    subject:
+      type: string
+      minLength: 1
+      maxLength: 200
+    html:
+      type: string
+      minLength: 1
+      maxLength: 65536

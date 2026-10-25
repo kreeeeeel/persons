@@ -1,0 +1,28 @@
+.button {
+    position: fixed;
+    z-index: 5;
+    right: max(24px, env(safe-area-inset-right));
+    bottom: calc(24px + var(--persons-bottom-marquee-height, 0px) + env(safe-area-inset-bottom));
+    opacity: 0;
+    transform: translateY(24px);
+    pointer-events: none;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px var(--persons-action-shadow);
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+
+    --g-button-height: 48px;
+}
+
+.button[data-visible='true'] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button {
+        transition: none;
+    }
+}

@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:54320/restrictions}
+    username: ${DB_USER:persons}
+    password: ${DB_PASSWORD:persons-local}
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      password: ${REDIS_PASSWORD:persons-local}
+project:
+  internal:
+    jwt-secret: ${PROJECT_INTERNAL_JWT_SECRET:local-development-internal-jwt-secret-change-before-deploy}
+  id-client:
+    base-uri: ${ID_BASE_URL:http://localhost:8081}

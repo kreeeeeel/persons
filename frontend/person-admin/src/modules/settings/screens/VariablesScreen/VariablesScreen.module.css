@@ -1,0 +1,19 @@
+.name {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.key {
+    font-size: 16px;
+}
+
+.value {
+    display: block;
+    max-width: 320px;
+    max-height: 80px;
+    overflow: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 16px;
+    line-height: 1.5;
+}

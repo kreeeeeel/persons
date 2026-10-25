@@ -1,0 +1,189 @@
+.player {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 16px;
+    background: #17131e;
+    color: #fff;
+    color-scheme: dark;
+    container-type: inline-size;
+}
+
+.screen {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    background: #17131e;
+}
+
+.video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.loading,
+.failure {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loading {
+    pointer-events: none;
+}
+
+.failure {
+    padding: 24px;
+    text-align: center;
+    color: #fff;
+    background: #241e2e;
+}
+
+.centerPlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--g-color-base-brand);
+    color: #fff;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
+
+.centerPlay:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+}
+
+.controls {
+    --g-color-text-primary: #fff;
+    --g-color-text-secondary: #d3cfdd;
+    --g-color-base-generic: rgb(255 255 255 / 0.12);
+    --g-color-base-generic-hover: rgb(255 255 255 / 0.2);
+    --g-button-text-color: #fff;
+
+    flex: 0 0 auto;
+    padding: 8px 16px;
+}
+
+.toolbar {
+    min-width: 0;
+    width: 100%;
+    gap: 4px;
+}
+
+.timeline {
+    width: 100%;
+    min-width: 0;
+}
+
+.timeline,
+.volume {
+    --g-color-base-background: var(--g-color-base-brand);
+}
+
+.time {
+    flex: 0 0 auto;
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.fullscreenNotice {
+    margin: 0;
+    padding: 0 16px 16px;
+    font-size: 16px;
+    color: #d3cfdd;
+}
+
+.volume {
+    flex: 0 0 76px;
+}
+
+.player:fullscreen {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0;
+}
+
+.player:fullscreen .screen {
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: auto;
+}
+
+@container (width <= 540px) {
+    .volume {
+        display: none;
+    }
+
+    .controls {
+        padding-inline: 4px;
+    }
+
+    .toolbar {
+        gap: 0;
+    }
+}
+
+.fullscreenButton {
+    --g-button-padding: 0px;
+
+    flex: 0 0 36px;
+    width: 36px;
+    min-width: 36px;
+}
+
+.controlButton {
+    flex: 0 0 36px;
+}
+
+.settingsControls {
+    flex: 0 0 auto;
+}
+
+.fullscreenButton svg {
+    display: block;
+    margin-inline: auto;
+}
+
+@container (width <= 280px) {
+    .toolbar {
+        flex-wrap: wrap;
+    }
+
+    .time {
+        flex: 1;
+    }
+
+    .spacer {
+        display: none;
+    }
+}
+
+.fullscreenButton > :global([class~='g-button__text']),
+.controlButton > :global([class~='g-button__text']) {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: 0;
+    line-height: 0;
+}

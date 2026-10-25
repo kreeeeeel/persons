@@ -1,0 +1,174 @@
+openapi: 3.0.3
+info:
+  title: Person API
+  version: 0.1.0
+servers:
+  - url: /
+paths:
+  /v1/feed:
+    $ref: ./feed.yaml#/~1v1~1feed
+  /v1/persons/directory:
+    $ref: ./directory.yaml#/~1v1~1persons~1directory
+  /v1/feed/comments:
+    $ref: ./feed.yaml#/~1v1~1feed~1comments
+  /v1/persons/recommendations:
+    $ref: ./persons.yaml#/~1v1~1persons~1recommendations
+  /v1/publications/mine:
+    $ref: ./publications.yaml#/~1v1~1publications~1mine
+  /v1/dynamic-properties/public:
+    $ref: ../../../../../libs/dynamic-properties/contract/api/schema/api.yaml#/paths/~1v1~1dynamic-properties~1public
+  /v1/dynamic-properties/events:
+    $ref: ../../../../../libs/dynamic-properties/contract/api/schema/api.yaml#/paths/~1v1~1dynamic-properties~1events
+  /v1/dynamic-properties/registrations/{scope}:
+    $ref: ../../../../../libs/dynamic-properties/contract/api/schema/api.yaml#/paths/~1v1~1dynamic-properties~1registrations~1{scope}
+  /v1/persons/{id}/games/dota2/matches:
+    $ref: ./games.yaml#/~1v1~1persons~1{id}~1games~1dota2~1matches
+  /v1/persons/{id}/games/dota2/matches/{matchId}:
+    $ref: ./games.yaml#/~1v1~1persons~1{id}~1games~1dota2~1matches~1{matchId}
+  /v1/games/dota2/events:
+    $ref: ./games.yaml#/~1v1~1games~1dota2~1events
+  /v1/persons/{id}/games/cs2/matches:
+    $ref: ./games.yaml#/~1v1~1persons~1{id}~1games~1cs2~1matches
+  /v1/persons/{id}/games/cs2/matches/{matchId}:
+    $ref: ./games.yaml#/~1v1~1persons~1{id}~1games~1cs2~1matches~1{matchId}
+  /v1/games/cs2/events:
+    $ref: ./games.yaml#/~1v1~1games~1cs2~1events
+  /v1/admin/variables:
+    $ref: ../../../../../libs/dynamic-properties/contract/api/schema/api.yaml#/paths/~1v1~1admin~1variables
+  /v1/admin/variables/{key}:
+    $ref: ../../../../../libs/dynamic-properties/contract/api/schema/api.yaml#/paths/~1v1~1admin~1variables~1{key}
+  /v1/site-settings:
+    $ref: ./site-settings.yaml#/~1v1~1site-settings
+  /v1/admin/site-settings:
+    $ref: ./site-settings.yaml#/~1v1~1admin~1site-settings
+  /v1/admin/users/{id}/page-restrictions:
+    $ref: ./page-restrictions.yaml#/~1v1~1admin~1users~1{id}~1page-restrictions
+  /v1/admin/users/{id}/page-restrictions/{restrictionId}:
+    $ref: ./page-restrictions.yaml#/~1v1~1admin~1users~1{id}~1page-restrictions~1{restrictionId}
+  /v1/admin/content:
+    $ref: ./content-admin.yaml#/~1v1~1admin~1content
+  /v1/admin/content/{kind}/{id}/hide:
+    $ref: ./content-admin.yaml#/~1v1~1admin~1content~1{kind}~1{id}~1hide
+  /v1/authors/{id}/avatar:
+    $ref: ./authors.yaml#/~1v1~1authors~1{id}~1avatar
+  /v1/admin/publication-settings:
+    $ref: ./publication.yaml#/~1v1~1admin~1publication-settings
+  /v1/admin/users/{id}/moderation-settings:
+    $ref: ./publication.yaml#/~1v1~1admin~1users~1{id}~1moderation-settings
+  /v1/persons/search:
+    $ref: ./persons.yaml#/~1v1~1persons~1search
+  /v1/persons/by-tag/{tag}:
+    $ref: ./persons.yaml#/~1v1~1persons~1by-tag~1{tag}
+  /v1/persons:
+    $ref: ./persons.yaml#/~1v1~1persons
+  /v1/persons/{id}:
+    $ref: ./persons.yaml#/~1v1~1persons~1{id}
+  /v1/persons/{id}/comments:
+    $ref: ./interactions.yaml#/~1v1~1persons~1{id}~1comments
+  /v1/comments/{id}:
+    $ref: ./interactions.yaml#/~1v1~1comments~1{id}
+  /v1/persons/{id}/rating:
+    $ref: ./interactions.yaml#/~1v1~1persons~1{id}~1rating
+  /v1/persons/{id}/moments:
+    $ref: ./persons.yaml#/~1v1~1persons~1{id}~1moments
+  /v1/persons/{id}/photos:
+    $ref: ./persons.yaml#/~1v1~1persons~1{id}~1photos
+  /v1/persons/{id}/credit:
+    $ref: ./interactions.yaml#/~1v1~1persons~1{id}~1credit
+  /v1/credit/{id}:
+    $ref: ./interactions.yaml#/~1v1~1credit~1{id}
+  /v1/persons/{id}/views:
+    $ref: ./persons.yaml#/~1v1~1persons~1{id}~1views
+  /v1/moments/{id}/like:
+    $ref: ./interactions.yaml#/~1v1~1moments~1{id}~1like
+  /v1/persons/{id}/media:
+    $ref: ./media.yaml#/~1v1~1persons~1{id}~1media
+  /v1/media/{id}:
+    $ref: ./media.yaml#/~1v1~1media~1{id}
+  /v1/media/{id}/content:
+    $ref: ./media.yaml#/~1v1~1media~1{id}~1content
+  /v1/notifications:
+    $ref: ./notifications.yaml#/~1v1~1notifications
+  /v1/notifications/read:
+    $ref: ./notifications.yaml#/~1v1~1notifications~1read
+  /v1/admin/persons:
+    $ref: ./admin.yaml#/~1v1~1admin~1persons
+  /v1/admin/persons/{id}:
+    $ref: ./admin.yaml#/~1v1~1admin~1persons~1{id}
+  /v1/admin/persons/{id}/owner:
+    $ref: ./admin.yaml#/~1v1~1admin~1persons~1{id}~1owner
+  /v1/admin/moderation/{id}:
+    $ref: ./admin.yaml#/~1v1~1admin~1moderation~1{id}
+  /v1/admin/moderation:
+    $ref: ./admin.yaml#/~1v1~1admin~1moderation
+  /v1/admin/moderation/{id}/decision:
+    $ref: ./admin.yaml#/~1v1~1admin~1moderation~1{id}~1decision
+  /v1/media/{id}/details:
+    $ref: ./gallery.yaml#/~1v1~1media~1{id}~1details
+  /v1/media/{id}/reaction:
+    $ref: ./gallery.yaml#/~1v1~1media~1{id}~1reaction
+  /v1/media/{id}/preview:
+    $ref: ./gallery.yaml#/~1v1~1media~1{id}~1preview
+  /v1/persons/{id}/ownership-claims:
+    $ref: ./claims.yaml#/~1v1~1persons~1{id}~1ownership-claims
+  /v1/admin/achievements:
+    $ref: ./achievements.yaml#/~1v1~1admin~1achievements
+  /v1/admin/achievements/{id}:
+    $ref: ./achievements.yaml#/~1v1~1admin~1achievements~1{id}
+  /v1/admin/achievements/{id}/image:
+    $ref: ./achievements.yaml#/~1v1~1admin~1achievements~1{id}~1image
+  /v1/achievements/{id}/image:
+    $ref: ./achievements.yaml#/~1v1~1achievements~1{id}~1image
+  /v1/admin/achievements/{id}/grants:
+    $ref: ./achievements.yaml#/~1v1~1admin~1achievements~1{id}~1grants
+  /v1/admin/achievements/{id}/grants/{personId}:
+    $ref: ./achievements.yaml#/~1v1~1admin~1achievements~1{id}~1grants~1{personId}
+  /v1/persons/{id}/achievements:
+    $ref: ./achievements.yaml#/~1v1~1persons~1{id}~1achievements
+  /v1/persons/{id}/ratings:
+    $ref: ./interactions.yaml#/~1v1~1persons~1{id}~1ratings
+  /v1/admin/users:
+    $ref: ./admin.yaml#/~1v1~1admin~1users
+  /v1/admin/users/{id}/access:
+    $ref: ./admin.yaml#/~1v1~1admin~1users~1{id}~1access
+  /v1/admin/users/{id}/sessions:
+    $ref: ./admin.yaml#/~1v1~1admin~1users~1{id}~1sessions
+  /v1/admin/users/{id}/avatar:
+    $ref: ./admin.yaml#/~1v1~1admin~1users~1{id}~1avatar
+  /v1/media/{id}/views:
+    $ref: ./gallery.yaml#/~1v1~1media~1{id}~1views
+  /v1/persons/mine:
+    $ref: ./persons.yaml#/~1v1~1persons~1mine
+  /v1/access:
+    $ref: ./restrictions.yaml#/~1v1~1access
+  /v1/admin/users/{id}/restriction:
+    $ref: ./restrictions.yaml#/~1v1~1admin~1users~1{id}~1restriction
+  /v1/content/{kind}/{id}/reaction:
+    $ref: ./engagement.yaml#/~1v1~1content~1{kind}~1{id}~1reaction
+  /v1/content/{kind}/{id}/like:
+    $ref: ./engagement.yaml#/~1v1~1content~1{kind}~1{id}~1like
+  /v1/media/{id}/qualities:
+    $ref: ./media-quality.yaml#/~1v1~1media~1{id}~1qualities
+  /v1/media/{id}/qualities/{height}/content:
+    $ref: ./media-quality.yaml#/~1v1~1media~1{id}~1qualities~1{height}~1content
+  /v1/admin/persons/{id}/reputation:
+    $ref: ./reputation-admin.yaml#/~1v1~1admin~1persons~1{id}~1reputation
+  /v1/admin/users/{id}/profile:
+    $ref: ./admin.yaml#/~1v1~1admin~1users~1{id}~1profile
+  /v1/admin/blocked-users:
+    $ref: ./blocked.yaml#/~1v1~1admin~1blocked-users
+  /v1/admin/page-restrictions:
+    $ref: ./blocked.yaml#/~1v1~1admin~1page-restrictions
+components:
+  securitySchemes:
+    session:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    serviceJwt:
+      type: apiKey
+      in: header
+      name: X-Service-Authorization
+  schemas:
+    RestrictionErrorResponse:
+      $ref: ./models/restriction/RestrictionErrorResponse.yaml#/RestrictionErrorResponse

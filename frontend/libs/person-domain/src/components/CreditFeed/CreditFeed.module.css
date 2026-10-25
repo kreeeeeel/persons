@@ -1,0 +1,33 @@
+.status {
+    min-width: 0;
+    max-width: calc(100% - 48px);
+}
+
+.statusButton {
+    max-width: 100%;
+}
+
+.statusButton > :global([class~="g-button__text"]) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.statusText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card {
+    min-width: 0;
+    padding: 24px;
+    border-radius: 24px;
+    background: var(--persons-surface);
+    overflow-wrap: anywhere;
+}
+
+.card > :global([class~="g-label"]) {
+    align-self: flex-start;
+    max-width: 100%;
+}

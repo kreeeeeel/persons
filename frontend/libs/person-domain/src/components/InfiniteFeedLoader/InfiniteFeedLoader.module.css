@@ -1,0 +1,10 @@
+.sentinel {
+    display: grid;
+    place-items: center;
+    min-height: 72px;
+    width: 100%;
+}
+
+.more {
+    border-radius: 999px;
+}

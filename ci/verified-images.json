@@ -1,0 +1,50 @@
+{
+  "registry": "registry.gitlab.com/te-eshche-lyudi/infrastructure",
+  "verifiedPipeline": "https://gitlab.com/te-eshche-lyudi/infrastructure/-/pipelines/2961008275",
+  "tooling": {
+    "key": "79b5a05d1684dfcfe1f1333d2060ba464ea0e522",
+    "tag": "e8ccc50143a4c0d99c788e32db84811388112d51"
+  },
+  "images": {
+    "id": {
+      "key": "a6388ab025c6191aa3a779ed7658b31e4f840b4d",
+      "tag": "d139f2a0bd03f1109afc4098760b6a6a8c26272d"
+    },
+    "mail": {
+      "key": "b19aeea092587e9c50519ea8acdebd1245546c99",
+      "tag": "d139f2a0bd03f1109afc4098760b6a6a8c26272d"
+    },
+    "i18n": {
+      "key": "02cd03445dd2d517a6684a41e067bf2a161202a6",
+      "tag": "d139f2a0bd03f1109afc4098760b6a6a8c26272d"
+    },
+    "person": {
+      "key": "501c306b39bfaa2bbe410c62e6509ebf875df4b3",
+      "tag": "d139f2a0bd03f1109afc4098760b6a6a8c26272d"
+    },
+    "person-worker": {
+      "key": "46d2d6ccf451ee6765908b2c8f47e149db75dade",
+      "tag": "d139f2a0bd03f1109afc4098760b6a6a8c26272d"
+    },
+    "id-web": {
+      "key": "ac5ba6a6cf09dc50679fb7d12ecbf8311bebb0ac",
+      "tag": "d139f2a0bd03f1109afc4098760b6a6a8c26272d"
+    },
+    "person-web": {
+      "key": "c01683d168a2dd999c94aeab0d93678df2212d35",
+      "tag": "d139f2a0bd03f1109afc4098760b6a6a8c26272d"
+    },
+    "person-admin-web": {
+      "key": "20266318e8ff8b1acc2824f78ed07c3bd018d366",
+      "tag": "d139f2a0bd03f1109afc4098760b6a6a8c26272d"
+    },
+    "assets": {
+      "key": "2a5102da5b52b26eeb8a072fa4e05267a442216c",
+      "tag": "d139f2a0bd03f1109afc4098760b6a6a8c26272d"
+    },
+    "minio": {
+      "key": "dab874262b44f128038c414b81a33ca059d57911",
+      "tag": "d139f2a0bd03f1109afc4098760b6a6a8c26272d"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+FROM golang:1.27.2-bookworm AS build
+ENV CGO_ENABLED=0 GOBIN=/out GOMAXPROCS=2
+# The final upstream security release fixes CVE-2025-62506.
+RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build \
+    go install -trimpath -ldflags='-s -w -X github.com/minio/minio/cmd.Version=2025-10-15T17:29:55Z -X github.com/minio/minio/cmd.ReleaseTag=RELEASE.2025-10-15T17-29-55Z -X github.com/minio/minio/cmd.CommitID=9e49d5e7a648f00e26f2246f4dc28e6b07f8c84a' \
+    github.com/minio/minio@9e49d5e7a648f00e26f2246f4dc28e6b07f8c84a
+ADD https://raw.githubusercontent.com/minio/minio/9e49d5e7a648f00e26f2246f4dc28e6b07f8c84a/LICENSE /licenses/LICENSE
+
+FROM debian:bookworm-slim AS runtime
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl \
+    && rm -rf /var/lib/apt/lists/* \
+    && install -d /data
+COPY --from=build /out/minio /usr/bin/minio
+COPY --from=build /licenses /licenses
+EXPOSE 9000 9001
+ENTRYPOINT ["minio"]

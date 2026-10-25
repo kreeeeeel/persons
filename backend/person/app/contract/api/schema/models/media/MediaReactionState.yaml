@@ -1,0 +1,16 @@
+MediaReactionState:
+  type: object
+  required:
+    - likes
+    - dislikes
+  properties:
+    likes:
+      type: integer
+      format: int64
+      minimum: 0
+    dislikes:
+      type: integer
+      format: int64
+      minimum: 0
+    reaction:
+      $ref: ./MediaReaction.yaml#/MediaReaction

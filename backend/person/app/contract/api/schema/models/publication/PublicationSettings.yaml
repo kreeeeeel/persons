@@ -1,0 +1,24 @@
+PublicationSettings:
+  type: object
+  required: [commentsRequireModeration, photosRequireModeration, momentsRequireModeration]
+  properties:
+    commentsRequireModeration:
+      type: boolean
+    photosRequireModeration:
+      type: boolean
+    momentsRequireModeration:
+      type: boolean
+    reviewsRequireModeration:
+      type: boolean
+      description: Rating reviews. When omitted on update, follows commentsRequireModeration for older clients.
+    loansRequireModeration:
+      type: boolean
+      description: Loan records. When omitted on update, follows commentsRequireModeration for older clients.
+    pagesRequireModeration:
+      type: boolean
+      description: Creating a page.
+    profileChangesRequireModeration:
+      type: boolean
+      description: Changes to an owned page, including names, tags, links and rating options.
+    avatarsRequireModeration:
+      type: boolean

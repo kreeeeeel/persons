@@ -1,0 +1,6 @@
+ContentKind:
+  type: string
+  enum:
+    - COMMENT
+    - RATING
+    - LOAN

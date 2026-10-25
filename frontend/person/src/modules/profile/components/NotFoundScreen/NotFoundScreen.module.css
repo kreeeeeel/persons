@@ -1,0 +1,88 @@
+.page {
+    position: relative;
+    min-height: 100dvh;
+
+    --persons-header-height: 88px;
+
+    background: var(--persons-background);
+}
+
+.main {
+    width: min(100% - 48px, 1080px);
+    min-height: 100dvh;
+    margin-inline: auto;
+    padding-block: 110px 32px;
+}
+
+.art {
+    width: min(44vw, 380px);
+    flex-shrink: 0;
+}
+
+.copy {
+    max-width: 440px;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.12;
+    font-weight: 750;
+    letter-spacing: -1px;
+}
+
+.description {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--g-color-text-secondary);
+}
+
+.home {
+    align-self: flex-start;
+
+    --g-button-border-radius: 999px;
+}
+
+@media (width <= 700px) {
+    .page {
+        --persons-header-height: 72px;
+    }
+
+    .main {
+        flex-direction: column;
+        gap: 24px;
+        padding-block: 94px 32px;
+        text-align: center;
+    }
+
+    .art {
+        width: min(54vw, 240px);
+    }
+
+    .home {
+        align-self: center;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .copy {
+        animation: appear 350ms ease both;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

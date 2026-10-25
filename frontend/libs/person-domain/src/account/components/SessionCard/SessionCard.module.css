@@ -1,0 +1,66 @@
+.card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: var(--g-color-base-generic);
+    border-radius: 14px;
+    animation: appear 200ms ease both;
+}
+
+.os {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    color: var(--g-color-text-brand);
+}
+
+.details {
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.client,
+.location {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.client {
+    font-weight: 500;
+}
+
+.revoke {
+    margin-left: auto;
+    flex-shrink: 0;
+    width: 28px;
+
+    --g-button-padding: 0px;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (width <= 480px) {
+    .card {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .os {
+        width: 32px;
+    }
+}

@@ -1,0 +1,19 @@
+.details {
+    display: grid;
+    gap: 2px;
+}
+
+.client {
+    width: 70%;
+    height: 20px;
+}
+
+.location {
+    width: 90%;
+    height: 20px;
+}
+
+.action {
+    height: 36px;
+    border-radius: 10px;
+}

@@ -1,0 +1,125 @@
+.card {
+    --event-padding: 24px;
+
+    min-width: 0;
+    padding: var(--event-padding);
+    border-radius: 24px;
+    background: var(--persons-surface);
+}
+
+.header {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.gameHeader {
+    margin-bottom: calc(20px / 2.25);
+}
+
+.gameIdentity {
+    min-width: 0;
+}
+
+.gameAction {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.gameTime {
+    font-size: inherit;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
+.page {
+    display: flex;
+    min-width: 0;
+    max-width: 100%;
+    font-size: 20px;
+    font-weight: 650;
+    color: var(--g-color-text-primary);
+}
+
+.publisher {
+    flex: 1;
+    min-width: 0;
+}
+
+.onPage {
+    flex-shrink: 0;
+    max-width: 100%;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.destinationPage {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.stats {
+    flex-shrink: 0;
+    margin-top: 12px;
+    color: var(--g-color-text-secondary);
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.prose {
+    margin-block: 16px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.rating {
+    margin-top: 16px;
+}
+
+.emoji {
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.achievementTitle {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 650;
+}
+
+.footer {
+    margin-top: 16px;
+}
+
+.date {
+    margin-left: auto;
+    font-size: 16px;
+    text-align: right;
+}
+
+.mediaSkeleton {
+    height: 500px;
+    border-radius: 20px;
+}
+
+@media (width <= 600px) {
+    .card {
+        --event-padding: 20px;
+    }
+}
+
+.card[data-kind='game'] {
+    border: 0;
+    background: transparent;
+    padding-inline: 0;
+    padding-block: calc(var(--event-padding) / 2.25);
+}
+
+.card[data-kind='game'] + .card[data-kind='game'] {
+    margin-top: calc(20px / 2.25 - 20px);
+}

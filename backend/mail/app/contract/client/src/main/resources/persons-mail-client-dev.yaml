@@ -1,0 +1,3 @@
+project:
+  mail-client:
+    base-uri: ${MAIL_BASE_URL:http://localhost:8083}

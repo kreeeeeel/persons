@@ -1,0 +1,169 @@
+.dialog {
+    height: min(720px, calc(100dvh - 40px));
+}
+
+.body {
+    flex: 1 0 auto;
+    padding-top: 52px;
+    padding-bottom: 24px;
+    font-size: 16px;
+}
+
+.matchLink {
+    position: absolute;
+    z-index: 1;
+    top: 18px;
+    right: 54px;
+}
+
+.hero {
+    padding-bottom: 28px;
+}
+
+.mapImage {
+    border-radius: 14px;
+    object-fit: contain;
+}
+
+.mapName {
+    margin: 0;
+    font-size: clamp(26px, 4vw, 32px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.6px;
+    text-align: center;
+}
+
+.result {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.result > span {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.separator {
+    color: var(--g-color-text-primary);
+}
+
+.score {
+    color: var(--g-color-text-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+.facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.fact {
+    min-width: 0;
+    min-height: 88px;
+    padding: 16px 8px;
+    border-radius: 12px;
+    background: var(--g-color-base-generic);
+    text-align: center;
+}
+
+.factLabel {
+    font-size: 16px;
+    line-height: 20px;
+    overflow-wrap: anywhere;
+}
+
+.factValue {
+    font-size: 20px;
+    font-weight: 650;
+    font-variant-numeric: tabular-nums;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    padding-block: 28px;
+}
+
+.value {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.performance {
+    padding: 20px;
+    border-radius: 14px;
+    background: var(--g-color-base-generic);
+}
+
+.performanceTitle {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.performanceValue {
+    font-size: 18px;
+    font-weight: 650;
+    line-height: 28px;
+    font-variant-numeric: tabular-nums;
+}
+
+.performance .performanceTag {
+    height: auto;
+    min-height: 36px;
+    padding: 2px 10px;
+    color: #1e1a26;
+    background: #dedede;
+}
+
+.performance[data-tone='poor'] .performanceTag {
+    background: #f77c60;
+}
+
+.performance[data-tone='subpar'] .performanceTag {
+    background: #f7cd60;
+}
+
+.performance[data-tone='good'] .performanceTag {
+    background: #9ccc72;
+}
+
+.performance[data-tone='great'] .performanceTag {
+    background: #4dc49e;
+}
+
+.footer {
+    margin-top: 24px;
+}
+
+.date {
+    color: var(--g-color-text-secondary);
+    font-size: 16px;
+    text-align: right;
+}
+
+@media (width <= 700px) {
+    .facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (width <= 400px) {
+    .body {
+        padding-inline: 12px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 8px;
+    }
+
+    .performance {
+        padding: 16px;
+    }
+}

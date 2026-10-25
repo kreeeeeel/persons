@@ -1,0 +1,3 @@
+CsMatchOutcome:
+  type: string
+  enum: [VICTORY, DEFEAT, DRAW]

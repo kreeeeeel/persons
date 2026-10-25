@@ -1,0 +1,260 @@
+/v1/persons/{id}/media:
+  post:
+    tags:
+      - media
+    operationId: uploadMedia
+    summary: uploadMedia
+    responses:
+      '202':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/moderation/ModerationReceipt.yaml#/ModerationReceipt
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '409':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '413':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '415':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '429':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    security:
+      - session: []
+    requestBody:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            required:
+              - file
+              - kind
+            properties:
+              file:
+                type: string
+                format: binary
+                description: Videos up to 512 MiB, photos up to 32 MiB, avatars up to 2 MiB.
+              kind:
+                $ref: ./models/media/MediaKind.yaml#/MediaKind
+              caption:
+                type: string
+                maxLength: 200
+              durationSeconds:
+                type: number
+                format: double
+                minimum: 0
+                maximum: 86400
+              preview:
+                type: string
+                format: binary
+              taggedPersonIds:
+                type: array
+                items:
+                  type: string
+                  format: uuid
+                maxItems: 20
+/v1/media/{id}:
+  delete:
+    tags:
+      - media
+    operationId: deleteMedia
+    summary: deleteMedia
+    responses:
+      '202':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/moderation/ModerationReceipt.yaml#/ModerationReceipt
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '409':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '429':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    security:
+      - session: []
+/v1/media/{id}/content:
+  get:
+    tags:
+      - media
+    operationId: readMedia
+    summary: readMedia
+    responses:
+      '200':
+        description: Media content
+        headers:
+          Accept-Ranges:
+            schema:
+              type: string
+          Content-Range:
+            schema:
+              type: string
+          Content-Length:
+            schema:
+              type: integer
+              format: int64
+          Content-Type:
+            schema:
+              type: string
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      '206':
+        description: Media content
+        headers:
+          Accept-Ranges:
+            schema:
+              type: string
+          Content-Range:
+            schema:
+              type: string
+          Content-Length:
+            schema:
+              type: integer
+              format: int64
+          Content-Type:
+            schema:
+              type: string
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '416':
+        description: Requested byte range is not satisfiable
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Range
+        in: header
+        schema:
+          type: string
+          maxLength: 100

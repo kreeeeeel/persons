@@ -1,0 +1,17 @@
+SocialLink:
+  type: object
+  required:
+    - network
+  properties:
+    network:
+      $ref: ../person/SocialNetwork.yaml#/SocialNetwork
+    url:
+      type: string
+      description: HTTPS link for Telegram or Steam. Existing Discord profile links remain supported; use tag for Discord usernames.
+      maxLength: 300
+      pattern: ^https://.+$
+    tag:
+      type: string
+      description: Discord username or legacy name#1234, optionally prefixed with @. Cannot be combined with url.
+      maxLength: 38
+      pattern: '^@?(?:[A-Za-z0-9_.]{2,32}|[^#\s]{2,32}#[0-9]{4})$'

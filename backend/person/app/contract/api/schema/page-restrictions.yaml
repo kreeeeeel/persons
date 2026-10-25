@@ -1,0 +1,66 @@
+/v1/admin/users/{id}/page-restrictions:
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+  get:
+    tags: [page-restrictions]
+    operationId: listPageRestrictions
+    security:
+      - session: []
+    responses:
+      '200':
+        description: Current restrictions on individual pages, including expired ones
+        content:
+          application/json:
+            schema:
+              $ref: ./models/restriction/PageRestrictionList.yaml#/PageRestrictionList
+      '403':
+        description: Administrator access required
+  put:
+    tags: [page-restrictions]
+    operationId: setPageRestriction
+    security:
+      - session: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/restriction/PageRestrictionInput.yaml#/PageRestrictionInput
+    responses:
+      '200':
+        description: Restriction created or replaced for this user and destination page
+        content:
+          application/json:
+            schema:
+              $ref: ./models/restriction/PageRestriction.yaml#/PageRestriction
+      '400':
+        description: Invalid input
+      '403':
+        description: Administrator access required
+      '404':
+        description: Destination page not found
+/v1/admin/users/{id}/page-restrictions/{restrictionId}:
+  delete:
+    tags: [page-restrictions]
+    operationId: revokePageRestriction
+    security:
+      - session: []
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: {type: string, format: uuid}
+      - name: restrictionId
+        in: path
+        required: true
+        schema: {type: string, format: uuid}
+    responses:
+      '204':
+        description: Restriction revoked
+      '403':
+        description: Administrator access required
+      '404':
+        description: Restriction not found for this user

@@ -1,0 +1,161 @@
+.card {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr) auto 18px;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 22px 24px;
+    border: 0;
+    border-radius: 20px;
+    background: var(--persons-surface);
+    color: var(--g-color-text-primary);
+    text-align: left;
+    cursor: pointer;
+    transition:
+        background-color 180ms ease,
+        transform 180ms ease;
+}
+
+.rankBadge {
+    position: relative;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.rankStars {
+    position: absolute;
+    inset: 0;
+}
+
+.card:hover {
+    background: var(--g-color-base-generic-hover);
+    transform: translateY(-2px);
+}
+
+.card:focus-visible {
+    outline: 2px solid var(--g-color-text-brand);
+    outline-offset: 4px;
+}
+
+.heroIcon {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+}
+
+.pixelIcon {
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.identity {
+    min-width: 0;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 650;
+    line-height: 1.3;
+}
+
+.rank {
+    color: var(--g-color-text-secondary);
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+.resultLine {
+    font-size: 18px;
+    font-weight: 650;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.outcome,
+.separator,
+.score {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+.outcome {
+    color: var(--g-color-text-positive);
+}
+
+.separator {
+    color: var(--g-color-text-primary);
+}
+
+.score {
+    color: var(--g-color-text-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+.card[data-result='defeat'] .outcome {
+    color: var(--g-color-text-danger);
+}
+
+.kda {
+    font-size: 16px;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.chevron {
+    color: var(--g-color-text-hint);
+}
+
+@media (width <= 600px) {
+    .card {
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 12px;
+        padding: 18px 14px;
+        border-radius: 16px;
+    }
+
+    .heroIcon {
+        width: 48px;
+        height: 56px;
+        border: 0;
+        background: transparent;
+    }
+
+    .heroIcon > div {
+        transform: scale(0.85);
+    }
+
+    .name,
+    .resultLine {
+        font-size: 16px;
+    }
+
+    .chevron {
+        display: none;
+    }
+
+    .result {
+        grid-column: 1 / -1;
+    }
+
+    .rank {
+        gap: 4px;
+    }
+
+    .kda > span {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+
+    .card:hover {
+        transform: none;
+    }
+}

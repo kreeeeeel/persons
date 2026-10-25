@@ -1,0 +1,3 @@
+project:
+  person-client:
+    base-uri: http://localhost:1

@@ -1,0 +1,13 @@
+AdminContentPage:
+  type: object
+  required: [items, total, page, size, statistics]
+  properties:
+    items:
+      type: array
+      items:
+        $ref: ./AdminContentItem.yaml#/AdminContentItem
+    total: {type: integer, format: int64}
+    page: {type: integer}
+    size: {type: integer}
+    statistics:
+      $ref: ./AdminContentStatistics.yaml#/AdminContentStatistics

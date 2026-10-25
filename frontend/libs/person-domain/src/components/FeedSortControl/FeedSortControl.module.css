@@ -1,0 +1,8 @@
+.root {
+    align-self: flex-start;
+    max-width: 100%;
+}
+
+.select {
+    max-width: 100%;
+}

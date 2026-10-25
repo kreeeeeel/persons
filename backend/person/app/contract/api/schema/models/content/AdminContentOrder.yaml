@@ -1,0 +1,3 @@
+AdminContentOrder:
+  type: string
+  enum: [NEWEST, OLDEST, AUTHOR, PAGE, TYPE]

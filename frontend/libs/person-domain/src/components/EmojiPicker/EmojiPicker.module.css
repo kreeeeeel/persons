@@ -1,0 +1,43 @@
+.trigger {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 14px;
+    background: var(--g-color-base-generic);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.palette {
+    display: grid;
+    grid-template-columns: repeat(6, 44px);
+    gap: 2px;
+    max-height: 304px;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.emoji {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.emoji:hover,
+.emoji[aria-selected="true"] {
+    background: var(--g-color-base-selection);
+}
+
+.emoji:focus-visible,
+.trigger:focus-visible {
+    outline: 2px solid var(--g-color-line-focus);
+    outline-offset: 1px;
+}

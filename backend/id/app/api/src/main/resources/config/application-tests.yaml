@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:id;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ''
+project:
+  id:
+    pepper: tests-pepper-with-at-least-thirty-two-characters
+    jwt-secret: tests-user-jwt-secret-at-least-thirty-two-characters
+  internal:
+    jwt-secret: tests-internal-jwt-secret-at-least-thirty-two-characters
+s3:
+  endpoint: http://127.0.0.1:1
+  region: us-east-1
+  bucket: tests
+  credentials:
+    access-key: tests-access
+    secret-key: tests-secret

@@ -1,0 +1,7 @@
+MediaReactionInput:
+  type: object
+  required:
+    - reaction
+  properties:
+    reaction:
+      $ref: ./MediaReaction.yaml#/MediaReaction

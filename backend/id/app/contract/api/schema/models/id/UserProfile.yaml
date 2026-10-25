@@ -1,0 +1,15 @@
+UserProfile:
+  type: object
+  required: [id, name, hasAvatar, version]
+  properties:
+    id:
+      type: string
+      format: uuid
+    name:
+      type: string
+    hasAvatar:
+      type: boolean
+    version:
+      type: integer
+      format: int64
+      minimum: 0

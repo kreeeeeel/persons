@@ -1,0 +1,5 @@
+AccountStatus:
+  type: string
+  enum:
+  - ACTIVE
+  - BLOCKED

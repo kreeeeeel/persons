@@ -1,0 +1,27 @@
+MyPublication:
+  type: object
+  description: Exactly one content field matches kind. The page is the destination of the publication.
+  required: [id, kind, page, createdAt]
+  properties:
+    id:
+      type: string
+      format: uuid
+    kind:
+      $ref: ./PublicationKind.yaml#/PublicationKind
+    page:
+      $ref: ../person/PersonSummary.yaml#/PersonSummary
+    createdAt:
+      type: string
+      format: date-time
+    comment:
+      $ref: ../comment/Comment.yaml#/Comment
+    rating:
+      $ref: ../person/PersonRating.yaml#/PersonRating
+    photo:
+      $ref: ../media/Photo.yaml#/Photo
+    moment:
+      $ref: ../media/Moment.yaml#/Moment
+    credit:
+      $ref: ../credit/CreditEntry.yaml#/CreditEntry
+    contextMediaKind:
+      $ref: ../media/MediaKind.yaml#/MediaKind

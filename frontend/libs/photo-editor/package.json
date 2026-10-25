@@ -1,0 +1,32 @@
+{
+    "name": "@persons/photo-editor",
+    "version": "0.1.0",
+    "private": false,
+    "type": "module",
+    "exports": {
+        "./messages": "./src/messages.ts",
+        ".": "./src/index.ts",
+        "./crop": "./src/crop.ts",
+        "./image": "./src/image.ts",
+        "./selection": "./src/selection.ts",
+        "./PhotoEditor/components/CropSelection": "./src/PhotoEditor/components/CropSelection/index.ts",
+        "./PhotoEditor/components/CropSelection/CropSelection": "./src/PhotoEditor/components/CropSelection/CropSelection.tsx",
+        "./PhotoEditor/components/CropSelection/CropSelection.types": "./src/PhotoEditor/components/CropSelection/CropSelection.types.ts",
+        "./PhotoEditor/components/CropSelection/CropSelection.module.css": "./src/PhotoEditor/components/CropSelection/CropSelection.module.css",
+        "./AvatarPicker/AvatarPicker.module.css": "./src/AvatarPicker/AvatarPicker.module.css",
+        "./AvatarPicker/AvatarPicker": "./src/AvatarPicker/AvatarPicker.tsx",
+        "./PhotoEditor/PhotoEditor.module.css": "./src/PhotoEditor/PhotoEditor.module.css",
+        "./PhotoEditor/PhotoEditor": "./src/PhotoEditor/PhotoEditor.tsx",
+        "./PhotoEditor/PhotoEditor.types": "./src/PhotoEditor/PhotoEditor.types.ts"
+    },
+    "peerDependencies": {
+        "react": "^19.0.0",
+        "@gravity-ui/uikit": "^7.51.0",
+        "@gravity-ui/icons": "^2.22.0",
+        "@persons/i18n": "0.1.0",
+        "@persons/ui": "0.1.0"
+    },
+    "dependencies": {
+        "react-easy-crop": "6.2.4"
+    }
+}

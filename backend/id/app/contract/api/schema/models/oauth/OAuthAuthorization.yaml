@@ -1,0 +1,8 @@
+OAuthAuthorization:
+  type: object
+  required:
+  - authorizationUrl
+  properties:
+    authorizationUrl:
+      type: string
+      format: uri

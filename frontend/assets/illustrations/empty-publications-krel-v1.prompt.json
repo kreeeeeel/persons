@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-10-23",
+  "tool": "built-in image_gen",
+  "asset": "illustrations/empty-publications-krel-v1.webp",
+  "identityReference": "C:/Users/kreeeeeel/Desktop/люди/крел.png (consented local photograph; not committed)",
+  "styleReference": "illustrations/empty-wall-krel-v2.webp",
+  "referencedImagePaths": [
+    "C:/Users/kreeeeeel/Desktop/люди/крел.png",
+    "C:/Users/kreeeeeel/Desktop/persons/frontend/assets/illustrations/empty-wall-krel-v2.webp"
+  ],
+  "transparentBackground": true,
+  "prompt": "Use case: illustration-story. Asset type: a single website empty-publications illustration for Persons. Input image 1 is the consented original photograph of Krel and the ONLY facial identity reference. Image 2 is an existing Persons illustration and is STYLE REFERENCE ONLY, do not copy its face, objects or pose. Create a fresh illustration with one adult man, recognizably Krel from image 1: short straight light-brown crew-cut hair, round youthful fair face, same nose, eyes, cheeks and subtle friendly smile, no facial hair, no glasses. He sits behind a small simple wooden writing desk wearing a loose dark charcoal sweatshirt. On the desk is one open notebook with completely blank pages and one small standing photo frame with a completely blank pale insert. He holds a pen just above the blank notebook and thoughtfully rests his other hand against his cheek, looking warmly outward, as if deciding what his first publication should be. Quietly cheerful, thoughtful anticipation. Match image 2's polished hand-painted cartoon editorial style: recognizable detailed face, warm natural skin tones, soft painted brush shading, charcoal clothing with tasteful purple accents, simple clean silhouettes and natural anatomy. Compact centered square composition with head, hands, desk, notebook and frame completely visible, ample transparent margin, readable at 220px. Genuine alpha-transparent background. No background rectangle, ground plane, pedestal, halo, glow, colored mist, outer shadow, drop shadow, white outline, checkerboard drawing, text, letters, numbers, typography, logo, watermark, extra people, plants, irrelevant decoration. Only the man and specified desk props; all outside pixels truly transparent.",
+  "output": {
+    "path": "frontend/assets/illustrations/empty-publications-krel-v1.webp",
+    "format": "webp",
+    "width": 640,
+    "height": 640,
+    "alpha": true,
+    "source": "C:/Users/kreeeeeel/.codex/generated_images/01a165bf-d599-7db3-9cfb-ec4eed78063a/exec-3489d408-994b-40de-a3ed-ee27a9229485.png",
+    "processing": "sharp resize to 640x640 and WebP encode only; generated alpha preserved"
+  }
+}

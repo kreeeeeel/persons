@@ -1,0 +1,15 @@
+MediaEditInput:
+  type: object
+  required:
+    - caption
+    - taggedPersonIds
+  properties:
+    caption:
+      type: string
+      maxLength: 200
+    taggedPersonIds:
+      type: array
+      items:
+        type: string
+        format: uuid
+      maxItems: 20

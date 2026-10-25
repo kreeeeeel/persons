@@ -1,0 +1,93 @@
+/v1/persons/{id}/ownership-claims:
+  post:
+    tags:
+      - claims
+    operationId: claimPerson
+    summary: claimPerson
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    security:
+      - session: []
+    requestBody:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            required:
+              - message
+              - file
+            properties:
+              message:
+                type: string
+                minLength: 10
+                maxLength: 2000
+              file:
+                type: string
+                format: binary
+    responses:
+      '202':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/moderation/ModerationReceipt.yaml#/ModerationReceipt
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '409':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '413':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '415':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '429':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse

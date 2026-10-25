@@ -1,0 +1,8 @@
+AdminSessions:
+  type: object
+  required: [items]
+  properties:
+    items:
+      type: array
+      items:
+        $ref: ./AdminSession.yaml#/AdminSession

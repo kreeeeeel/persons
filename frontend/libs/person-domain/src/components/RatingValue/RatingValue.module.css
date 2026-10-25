@@ -1,0 +1,40 @@
+.value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 650;
+}
+
+.value[data-tone="bad"] {
+    color: var(--g-color-text-danger);
+}
+
+.value[data-tone="poor"] {
+    color: #b54f00;
+}
+
+.value[data-tone="average"] {
+    color: #860;
+}
+
+.value[data-tone="good"] {
+    color: #4e7c16;
+}
+
+.value[data-tone="great"] {
+    color: var(--g-color-text-positive);
+}
+
+.value[data-tone="empty"] {
+    color: var(--g-color-text-secondary);
+}
+
+:global([class~="g-root_theme_dark"]) .value[data-tone="poor"] {
+    color: #ffb36b;
+}
+
+:global([class~="g-root_theme_dark"]) .value[data-tone="average"] {
+    color: #edcf66;
+}
+
+:global([class~="g-root_theme_dark"]) .value[data-tone="good"] {
+    color: #b1d97a;
+}

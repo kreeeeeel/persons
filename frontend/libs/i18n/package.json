@@ -1,0 +1,32 @@
+{
+    "name": "@persons/i18n",
+    "version": "0.1.0",
+    "private": false,
+    "type": "module",
+    "exports": {
+        "./useLanguageMenuItems": "./src/useLanguageMenuItems.tsx",
+        "./useLanguageMenuItems.module.css": "./src/useLanguageMenuItems.module.css",
+        ".": "./src/index.ts",
+        "./server": "./src/server.ts",
+        "./flags/*": "./assets/flags/*",
+        "./locale": "./src/locale.ts",
+        "./provider": "./src/provider.tsx",
+        "./Flag/country-codes.json": "./src/Flag/country-codes.json",
+        "./Flag/Flag.module.css": "./src/Flag/Flag.module.css",
+        "./Flag/Flag": "./src/Flag/Flag.tsx",
+        "./LanguagePicker/LanguagePicker.module.css": "./src/LanguagePicker/LanguagePicker.module.css",
+        "./LanguagePicker/LanguagePicker": "./src/LanguagePicker/LanguagePicker.tsx",
+        "./LanguagePicker/LanguagePicker.types": "./src/LanguagePicker/LanguagePicker.types.ts"
+    },
+    "peerDependencies": {
+        "react": "^19.0.0",
+        "@gravity-ui/uikit": "^7.51.0",
+        "@gravity-ui/icons": "^2.22.0",
+        "@persons/i18n-client": "0.1.0",
+        "@persons/ui": "0.1.0"
+    },
+    "dependencies": {
+        "next-intl": "4.14.9",
+        "flag-icons": "7.5.0"
+    }
+}

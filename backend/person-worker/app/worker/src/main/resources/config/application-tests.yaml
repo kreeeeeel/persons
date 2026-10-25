@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:worker;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ''
+  task:
+    scheduling:
+      enabled: false
+s3:
+  endpoint: http://127.0.0.1:1
+  region: us-east-1
+  bucket: tests
+  credentials:
+    access-key: tests
+    secret-key: tests
+project:
+  internal:
+    jwt-secret: tests-internal-jwt-secret-with-at-least-thirty-two-characters
+  restrictions-client:
+    base-uri: http://127.0.0.1:1
+jobs:
+  enabled: false
+
+dynamic-properties:
+  storage: memory

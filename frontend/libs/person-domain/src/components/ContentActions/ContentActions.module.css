@@ -1,0 +1,26 @@
+.root {
+    width: 100%;
+}
+
+.actions {
+    flex: 0 0 auto;
+    margin-left: auto;
+    min-height: var(--content-actions-height, 40px);
+}
+
+.button {
+    --g-button-border-radius: 999px;
+    --g-button-height: 40px;
+    --g-button-padding: 0;
+
+    width: 40px;
+    height: 40px;
+}
+
+.button > :global([class~="g-button__text"]) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0;
+}

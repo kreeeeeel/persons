@@ -1,0 +1,25 @@
+.root {
+    min-width: 0;
+    padding: 24px;
+    border-radius: 24px;
+    background: var(--persons-surface);
+    overflow-wrap: anywhere;
+}
+
+.root > :global([class~="g-label"]) {
+    align-self: flex-start;
+    max-width: 100%;
+}
+
+.prose {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.compact {
+    padding: 18px 4px;
+    border-radius: 0;
+    background: transparent;
+}

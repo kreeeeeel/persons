@@ -1,0 +1,48 @@
+.screen {
+    animation: enter 350ms ease both;
+}
+
+.card {
+    padding: 28px;
+    background: var(--persons-surface);
+}
+
+.empty {
+    padding: 24px;
+    text-align: center;
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .screen {
+        animation: none;
+    }
+}
+
+.headingSkeleton {
+    width: min(600px, 100%);
+    height: 100px;
+}
+
+.profileSkeleton {
+    width: 100%;
+    height: 240px;
+    border-radius: 20px;
+}
+
+.sessionSkeleton {
+    width: 100%;
+    height: 140px;
+    border-radius: 20px;
+}

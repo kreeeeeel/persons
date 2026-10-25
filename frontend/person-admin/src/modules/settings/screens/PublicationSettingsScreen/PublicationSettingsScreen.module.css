@@ -1,0 +1,15 @@
+.form {
+    max-width: 800px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--persons-surface);
+}
+
+@media (width <= 520px) {
+    .card {
+        padding: 16px;
+    }
+}

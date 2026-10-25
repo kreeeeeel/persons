@@ -1,0 +1,50 @@
+/v1/site-settings:
+  get:
+    tags: [siteSettings]
+    operationId: getSiteSettings
+    responses:
+      '200':
+        description: Public site interface settings
+        content:
+          application/json:
+            schema:
+              $ref: ./models/settings/SiteSettings.yaml#/SiteSettings
+/v1/admin/site-settings:
+  get:
+    tags: [siteSettings]
+    operationId: getAdminSiteSettings
+    security: [{session: []}]
+    responses:
+      '200':
+        description: Current site interface settings
+        content:
+          application/json:
+            schema:
+              $ref: ./models/settings/SiteSettings.yaml#/SiteSettings
+      '401':
+        $ref: ./publication.yaml#/Unauthorized
+      '403':
+        $ref: ./publication.yaml#/Forbidden
+  put:
+    tags: [siteSettings]
+    operationId: updateSiteSettings
+    security: [{session: []}]
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/settings/SiteSettings.yaml#/SiteSettings
+    responses:
+      '200':
+        description: Updated site interface settings
+        content:
+          application/json:
+            schema:
+              $ref: ./models/settings/SiteSettings.yaml#/SiteSettings
+      '400':
+        $ref: ./publication.yaml#/InvalidInput
+      '401':
+        $ref: ./publication.yaml#/Unauthorized
+      '403':
+        $ref: ./publication.yaml#/Forbidden

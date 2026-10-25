@@ -1,0 +1,29 @@
+AdminUser:
+  type: object
+  required:
+  - id
+  - email
+  - firstName
+  - lastName
+  - role
+  - status
+  - createdAt
+  properties:
+    id:
+      type: string
+      format: uuid
+    email:
+      type: string
+      format: email
+    firstName: &id001
+      type: string
+    lastName: *id001
+    role:
+      $ref: ../id/AccountRole.yaml#/AccountRole
+    status:
+      $ref: ../id/AccountStatus.yaml#/AccountStatus
+    createdAt:
+      type: string
+      format: date-time
+    restriction:
+      $ref: ../restriction/AccountRestriction.yaml#/AccountRestriction

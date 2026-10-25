@@ -1,0 +1,75 @@
+MediaDetail:
+  type: object
+  required:
+    - id
+    - personId
+    - kind
+    - caption
+    - authorName
+    - createdAt
+    - taggedPersons
+    - reactions
+    - comments
+    - durationSeconds
+    - previewAvailable
+    - canEdit
+    - canRemove
+  properties:
+    id:
+      type: string
+      format: uuid
+    personId:
+      type: string
+      format: uuid
+    kind:
+      $ref: ./MediaKind.yaml#/MediaKind
+    caption:
+      type: string
+      maxLength: 200
+    authorName:
+      type: string
+      maxLength: 250
+    createdAt:
+      type: string
+      format: date-time
+    taggedPersons:
+      type: array
+      items:
+        $ref: ../person/PersonSummary.yaml#/PersonSummary
+    reactions:
+      $ref: ./MediaReactionState.yaml#/MediaReactionState
+    comments:
+      type: integer
+      format: int64
+      minimum: 0
+    durationSeconds:
+      type: number
+      format: double
+    previewAvailable:
+      type: boolean
+    canEdit:
+      type: boolean
+    canRemove:
+      type: boolean
+    authorTag:
+      type: string
+    authorAvatarMediaId:
+      type: string
+      format: uuid
+    views:
+      type: integer
+      format: int64
+      minimum: 0
+    previousMediaId:
+      type: string
+      format: uuid
+    nextMediaId:
+      type: string
+      format: uuid
+    moderationStatus:
+      $ref: ../moderation/ModerationStatus.yaml#/ModerationStatus
+    canInteract:
+      type: boolean
+    authorAvatarUrl:
+      type: string
+      description: Current account avatar URL, versioned when account details change.

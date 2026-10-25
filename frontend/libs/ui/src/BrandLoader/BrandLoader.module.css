@@ -1,0 +1,29 @@
+.loader {
+    min-height: 72px;
+    width: 100%;
+}
+
+.compact {
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+}
+
+.logo {
+    display: block;
+    object-fit: contain;
+    animation: rotate 1.2s linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .logo {
+        animation: none;
+    }
+}

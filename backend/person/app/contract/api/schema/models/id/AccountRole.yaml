@@ -1,0 +1,5 @@
+AccountRole:
+  type: string
+  enum:
+  - USER
+  - ADMIN

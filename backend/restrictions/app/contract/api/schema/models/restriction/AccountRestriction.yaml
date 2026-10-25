@@ -1,0 +1,22 @@
+AccountRestriction:
+  type: object
+  required: [id, userId, scopes, reason, createdAt]
+  properties:
+    id:
+      type: string
+      format: uuid
+    userId:
+      type: string
+      format: uuid
+    scopes:
+      type: array
+      items:
+        $ref: ./RestrictionScope.yaml#/RestrictionScope
+    reason:
+      type: string
+    expiresAt:
+      type: string
+      format: date-time
+    createdAt:
+      type: string
+      format: date-time

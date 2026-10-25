@@ -1,0 +1,24 @@
+RatingOption:
+  type: object
+  required:
+    - id
+    - emoji
+    - label
+    - count
+    - selected
+  properties:
+    id:
+      type: string
+      format: uuid
+    emoji:
+      type: string
+      maxLength: 16
+    label:
+      type: string
+      maxLength: 50
+    count:
+      type: integer
+      format: int64
+      minimum: 0
+    selected:
+      type: boolean

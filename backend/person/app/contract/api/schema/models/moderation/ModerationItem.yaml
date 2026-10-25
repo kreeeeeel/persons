@@ -1,0 +1,73 @@
+ModerationItem:
+  type: object
+  required:
+    - id
+    - personId
+    - personTag
+    - kind
+    - summary
+    - payload
+    - authorName
+    - status
+    - createdAt
+  properties:
+    id:
+      type: string
+      format: uuid
+    personId:
+      type: string
+      format: uuid
+    personTag:
+      type: string
+      maxLength: 32
+    kind:
+      $ref: ../moderation/ChangeKind.yaml#/ChangeKind
+    summary:
+      type: string
+      maxLength: 300
+    payload:
+      type: string
+      maxLength: 20000
+    authorName:
+      type: string
+      maxLength: 250
+    status:
+      $ref: ../moderation/ModerationStatus.yaml#/ModerationStatus
+    createdAt:
+      type: string
+      format: date-time
+    reason:
+      type: string
+      maxLength: 1000
+    reviewedAt:
+      type: string
+      format: date-time
+    authorId:
+      type: string
+      format: uuid
+    personName:
+      type: string
+    personAvatarMediaId:
+      type: string
+      format: uuid
+    targetId:
+      type: string
+      format: uuid
+    mediaId:
+      type: string
+      format: uuid
+    mediaKind:
+      $ref: ../media/MediaKind.yaml#/MediaKind
+    previewAvailable:
+      type: boolean
+    reviewerName:
+      type: string
+    automatic:
+      type: boolean
+    authorTag: {type: string}
+    authorAvatarUrl: {type: string}
+    sizeBytes: {type: integer, format: int64, minimum: 0}
+    previousPayload:
+      type: string
+      maxLength: 20000
+      description: Original editable values captured when the request was submitted. Absent for older requests.

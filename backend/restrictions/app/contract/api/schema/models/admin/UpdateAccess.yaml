@@ -1,0 +1,10 @@
+UpdateAccess:
+  type: object
+  required:
+  - role
+  - status
+  properties:
+    role:
+      $ref: ../id/AccountRole.yaml#/AccountRole
+    status:
+      $ref: ../id/AccountStatus.yaml#/AccountStatus

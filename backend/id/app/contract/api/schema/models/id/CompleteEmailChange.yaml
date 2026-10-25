@@ -1,0 +1,11 @@
+CompleteEmailChange:
+  type: object
+  required: [challengeId, grant]
+  properties:
+    challengeId:
+      type: string
+      format: uuid
+    grant:
+      type: string
+      minLength: 32
+      maxLength: 128

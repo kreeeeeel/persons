@@ -1,0 +1,41 @@
+services:
+  gateway:
+    build:
+      dockerfile: backend/gateway/app/api/docker/Dockerfile.prebuilt
+      target: runtime-prebuilt
+  restrictions:
+    build:
+      dockerfile: backend/restrictions/app/api/docker/Dockerfile.prebuilt
+      target: runtime-prebuilt
+  id:
+    build:
+      dockerfile: backend/id/app/api/docker/Dockerfile.prebuilt
+      target: runtime-prebuilt
+  mail:
+    build:
+      dockerfile: backend/mail/app/api/docker/Dockerfile.prebuilt
+      target: runtime-prebuilt
+  i18n:
+    build:
+      dockerfile: backend/i18n/app/api/docker/Dockerfile.prebuilt
+      target: runtime-prebuilt
+  person:
+    build:
+      dockerfile: backend/person/app/api/docker/Dockerfile.prebuilt
+      target: runtime-prebuilt
+  id-web:
+    build:
+      dockerfile: frontend/id/docker/Dockerfile.prebuilt
+      target: runtime-prebuilt
+  person-admin-web:
+    build:
+      dockerfile: frontend/person-admin/docker/Dockerfile.prebuilt
+      target: runtime-prebuilt
+  person-web:
+    build:
+      dockerfile: frontend/person/docker/Dockerfile.prebuilt
+      target: runtime-prebuilt
+  person-worker:
+    build:
+      dockerfile: backend/person-worker/app/worker/docker/Dockerfile.prebuilt
+      target: runtime-prebuilt

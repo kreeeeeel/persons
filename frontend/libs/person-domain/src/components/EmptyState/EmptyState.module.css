@@ -1,0 +1,27 @@
+.root {
+    width: 100%;
+    min-height: 240px;
+    padding: 40px 24px;
+    border-radius: 28px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.root h2,
+.root p {
+    margin: 0;
+}
+
+.art {
+    width: min(100%, 300px);
+}
+
+.root[data-compact="true"] {
+    min-height: 0;
+    padding: 16px 8px;
+    font-size: 16px;
+}
+
+.root[data-compact="true"] .art {
+    width: min(100%, 144px);
+}

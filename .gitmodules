@@ -1,0 +1,72 @@
+[submodule "backend/id"]
+	path = backend/id
+	url = https://gitlab.com/te-eshche-lyudi/backend/id.git
+	branch = main
+[submodule "backend/mail"]
+	path = backend/mail
+	url = https://gitlab.com/te-eshche-lyudi/backend/mail.git
+	branch = main
+[submodule "backend/i18n"]
+	path = backend/i18n
+	url = https://gitlab.com/te-eshche-lyudi/backend/i18n.git
+	branch = main
+[submodule "backend/person"]
+	path = backend/person
+	url = https://gitlab.com/te-eshche-lyudi/backend/person.git
+	branch = main
+[submodule "backend/person-worker"]
+	path = backend/person-worker
+	url = https://gitlab.com/te-eshche-lyudi/backend/personal-worker.git
+	branch = main
+[submodule "backend/libs/id-context"]
+	path = backend/libs/id-context
+	url = https://gitlab.com/te-eshche-lyudi/backend/libs/id-context.git
+	branch = main
+[submodule "backend/libs/request-observability"]
+	path = backend/libs/request-observability
+	url = https://gitlab.com/te-eshche-lyudi/backend/libs/request-observability.git
+	branch = main
+[submodule "frontend/id"]
+	path = frontend/id
+	url = https://gitlab.com/te-eshche-lyudi/frontend/id.git
+	branch = main
+[submodule "frontend/person"]
+	path = frontend/person
+	url = https://gitlab.com/te-eshche-lyudi/frontend/person.git
+	branch = main
+[submodule "frontend/person-admin"]
+	path = frontend/person-admin
+	url = https://gitlab.com/te-eshche-lyudi/frontend/person-admin.git
+	branch = main
+[submodule "frontend/assets"]
+	path = frontend/assets
+	url = https://gitlab.com/te-eshche-lyudi/frontend/assets.git
+	branch = main
+[submodule "frontend/libs/i18n"]
+	path = frontend/libs/i18n
+	url = https://gitlab.com/te-eshche-lyudi/frontend/libs/i18n.git
+	branch = main
+[submodule "frontend/libs/person-domain"]
+	path = frontend/libs/person-domain
+	url = https://gitlab.com/te-eshche-lyudi/frontend/libs/person-domain.git
+	branch = main
+[submodule "frontend/libs/photo-editor"]
+	path = frontend/libs/photo-editor
+	url = https://gitlab.com/te-eshche-lyudi/frontend/libs/photo-editor.git
+	branch = main
+[submodule "frontend/libs/theme"]
+	path = frontend/libs/theme
+	url = https://gitlab.com/te-eshche-lyudi/frontend/libs/theme.git
+	branch = main
+[submodule "frontend/libs/ui"]
+	path = frontend/libs/ui
+	url = https://gitlab.com/te-eshche-lyudi/frontend/libs/ui.git
+	branch = main
+[submodule "backend/restrictions"]
+	path = backend/restrictions
+	url = https://gitlab.com/te-eshche-lyudi/backend/restrictions.git
+	branch = main
+[submodule "backend/gateway"]
+	path = backend/gateway
+	url = https://gitlab.com/te-eshche-lyudi/backend/gateway.git
+	branch = main

@@ -1,0 +1,6 @@
+project:
+  mail-client:
+    base-uri: "${MAIL_BASE_URL}"
+    connect-timeout-ms: 2000
+    read-timeout-ms: 5000
+    max-buffer-size: 1048576

@@ -1,0 +1,8 @@
+project:
+  internal:
+    jwt-secret: ${PROJECT_INTERNAL_JWT_SECRET:local-development-internal-jwt-secret-change-before-deploy}
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:54320/i18n}
+    username: ${DB_USER:persons}
+    password: ${DB_PASSWORD:persons-local}

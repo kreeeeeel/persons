@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-10-23",
+  "tool": "built-in image_gen",
+  "asset": "illustrations/empty-restrictions-yuri-v1.webp",
+  "identityReference": "C:/Users/kreeeeeel/Desktop/люди/юрчик.jpg (consented local reference; original not committed)",
+  "styleReferences": [
+    "illustrations/empty-ratings-yuri-v1.webp",
+    "illustrations/empty-search-artem-v1.webp"
+  ],
+  "transparentBackground": true,
+  "prompt": "Use case: illustration-story.\nAsset type: Persons website empty state, no account restrictions or blocked entries.\nInput images: Image 1 C:/Users/kreeeeeel/Desktop/люди/юрчик.jpg is the ONLY identity reference. Image 2 empty-ratings-yuri-v1.webp is a style reference and secondary confirmation of Yuri's identity; Image 3 empty-search-artem-v1.webp is a style reference ONLY, never use Artem's face.\nPrimary request: Create one polished hand-painted cartoon editorial illustration of Yuri, the young adult man CENTER-LEFT in Image 1 with tied-back long dark brown hair, pronounced dark straight eyebrows, slim youthful oval face, subtle asymmetrical closed-mouth smile, no beard or moustache. Preserve his recognizable facial proportions and hairstyle faithfully. Ignore the cropped other man, plush toy, bench and all photographic scenery.\nScene: Yuri is relaxed and welcoming in his dark charcoal sweatshirt, waist-up. In one hand he clearly presents a single large OPEN padlock with a lavender body and metallic open shackle, symbolizing unrestricted access. His other hand holds one clipboard with a completely blank ivory sheet, no lines or writing, representing an empty restrictions list. His face remains large, fully visible and recognizable. Exactly one person, two natural arms and two anatomically correct hands. Calm friendly expression, no fear, anger or punishment.\nStyle: Match the finished Persons illustration references: refined cartoon editorial digital painting, recognizable semi-realistic portrait, slightly stylized forms, warm skin, soft painterly shading, detailed but clear silhouette, charcoal clothing with restrained muted lavender and warm ivory accents. Avoid photorealistic photographic cutout look, use visibly painted forms while retaining facial likeness.\nComposition: Compact centered square asset, head and all props fully contained, waist-up, generous transparent margin around silhouette, suitable at small UI size.\nBackground: REAL FULL ALPHA TRANSPARENCY. Only the man and props as a clean cutout. Absolutely no rectangle, no colored blob, no circle, no checkerboard drawn into image, no floor, no pedestal, no external cast shadow, no glow, no rim-light halo and no fog around subject. Preserve anti-aliased clean edges.\nText: none. No letters, words, numerals, logos, signatures or watermarks. No handcuffs, chains, prison bars, police uniforms, weapons, decorative particles, sparkles or extra objects.",
+  "generation": {
+    "referenced_image_paths": [
+      "C:/Users/kreeeeeel/Desktop/люди/юрчик.jpg",
+      "C:/Users/kreeeeeel/Desktop/persons/frontend/assets/illustrations/empty-ratings-yuri-v1.webp",
+      "C:/Users/kreeeeeel/Desktop/persons/frontend/assets/illustrations/empty-search-artem-v1.webp"
+    ],
+    "transparent_background": true
+  },
+  "sourceOutput": "C:/Users/kreeeeeel/.codex/generated_images/01a165bf-0483-7cb3-9f9e-e62c56954ff4/exec-3280aaf7-124b-4ccc-876c-6a15cba7e117.png",
+  "output": {
+    "width": 640,
+    "height": 640,
+    "format": "webp",
+    "alpha": true,
+    "encoding": {
+      "tool": "sharp",
+      "resize": {
+        "width": 640,
+        "height": 640,
+        "fit": "inside",
+        "withoutEnlargement": true
+      },
+      "webp": {
+        "quality": 90,
+        "alphaQuality": 100,
+        "effort": 6
+      }
+    },
+    "verification": {
+      "transparentCornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "fullyTransparentPixels": 172071,
+      "fullyOpaquePixels": 1200,
+      "partialAlphaPixels": 236329,
+      "visualInspection": "Yuri likeness, open lavender padlock and blank clipboard verified; no text, background plate, floor or external shadow."
+    }
+  }
+}

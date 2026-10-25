@@ -1,0 +1,3 @@
+CommunityFeedKind:
+  type: string
+  enum: [WALL, COMMENT, RATING, LOAN, PHOTO, MOMENT, ACHIEVEMENT, DOTA, CS]

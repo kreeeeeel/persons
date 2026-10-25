@@ -1,0 +1,12 @@
+MediaQualityList:
+  type: object
+  required:
+    - items
+    - processing
+  properties:
+    items:
+      type: array
+      items:
+        $ref: ./MediaQuality.yaml#/MediaQuality
+    processing:
+      type: boolean

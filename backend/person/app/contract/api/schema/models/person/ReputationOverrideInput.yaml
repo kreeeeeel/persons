@@ -1,0 +1,5 @@
+ReputationOverrideInput:
+  type: object
+  properties:
+    reputation:
+      $ref: ./Reputation.yaml#/Reputation

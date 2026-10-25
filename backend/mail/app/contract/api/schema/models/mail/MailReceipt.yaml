@@ -1,0 +1,11 @@
+MailReceipt:
+  type: object
+  required:
+  - id
+  - status
+  properties:
+    id:
+      type: string
+      format: uuid
+    status:
+      $ref: ./DeliveryStatus.yaml#/DeliveryStatus

@@ -1,0 +1,15 @@
+.root {
+    width: 100%;
+    min-width: 0;
+}
+
+.root[data-empty="true"] {
+    min-height: 320px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.refresh {
+    align-self: center;
+}

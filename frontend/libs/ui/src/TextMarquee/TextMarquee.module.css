@@ -1,0 +1,132 @@
+.root {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    color: var(--g-color-text-brand-contrast);
+    background: var(--g-color-base-brand);
+    animation: appear 350ms ease both;
+}
+
+.root:focus-visible {
+    outline: 2px solid var(--g-color-line-focus);
+    outline-offset: -2px;
+}
+
+.root[data-view='glass'] {
+    color: var(--g-color-text-secondary);
+    background: color-mix(in srgb, var(--g-color-base-background) 68%, transparent);
+    backdrop-filter: blur(24px) saturate(180%);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+    .root[data-view='glass'] {
+        background: var(--g-color-base-background);
+    }
+}
+
+.track {
+    width: max-content;
+    animation: travel 32s linear infinite;
+}
+
+.cycle {
+    flex-shrink: 0;
+}
+
+.group {
+    flex-shrink: 0;
+    gap: 16px;
+    margin: 0;
+    padding: 10px 0 10px 16px;
+    list-style: none;
+}
+
+.item {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.item::after {
+    flex-shrink: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentcolor;
+    opacity: 0.55;
+    content: '';
+}
+
+.root[data-view='glass'] .item::after {
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    content: '•';
+}
+
+.root:hover .track,
+.root:focus-within .track {
+    animation-play-state: paused;
+}
+
+.skeleton {
+    width: 100%;
+    height: 44px;
+}
+
+@keyframes travel {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .root {
+        animation: none;
+    }
+
+    .track {
+        display: block;
+        width: 100%;
+        animation: none;
+    }
+
+    .cycle {
+        display: block;
+    }
+
+    .group {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 10px 16px;
+    }
+
+    .item {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .item::after {
+        display: none;
+    }
+
+    .copy,
+    .repetition {
+        display: none;
+    }
+}

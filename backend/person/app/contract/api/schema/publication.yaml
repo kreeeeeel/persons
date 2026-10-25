@@ -1,0 +1,101 @@
+/v1/admin/publication-settings:
+  get:
+    tags: [publication]
+    operationId: getPublicationSettings
+    security: [{session: []}]
+    responses:
+      '200':
+        description: Current publication settings
+        content:
+          application/json:
+            schema:
+              $ref: ./models/publication/PublicationSettings.yaml#/PublicationSettings
+      '401':
+        $ref: '#/Unauthorized'
+      '403':
+        $ref: '#/Forbidden'
+  put:
+    tags: [publication]
+    operationId: updatePublicationSettings
+    security: [{session: []}]
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/publication/PublicationSettings.yaml#/PublicationSettings
+    responses:
+      '200':
+        description: Updated publication settings
+        content:
+          application/json:
+            schema:
+              $ref: ./models/publication/PublicationSettings.yaml#/PublicationSettings
+      '400':
+        $ref: '#/InvalidInput'
+      '401':
+        $ref: '#/Unauthorized'
+      '403':
+        $ref: '#/Forbidden'
+/v1/admin/users/{id}/moderation-settings:
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+  get:
+    tags: [publication]
+    operationId: getUserModerationSettings
+    security: [{session: []}]
+    responses:
+      '200':
+        description: User moderation override
+        content:
+          application/json:
+            schema:
+              $ref: ./models/publication/UserModerationSettings.yaml#/UserModerationSettings
+      '401':
+        $ref: '#/Unauthorized'
+      '403':
+        $ref: '#/Forbidden'
+  put:
+    tags: [publication]
+    operationId: updateUserModerationSettings
+    security: [{session: []}]
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/publication/UserModerationSettings.yaml#/UserModerationSettings
+    responses:
+      '200':
+        description: Updated user moderation override
+        content:
+          application/json:
+            schema:
+              $ref: ./models/publication/UserModerationSettings.yaml#/UserModerationSettings
+      '400':
+        $ref: '#/InvalidInput'
+      '401':
+        $ref: '#/Unauthorized'
+      '403':
+        $ref: '#/Forbidden'
+Unauthorized:
+  description: Authentication required
+  content:
+    application/json:
+      schema:
+        $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+Forbidden:
+  description: Administrator access required
+  content:
+    application/json:
+      schema:
+        $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+InvalidInput:
+  description: Invalid settings
+  content:
+    application/json:
+      schema:
+        $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse

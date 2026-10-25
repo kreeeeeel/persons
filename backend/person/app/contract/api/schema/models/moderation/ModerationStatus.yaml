@@ -1,0 +1,6 @@
+ModerationStatus:
+  type: string
+  enum:
+    - PENDING
+    - APPROVED
+    - REJECTED

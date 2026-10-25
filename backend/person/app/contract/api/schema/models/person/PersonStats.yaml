@@ -1,0 +1,51 @@
+PersonStats:
+  type: object
+  required:
+    - comments
+    - ratings
+    - views
+    - moments
+    - photos
+    - creditEntries
+    - creditScore
+    - reputation
+  properties:
+    calculationPending:
+      type: boolean
+    calculatedAt:
+      type: string
+      format: date-time
+    comments:
+      type: integer
+      format: int64
+      minimum: 0
+    ratings:
+      type: integer
+      format: int64
+      minimum: 0
+    views:
+      type: integer
+      format: int64
+      minimum: 0
+    moments:
+      type: integer
+      format: int64
+      minimum: 0
+    photos:
+      type: integer
+      format: int64
+      minimum: 0
+    creditEntries:
+      type: integer
+      format: int64
+      minimum: 0
+    creditScore:
+      type: integer
+      format: int64
+      deprecated: true
+      description: Internal aggregate retained for compatibility; display the reputation label instead.
+    reputation:
+      $ref: ./Reputation.yaml#/Reputation
+    ratingAverage:
+      type: number
+      format: double

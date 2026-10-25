@@ -1,0 +1,93 @@
+.popup {
+    --g-popup-border-width: 0px;
+    --g-popup-border-radius: 16px;
+    --g-color-text-primary: #fff;
+    --g-color-text-secondary: #b9b1c7;
+    --g-color-base-float: #241e2e;
+    --g-color-base-background: #241e2e;
+
+    z-index: 5;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #241e2e;
+    color: #fff;
+}
+
+.menu {
+    width: 208px;
+    max-width: calc(100cqw - 24px);
+    max-height: min(248px, calc(56.25cqw + 20px));
+    overflow: hidden;
+    padding: 6px;
+}
+
+.options {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.options::-webkit-scrollbar {
+    width: 4px;
+}
+
+.options::-webkit-scrollbar-button {
+    display: none;
+    height: 0;
+}
+
+.options::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: #5c5267;
+}
+
+.item {
+    --g-button-height: 40px;
+    --g-button-padding: 10px;
+
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+    flex-shrink: 0;
+    text-align: left;
+    color: #fff;
+}
+
+.item > :global([class~='g-button__text']) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    line-height: 1.4;
+}
+
+.item,
+.item :global([class~='g-text']) {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.row {
+    width: 100%;
+}
+
+.value {
+    min-width: 0;
+    margin-left: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.row > svg {
+    flex-shrink: 0;
+}
+
+.trigger > :global([class~='g-button__text']) {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: 0;
+    line-height: 0;
+}

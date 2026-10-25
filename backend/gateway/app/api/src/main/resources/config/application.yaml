@@ -1,0 +1,34 @@
+server:
+  port: 8087
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  application:
+    name: persons-gateway
+  profiles:
+    default: dev
+  config:
+    import: [classpath:persons-id-client.yaml, classpath:persons-restrictions-client.yaml]
+  jackson:
+    default-property-inclusion: non_null
+  servlet:
+    multipart:
+      enabled: false
+project:
+  internal:
+    jwt-secret: ${PROJECT_INTERNAL_JWT_SECRET}
+  gateway:
+    id-uri: ${ID_BASE_URL}
+    person-uri: ${PERSON_BASE_URL}
+    jwt-secret: ${PROJECT_GATEWAY_JWT_SECRET}
+  observability:
+    bodies-enabled: false
+    masked-headers:
+      - x-service-authorization
+      - x-gateway-authorization
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

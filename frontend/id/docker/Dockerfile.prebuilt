@@ -1,0 +1,11 @@
+FROM node:24.11.1-bookworm-slim AS runtime-base
+WORKDIR /app
+ENV NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3000
+USER node
+EXPOSE 3000
+CMD ["node", "frontend/id/server.js"]
+
+FROM runtime-base AS runtime-prebuilt
+COPY --chown=node:node frontend/id/.next/standalone/ /app/
+COPY --chown=node:node frontend/id/.next/static /app/frontend/id/.next/static
+COPY --chown=node:node frontend/id/public /app/frontend/id/public

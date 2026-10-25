@@ -1,0 +1,128 @@
+{
+  "mode": "builtin imagegen with consented friend references",
+  "note": "Final compositions: subjects on right, empty left for UI. Nikita uses updated reference. 404 unchanged.",
+  "assets": [
+    {
+      "key": "console",
+      "references": [
+        "никита.jpg",
+        "крел.png"
+      ],
+      "prompt": "Use case: identity-preserve / illustration-story. Asset: 16:9 full-screen website hero illustration. COMPOSITION IS CRITICAL: all people, faces, hands, game actions and main game props must occupy ONLY THE RIGHT HALF of the canvas (x=52% to 96%). Both faces centered around x=68% and x=84%, leave margin on right edge. LEFT HALF x=0% to 48% is quiet empty interior background with soft lilac wall and gentle warm light; no people, no faces, no furniture silhouettes, no busy objects in left half. A headline and search field will be overlaid on that entire left half later. Scene feels naturally composed, not a collage. Exactly two friends from the supplied photos, preserve recognizable real facial structure, hair and identity. Polished cozy hand-painted digital illustration with realistic expressive faces, subtle violet accents, warm peach/amber light and high detail on the right. No text, no logos, no watermark. Wide landscape 16:9. Scene on the RIGHT HALF ONLY: Nikita (reference 1: dark long curly tousled hair, light moustache and small goatee, oval face, calm slightly tired expression; use the NEW supplied photograph, never a buzzcut or exaggerated wide eyes) and Krel (reference 2, short light-brown hair, boyish face) playing a hilarious cooperative console game on a sofa, holding controllers. Nikita amused, Krel grinning.",
+      "file": "play-console-v3.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-ccfdb7ed-fbc9-435c-90d7-1378d11f4cbb.png"
+    },
+    {
+      "key": "board",
+      "references": [
+        "евгений.jpg",
+        "степа.jpg"
+      ],
+      "prompt": "Use case: identity-preserve / illustration-story. Asset: 16:9 full-screen website hero illustration. COMPOSITION IS CRITICAL: all people, faces, hands, game actions and main game props must occupy ONLY THE RIGHT HALF of the canvas (x=52% to 96%). Both faces centered around x=68% and x=84%, leave margin on right edge. LEFT HALF x=0% to 48% is quiet empty interior background with soft lilac wall and gentle warm light; no people, no faces, no furniture silhouettes, no busy objects in left half. A headline and search field will be overlaid on that entire left half later. Scene feels naturally composed, not a collage. Exactly two friends from the supplied photos, preserve recognizable real facial structure, hair and identity. Polished cozy hand-painted digital illustration with realistic expressive faces, subtle violet accents, warm peach/amber light and high detail on the right. No text, no logos, no watermark. Wide landscape 16:9. Scene on the RIGHT HALF ONLY: Evgeny (reference 1, short dark hair, broad oval face) and Stepa (reference 2, fair skin, light eyes, red checked head scarf under dark cap, black track jacket) laughing around a colorful tabletop game, Evgeny reaching for a giant wooden game piece.",
+      "file": "play-board-v3.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-c30c2312-50c8-42ef-a8cc-91030e7061e3.png"
+    },
+    {
+      "key": "hockey",
+      "references": [
+        "вадим.png",
+        "тямик.png"
+      ],
+      "prompt": "Use case: identity-preserve / illustration-story. Asset: 16:9 full-screen website hero illustration. COMPOSITION IS CRITICAL: all people, faces, hands, game actions and main game props must occupy ONLY THE RIGHT HALF of the canvas (x=52% to 96%). Both faces centered around x=68% and x=84%, leave margin on right edge. LEFT HALF x=0% to 48% is quiet empty interior background with soft lilac wall and gentle warm light; no people, no faces, no furniture silhouettes, no busy objects in left half. A headline and search field will be overlaid on that entire left half later. Scene feels naturally composed, not a collage. Exactly two friends from the supplied photos, preserve recognizable real facial structure, hair and identity. Polished cozy hand-painted digital illustration with realistic expressive faces, subtle violet accents, warm peach/amber light and high detail on the right. No text, no logos, no watermark. Wide landscape 16:9. Scene on the RIGHT HALF ONLY: Vadim (reference 1, distinct shoulder-length light brown/blond hair, narrow face, downturned expressive mouth; preserve his actual face rather than inventing a short-haired man; omit white face paint) and Tyamik (reference 2, very short fair buzzcut, broad rounded face) playing air hockey together, mock-serious rivalry.",
+      "file": "play-hockey-v3.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-fe9e0e0a-6007-402b-b966-1250b9e3440d.png"
+    },
+    {
+      "key": "racing",
+      "references": [
+        "артем.png",
+        "слава.png"
+      ],
+      "prompt": "Use case: identity-preserve / illustration-story. Asset: 16:9 full-screen website hero illustration. COMPOSITION IS CRITICAL: all people, faces, hands, game actions and main game props must occupy ONLY THE RIGHT HALF of the canvas (x=52% to 96%). Both faces centered around x=68% and x=84%, leave margin on right edge. LEFT HALF x=0% to 48% is quiet empty interior background with soft lilac wall and gentle warm light; no people, no faces, no furniture silhouettes, no busy objects in left half. A headline and search field will be overlaid on that entire left half later. Scene feels naturally composed, not a collage. Exactly two friends from the supplied photos, preserve recognizable real facial structure, hair and identity. Polished cozy hand-painted digital illustration with realistic expressive faces, subtle violet accents, warm peach/amber light and high detail on the right. No text, no logos, no watermark. Wide landscape 16:9. Scene on the RIGHT HALF ONLY: Artem (reference 1, short cropped dark hair, roundish face, strong eyebrows) and Slava (reference 2, dark tousled hair, rectangular black glasses) holding racing game controllers, playfully leaning sideways into a turn, colorful racing game visible behind them.",
+      "file": "play-racing-v3.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-b500f067-d28a-4368-8daf-47ab0ebef9fd.png"
+    },
+    {
+      "key": "tower",
+      "references": [
+        "крел.png",
+        "евгений.jpg"
+      ],
+      "prompt": "Use case: identity-preserve / illustration-story. Asset: 16:9 full-screen website hero illustration. COMPOSITION IS CRITICAL: all people, faces, hands, game actions and main game props must occupy ONLY THE RIGHT HALF of the canvas (x=52% to 96%). Both faces centered around x=68% and x=84%, leave margin on right edge. LEFT HALF x=0% to 48% is quiet empty interior background with soft lilac wall and gentle warm light; no people, no faces, no furniture silhouettes, no busy objects in left half. A headline and search field will be overlaid on that entire left half later. Scene feels naturally composed, not a collage. Exactly two friends from the supplied photos, preserve recognizable real facial structure, hair and identity. Polished cozy hand-painted digital illustration with realistic expressive faces, subtle violet accents, warm peach/amber light and high detail on the right. No text, no logos, no watermark. Wide landscape 16:9. Scene on the RIGHT HALF ONLY: Krel (reference 1) and Evgeny (reference 2) playing a precarious stacking wooden block tower game at a low table, Krel carefully pulling a block while Evgeny makes an amused anxious face.",
+      "file": "play-tower-v3.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-481607e5-d04b-44df-8ad6-2a3d4bfc5441.png"
+    },
+    {
+      "key": "puzzle",
+      "references": [
+        "никита.jpg",
+        "степа.jpg"
+      ],
+      "prompt": "Use case: identity-preserve / illustration-story. Asset: 16:9 full-screen website hero illustration. COMPOSITION IS CRITICAL: all people, faces, hands, game actions and main game props must occupy ONLY THE RIGHT HALF of the canvas (x=52% to 96%). Both faces centered around x=68% and x=84%, leave margin on right edge. LEFT HALF x=0% to 48% is quiet empty interior background with soft lilac wall and gentle warm light; no people, no faces, no furniture silhouettes, no busy objects in left half. A headline and search field will be overlaid on that entire left half later. Scene feels naturally composed, not a collage. Exactly two friends from the supplied photos, preserve recognizable real facial structure, hair and identity. Polished cozy hand-painted digital illustration with realistic expressive faces, subtle violet accents, warm peach/amber light and high detail on the right. No text, no logos, no watermark. Wide landscape 16:9. Scene on the RIGHT HALF ONLY: Nikita (reference 1: dark long curly tousled hair, light moustache and small goatee, oval face, calm slightly tired expression; use the NEW supplied photograph, never a buzzcut or exaggerated wide eyes) and Stepa (reference 2, distinctive red checked head scarf and light eyes) teaming up over a large colorful puzzle at a table, holding absurdly large puzzle pieces with playful surprise.",
+      "file": "play-puzzle-v3.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-cde4a66c-b889-49eb-bad8-9532f6e7acef.png"
+    },
+    {
+      "key": "chess",
+      "references": [
+        "вадим.png",
+        "слава.png"
+      ],
+      "prompt": "Use case: identity-preserve / illustration-story. Asset: 16:9 full-screen website hero illustration. COMPOSITION IS CRITICAL: all people, faces, hands, game actions and main game props must occupy ONLY THE RIGHT HALF of the canvas (x=52% to 96%). Both faces centered around x=68% and x=84%, leave margin on right edge. LEFT HALF x=0% to 48% is quiet empty interior background with soft lilac wall and gentle warm light; no people, no faces, no furniture silhouettes, no busy objects in left half. A headline and search field will be overlaid on that entire left half later. Scene feels naturally composed, not a collage. Exactly two friends from the supplied photos, preserve recognizable real facial structure, hair and identity. Polished cozy hand-painted digital illustration with realistic expressive faces, subtle violet accents, warm peach/amber light and high detail on the right. No text, no logos, no watermark. Wide landscape 16:9. Scene on the RIGHT HALF ONLY: Vadim (reference 1, shoulder-length light brown hair, narrow elongated face and expressive downturned mouth; no face paint) and Slava (reference 2, dark messy hair and rectangular black glasses) playing oversized chess, Slava smiles while Vadim dramatically studies a huge knight.",
+      "file": "play-chess-v3.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-33e03d23-5690-401f-81ee-94d01ed5d795.png"
+    },
+    {
+      "key": "sofa",
+      "references": [
+        "тямик.png",
+        "артем.png"
+      ],
+      "prompt": "Use case: illustration-story. Asset type: full-width 16:9 homepage slideshow illustration for the friends website «Те ещё люди». Input image 1 is STYLE AND COMPOSITION reference only. Images 2 and 3 are consented identity references of the two ADULT friends Tyamik and Artem. Preserve their recognizable faces and proportions: Tyamik has a shaved head, Artem short dark hair. Completely new simple scene: the two friends sit comfortably SIDE BY SIDE on a plush sofa in a cozy modern living room, casually drinking beer and laughing together. Tyamik leans back relaxed holding ONE small amber beer bottle in his right hand. Artem sits beside him smiling with ONE beer bottle, naturally conversing. No posing for camera; friendly candid moment. Both entire heads, faces and their visible hands must be clearly readable and anatomically correct. Purple sweatshirt for Tyamik, muted blue hoodie for Artem. Keep all people, bottles, sofa and action within the RIGHT 55% of the frame. LEFT 45% must be completely empty softly lit lavender wall with a soft warm window shadow and ample calm negative space for the UI heading and search input. No tables, game equipment, screens or objects intruding into the left area. Match source's polished warm semi-realistic editorial painted illustration, recognizable human faces, gentle purple room tones and golden sunset light. Subtle plant far right only. Wide landscape 16:9 at eye level. No target, darts, football, sports field, labels, logos, captions, UI or watermark. Exactly TWO adult friends and TWO beer bottles.",
+      "file": "sofa-friends-v1.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-5ce9da4a-2309-49cc-a6e4-3a66d17c5718.png"
+    },
+    {
+      "key": "media",
+      "reference": "никита.jpg",
+      "prompt": "Use case: identity-preserve / illustration-story. Asset: illustrated empty media state for a friends community website. The supplied photograph is the NEW identity reference for Nikita: dark tousled long curly hair, light moustache, small goatee, oval face, calm slightly tired eyes. Preserve this real man's recognizable face and hair. Exactly one person. Nikita looking into a comically empty camera viewfinder and holding a tiny purple video clapperboard with amused curiosity. Friendly polished hand-painted digital illustration, lilac and warm peach colors, expressive realistic face, medium figure, centered compact 4:3 composition. Genuine transparent alpha background, no rectangular backdrop, no text, no logos, no watermark. Do not depict a buzzcut man or exaggerated bulging eyes.",
+      "file": "empty-media-nikita-v2.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-c7648d04-ca3e-48fc-a86a-25827b446d5f.png"
+    },
+    {
+      "key": "achievements",
+      "reference": "евгений.jpg",
+      "prompt": "Use case: identity-preserve / illustration-story. Asset type: illustrated empty state for friends community website. The single supplied photograph is an identity reference. Exactly one person, preserve their recognizable facial structure and distinctive hair and features. Friendly playful high-quality hand-painted digital illustration, purple/lilac accents and warm peach highlights, clean expressive storytelling. Centered medium/full figure and relevant props contained in frame, 4:3 composition, genuinely transparent alpha background, no backdrop, no surrounding rectangle, no text, no words, no watermark. Warm humorous mood, not a generic substitute face. Scene: Evgeny, recognizable short dark hair and broad oval face, holding an empty trophy display case and looking playfully hopeful. No achievements yet.",
+      "file": "empty-achievements-evgeny-v2.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-4e9cbdcf-0392-4792-b2c4-d73a5dd14cb5.png"
+    },
+    {
+      "key": "notifications",
+      "reference": "степа.jpg",
+      "prompt": "Use case: identity-preserve / illustration-story. Asset type: illustrated empty state for friends community website. The single supplied photograph is an identity reference. Exactly one person, preserve their recognizable facial structure and distinctive hair and features. Friendly playful high-quality hand-painted digital illustration, purple/lilac accents and warm peach highlights, clean expressive storytelling. Centered medium/full figure and relevant props contained in frame, 4:3 composition, genuinely transparent alpha background, no backdrop, no surrounding rectangle, no text, no words, no watermark. Warm humorous mood, not a generic substitute face. Scene: Stepa, retaining fair face, light eyes and distinctive red checked head scarf under a dark cap, listening to a silent oversized purple notification bell with a puzzled smile. No notifications yet.",
+      "file": "empty-notifications-stepa-v2.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-f7741492-bc95-4b51-9007-75bc4ad57380.png"
+    },
+    {
+      "key": "wall",
+      "reference": "крел.png",
+      "prompt": "Use case: identity-preserve / illustration-story. Asset type: illustrated empty state for friends community website. The single supplied photograph is an identity reference. Exactly one person, preserve their recognizable facial structure and distinctive hair and features. Friendly playful high-quality hand-painted digital illustration, purple/lilac accents and warm peach highlights, clean expressive storytelling. Centered medium/full figure and relevant props contained in frame, 4:3 composition, genuinely transparent alpha background, no backdrop, no surrounding rectangle, no text, no words, no watermark. Warm humorous mood, not a generic substitute face. Scene: Krel, retaining his short light-brown hair and recognizable face, sitting next to a blank little noticeboard and offering a pencil, inviting a first story.",
+      "file": "empty-wall-krel-v2.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-cf277c5c-c601-49b1-8115-67d05bd2fafa.png"
+    },
+    {
+      "key": "loans",
+      "reference": "вадим.png",
+      "prompt": "Use case: identity-preserve / illustration-story. Asset type: illustrated empty state for friends community website. The single supplied photograph is an identity reference. Exactly one person, preserve their recognizable facial structure and distinctive hair and features. Friendly playful high-quality hand-painted digital illustration, purple/lilac accents and warm peach highlights, clean expressive storytelling. Centered medium/full figure and relevant props contained in frame, 4:3 composition, genuinely transparent alpha background, no backdrop, no surrounding rectangle, no text, no words, no watermark. Warm humorous mood, not a generic substitute face. Scene: Vadim, preserving shoulder-length light brown hair, narrow face and expressive mouth but without the white face paint, holding an empty notebook and looking theatrically puzzled, surrounded by two blank loan-note cards. No written borrowing stories yet. No money, no numbers.",
+      "file": "empty-loans-vadim-v2.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-1ff0c0d6-4117-4521-9674-ca668ab317fd.png"
+    },
+    {
+      "key": "my-page",
+      "reference": "слава.png",
+      "prompt": "Use case: identity-preserve / illustration-story. Asset type: illustrated empty state for friends community website. The single supplied photograph is an identity reference. Exactly one person, preserve their recognizable facial structure and distinctive hair and features. Friendly playful high-quality hand-painted digital illustration, purple/lilac accents and warm peach highlights, clean expressive storytelling. Centered medium/full figure and relevant props contained in frame, 4:3 composition, genuinely transparent alpha background, no backdrop, no surrounding rectangle, no text, no words, no watermark. Warm humorous mood, not a generic substitute face. Scene: Slava, recognizable dark tousled hair and rectangular black glasses, smiling beside a blank profile card with an empty circular portrait placeholder and offering a large purple pencil. Invitation to request creation of one's own profile.",
+      "file": "empty-my-page-slava-v2.webp",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-08e49d26-da97-4e95-b264-15786ae7bf77.png"
+    }
+  ]
+}

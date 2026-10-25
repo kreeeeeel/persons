@@ -1,0 +1,232 @@
+/account/v1/profile:
+  put:
+    tags: [id]
+    operationId: changeProfile
+    security:
+    - session: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/id/ChangeProfile.yaml#/ChangeProfile
+    responses:
+      '204':
+        description: Account name updated.
+      '400':
+        description: Invalid name
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Session required
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+/account/v1/avatar:
+  put:
+    tags: [id]
+    operationId: changeAvatar
+    security:
+    - session: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/id/ChangeAvatar.yaml#/ChangeAvatar
+    responses:
+      '204':
+        description: Avatar accepted; private S3 transfer is retried asynchronously.
+      '400':
+        description: Invalid avatar
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Session required
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+/account/v1/email:
+  post:
+    tags: [id]
+    operationId: beginEmailChange
+    security:
+    - session: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/id/BeginEmailChange.yaml#/BeginEmailChange
+    responses:
+      '202':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/id/Challenge.yaml#/Challenge
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '409':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '429':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+/account/v1/email/complete:
+  post:
+    tags: [id]
+    operationId: completeEmailChange
+    security:
+    - session: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/id/CompleteEmailChange.yaml#/CompleteEmailChange
+    responses:
+      '204':
+        description: Success
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '409':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '429':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+/account/v1/password:
+  put:
+    tags: [id]
+    operationId: changePassword
+    security:
+    - session: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/id/ChangePassword.yaml#/ChangePassword
+    responses:
+      '204':
+        description: Success
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '409':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '429':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+/v1/sessions/others:
+  delete:
+    tags: [id]
+    operationId: revokeOtherSessions
+    security:
+    - session: []
+    responses:
+      '204':
+        description: Success
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '409':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '429':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse

@@ -1,0 +1,3 @@
+project:
+  mail-client:
+    base-uri: http://localhost:1

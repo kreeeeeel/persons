@@ -1,0 +1,11 @@
+.rank {
+    min-height: 24px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.elo {
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}

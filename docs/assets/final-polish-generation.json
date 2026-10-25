@@ -1,0 +1,26 @@
+{
+  "mode": "builtin imagegen",
+  "assets": [
+    {
+      "key": "photos",
+      "file": "empty-photos-tyamik-v1.webp",
+      "ref": "тямик.png",
+      "prompt": "Use case: identity-preserve / illustration-story. Reference photo is the consented friend Tyamik: preserve his recognizable broad rounded face, shaved light buzzcut, light eyebrows, slightly smug expression. Create a funny polished hand-painted digital illustration for a Russian friends website empty PHOTO gallery. Only this one person, seated holding a large empty violet picture frame as if posing for the first photo, one hand with a small camera remote, playful expectant face. Clearly about photography, not a video camera, not clapperboard. Purple hoodie, warm peach light, subtle violet accents. Transparent background, clean cutout with no white rectangle, no backdrop, no ground shadow, no text, no logos. Keep entire head, arms and frame comfortably inside the canvas. Friendly humor, no caricature exaggeration that loses identity.",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-3182f25b-95f5-466c-91f4-086134eab579.png"
+    },
+    {
+      "key": "loans",
+      "file": "empty-loans-vadim-v3.webp",
+      "ref": "вадим.png",
+      "prompt": "Use case: identity-preserve / illustration-story. Reference is consented friend Vadim: preserve distinctive narrow long expressive face, shoulder-length straight light-brown hair and downturned mouth. Omit the white cream visible in the reference. A funny tasteful painted digital illustration for an empty Loans tab: Vadim sitting sadly, looking into an open nearly empty wallet with one tiny coin, shrugging with his free hand. Mild comic sadness about having very little money, warm human expression, violet hoodie, peach warm light, hand-painted detail, recognizable face. One person only. Transparent background, no opaque backdrop, no rectangle, no scenery, no bank logos, no text, no watermark. Do not add glasses. Entire upper body, arms and wallet visible.",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-c4b0aad5-8856-4abe-9f62-05b87db1ce20.png"
+    },
+    {
+      "key": "restricted",
+      "file": "restricted-vadim-v1.webp",
+      "ref": "вадим.png",
+      "prompt": "Use case: identity-preserve / illustration-story. Reference photo is consented friend Vadim, preserve recognizable narrow expressive face, shoulder-length light-brown hair, distinctive eyebrows and downturned mouth; omit white cream on face. A friendly comic digital illustration: Vadim standing FULL BODY in a fictional generic navy police costume with subtle violet details and a plain cap, one palm held forward to signal STOP, the other hand holds a small plain clipboard. A calm mock-serious expression, slightly sad and comical but respectful, no threat, no weapon, no real official logos, no flags or insignia, no writing, no watermark. This will illustrate action restrictions and a blocked-account page in a friends website. Polished warm hand-painted digital illustration, detailed recognizable face, warm peach light. Transparent background, isolated full body clean cutout, visible shoes and hat with generous margin on every edge. One person only, no opaque backdrop, no ground shadow.",
+      "source": "C:\\Users\\kreeeeeel\\.codex\\generated_images\\01a14966-c01d-7462-9429-cc6c3f45c8c1\\exec-09395000-24d3-4937-9900-1816450c45d0.png"
+    }
+  ]
+}

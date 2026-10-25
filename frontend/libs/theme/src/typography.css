@@ -1,0 +1,22 @@
+.g-root {
+    --g-font-family-sans: var(--font-persons), system-ui, sans-serif;
+    --g-text-body-1-font-size: 16px;
+    --g-text-body-1-line-height: 20px;
+    --g-text-body-2-font-size: 16px;
+    --g-text-body-2-line-height: 20px;
+    --g-text-body-3-font-size: 16px;
+    --g-text-body-3-line-height: 24px;
+    --g-text-body-short-font-size: 16px;
+    --g-text-body-short-line-height: 20px;
+    --g-text-caption-1-font-size: 16px;
+    --g-text-caption-1-line-height: 20px;
+    --g-text-caption-2-font-size: 16px;
+    --g-text-caption-2-line-height: 20px;
+    --g-text-subheader-1-font-size: 16px;
+    --g-text-subheader-1-line-height: 20px;
+    --g-text-subheader-2-font-size: 16px;
+    --g-text-subheader-2-line-height: 20px;
+    --g-text-header-font-weight: 600;
+    --g-text-subheader-font-weight: 600;
+    --g-button-font-size: 16px;
+}

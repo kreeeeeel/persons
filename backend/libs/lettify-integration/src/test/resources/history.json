@@ -1,0 +1,62 @@
+[
+  {
+    "id": "00000000-0000-4000-8000-000000000001",
+    "data_source": "matchmaking",
+    "map_name": "de_mirage",
+    "finished_at": "2026-10-23T10:00:00Z",
+    "stats": [
+      {
+        "steam64_id": "76561197960265770",
+        "total_kills": 24,
+        "total_deaths": 14,
+        "total_assists": 7,
+        "rounds_won": 13,
+        "rounds_lost": 9,
+        "total_hs_kills": 12,
+        "kd_ratio": 1.71,
+        "dpr": 95.3,
+        "leetify_rating": 0.0432
+      }
+    ]
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000002",
+    "data_source": "faceit",
+    "map_name": "de_inferno",
+    "finished_at": "2026-10-23T10:00:00Z",
+    "stats": [
+      {
+        "steam64_id": "76561197960265770",
+        "total_kills": 24,
+        "total_deaths": 14,
+        "total_assists": 7,
+        "rounds_won": 10,
+        "rounds_lost": 13,
+        "total_hs_kills": 12,
+        "kd_ratio": 1.71,
+        "dpr": 95.3,
+        "leetify_rating": 0.0432
+      }
+    ]
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "data_source": "matchmaking_wingman",
+    "map_name": "de_nuke",
+    "finished_at": "2026-10-23T10:00:00Z",
+    "stats": [
+      {
+        "steam64_id": "76561197960265770",
+        "total_kills": 24,
+        "total_deaths": 14,
+        "total_assists": 7,
+        "rounds_won": 9,
+        "rounds_lost": 9,
+        "total_hs_kills": 12,
+        "kd_ratio": 1.71,
+        "dpr": 95.3,
+        "leetify_rating": 0.0432
+      }
+    ]
+  }
+]

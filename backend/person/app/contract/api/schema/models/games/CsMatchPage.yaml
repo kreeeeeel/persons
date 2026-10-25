@@ -1,0 +1,19 @@
+CsMatchPage:
+  type: "object"
+  required:
+    - "items"
+    - "total"
+    - "page"
+    - "size"
+  properties:
+    items:
+      type: "array"
+      items:
+        $ref: "./CsMatch.yaml#/CsMatch"
+    total:
+      type: "integer"
+      format: "int64"
+    page:
+      type: "integer"
+    size:
+      type: "integer"

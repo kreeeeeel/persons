@@ -1,0 +1,52 @@
+.body {
+    display: grid;
+    gap: 24px;
+    padding-bottom: 28px;
+    font-size: 16px;
+    animation: appear 220ms ease both;
+}
+
+.form {
+    display: grid;
+    gap: 20px;
+}
+
+.field {
+    display: grid;
+    gap: 8px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.error {
+    color: var(--g-color-text-danger);
+}
+
+.success {
+    display: grid;
+    gap: 16px;
+}
+
+.code {
+    justify-self: center;
+    max-width: 100%;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

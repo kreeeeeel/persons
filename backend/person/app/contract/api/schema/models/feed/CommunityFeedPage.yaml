@@ -1,0 +1,11 @@
+CommunityFeedPage:
+  type: object
+  required: [items, total, page, size]
+  properties:
+    items:
+      type: array
+      items:
+        $ref: ./CommunityFeedEvent.yaml#/CommunityFeedEvent
+    total: {type: integer, format: int64}
+    page: {type: integer}
+    size: {type: integer}

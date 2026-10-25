@@ -1,0 +1,11 @@
+# Restrictions
+
+The service owns the `restrictions` database: reasons, scopes, creator, expiry, revocation and revision. ID owns accounts and roles in `id`; Person owns content in `person`. No runtime queries access another service's tables. The infrastructure performs a one-time, backed-up and content-verified transfer from legacy Person tables, retaining the source for rollback.
+
+Internal operations require `X-Service-Authorization` using the shared internal JWT. Mutations additionally require a valid ID administrator session. Administrators cannot fully block or demote themselves, or manage access while fully blocked. A database policy row serializes role and restriction changes; the current ID role is rechecked after acquiring the lock. Roles remain owned and updated by ID. Restrictive changes commit before a remote role change, while unblocking happens only after a successful role change. Partial failure retains the restriction and returns an error.
+
+Each lookup first reads the indexed PostgreSQL revision, then Redis key `persons:restrictions:v1:<userId>:<revision>`. Changes and revocations immediately invalidate old keys. Cache TTL is bounded to 30 seconds and restriction expiry. Invalid cache entries or Redis failures fall back to PostgreSQL; database failure returns 503 and never grants access by default. Expired restrictions immediately stop applying by clock; person-worker invokes expiry cleanup in batches of at most 500.
+
+See [OpenAPI](../../app/contract/api/schema/api.yaml): GET/PUT/DELETE `/v1/users/{userId}/restriction`, batch POST `/v1/restrictions/lookup` for at most 100 unique users, POST `/v1/restrictions/expire`, PUT `/v1/users/{userId}/access` for coordinated roles and restrictions. Errors include 400, 401, 403, 409 and 503; the known ID `USER_NOT_FOUND` error maps to 404. Request bodies and sensitive fields are not logged.
+
+Configuration: `DB_URL`, `DB_USER`, `DB_PASSWORD`, `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`, `PROJECT_INTERNAL_JWT_SECRET`, `ID_BASE_URL`. Profiles: dev/testing/production/tests; tests use isolated H2 by default. CI additionally runs real PostgreSQL/Redis tests. `/actuator/health` checks the database; Redis is excluded because the database fallback remains usable.

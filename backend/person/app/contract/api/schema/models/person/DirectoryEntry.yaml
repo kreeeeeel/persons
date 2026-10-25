@@ -1,0 +1,12 @@
+DirectoryEntry:
+  type: object
+  required: [id, tag, fullName, views, photos, moments]
+  properties:
+    id: {type: string, format: uuid}
+    tag: {type: string}
+    fullName: {type: string}
+    avatarMediaId: {type: string, format: uuid}
+    views: {type: integer, format: int64, minimum: 0}
+    photos: {type: integer, format: int64, minimum: 0}
+    moments: {type: integer, format: int64, minimum: 0}
+    ratingAverage: {type: number, format: double, minimum: 1, maximum: 5}

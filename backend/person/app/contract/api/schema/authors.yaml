@@ -1,0 +1,28 @@
+/v1/authors/{id}/avatar:
+  get:
+    tags: [authors]
+    operationId: getAuthorAvatar
+    description: Current account avatar of a project participant. Only the trusted BFF may access this endpoint.
+    security:
+      - serviceJwt: []
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Current avatar
+        content:
+          image/jpeg:
+            schema:
+              type: string
+              format: binary
+      '401':
+        description: Trusted service required
+      '404':
+        description: Unknown participant or avatar absent
+      '503':
+        description: Account service unavailable

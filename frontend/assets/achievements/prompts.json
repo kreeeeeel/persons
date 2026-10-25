@@ -1,0 +1,25 @@
+{
+  "generator": "Built-in image_gen; transparent_background: true",
+  "assets": [
+    {
+      "key": "developer",
+      "prompt": "Use case: stylized-concept. Asset type: individual achievement badge for Russian friends community website 'Те ещё люди'. One centered premium playful 3D enamel collectible emblem, lilac and violet highlights, tactile glossy detail, legible silhouette at 96px, square composition, generous transparent margins. Genuine transparent alpha background, no backdrop, no surrounding rectangle, no pedestal, no drop shadow outside the emblem, no words or watermark. This is one standalone badge. A rounded-square purple enamel badge containing a tiny expressive laptop with glowing angle brackets and a small golden star. Friendly creative developer achievement."
+    },
+    {
+      "key": "pleasant-person",
+      "prompt": "Use case: stylized-concept. Asset type: individual achievement badge for Russian friends community website 'Те ещё люди'. One centered premium playful 3D enamel collectible emblem, lilac and violet highlights, tactile glossy detail, legible silhouette at 96px, square composition, generous transparent margins. Genuine transparent alpha background, no backdrop, no surrounding rectangle, no pedestal, no drop shadow outside the emblem, no words or watermark. This is one standalone badge. A circular coral and violet enamel badge with a smiling warm golden heart and two small sparkles, welcoming and kind."
+    },
+    {
+      "key": "health-resilience",
+      "prompt": "Use case: stylized-concept. Asset type: individual achievement badge for Russian friends community website 'Те ещё люди'. One centered premium playful 3D enamel collectible emblem, lilac and violet highlights, tactile glossy detail, legible silhouette at 96px, square composition, generous transparent margins. Genuine transparent alpha background, no backdrop, no surrounding rectangle, no pedestal, no drop shadow outside the emblem, no words or watermark. This is one standalone badge. A soft rounded shield-shaped turquoise and lilac enamel badge with a small flourishing flower protected by a heart. Respectful symbol of resilience and mutual support while living with health difficulties; no medical labels, no stereotypes."
+    },
+    {
+      "key": "rabbit-lover",
+      "prompt": "Use case: stylized-concept. Asset type: individual achievement badge for Russian friends community website 'Те ещё люди'. One centered premium playful 3D enamel collectible emblem, lilac and violet highlights, tactile glossy detail, legible silhouette at 96px, square composition, generous transparent margins. Genuine transparent alpha background, no backdrop, no surrounding rectangle, no pedestal, no drop shadow outside the emblem, no words or watermark. This is one standalone badge. A circular lavender enamel badge with an adorable white rabbit head, long pink inner ears, one tiny carrot. Charming cheeky expression."
+    },
+    {
+      "key": "47-chromosomes",
+      "prompt": "Use case: stylized-concept. Asset type: individual achievement badge for Russian friends community website 'Те ещё люди'. One centered premium playful 3D enamel collectible emblem, lilac and violet highlights, tactile glossy detail, legible silhouette at 96px, square composition, generous transparent margins. Genuine transparent alpha background, no backdrop, no surrounding rectangle, no pedestal, no drop shadow outside the emblem, no words or watermark. This is one standalone badge. A rounded-square violet and blue enamel science badge with an elegant stylized golden chromosome and two small stars. Neutral abstract genetics emblem, no people, no caricatures, no medical diagnosis, no mockery."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+.notice {
+    text-align: center;
+    min-width: 0;
+}
+
+.notice h1 {
+    margin: 0;
+    font-size: clamp(24px, 4vw, 36px);
+    line-height: 1.25;
+}
+
+.art {
+    width: min(180px, 45vw);
+}
+
+.fullArt {
+    width: min(260px, 45vw, 34dvh);
+}
+
+.reason {
+    max-width: 560px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.6;
+}

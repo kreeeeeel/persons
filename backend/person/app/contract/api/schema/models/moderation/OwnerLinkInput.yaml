@@ -1,0 +1,8 @@
+OwnerLinkInput:
+  type: object
+  required: []
+  properties:
+    email:
+      type: string
+      maxLength: 254
+      format: email

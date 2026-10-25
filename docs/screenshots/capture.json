@@ -1,0 +1,59 @@
+{
+  "capturedAt": "2026-10-25T18:39:18.036Z",
+  "source": "live public website; fresh anonymous browser context",
+  "pages": [
+    {
+      "name": "home",
+      "url": "https://kreeeeeel.ru/ru",
+      "status": 200,
+      "title": "Те ещё люди · Свои люди, свои истории"
+    },
+    {
+      "name": "people",
+      "url": "https://kreeeeeel.ru/ru/people",
+      "status": 200,
+      "title": "Те самые люди."
+    },
+    {
+      "name": "sign-in",
+      "url": "https://id.kreeeeeel.ru/ru",
+      "status": 200,
+      "title": "Войти · Те ещё люди"
+    },
+    {
+      "name": "profile",
+      "url": "https://kreeeeeel.ru/ru/person/kreeeeeel",
+      "status": 200,
+      "title": "Крел · Те ещё люди."
+    },
+    {
+      "name": "games",
+      "url": "https://kreeeeeel.ru/ru/person/kreeeeeel"
+    },
+    {
+      "name": "dota-match",
+      "url": "https://kreeeeeel.ru/ru/person/kreeeeeel?dotaMatch=9056815005"
+    },
+    {
+      "name": "cs2",
+      "url": "https://kreeeeeel.ru/ru/person/kreeeeeel"
+    },
+    {
+      "name": "feed",
+      "url": "https://id.kreeeeeel.ru/ru?returnTo=%2Fperson%2Fru%2Ffeed",
+      "status": 200,
+      "title": "Войти · Те ещё люди"
+    },
+    {
+      "name": "home-mobile",
+      "url": "https://kreeeeeel.ru/ru",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "name": "home-dark",
+      "url": "https://kreeeeeel.ru/ru",
+      "theme": "dark"
+    }
+  ]
+}

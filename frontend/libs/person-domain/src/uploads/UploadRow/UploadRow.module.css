@@ -1,0 +1,23 @@
+.row {
+    min-width: 0;
+    padding: 14px 16px;
+    border-radius: 20px;
+    background: var(--persons-surface);
+    box-shadow: 0 8px 36px rgb(0 0 0 / 0.16);
+}
+
+.content {
+    flex: 1;
+    min-width: 0;
+}
+
+.filename {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.row :global([class~="g-progress__text"]) {
+    font-size: 16px;
+}

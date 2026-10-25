@@ -1,0 +1,9 @@
+AchievementGrantResult:
+  type: object
+  required:
+    - granted
+  properties:
+    granted:
+      type: integer
+      format: int64
+      minimum: 0

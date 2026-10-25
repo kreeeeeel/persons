@@ -1,0 +1,29 @@
+CommunityFeedEvent:
+  type: object
+  description: One published event. The payload matching kind is always present. Reads existing publications directly; no event backfill is required.
+  required: [id, kind, page, createdAt]
+  properties:
+    id: {type: string}
+    kind:
+      $ref: ./CommunityFeedKind.yaml#/CommunityFeedKind
+    page:
+      $ref: ../person/PersonSummary.yaml#/PersonSummary
+    createdAt: {type: string, format: date-time}
+    comment:
+      $ref: ../comment/Comment.yaml#/Comment
+    contextMediaKind:
+      $ref: ../media/MediaKind.yaml#/MediaKind
+    rating:
+      $ref: ../person/PersonRating.yaml#/PersonRating
+    credit:
+      $ref: ../credit/CreditEntry.yaml#/CreditEntry
+    photo:
+      $ref: ../media/Photo.yaml#/Photo
+    moment:
+      $ref: ../media/Moment.yaml#/Moment
+    achievement:
+      $ref: ../achievement/PersonAchievement.yaml#/PersonAchievement
+    dota:
+      $ref: ../games/DotaMatch.yaml#/DotaMatch
+    cs:
+      $ref: ../games/CsMatch.yaml#/CsMatch

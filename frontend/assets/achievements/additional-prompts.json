@@ -1,0 +1,58 @@
+{
+  "generator": "Built-in image_gen; transparent_background: true",
+  "styleReferences": [
+    "developer-v1.png",
+    "pleasant-person-v1.png"
+  ],
+  "assets": [
+    {
+      "key": "lifestealer",
+      "file": "lifestealer-v1.png",
+      "title": "Lifestealer",
+      "description": "В Dota 2 выбирает только Lifestealer. На остальных героях победа не предусмотрена.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the Russian friends community website 'Те ещё люди'. Input image 1 and image 2 are STYLE REFERENCES ONLY for the existing badge collection, not edit targets. Match their premium playful glossy 3D enamel collectible style: thick rounded polished metal rim, domed enamel relief, tactile smooth surfaces, lilac and violet highlights, warm gold accent, crisp readable silhouette at 96px. Square 1024x1024 composition, centered single emblem occupying about 75% of the canvas, generous transparent margins, near-frontal view with subtle sculptural depth. Genuine transparent alpha background, no scenery outside the badge, no rectangular image backdrop, no pedestal, no floor, no cast shadow outside the emblem, no words, letters, brand logo, watermark, or human portrait. This is ONE standalone badge, not a sheet or collage. A deep burgundy and violet circular enamel medal showing the instantly recognizable head of Lifestealer (N'aix) from Dota 2: bald hunched pale ochre ghoul head, small glowing orange eyes, enormous toothy jaw with long ivory fangs and a mischievous ferocious grin, one short broken iron chain visible at the lower edge, a small golden victory star. Simplify into a charming collectible game character emblem. Keep his distinctive monstrous face, not a generic vampire or human. Non-graphic, no blood or injuries."
+    },
+    {
+      "key": "factory-worker",
+      "file": "factory-worker-v1.png",
+      "title": "Заводчанин",
+      "description": "Работает, собирает детали и держит производство на своих плечах.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the Russian friends community website 'Те ещё люди'. Input image 1 and image 2 are STYLE REFERENCES ONLY for the existing badge collection, not edit targets. Match their premium playful glossy 3D enamel collectible style: thick rounded polished metal rim, domed enamel relief, tactile smooth surfaces, lilac and violet highlights, warm gold accent, crisp readable silhouette at 96px. Square 1024x1024 composition, centered single emblem occupying about 75% of the canvas, generous transparent margins, near-frontal view with subtle sculptural depth. Genuine transparent alpha background, no scenery outside the badge, no rectangular image backdrop, no pedestal, no floor, no cast shadow outside the emblem, no words, letters, brand logo, watermark, or human portrait. This is ONE standalone badge, not a sheet or collage. A rounded-square violet enamel medal with one bright amber industrial hard hat above a large silver gear; a small articulated robotic assembly gripper carefully fits a golden bolt into the gear at the front. Clear compact industrial assembly motif: work, precision, building machine parts. No human face or person."
+    },
+    {
+      "key": "military-duty",
+      "file": "military-duty-v1.png",
+      "title": "Военнообязанный",
+      "description": "На воинском учёте. Военный билет — часть коллекции документов.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the Russian friends community website 'Те ещё люди'. Input image 1 and image 2 are STYLE REFERENCES ONLY for the existing badge collection, not edit targets. Match their premium playful glossy 3D enamel collectible style: thick rounded polished metal rim, domed enamel relief, tactile smooth surfaces, lilac and violet highlights, warm gold accent, crisp readable silhouette at 96px. Square 1024x1024 composition, centered single emblem occupying about 75% of the canvas, generous transparent margins, near-frontal view with subtle sculptural depth. Genuine transparent alpha background, no scenery outside the badge, no rectangular image backdrop, no pedestal, no floor, no cast shadow outside the emblem, no words, letters, brand logo, watermark, or human portrait. This is ONE standalone badge, not a sheet or collage. A rounded shield-shaped deep violet enamel badge with a closed dark olive military identification booklet with a small embossed gold shield on its cover, a small olive army helmet behind it, and two tidy gold laurel sprigs. Symbol of military registration and duty. No text on the booklet, no flags, national insignia, weapons, or people."
+    },
+    {
+      "key": "anime-fan",
+      "file": "anime-fan-v1.png",
+      "title": "Анимешник",
+      "description": "Сначала ещё одна серия, потом всё остальное.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the Russian friends community website 'Те ещё люди'. Input image 1 and image 2 are STYLE REFERENCES ONLY for the existing badge collection, not edit targets. Match their premium playful glossy 3D enamel collectible style: thick rounded polished metal rim, domed enamel relief, tactile smooth surfaces, lilac and violet highlights, warm gold accent, crisp readable silhouette at 96px. Square 1024x1024 composition, centered single emblem occupying about 75% of the canvas, generous transparent margins, near-frontal view with subtle sculptural depth. Genuine transparent alpha background, no scenery outside the badge, no rectangular image backdrop, no pedestal, no floor, no cast shadow outside the emblem, no words, letters, brand logo, watermark, or human portrait. This is ONE standalone badge, not a sheet or collage. A circular lavender and blush-pink enamel medal showing an open manga volume with two oversized expressive anime eyes drawn on its white pages, one eye playfully winking, a tiny pink cherry blossom and a golden four-point sparkle around the book. Recognizably anime and manga fandom, playful and adorable, glossy sculpted enamel, no portrait or full character, no letters or page text."
+    },
+    {
+      "key": "party-caller",
+      "file": "party-caller-v1.png",
+      "title": "Человек, который зовёт всех играть",
+      "description": "Собирает пати, зовёт всех в голосовой чат и верит, что сегодня зайдут все.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the Russian friends community website 'Те ещё люди'. Input image 1 and image 2 are STYLE REFERENCES ONLY for the existing badge collection, not edit targets. Match their premium playful glossy 3D enamel collectible style: thick rounded polished metal rim, domed enamel relief, tactile smooth surfaces, lilac and violet highlights, warm gold accent, crisp readable silhouette at 96px. Square 1024x1024 composition, centered single emblem occupying about 75% of the canvas, generous transparent margins, near-frontal view with subtle sculptural depth. Genuine transparent alpha background, no scenery outside the badge, no rectangular image backdrop, no pedestal, no floor, no cast shadow outside the emblem, no words, letters, brand logo, watermark, or human portrait. This is ONE standalone badge, not a sheet or collage. A rounded-square bright violet enamel badge with a glossy lavender game controller in the foreground and a large lilac speech bubble with three gold dots above it, two small stylized circular friend tokens nestling behind the gamepad. A clear inviting everyone to play / party organizer motif. Friendly energetic collectible, no full human figures or portraits."
+    },
+    {
+      "key": "blind",
+      "file": "blind-v1.png",
+      "title": "Слепой",
+      "description": "Свой путь находит даже без подсказок.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the Russian friends community website 'Те ещё люди'. Input image 1 and image 2 are STYLE REFERENCES ONLY for the existing badge collection, not edit targets. Match their premium playful glossy 3D enamel collectible style: thick rounded polished metal rim, domed enamel relief, tactile smooth surfaces, lilac and violet highlights, warm gold accent, crisp readable silhouette at 96px. Square 1024x1024 composition, centered single emblem occupying about 75% of the canvas, generous transparent margins, near-frontal view with subtle sculptural depth. Genuine transparent alpha background, no scenery outside the badge, no rectangular image backdrop, no pedestal, no floor, no cast shadow outside the emblem, no words, letters, brand logo, watermark, or human portrait. This is ONE standalone badge, not a sheet or collage. A circular midnight violet and pale lavender enamel medal with elegant black-lensed sunglasses with shiny silver rims in the center, a neatly diagonal white mobility cane with a red tip below them and a small raised six-dot Braille cell in warm gold at the side. Respectful simple symbol of blindness and independent navigation, no human face, no caricature, no medical imagery."
+    },
+    {
+      "key": "existential",
+      "file": "existential-v1.png",
+      "title": "Живёт, но не знает зачем",
+      "description": "Каждый день заходит в жизнь. Главный квест пока не найден.",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the Russian friends community website 'Те ещё люди'. Input image 1 and image 2 are STYLE REFERENCES ONLY for the existing badge collection, not edit targets. Match their premium playful glossy 3D enamel collectible style: thick rounded polished metal rim, domed enamel relief, tactile smooth surfaces, lilac and violet highlights, warm gold accent, crisp readable silhouette at 96px. Square 1024x1024 composition, centered single emblem occupying about 75% of the canvas, generous transparent margins, near-frontal view with subtle sculptural depth. Genuine transparent alpha background, no scenery outside the badge, no rectangular image backdrop, no pedestal, no floor, no cast shadow outside the emblem, no words, letters, brand logo, watermark, or human portrait. This is ONE standalone badge, not a sheet or collage. A rounded-square midnight blue and violet enamel medal featuring a charming shiny gold compass whose central needle curls into a clear sculptural question mark, with a tiny green sprout emerging at its bottom edge and two tiny lilac star sparkles. Gentle humorous existential searching-for-purpose motif, still alive and growing while the direction remains a mystery. The question mark is an icon, the only allowed typographic symbol. No sad human figure, no skull, no dangerous objects."
+    }
+  ]
+}

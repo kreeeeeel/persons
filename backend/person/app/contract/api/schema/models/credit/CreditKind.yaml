@@ -1,0 +1,9 @@
+CreditKind:
+  type: string
+  enum:
+    - TRUST
+    - DOUBT
+    - ON_TIME
+    - SHORT_DELAY
+    - LONG_DELAY
+    - NOT_RETURNED

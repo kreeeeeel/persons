@@ -1,0 +1,6 @@
+NotificationKind:
+  type: string
+  enum:
+    - APPROVED
+    - REJECTED
+    - REMOVED

@@ -1,0 +1,10 @@
+ClientErrorResponse:
+  type: object
+  required:
+  - code
+  - requestId
+  properties:
+    code:
+      type: string
+    requestId:
+      type: string

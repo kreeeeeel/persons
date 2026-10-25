@@ -1,0 +1,19 @@
+PersonAchievement:
+  type: object
+  required:
+    - id
+    - achievement
+    - assignedAt
+    - note
+  properties:
+    id:
+      type: string
+      format: uuid
+    achievement:
+      $ref: ./Achievement.yaml#/Achievement
+    assignedAt:
+      type: string
+      format: date-time
+    note:
+      type: string
+      maxLength: 500

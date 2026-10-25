@@ -1,0 +1,47 @@
+.heading,
+.skeleton {
+    min-height: 2.2em;
+    margin: 0;
+    font-size: clamp(24px, 10.5cqi, 80px);
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+    font-weight: 750;
+}
+
+.line {
+    position: relative;
+    display: block;
+    width: fit-content;
+    height: 1.08em;
+    white-space: nowrap;
+}
+
+.skeleton {
+    width: 90%;
+    border-radius: 20px;
+}
+
+.caret {
+    position: absolute;
+    top: 0.15em;
+    left: 100%;
+    width: 4px;
+    height: 0.8em;
+    margin-left: 6px;
+    background: var(--g-color-base-brand);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (height <= 500px) {
+    .heading,
+    .skeleton {
+        font-size: clamp(24px, 8cqi, 36px);
+        min-height: 2.2em;
+    }
+}

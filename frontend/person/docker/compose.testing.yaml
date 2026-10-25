@@ -1,0 +1,7 @@
+services:
+  person-web:
+    build:
+      target: runtime
+    image: persons-person-web:testing
+    environment:
+      APP_ENV: testing

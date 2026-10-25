@@ -1,0 +1,18 @@
+.login {
+    --g-button-border-radius: 999px;
+    --g-button-border-width: 0;
+    --g-button-padding: 24px;
+
+    font-weight: 600;
+    animation: appear 350ms ease both;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

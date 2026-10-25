@@ -1,0 +1,6 @@
+project:
+  i18n-client:
+    base-uri: "${I18N_BASE_URL}"
+    connect-timeout-ms: 2000
+    read-timeout-ms: 5000
+    max-buffer-size: 1048576

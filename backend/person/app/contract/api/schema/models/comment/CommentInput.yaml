@@ -1,0 +1,15 @@
+CommentInput:
+  type: object
+  required:
+    - text
+  properties:
+    text:
+      type: string
+      maxLength: 2000
+      minLength: 1
+    momentId:
+      type: string
+      format: uuid
+    mediaId:
+      type: string
+      format: uuid

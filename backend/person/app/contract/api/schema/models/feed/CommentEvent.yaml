@@ -1,0 +1,12 @@
+CommentEvent:
+  type: object
+  required: [page, comment, contextMediaKind]
+  properties:
+    page:
+      $ref: ../person/PersonSummary.yaml#/PersonSummary
+    comment:
+      $ref: ../comment/Comment.yaml#/Comment
+    contextMediaKind:
+      description: PHOTO or MOMENT, matching the published comment target.
+      allOf:
+        - $ref: ../media/MediaKind.yaml#/MediaKind

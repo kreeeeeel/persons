@@ -1,0 +1,8 @@
+FeedSort:
+  type: string
+  enum:
+    - NEWEST
+    - OLDEST
+    - MOST_LIKED
+    - MOST_DISLIKED
+  default: NEWEST

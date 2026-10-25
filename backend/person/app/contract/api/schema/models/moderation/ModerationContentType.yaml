@@ -1,0 +1,3 @@
+ModerationContentType:
+  type: string
+  enum: [PERSON, PHOTO, MOMENT, AVATAR, COMMENT, CREDIT, OWNERSHIP]

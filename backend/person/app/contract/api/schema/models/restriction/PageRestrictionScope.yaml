@@ -1,0 +1,3 @@
+PageRestrictionScope:
+  type: string
+  enum: [COMMENTS, RATINGS, LOANS, MEDIA, PROFILE, REACTIONS]

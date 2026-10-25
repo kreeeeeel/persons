@@ -1,0 +1,83 @@
+# Optional production profile for a small VDS. Requires disk swap and sequential startup.
+x-java-environment: &java-environment
+  JAVA_TOOL_OPTIONS: -Xms32m -Xmx128m -XX:+UseSerialGC -XX:+ExitOnOutOfMemoryError -XX:MaxMetaspaceSize=192m -XX:ReservedCodeCacheSize=32m -XX:MaxDirectMemorySize=32m -Xss512k -XX:ActiveProcessorCount=1
+  SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE: '2'
+  SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: '1'
+  SERVER_TOMCAT_THREADS_MAX: '12'
+  SERVER_TOMCAT_THREADS_MIN_SPARE: '2'
+x-java-resources: &java-resources
+  mem_limit: 384m
+  mem_reservation: 128m
+  memswap_limit: 768m
+services:
+  postgres:
+    mem_limit: 192m
+    mem_reservation: 64m
+    memswap_limit: 384m
+    command: [postgres, -c, shared_buffers=32MB, -c, max_connections=40, -c, work_mem=2MB, -c, maintenance_work_mem=32MB]
+  minio:
+    mem_limit: 256m
+    mem_reservation: 96m
+    memswap_limit: 512m
+    environment:
+      GOMEMLIMIT: 160MiB
+  mail:
+    <<: *java-resources
+    environment: *java-environment
+  i18n:
+    <<: *java-resources
+    environment: *java-environment
+  id:
+    <<: *java-resources
+    mem_limit: 448m
+    memswap_limit: 896m
+    environment:
+      <<: *java-environment
+      JAVA_TOOL_OPTIONS: -Xms32m -Xmx160m -XX:+UseSerialGC -XX:+ExitOnOutOfMemoryError -XX:MaxMetaspaceSize=192m -XX:ReservedCodeCacheSize=32m -XX:MaxDirectMemorySize=32m -Xss512k -XX:ActiveProcessorCount=1
+  person:
+    <<: *java-resources
+    mem_limit: 448m
+    memswap_limit: 896m
+    environment:
+      <<: *java-environment
+      JAVA_TOOL_OPTIONS: -Xms32m -Xmx192m -XX:+UseSerialGC -XX:+ExitOnOutOfMemoryError -XX:MaxMetaspaceSize=192m -XX:ReservedCodeCacheSize=32m -XX:MaxDirectMemorySize=32m -Xss512k -XX:ActiveProcessorCount=1
+  person-worker:
+    <<: *java-resources
+    mem_limit: 448m
+    memswap_limit: 896m
+    environment: *java-environment
+  id-web:
+    mem_limit: 192m
+    mem_reservation: 64m
+    memswap_limit: 384m
+    environment:
+      NODE_OPTIONS: --max-old-space-size=96
+  person-web:
+    mem_limit: 192m
+    mem_reservation: 64m
+    memswap_limit: 384m
+    environment:
+      NODE_OPTIONS: --max-old-space-size=96
+  person-admin-web:
+    mem_limit: 192m
+    mem_reservation: 64m
+    memswap_limit: 384m
+    environment:
+      NODE_OPTIONS: --max-old-space-size=96
+  restrictions:
+    <<: *java-resources
+    environment: *java-environment
+  gateway:
+    <<: *java-resources
+    environment: *java-environment
+  redis:
+    mem_limit: 128m
+    memswap_limit: 128m
+    command:
+      - sh
+      - -ec
+      - exec redis-server --save "" --appendonly no --maxmemory 64mb --maxmemory-policy allkeys-lru --requirepass "$$REDIS_PASSWORD"
+
+  properties-redis:
+    mem_limit: 128m
+    memswap_limit: 128m

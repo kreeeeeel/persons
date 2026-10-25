@@ -1,0 +1,12 @@
+DynamicPropertyUpdate:
+  type: "object"
+  required:
+    - "value"
+  properties:
+    value:
+      type: "string"
+      maxLength: 16384
+    revision:
+      type: "integer"
+      format: "int64"
+      minimum: 0

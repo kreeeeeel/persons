@@ -1,0 +1,19 @@
+PersonSummary:
+  type: object
+  required:
+    - id
+    - tag
+    - fullName
+  properties:
+    id:
+      type: string
+      format: uuid
+    tag:
+      type: string
+      maxLength: 32
+    fullName:
+      type: string
+      maxLength: 250
+    avatarMediaId:
+      type: string
+      format: uuid

@@ -1,0 +1,7 @@
+* text=auto
+ci/projects.txt text eol=lf
+.gitmodules text eol=lf
+*.sh text eol=lf
+**/gradlew text eol=lf
+*.bat text eol=crlf
+Dockerfile* text eol=lf

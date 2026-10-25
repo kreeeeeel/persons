@@ -1,0 +1,13 @@
+RestrictionErrorResponse:
+  type: object
+  required: [code, requestId, scope, restriction]
+  properties:
+    code:
+      type: string
+      enum: [ACTION_RESTRICTED]
+    requestId:
+      type: string
+    scope:
+      $ref: ./RestrictionScope.yaml#/RestrictionScope
+    restriction:
+      $ref: ./AccountRestriction.yaml#/AccountRestriction

@@ -1,0 +1,9 @@
+MyPersonState:
+  type: object
+  required:
+    - pendingCreation
+  properties:
+    person:
+      $ref: ./PersonSummary.yaml#/PersonSummary
+    pendingCreation:
+      type: boolean

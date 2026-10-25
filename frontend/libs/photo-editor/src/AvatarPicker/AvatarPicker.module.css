@@ -1,0 +1,40 @@
+.root {
+    min-width: 0;
+    padding-block: 4px 12px;
+}
+
+.preview {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 4px;
+    border-radius: 50%;
+}
+
+.preview .upload {
+    position: absolute;
+    right: -8px;
+    bottom: -4px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: none;
+
+    --g-button-height: 40px;
+    --g-button-border-radius: 50%;
+}
+
+.avatarSkeleton {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.fileInput {
+    display: none;
+}
+
+.hint {
+    max-width: min(280px, 100%);
+    text-align: center;
+    line-height: 1.6;
+}

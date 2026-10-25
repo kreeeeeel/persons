@@ -1,0 +1,7 @@
+Reputation:
+  type: string
+  enum:
+    - UNKNOWN
+    - GOOD
+    - AVERAGE
+    - BAD

@@ -1,0 +1,12 @@
+{
+  "tool": "Built-in image_gen",
+  "date": "2026-10-22",
+  "file": "empty-dota-lifestealer-vadim-v1.webp",
+  "references": [
+    "branding/vadim-generated-v1.png",
+    "illustrations/cookies-vadim-v1.webp"
+  ],
+  "consent": "Existing consented branded Vadim references from this task; original photographs are not included.",
+  "brief": "Create a friendly Dota 2 Lifestealer inspired muscular creature with Vadim's recognizable human face and shaggy blond hair from the provided consented brand illustrations. Crouching with oversized clawed hands, looking sadly into an empty satchel/inventory. Warm orange skin and purple shadows, polished cartoon brand illustration, anatomically coherent, no gore, no text, no backdrop, transparent background. Clear compact silhouette suitable for a website no-match empty state.",
+  "preparation": "Generated transparent PNG kept outside the repository; encoded as 640px WebP quality 86."
+}

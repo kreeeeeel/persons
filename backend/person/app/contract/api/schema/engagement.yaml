@@ -1,0 +1,171 @@
+/v1/content/{kind}/{id}/like:
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: kind
+      in: path
+      required: true
+      schema:
+        $ref: ./models/restriction/ContentKind.yaml#/ContentKind
+  get:
+    tags:
+      - engagement
+    operationId: getContentLike
+    responses:
+      '200':
+        description: Result
+        content:
+          application/json:
+            schema:
+              $ref: ./models/media/LikeState.yaml#/LikeState
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+  put:
+    tags:
+      - engagement
+    operationId: likeContent
+    security:
+      - session: []
+    responses:
+      '200':
+        description: Result
+        content:
+          application/json:
+            schema:
+              $ref: ./models/media/LikeState.yaml#/LikeState
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+  delete:
+    tags:
+      - engagement
+    operationId: unlikeContent
+    security:
+      - session: []
+    responses:
+      '200':
+        description: Result
+        content:
+          application/json:
+            schema:
+              $ref: ./models/media/LikeState.yaml#/LikeState
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+/v1/content/{kind}/{id}/reaction:
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: kind
+      in: path
+      required: true
+      schema:
+        $ref: ./models/restriction/ContentKind.yaml#/ContentKind
+  put:
+    tags: [engagement]
+    operationId: reactToContent
+    security:
+      - session: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/media/ContentReactionInput.yaml#/ContentReactionInput
+    responses:
+      '200':
+        description: Updated reaction counts and the current account's reaction
+        content:
+          application/json:
+            schema:
+              $ref: ./models/media/LikeState.yaml#/LikeState
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+  delete:
+    tags: [engagement]
+    operationId: clearContentReaction
+    security:
+      - session: []
+    responses:
+      '200':
+        description: Updated reaction counts and the current account's reaction
+        content:
+          application/json:
+            schema:
+              $ref: ./models/media/LikeState.yaml#/LikeState
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '403':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse

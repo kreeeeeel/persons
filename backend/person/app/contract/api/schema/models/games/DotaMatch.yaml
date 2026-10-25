@@ -1,0 +1,75 @@
+DotaMatch:
+  type: "object"
+  required:
+    - "id"
+    - "hero"
+    - "heroId"
+    - "heroIconUrl"
+    - "heroImageUrl"
+    - "won"
+    - "kills"
+    - "deaths"
+    - "assists"
+    - "durationSeconds"
+    - "playedAt"
+    - "matchUrl"
+    - "items"
+  properties:
+    id:
+      type: "string"
+      pattern: "^[0-9]{1,20}$"
+    hero:
+      type: "string"
+    heroId:
+      type: "string"
+    heroIconUrl:
+      type: "string"
+      format: "uri"
+    heroImageUrl:
+      type: "string"
+      format: "uri"
+    won:
+      type: "boolean"
+    rank:
+      type: "string"
+    score:
+      type: "integer"
+      minimum: 0
+      description: "Final kill score of the player's team, omitted when unavailable."
+    opponentScore:
+      type: "integer"
+      minimum: 0
+      description: "Final kill score of the opposing team, omitted when unavailable."
+    heroDamage:
+      type: "integer"
+      minimum: 0
+      description: "Damage dealt to heroes, omitted when unavailable from the source."
+    buildingDamage:
+      type: "integer"
+      minimum: 0
+      description: "Damage dealt to buildings, omitted when unavailable from the source."
+    neutralItem:
+      $ref: "./DotaItem.yaml#/DotaItem"
+    kills:
+      type: "integer"
+      minimum: 0
+    deaths:
+      type: "integer"
+      minimum: 0
+    assists:
+      type: "integer"
+      minimum: 0
+    durationSeconds:
+      type: "integer"
+      minimum: 1
+    playedAt:
+      type: "string"
+      format: "date-time"
+    matchUrl:
+      type: "string"
+      format: "uri"
+    items:
+      type: "array"
+      maxItems: 6
+      items:
+        $ref: "./DotaItem.yaml#/DotaItem"

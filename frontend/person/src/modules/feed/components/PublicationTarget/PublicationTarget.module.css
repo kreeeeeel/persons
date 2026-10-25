@@ -1,0 +1,64 @@
+.trigger {
+    --g-button-border-radius: 999px;
+
+    max-width: 260px;
+    min-width: 0;
+}
+
+.trigger > :global([class~='g-button__text']) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.choice {
+    --g-button-height: 52px;
+    --g-button-border-radius: 16px;
+    --g-button-text-color: var(--g-color-text-primary);
+    --g-button-text-color-hover: var(--g-color-text-primary);
+
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    padding-inline: 12px;
+    text-align: left;
+}
+
+.choice > :global([class~='g-button__text']) {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    min-width: 0;
+    padding: 0;
+}
+
+.choice[data-selected='true']::before {
+    background: var(--g-color-base-generic);
+}
+
+.or {
+    text-align: center;
+}
+
+.empty {
+    padding-block: 12px 24px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.art {
+    width: min(100%, 280px);
+}
+
+.emptyTitle {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.skeleton {
+    height: 52px;
+    border-radius: 16px;
+}

@@ -1,0 +1,30 @@
+.button {
+    max-width: 100%;
+    align-items: center;
+
+    --g-button-border-radius: 999px;
+    --g-button-height: 48px;
+    --g-button-padding: 20px;
+}
+
+.links {
+    max-width: 100%;
+}
+
+.contact {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.button :global([class~='g-button__text']) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    display: block;
+    filter: var(--persons-social-icon-filter, none);
+}

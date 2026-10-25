@@ -1,0 +1,15 @@
+.content {
+    padding-block: 36px 24px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.content h2 {
+    margin: 0;
+}
+
+.description {
+    font-size: 18px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}

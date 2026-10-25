@@ -1,0 +1,6 @@
+MediaKind:
+  type: string
+  enum:
+    - AVATAR
+    - PHOTO
+    - MOMENT

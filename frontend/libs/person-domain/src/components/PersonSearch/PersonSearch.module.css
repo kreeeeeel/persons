@@ -1,0 +1,49 @@
+.root {
+    position: relative;
+    min-width: 0;
+    width: 100%;
+}
+
+.pill {
+    height: 72px;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: var(--persons-search-background);
+    color: var(--g-color-text-secondary);
+    cursor: text;
+    box-shadow: 0 10px 44px rgb(45 24 72 / 0.1);
+}
+
+.pill:focus-within {
+    color: var(--g-color-base-brand);
+}
+
+.input {
+    --g-text-body-2-font-size: 20px;
+    --g-text-input-border-radius: 999px;
+    --g-text-input-border-width: 0;
+    --g-text-input-focus-outline-color: transparent;
+
+    min-width: 0;
+}
+
+@media (width <= 700px), (height <= 500px) {
+    .pill {
+        height: 60px;
+        padding: 0 16px;
+    }
+
+    .input {
+        --g-text-body-2-font-size: 18px;
+    }
+}
+
+.root[data-variant="compact"] .pill {
+    height: 44px;
+    padding: 0 14px;
+    box-shadow: none;
+}
+
+.root[data-variant="compact"] .input {
+    --g-text-body-2-font-size: 16px;
+}

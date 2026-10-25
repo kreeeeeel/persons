@@ -1,0 +1,15 @@
+services:
+  person-web:
+    build:
+      target: dev
+    image: persons-person-web:dev
+    environment:
+      APP_ENV: dev
+      NODE_ENV: development
+    volumes:
+      - ./frontend/person:/source/frontend/person
+      - person-dev-node-modules:/source/frontend/person/node_modules
+      - person-dev-next:/source/frontend/person/.next
+volumes:
+  person-dev-node-modules:
+  person-dev-next:

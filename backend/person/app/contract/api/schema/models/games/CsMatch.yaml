@@ -1,0 +1,71 @@
+CsMatch:
+  type: object
+  required: [id, mapName, mode, outcome, score, opponentScore, kills, deaths, assists, playedAt, matchUrl]
+  properties:
+    id:
+      type: string
+      format: uuid
+    mapName:
+      type: string
+      pattern: '^(de|cs|ar)_[a-z0-9_]{1,64}$'
+    mode:
+      $ref: './CsMatchMode.yaml#/CsMatchMode'
+    outcome:
+      $ref: './CsMatchOutcome.yaml#/CsMatchOutcome'
+    score:
+      type: integer
+      minimum: 0
+    opponentScore:
+      type: integer
+      minimum: 0
+    kills:
+      type: integer
+      minimum: 0
+    deaths:
+      type: integer
+      minimum: 0
+    assists:
+      type: integer
+      minimum: 0
+    durationSeconds:
+      type: integer
+      minimum: 1
+      description: Omitted when the public provider does not expose match duration.
+    rank:
+      type: integer
+      minimum: 1
+      description: Historical match rank, never substituted with the current profile rank.
+    faceitLevel:
+      type: integer
+      minimum: 1
+      maximum: 10
+    faceitElo:
+      type: integer
+      minimum: 0
+    kd:
+      type: number
+      format: double
+      minimum: 0
+    adr:
+      type: number
+      format: double
+      minimum: 0
+    hsPercent:
+      type: number
+      format: double
+      minimum: 0
+      maximum: 100
+    leetifyRating:
+      type: number
+      format: double
+      description: Raw provider rating. Leetify displays this value multiplied by 100.
+    personalPerformance:
+      type: number
+      format: double
+      description: Historical Personal Performance in Leetify display units, distinct from Leetify Rating. Omitted when unavailable.
+    playedAt:
+      type: string
+      format: date-time
+    matchUrl:
+      type: string
+      format: uri

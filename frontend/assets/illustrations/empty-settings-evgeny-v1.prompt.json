@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-10-23",
+  "tool": "built-in image_gen",
+  "asset": "illustrations/empty-settings-evgeny-v1.webp",
+  "identityReference": "евгений.jpg (consented original local reference, original not committed)",
+  "styleReference": "illustrations/empty-achievements-evgeny-v2.webp",
+  "transparentBackground": true,
+  "generatedSource": "C:/Users/kreeeeeel/.codex/generated_images/01a165c1-205b-7850-8a35-d573569adb50/exec-a8fe4c66-f613-4f06-9a2f-7c96d9b46a56.png",
+  "prompt": "Use case: illustration-story.\nAsset type: compact transparent empty-state illustration for settings/variables search in the Persons friends website.\nInput images: Image 1 is the ONLY facial identity reference, the original consented photograph of Evgeny. Image 2 is a style reference ONLY: match its refined warm editorial cartoon painting, recognizable semi-realistic face and lavender accents, but do not copy the display case pose or scene.\nPrimary request: Draw this SPECIFIC young adult Evgeny, recognizably matching Image 1: short dark brown upright hair, lightly arched thick eyebrows, blue-gray eyes, broad slightly rounded straight nose, slightly long oval face, clean-shaven chin, thin lips, light complexion. Keep the precise facial proportions and individual likeness, avoiding a generic handsome man or excessively caricatured head. He wears his beige hoodie. He is mildly puzzled, head slightly tilted and eyebrows gently raised, opening a small lavender toolbox/settings box with one hand while holding one simple metal wrench upright in the other. The box is visibly EMPTY, lid fully open. Only one character and exactly two natural hands. Keep face completely unobstructed and easily recognizable.\nStyle/medium: polished warm hand-painted Persons cartoon illustration, clean expressive shapes and painterly shading, natural adult facial features, soft lavender and warm beige accents.\nComposition: centered waist-up cutout in a square image; the whole head, both hands, wrench and small open empty toolbox must fit comfortably with clear transparent margins. Broad simple readable silhouette suitable at 240 pixels. Friendly and humorous mood.\nBackground: genuinely transparent alpha outside the actual subject. Absolutely no backdrop rectangle, no colored disk, no floor, no ground shadow, no drop shadow around the figure, no glow or halo, no sticker border. No floating decorations.\nText: none.\nConstraints: no letters, numbers, logos, watermark; no photographic room background; do not copy original photo into the asset. Preserve the original subject's specific face in the illustrated style.",
+  "processing": {
+    "tool": "sharp",
+    "operations": [
+      "resize inside 640x640 without enlargement",
+      "encode WebP quality 88 effort 6 alphaQuality 100"
+    ],
+    "preservesAlpha": true
+  },
+  "originalReference": "C:/Users/kreeeeeel/Desktop/люди/евгений.jpg"
+}

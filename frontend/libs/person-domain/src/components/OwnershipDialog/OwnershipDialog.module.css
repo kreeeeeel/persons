@@ -1,0 +1,8 @@
+.file {
+    width: 100%;
+    min-width: 0;
+    font: inherit;
+    padding: 12px;
+    border: 1px solid var(--g-color-line-generic);
+    border-radius: 12px;
+}

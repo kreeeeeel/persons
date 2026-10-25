@@ -1,0 +1,36 @@
+Achievement:
+  type: object
+  required:
+    - id
+    - title
+    - description
+    - active
+    - createdAt
+    - version
+    - type
+  properties:
+    id:
+      type: string
+      format: uuid
+    title:
+      type: string
+      maxLength: 100
+    description:
+      type: string
+      maxLength: 1000
+    active:
+      type: boolean
+    createdAt:
+      type: string
+      format: date-time
+    version:
+      type: integer
+      format: int64
+      minimum: 0
+    type:
+      $ref: ./AchievementType.yaml#/AchievementType
+    pageAgeYears:
+      type: integer
+      minimum: 1
+      maximum: 5
+      description: Full calendar years since page creation, required for AUTOMATIC achievements.

@@ -1,0 +1,12 @@
+**/node_modules
+**/.gradle
+.git
+**/.git
+.idea
+.build
+**/test-results
+**/playwright-report
+.env
+**/.env.local
+
+!frontend/*/.next/standalone/**

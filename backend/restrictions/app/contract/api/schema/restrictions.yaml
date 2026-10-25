@@ -1,0 +1,189 @@
+userRestriction:
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  get:
+    tags: [restrictions]
+    operationId: getRestriction
+    security:
+      - service: []
+    responses:
+      '200':
+        description: Current effective restriction or an empty result
+        content:
+          application/json:
+            schema:
+              $ref: ./models/restriction/RestrictionResult.yaml#/RestrictionResult
+      '401':
+        $ref: '#/unauthorized'
+      '503':
+        $ref: '#/unavailable'
+  put:
+    tags: [restrictions]
+    operationId: setRestriction
+    security:
+      - service: []
+        session: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/restriction/RestrictionInput.yaml#/RestrictionInput
+    responses:
+      '200':
+        description: Saved restriction
+        content:
+          application/json:
+            schema:
+              $ref: ./models/restriction/AccountRestriction.yaml#/AccountRestriction
+      '400':
+        $ref: '#/invalid'
+      '401':
+        $ref: '#/unauthorized'
+      '503':
+        $ref: '#/unavailable'
+      '403':
+        $ref: '#/forbidden'
+      '409':
+        $ref: '#/conflict'
+  delete:
+    tags: [restrictions]
+    operationId: revokeRestriction
+    security:
+      - service: []
+        session: []
+    responses:
+      '204':
+        description: Restriction revoked
+      '401':
+        $ref: '#/unauthorized'
+      '503':
+        $ref: '#/unavailable'
+      '403':
+        $ref: '#/forbidden'
+      '409':
+        $ref: '#/conflict'
+lookup:
+  post:
+    tags: [restrictions]
+    operationId: lookupRestrictions
+    security:
+      - service: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/restriction/RestrictionLookup.yaml#/RestrictionLookup
+    responses:
+      '200':
+        description: Effective restrictions for requested users
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ./models/restriction/AccountRestriction.yaml#/AccountRestriction
+      '400':
+        $ref: '#/invalid'
+      '401':
+        $ref: '#/unauthorized'
+      '503':
+        $ref: '#/unavailable'
+expire:
+  post:
+    tags: [restrictions]
+    operationId: expireRestrictions
+    security:
+      - service: []
+    responses:
+      '200':
+        description: Number of expired records retired in this bounded batch
+        content:
+          application/json:
+            schema:
+              $ref: ./models/restriction/RestrictionExpiryResult.yaml#/RestrictionExpiryResult
+      '401':
+        $ref: '#/unauthorized'
+      '503':
+        $ref: '#/unavailable'
+unauthorized:
+  description: Valid internal service authorization required
+  content:
+    application/json:
+      schema:
+        $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+forbidden:
+  description: Administrator role required or action forbidden by an active account restriction
+  content:
+    application/json:
+      schema:
+        $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+invalid:
+  description: Invalid restriction input
+  content:
+    application/json:
+      schema:
+        $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+
+unavailable:
+  description: Identity or restriction database unavailable; request is denied
+  content:
+    application/json:
+      schema:
+        $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+conflict:
+  description: Concurrent change rejected
+  content:
+    application/json:
+      schema:
+        $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+
+accountAccess:
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  put:
+    tags: [restrictions]
+    operationId: updateUserAccess
+    security:
+      - service: []
+        session: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/admin/UpdateAccess.yaml#/UpdateAccess
+    responses:
+      '200':
+        description: Account role and effective restriction state
+        content:
+          application/json:
+            schema:
+              $ref: ./models/admin/AdminUser.yaml#/AdminUser
+      '400':
+        $ref: '#/invalid'
+      '401':
+        $ref: '#/unauthorized'
+      '403':
+        $ref: '#/forbidden'
+      '404':
+        description: User not found in ID
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '409':
+        $ref: '#/conflict'
+      '503':
+        $ref: '#/unavailable'

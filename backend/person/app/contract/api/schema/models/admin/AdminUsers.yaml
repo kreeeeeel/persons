@@ -1,0 +1,22 @@
+AdminUsers:
+  type: object
+  required:
+  - items
+  - total
+  - page
+  - size
+  properties:
+    items:
+      type: array
+      items:
+        $ref: ./AdminUser.yaml#/AdminUser
+    total:
+      type: integer
+      format: int64
+    page:
+      type: integer
+      minimum: 0
+    size:
+      type: integer
+      minimum: 1
+      maximum: 100

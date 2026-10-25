@@ -1,0 +1,42 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr));
+    gap: 32px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    min-width: 0;
+    padding: 16px 8px;
+    border: 0;
+    border-radius: 20px;
+    background: transparent;
+    color: inherit;
+    text-align: center;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+.card:hover {
+    background: var(--g-color-base-simple-hover);
+}
+
+.card:focus-visible {
+    outline: 2px solid var(--g-color-line-focus);
+    outline-offset: 2px;
+}
+
+.imageSkeleton {
+    width: 160px;
+    height: 160px;
+    border-radius: 24px;
+}
+
+.titleSkeleton {
+    width: 70%;
+    height: 24px;
+    border-radius: 6px;
+}

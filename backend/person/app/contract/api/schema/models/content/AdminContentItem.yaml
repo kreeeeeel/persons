@@ -1,0 +1,27 @@
+AdminContentItem:
+  type: object
+  required: [id, kind, status, personId, personTag, personName, text, authorName, createdAt, previewAvailable, mediaAvailable]
+  properties:
+    id: {type: string, format: uuid}
+    kind:
+      $ref: ./AdminContentKind.yaml#/AdminContentKind
+    status:
+      $ref: ./AdminContentStatus.yaml#/AdminContentStatus
+    personId: {type: string, format: uuid}
+    personTag: {type: string}
+    personName: {type: string}
+    text: {type: string}
+    authorId: {type: string, format: uuid}
+    authorName: {type: string}
+    createdAt: {type: string, format: date-time}
+    mediaId: {type: string, format: uuid}
+    mediaKind:
+      $ref: ../media/MediaKind.yaml#/MediaKind
+    contextMediaId: {type: string, format: uuid}
+    previewAvailable: {type: boolean}
+    mediaAvailable: {type: boolean}
+    pendingRequestId: {type: string, format: uuid}
+    authorTag: {type: string}
+    authorAvatarUrl: {type: string}
+    sizeBytes: {type: integer, format: int64, minimum: 0}
+    personAvatarMediaId: {type: string, format: uuid}

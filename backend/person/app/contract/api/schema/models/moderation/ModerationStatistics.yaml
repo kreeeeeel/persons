@@ -1,0 +1,29 @@
+ModerationStatistics:
+  type: object
+  required: [pending, approved, rejected, overdue, automaticApproved]
+  properties:
+    pending:
+      type: integer
+      format: int64
+      minimum: 0
+    approved:
+      type: integer
+      format: int64
+      minimum: 0
+    rejected:
+      type: integer
+      format: int64
+      minimum: 0
+    overdue:
+      description: Pending requests submitted more than 24 hours ago
+      type: integer
+      format: int64
+      minimum: 0
+    automaticApproved:
+      description: Approved by the publication policy without a human decision
+      type: integer
+      format: int64
+      minimum: 0
+    oldestPendingAt:
+      type: string
+      format: date-time

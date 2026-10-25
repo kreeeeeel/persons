@@ -1,0 +1,10 @@
+Sessions:
+  type: object
+  required:
+  - items
+  properties:
+    items:
+      type: array
+      items:
+        $ref: ./Session.yaml#/Session
+

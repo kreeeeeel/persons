@@ -1,0 +1,3 @@
+project:
+  id-client:
+    base-uri: "${ID_BASE_URL}"

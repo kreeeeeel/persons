@@ -1,0 +1,12 @@
+Recovery:
+  type: object
+  required:
+  - email
+  - locale
+  properties:
+    email:
+      type: string
+      format: email
+      maxLength: 254
+    locale:
+      $ref: ../common/LanguageCode.yaml#/LanguageCode

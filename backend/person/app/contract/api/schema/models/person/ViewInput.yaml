@@ -1,0 +1,8 @@
+ViewInput:
+  type: object
+  required:
+    - visitorId
+  properties:
+    visitorId:
+      type: string
+      format: uuid

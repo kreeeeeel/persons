@@ -1,0 +1,79 @@
+PersonProfile:
+  type: object
+  required:
+    - id
+    - tag
+    - fullName
+    - firstName
+    - lastName
+    - description
+    - tags
+    - socialLinks
+    - ratingOptions
+    - stats
+    - canEdit
+    - version
+  properties:
+    id:
+      type: string
+      format: uuid
+    tag:
+      type: string
+      maxLength: 32
+    fullName:
+      type: string
+      maxLength: 250
+    firstName:
+      type: string
+      maxLength: 80
+    lastName:
+      type: string
+      maxLength: 80
+    patronymic:
+      type: string
+      maxLength: 80
+    description:
+      type: string
+      maxLength: 3000
+    tags:
+      type: array
+      items:
+        type: string
+        maxLength: 32
+    searchKeywords:
+      type: array
+      description: Additional names used to find this page; separate from displayed tags.
+      maxItems: 20
+      items:
+        type: string
+        minLength: 1
+        maxLength: 80
+    socialLinks:
+      type: array
+      items:
+        $ref: ../person/SocialLink.yaml#/SocialLink
+    ratingOptions:
+      type: array
+      items:
+        $ref: ../person/RatingOption.yaml#/RatingOption
+    stats:
+      $ref: ../person/PersonStats.yaml#/PersonStats
+    avatarMediaId:
+      type: string
+      format: uuid
+    canEdit:
+      type: boolean
+    version:
+      type: integer
+      format: int64
+      minimum: 0
+    verified:
+      type: boolean
+    canClaim:
+      type: boolean
+    claimPending:
+      type: boolean
+    rating:
+      $ref: ./RatingState.yaml#/RatingState
+    reputationOverride:
+      $ref: ./Reputation.yaml#/Reputation

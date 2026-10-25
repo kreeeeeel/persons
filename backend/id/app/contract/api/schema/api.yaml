@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: Persons Id API
+  version: 0.1.0
+servers:
+- url: /
+paths:
+  /account/v1/profile:
+    $ref: ./account.yaml#/~1account~1v1~1profile
+  /v1/sessions/refresh:
+    $ref: ./id.yaml#/~1v1~1sessions~1refresh
+  /account/v1/avatar:
+    $ref: ./account.yaml#/~1account~1v1~1avatar
+  /account/v1/email:
+    $ref: ./account.yaml#/~1account~1v1~1email
+  /account/v1/email/complete:
+    $ref: ./account.yaml#/~1account~1v1~1email~1complete
+  /account/v1/password:
+    $ref: ./account.yaml#/~1account~1v1~1password
+  /v1/sessions/others:
+    $ref: ./account.yaml#/~1v1~1sessions~1others
+  /v1/registrations:
+    $ref: ./id.yaml#/~1v1~1registrations
+  /v1/challenges/{id}/verify:
+    $ref: ./id.yaml#/~1v1~1challenges~1{id}~1verify
+  /v1/challenges/{id}/resend:
+    $ref: ./id.yaml#/~1v1~1challenges~1{id}~1resend
+  /v1/registrations/complete:
+    $ref: ./id.yaml#/~1v1~1registrations~1complete
+  /v1/sessions:
+    $ref: ./id.yaml#/~1v1~1sessions
+  /v1/sessions/{id}:
+    $ref: ./id.yaml#/~1v1~1sessions~1{id}
+  /v1/me:
+    $ref: ./id.yaml#/~1v1~1me
+  /v1/me/avatar:
+    $ref: ./id.yaml#/~1v1~1me~1avatar
+  /internal/v1/sessions/introspect:
+    $ref: ./id.yaml#/~1internal~1v1~1sessions~1introspect
+  /internal/v1/users/{userId}/avatar:
+    $ref: ./id.yaml#/~1internal~1v1~1users~1{userId}~1avatar
+  /internal/v1/users/profiles:
+    $ref: ./id.yaml#/~1internal~1v1~1users~1profiles
+  /v1/recovery:
+    $ref: ./id.yaml#/~1v1~1recovery
+  /v1/recovery/complete:
+    $ref: ./id.yaml#/~1v1~1recovery~1complete
+  /v1/oauth/{provider}/authorization:
+    $ref: ./oauth.yaml#/~1v1~1oauth~1{provider}~1authorization
+  /v1/oauth/{provider}/complete:
+    $ref: ./oauth.yaml#/~1v1~1oauth~1{provider}~1complete
+  /internal/v1/admin/users:
+    $ref: ./admin.yaml#/~1internal~1v1~1admin~1users
+  /internal/v1/admin/users/{id}/access:
+    $ref: ./admin.yaml#/~1internal~1v1~1admin~1users~1{id}~1access
+  /internal/v1/admin/users/{id}/sessions:
+    $ref: ./admin.yaml#/~1internal~1v1~1admin~1users~1{id}~1sessions
+  /internal/v1/admin/users/{id}/profile:
+    $ref: ./admin.yaml#/~1internal~1v1~1admin~1users~1{id}~1profile
+components:
+  securitySchemes:
+    session:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Signed JWT backed by a revocable session. Browsers use a same-origin
+        BFF and HttpOnly cookie.
+    serviceJwt:
+      type: apiKey
+      in: header
+      name: X-Service-Authorization

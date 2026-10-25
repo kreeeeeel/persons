@@ -1,0 +1,21 @@
+{
+    "name": "@persons/dynamic-properties-client",
+    "version": "0.1.0",
+    "private": true,
+    "files": [".build/dist"],
+    "type": "module",
+    "main": "./.build/dist/index.js",
+    "types": "./.build/dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./.build/dist/index.d.ts",
+            "import": "./.build/dist/index.js"
+        }
+    },
+    "scripts": {
+        "build": "tsc -p tsconfig.json"
+    },
+    "devDependencies": {
+        "typescript": "5.9.3"
+    }
+}

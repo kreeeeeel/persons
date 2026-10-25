@@ -1,0 +1,47 @@
+spec:
+  inputs:
+    source_project:
+      default: '$CI_PROJECT_PATH'
+    source_sha:
+      default: '$CI_COMMIT_SHA'
+---
+stages: [verify]
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
+
+.integration:
+  stage: verify
+  interruptible: true
+  trigger:
+    project: te-eshche-lyudi/infrastructure
+    branch: main
+    strategy: mirror
+    inputs:
+      component_project: '$[[ inputs.source_project | expand_vars ]]'
+      component_sha: '$[[ inputs.source_sha | expand_vars ]]'
+    forward:
+      yaml_variables: false
+      pipeline_variables: false
+
+integration:
+  extends: .integration
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      when: never
+    - when: on_success
+  trigger:
+    inputs:
+      component_release: 'false'
+
+integration-release:
+  extends: .integration
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  trigger:
+    inputs:
+      component_release: 'true'

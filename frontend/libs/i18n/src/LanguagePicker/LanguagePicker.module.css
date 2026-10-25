@@ -1,0 +1,51 @@
+.root {
+    animation: pickerEnter 300ms ease both;
+}
+
+.switcher {
+    --g-button-padding: 8px;
+}
+
+.popup {
+    --g-popup-border-width: 0px;
+}
+
+.choice {
+    height: 100%;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    line-height: 24px;
+}
+
+.skeleton {
+    width: 108px;
+    height: 36px;
+    border-radius: 8px;
+}
+
+@media (pointer: coarse) {
+    .switcher {
+        --g-button-height: 44px;
+    }
+
+    .skeleton {
+        height: 44px;
+    }
+}
+
+@keyframes pickerEnter {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .root {
+        animation: none;
+    }
+}

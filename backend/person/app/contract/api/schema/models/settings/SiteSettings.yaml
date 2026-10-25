@@ -1,0 +1,24 @@
+SiteSettings:
+  type: object
+  required: [marqueeEnabled]
+  properties:
+    marqueeEnabled:
+      type: boolean
+      description: Whether content notices are shown on public content pages.
+    supportEmail:
+      type: string
+      maxLength: 254
+    operatorNames:
+      type: object
+      additionalProperties:
+        type: string
+    catalogPageSize:
+      type: integer
+      minimum: 1
+      maximum: 60
+    noticeTexts:
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          type: string

@@ -1,0 +1,48 @@
+.frame {
+    min-width: 0;
+    overflow-x: auto;
+    border-radius: 16px;
+    background: var(--persons-surface);
+}
+
+.empty {
+    padding: 48px 24px;
+    text-align: center;
+}
+
+.skeleton {
+    width: 100%;
+    height: 56px;
+}
+
+.frame :global([class~='g-table']) {
+    width: 100%;
+    font-size: 16px;
+}
+
+.frame :global([class~='g-table__cell']) {
+    padding: 16px 8px;
+    white-space: normal;
+}
+
+.frame :global([class~='g-table__cell_head']) {
+    font-weight: 600;
+    color: var(--g-color-text-secondary);
+    background: transparent;
+}
+
+.frame :global([class~='g-table__row_interactive']) {
+    cursor: pointer;
+}
+
+.frame :global([class~='g-table__row_interactive']):hover {
+    background: var(--g-color-base-generic-hover);
+}
+
+.frame :global([class~='g-table__cell']):first-child {
+    padding-left: 24px;
+}
+
+.frame :global([class~='g-table__cell']):last-child {
+    padding-right: 24px;
+}

@@ -1,0 +1,26 @@
+
+
+# Workspace build outputs and secrets
+**/.build/
+**/build/
+**/.gradle/
+**/.cache/
+**/node_modules/
+**/.next/
+**/.idea/
+**/test-results/
+**/playwright-report/
+**/out/
+.env
+**/.env.local
+**/.env.production
+**/.env.*.local
+release.env
+workspace.lock
+.workspace-paths.tmp
+*.pem
+*.key
+*.log
+*.tsbuildinfo
+*.iml
+!.env.example

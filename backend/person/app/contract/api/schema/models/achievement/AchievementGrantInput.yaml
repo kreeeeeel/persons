@@ -1,0 +1,16 @@
+AchievementGrantInput:
+  type: object
+  required:
+    - personIds
+  properties:
+    personIds:
+      type: array
+      items:
+        type: string
+        format: uuid
+      maxItems: 100
+      minItems: 1
+      uniqueItems: true
+    note:
+      type: string
+      maxLength: 500

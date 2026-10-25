@@ -1,0 +1,6 @@
+DeliveryStatus:
+  type: string
+  enum:
+    - QUEUED
+    - SENT
+    - FAILED

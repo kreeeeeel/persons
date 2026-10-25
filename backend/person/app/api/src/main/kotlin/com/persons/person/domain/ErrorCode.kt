@@ -1,0 +1,21 @@
+package com.persons.person.domain
+
+import org.springframework.http.HttpStatus
+
+enum class ErrorCode(val status: HttpStatus) {
+    INVALID_INPUT(HttpStatus.BAD_REQUEST),
+    UNAUTHORIZED(HttpStatus.UNAUTHORIZED),
+    FORBIDDEN(HttpStatus.FORBIDDEN),
+    PAGE_ACTION_RESTRICTED(HttpStatus.FORBIDDEN),
+    PERSON_NOT_FOUND(HttpStatus.NOT_FOUND),
+    CONTENT_NOT_FOUND(HttpStatus.NOT_FOUND),
+    SLUG_TAKEN(HttpStatus.CONFLICT),
+    CONFLICT(HttpStatus.CONFLICT),
+    PENDING_CHANGE(HttpStatus.CONFLICT),
+    TOO_MANY_PENDING(HttpStatus.TOO_MANY_REQUESTS),
+    UPLOAD_TOO_LARGE(HttpStatus.PAYLOAD_TOO_LARGE),
+    UNSUPPORTED_MEDIA(HttpStatus.UNSUPPORTED_MEDIA_TYPE),
+    RANGE_NOT_SATISFIABLE(HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE),
+    STORAGE_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE),
+    UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE),
+}

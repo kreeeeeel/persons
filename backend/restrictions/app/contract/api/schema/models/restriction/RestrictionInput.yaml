@@ -1,0 +1,18 @@
+RestrictionInput:
+  type: object
+  required: [scopes, reason]
+  properties:
+    scopes:
+      type: array
+      minItems: 1
+      maxItems: 7
+      uniqueItems: true
+      items:
+        $ref: ./RestrictionScope.yaml#/RestrictionScope
+    reason:
+      type: string
+      minLength: 3
+      maxLength: 1000
+    expiresAt:
+      type: string
+      format: date-time

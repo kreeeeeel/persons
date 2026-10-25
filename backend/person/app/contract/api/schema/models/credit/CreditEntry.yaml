@@ -1,0 +1,48 @@
+CreditEntry:
+  type: object
+  required:
+    - id
+    - kind
+    - description
+    - authorName
+    - createdAt
+    - canRemove
+  properties:
+    id:
+      type: string
+      format: uuid
+    kind:
+      $ref: ../credit/CreditKind.yaml#/CreditKind
+    description:
+      type: string
+      maxLength: 1000
+    authorName:
+      type: string
+      maxLength: 250
+    createdAt:
+      type: string
+      format: date-time
+    canRemove:
+      type: boolean
+    authorTag:
+      type: string
+    authorAvatarMediaId:
+      type: string
+      format: uuid
+    moderationStatus:
+      $ref: ../moderation/ModerationStatus.yaml#/ModerationStatus
+    likes:
+      type: integer
+      format: int64
+      minimum: 0
+    likedByMe:
+      type: boolean
+    dislikes:
+      type: integer
+      format: int64
+      minimum: 0
+    dislikedByMe:
+      type: boolean
+    authorAvatarUrl:
+      type: string
+      description: Current account avatar URL, versioned when account details change.

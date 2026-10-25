@@ -1,0 +1,9 @@
+ChangeAvatar:
+  type: object
+  required: [avatarBase64]
+  properties:
+    avatarBase64:
+      type: string
+      minLength: 1
+      maxLength: 400023
+      description: A 384 by 384 JPEG data URL produced by the shared photo editor.

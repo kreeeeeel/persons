@@ -1,0 +1,5 @@
+MediaReaction:
+  type: string
+  enum:
+    - LIKE
+    - DISLIKE

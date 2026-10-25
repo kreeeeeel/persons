@@ -1,0 +1,56 @@
+/v1/feed:
+  get:
+    tags: [feed]
+    operationId: listFeed
+    description: All existing published community content in descending creation order, with visibility and kind filtering before pagination. No per-page client fan-out or sample data.
+    parameters:
+      - name: page
+        in: query
+        schema: {type: integer, minimum: 0, maximum: 10000, default: 0}
+      - name: size
+        in: query
+        schema: {type: integer, minimum: 1, maximum: 50, default: 12}
+      - name: kind
+        in: query
+        schema:
+          $ref: ./models/feed/CommunityFeedFilter.yaml#/CommunityFeedFilter
+    responses:
+      '200':
+        description: Community feed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/feed/CommunityFeedPage.yaml#/CommunityFeedPage
+      '400':
+        description: Invalid pagination
+/v1/feed/comments:
+  get:
+    tags: [feed]
+    operationId: listCommentEvents
+    description: Published comments on published photos and moments of public pages. Pending edits are never exposed. Newest first with stable ordering, filtered before pagination.
+    parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+          maximum: 1000000
+      - name: size
+        in: query
+        schema:
+          type: integer
+          default: 12
+          minimum: 1
+          maximum: 60
+    responses:
+      '200':
+        description: Published media comment events
+        content:
+          application/json:
+            schema:
+              $ref: ./models/feed/CommentEventPage.yaml#/CommentEventPage
+      '400':
+        description: Invalid pagination
+      '503':
+        description: Temporarily unavailable

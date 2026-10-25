@@ -1,0 +1,25 @@
+#!/bin/sh
+set -eu
+
+if [ "$#" -ne 1 ] || [ "${#1}" -gt 254 ]; then
+    printf 'Usage: op email\n' >&2
+    exit 2
+fi
+case "$1" in
+    *@*.*) ;;
+    *) printf 'A valid account email is required.\n' >&2; exit 2 ;;
+esac
+
+project_dir=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
+cd "$project_dir"
+email=$1
+if [ -f "$project_dir/release.env" ]; then
+    docker compose --project-name persons-production --env-file "$project_dir/.env" \
+        --env-file "$project_dir/release.env" -f docker-compose.yaml -f docker/compose.production.yaml \
+        exec -T postgres psql -X --username=persons --dbname=id --set=ON_ERROR_STOP=1 \
+        --set="email=$email" --file=- < scripts/op.sql
+else
+    docker compose --env-file "$project_dir/.env" exec -T postgres \
+        psql -X --username=persons --dbname=id --set=ON_ERROR_STOP=1 \
+        --set="email=$email" --file=- < scripts/op.sql
+fi

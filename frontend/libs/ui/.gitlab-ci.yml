@@ -1,0 +1,4 @@
+include:
+  - project: te-eshche-lyudi/infrastructure
+    ref: main
+    file: /ci/component.yml

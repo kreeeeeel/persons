@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:54320/id}
+    username: ${DB_USER:persons}
+    password: ${DB_PASSWORD:persons-local}
+project:
+  id:
+    pepper: ${ID_PEPPER:local-development-pepper-change-before-deploy}
+    jwt-secret: ${ID_JWT_SECRET:local-development-user-jwt-secret-change-before-deploy}
+  internal:
+    jwt-secret: ${PROJECT_INTERNAL_JWT_SECRET:local-development-internal-jwt-secret-change-before-deploy}

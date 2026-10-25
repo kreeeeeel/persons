@@ -1,0 +1,51 @@
+PersonRating:
+  type: object
+  required:
+    - id
+    - value
+    - emoji
+    - authorName
+    - createdAt
+  properties:
+    mine:
+      type: boolean
+      description: Whether this rating belongs to the current user.
+    id:
+      type: string
+      format: uuid
+    value:
+      type: integer
+      minimum: 1
+      maximum: 5
+    emoji:
+      type: string
+    authorName:
+      type: string
+    authorTag:
+      type: string
+    authorAvatarMediaId:
+      type: string
+      format: uuid
+    createdAt:
+      type: string
+      format: date-time
+    comment:
+      type: string
+      maxLength: 1000
+    commentStatus:
+      $ref: ../moderation/ModerationStatus.yaml#/ModerationStatus
+    likes:
+      type: integer
+      format: int64
+      minimum: 0
+    likedByMe:
+      type: boolean
+    dislikes:
+      type: integer
+      format: int64
+      minimum: 0
+    dislikedByMe:
+      type: boolean
+    authorAvatarUrl:
+      type: string
+      description: Current account avatar URL, versioned when account details change.

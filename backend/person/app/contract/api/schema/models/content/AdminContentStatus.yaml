@@ -1,0 +1,3 @@
+AdminContentStatus:
+  type: string
+  enum: [PUBLISHED, PENDING, HIDDEN, DRAFT]

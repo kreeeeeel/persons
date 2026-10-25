@@ -1,0 +1,8 @@
+.actions {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: min(260px, 100%);
+    gap: 12px;
+    margin-top: 4px;
+}

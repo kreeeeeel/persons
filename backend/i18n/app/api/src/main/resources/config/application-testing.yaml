@@ -1,0 +1,15 @@
+springdoc:
+  swagger-ui:
+    enabled: false
+project:
+  observability:
+    bodies-enabled: ${PROJECT_LOG_BODIES:false}
+    masked-headers:
+    - x-service-authorization
+  internal:
+    jwt-secret: ${PROJECT_INTERNAL_JWT_SECRET}
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}

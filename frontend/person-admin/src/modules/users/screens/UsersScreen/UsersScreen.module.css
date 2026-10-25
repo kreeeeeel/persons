@@ -1,0 +1,36 @@
+.screen {
+    min-width: 0;
+}
+
+.identity {
+    min-width: 280px;
+}
+
+.details {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.avatar {
+    flex-shrink: 0;
+}
+
+.table {
+    overflow-x: auto;
+    background: var(--persons-surface);
+    border-radius: 16px;
+}
+
+.cell.cell {
+    padding: 16px 12px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.table :global([class~='g-table__cell']):first-child {
+    padding-left: 24px;
+}
+
+.table :global([class~='g-table__cell']):last-child {
+    padding-right: 24px;
+}

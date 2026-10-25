@@ -1,0 +1,16 @@
+.toolbar {
+    width: 100%;
+    min-width: 0;
+}
+
+.search {
+    flex: 0 1 340px;
+    width: 340px;
+    max-width: 100%;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    padding-inline: 8px;
+}

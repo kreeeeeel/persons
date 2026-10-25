@@ -1,0 +1,10 @@
+{
+  "generator": "Built-in image_gen; transparent_background: false",
+  "file": "sofa-friends-v1.webp",
+  "replaces": "play-football-v3.webp",
+  "identityReferences": [
+    "Tyamik (consented, original not included)",
+    "Artem (consented, original not included)"
+  ],
+  "prompt": "Use case: illustration-story. Asset type: full-width 16:9 homepage slideshow illustration for the friends website «Те ещё люди». Input image 1 is STYLE AND COMPOSITION reference only. Images 2 and 3 are consented identity references of the two ADULT friends Tyamik and Artem. Preserve their recognizable faces and proportions: Tyamik has a shaved head, Artem short dark hair. Completely new simple scene: the two friends sit comfortably SIDE BY SIDE on a plush sofa in a cozy modern living room, casually drinking beer and laughing together. Tyamik leans back relaxed holding ONE small amber beer bottle in his right hand. Artem sits beside him smiling with ONE beer bottle, naturally conversing. No posing for camera; friendly candid moment. Both entire heads, faces and their visible hands must be clearly readable and anatomically correct. Purple sweatshirt for Tyamik, muted blue hoodie for Artem. Keep all people, bottles, sofa and action within the RIGHT 55% of the frame. LEFT 45% must be completely empty softly lit lavender wall with a soft warm window shadow and ample calm negative space for the UI heading and search input. No tables, game equipment, screens or objects intruding into the left area. Match source's polished warm semi-realistic editorial painted illustration, recognizable human faces, gentle purple room tones and golden sunset light. Subtle plant far right only. Wide landscape 16:9 at eye level. No target, darts, football, sports field, labels, logos, captions, UI or watermark. Exactly TWO adult friends and TWO beer bottles."
+}

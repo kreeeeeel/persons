@@ -1,0 +1,25 @@
+.identity {
+    min-width: 0;
+}
+
+.identity > :first-child {
+    flex-shrink: 0;
+}
+
+.text {
+    min-width: 0;
+}
+
+.name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.tag {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 20px;
+}

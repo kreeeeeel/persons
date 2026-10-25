@@ -1,0 +1,15 @@
+SessionToken:
+  type: object
+  required:
+  - token
+  - expiresAt
+  - user
+  properties:
+    token:
+      type: string
+    expiresAt:
+      type: string
+      format: date-time
+    user:
+      $ref: ./User.yaml#/User
+

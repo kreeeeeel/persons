@@ -1,0 +1,29 @@
+Notification:
+  type: object
+  required:
+    - id
+    - kind
+    - personTag
+    - subject
+    - createdAt
+    - read
+  properties:
+    id:
+      type: string
+      format: uuid
+    kind:
+      $ref: ../notification/NotificationKind.yaml#/NotificationKind
+    personTag:
+      type: string
+      maxLength: 32
+    subject:
+      type: string
+      maxLength: 300
+    reason:
+      type: string
+      maxLength: 1000
+    createdAt:
+      type: string
+      format: date-time
+    read:
+      type: boolean

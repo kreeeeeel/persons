@@ -1,0 +1,3 @@
+AdminContentKind:
+  type: string
+  enum: [PERSON, PHOTO, MOMENT, AVATAR, COMMENT, CREDIT, RATING]

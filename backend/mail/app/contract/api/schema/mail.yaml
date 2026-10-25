@@ -1,0 +1,44 @@
+/internal/v1/messages:
+  post:
+    tags:
+    - mail
+    operationId: enqueueMail
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/mail/MailMessage.yaml#/MailMessage
+    responses:
+      '202':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/mail/MailReceipt.yaml#/MailReceipt
+      '400':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503':
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+    security:
+    - serviceJwt: []

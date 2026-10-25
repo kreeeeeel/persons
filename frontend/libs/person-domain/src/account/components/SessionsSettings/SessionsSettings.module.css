@@ -1,0 +1,32 @@
+.body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
+    gap: 14px;
+    padding-bottom: 24px;
+}
+
+.stack {
+    display: contents;
+}
+
+.title {
+    margin: 0;
+}
+
+.labelSkeleton {
+    height: 24px;
+    width: 180px;
+}
+
+.buttonSkeleton {
+    height: 44px;
+    border-radius: 10px;
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}

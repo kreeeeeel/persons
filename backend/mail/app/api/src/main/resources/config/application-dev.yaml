@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:54320/mail}
+    username: ${DB_USER:persons}
+    password: ${DB_PASSWORD:persons-local}
+  mail:
+    host: ${SMTP_HOST:localhost}
+    port: ${SMTP_PORT:1025}
+    properties:
+      mail.smtp.auth: ${SMTP_AUTH:false}
+      mail.smtp.starttls.enable: ${SMTP_STARTTLS:false}
+      mail.smtp.starttls.required: ${SMTP_STARTTLS_REQUIRED:${SMTP_STARTTLS:false}}
+project:
+  mail:
+    from: ${MAIL_FROM:Persons <hello@persons.local>}
+  internal:
+    jwt-secret: ${PROJECT_INTERNAL_JWT_SECRET:local-development-internal-jwt-secret-change-before-deploy}

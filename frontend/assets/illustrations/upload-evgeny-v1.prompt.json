@@ -1,0 +1,9 @@
+{
+  "tool": "OpenAI built-in image generation",
+  "asset": "illustrations/upload-evgeny-v1.webp",
+  "references": [
+    "consented Evgeniy photograph (local only, not included)",
+    "illustrations/empty-achievements-evgeny-v2.webp"
+  ],
+  "prompt": "Use the consented Evgeniy photograph as the identity reference, preserving his recognizable face, hair and proportions. Match the soft painted, humorous illustration style of the supplied existing project illustration. Evgeniy wears a beige hoodie and uploads floating photo and video file cards to a purple cloud with an upload arrow, beside a laptop. Centered compact composition suitable for a file drop zone. Friendly expression, clean silhouette, detailed face. Purple brand accents, warm neutral colors. One person only. No text, no logos, no additional people. Transparent background, no background scene or ground plane."
+}

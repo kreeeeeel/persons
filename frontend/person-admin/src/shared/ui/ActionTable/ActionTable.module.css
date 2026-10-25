@@ -1,0 +1,27 @@
+.switcher {
+    display: none;
+}
+
+.popup :global([class~='g-popup__content']) {
+    border: 0;
+}
+
+.trigger {
+    --g-button-padding: 0;
+    --g-button-background-color-hover: transparent;
+
+    width: 100%;
+    height: auto;
+    min-height: 32px;
+    text-align: left;
+}
+
+.trigger :global([class~='g-button__text']) {
+    margin: 0;
+    width: 100%;
+    white-space: normal;
+}
+
+.trigger:active {
+    transform: none;
+}

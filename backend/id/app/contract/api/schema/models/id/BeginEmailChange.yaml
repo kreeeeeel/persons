@@ -1,0 +1,14 @@
+BeginEmailChange:
+  type: object
+  required: [email, currentPassword, locale]
+  properties:
+    email:
+      type: string
+      format: email
+      maxLength: 254
+    currentPassword:
+      type: string
+      minLength: 1
+      maxLength: 72
+    locale:
+      $ref: ../common/LanguageCode.yaml#/LanguageCode

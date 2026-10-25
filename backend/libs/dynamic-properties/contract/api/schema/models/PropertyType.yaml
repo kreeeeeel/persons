@@ -1,0 +1,11 @@
+PropertyType:
+  type: "string"
+  enum:
+    - "STRING"
+    - "NUMBER"
+    - "BOOLEAN"
+    - "MAP"
+    - "JSON"
+    - "ROLLOUT"
+    - "DURATION"
+    - "INSTANT"

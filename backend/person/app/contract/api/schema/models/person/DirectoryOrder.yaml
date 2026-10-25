@@ -1,0 +1,4 @@
+DirectoryOrder:
+  type: string
+  enum: [VIEWS, RATING, NEWEST, NAME]
+  default: VIEWS

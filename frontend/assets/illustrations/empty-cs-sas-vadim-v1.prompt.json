@@ -1,0 +1,10 @@
+{
+    "tool": "image_gen.imagegen",
+    "date": "2026-10-23",
+    "reference": "illustrations/cookies-vadim-v1.webp",
+    "consent": "Existing consented Vadim asset from the current task; no original photograph included.",
+    "prompt": "Use only Vadim's face from the reference. Vadim as a Counter-Strike SAS soldier in navy tactical uniform, seated with crossed legs, shrugging with open palms. Keep his uncovered human head and recognizable face. Isolated UI illustration, transparent background. No logo, no outline, no purple glow, no shadow or floor.",
+    "refinement": "Preserve the soldier and remove every background, gradient, haze, halo and cast shadow outside his silhouette. Genuine alpha transparency, clean hair and clothing edges.",
+    "output": "empty-cs-sas-vadim-v1.webp",
+    "postprocessing": "Resize within 640x640 and WebP encoding only; alpha retained. Transparency verified on white."
+}

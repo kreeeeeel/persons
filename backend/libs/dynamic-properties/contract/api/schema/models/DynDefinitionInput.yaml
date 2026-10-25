@@ -1,0 +1,27 @@
+DynDefinitionInput:
+  type: "object"
+  required:
+    - "key"
+    - "type"
+    - "defaultValue"
+    - "description"
+    - "publicValue"
+    - "schema"
+  properties:
+    key:
+      type: "string"
+      pattern: "^[a-zA-Z][a-zA-Z0-9.]{0,119}$"
+    type:
+      $ref: "./PropertyType.yaml#/PropertyType"
+    defaultValue:
+      type: "string"
+      maxLength: 16384
+    description:
+      type: "string"
+      maxLength: 1000
+    publicValue:
+      type: "boolean"
+    schema:
+      type: "string"
+      maxLength: 16384
+      description: "JSON schema used for library-owned value validation."

@@ -1,0 +1,10 @@
+{
+    "tool": "Built-in image_gen",
+    "references": [
+        "степа.jpg (consented identity reference, not committed)",
+        "empty-notifications-stepa-v2.webp (style reference only)"
+    ],
+    "file": "search-pages-stepa-v1.webp",
+    "prompt": "Use case: identity-preserve / illustration-story. Create a NEW finished transparent website illustration for the empty state of a page search / publication destination picker. Image 1 is the consented identity reference for Stepa: preserve his recognizable fair face, light blue eyes, narrow facial structure, red-and-white checked headscarf under a dark cap, black tracksuit with white stripes. Image 2 is STYLE reference only: match its polished warm semi-realistic painted illustration, expressive face and subtle violet highlights. Make a completely different scene and pose: waist-up Stepa curiously inspecting a small floating rounded profile-page card through an oversized purple magnifying glass. The blank card contains only a simple avatar silhouette and a few abstract horizontal strokes, no readable writing. His amused curious expression and the large magnifying glass should read clearly at 240px wide. Anatomically natural hands, one hand holds the magnifier, the other gently supports the card. Centered compact composition, whole head and all hands fully in frame with small breathing room. Warm skin, dark neutral clothing, brand purple props. One person only. No bell, no copied notification pose, no floor, no background scene, no extra people, no logos, no text, no watermark. Real transparent alpha background, clean cutout edges. Landscape 4:3 composition.",
+    "preparation": "Resized to 640px wide and encoded as WebP with transparent alpha; original generated PNG stays outside the repository."
+}

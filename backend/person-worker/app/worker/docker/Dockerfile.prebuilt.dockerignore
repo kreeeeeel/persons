@@ -1,0 +1,8 @@
+**
+!backend/
+!backend/person-worker/
+!backend/person-worker/app/
+!backend/person-worker/app/worker/
+!backend/person-worker/app/worker/.build/
+!backend/person-worker/app/worker/.build/libs/
+!backend/person-worker/app/worker/.build/libs/worker-0.1.0.jar

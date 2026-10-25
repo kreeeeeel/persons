@@ -1,0 +1,37 @@
+.root {
+    width: 100%;
+    padding-top: 8px;
+}
+
+.button {
+    --g-button-padding: 12px;
+
+    height: auto;
+    min-height: 48px;
+    line-height: 24px;
+}
+
+.provider {
+    padding: 9px 0;
+}
+
+.label {
+    min-width: 0;
+    white-space: normal;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    color: #fff;
+    background: #f43;
+    font-size: 21px;
+    font-weight: 600;
+}

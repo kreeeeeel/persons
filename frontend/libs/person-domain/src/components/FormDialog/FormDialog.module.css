@@ -1,0 +1,16 @@
+.modal {
+    --g-modal-max-width: 400px;
+    --g-modal-margin: 16px;
+    --g-modal-border-radius: 24px;
+}
+
+.modal .body {
+    padding-bottom: 24px;
+}
+
+@media (width <= 460px) {
+    .modal :global([class~="g-dialog-footer__bts-wrapper"]) {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+}

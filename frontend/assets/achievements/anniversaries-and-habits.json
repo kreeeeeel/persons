@@ -1,0 +1,86 @@
+{
+  "generator": "Built-in image_gen; transparent_background: true",
+  "styleReferences": ["developer-v1.png", "pleasant-person-v1.png"],
+  "basePrompt": "Use case: stylized-concept. Asset type: one individual collectible achievement badge for the friends community website 'Те ещё люди'. The two input images are STYLE REFERENCES ONLY, not edit targets. Match the existing collection's premium playful glossy 3D enamel style: thick rounded polished metal rim, domed sculptural enamel relief, tactile smooth surfaces, crisp silhouette readable at 96px. Center ONE complete standalone emblem in a square composition, occupying roughly 75% of the canvas with generous transparent margins. Near-frontal view with subtle depth. Genuine transparent alpha outside the badge. No scene, rectangular image backdrop, pedestal, floor, or cast shadow outside the emblem. No watermark, brand logo, human portrait, tiny writing, or extra badges. The numbered anniversary series shares one coherent rounded medal silhouette and typography, but each year must have a visibly distinct dominant enamel color. ",
+  "assets": [
+    {
+      "key": "page-age-1",
+      "file": "page-age-1-v1.png",
+      "title": "Первый год среди своих",
+      "description": "Страница существует уже один год. История только начинается.",
+      "type": "AUTOMATIC",
+      "pageAgeYears": 1,
+      "prompt": "Create the FIRST anniversary medal: luminous emerald-green and mint enamel with a polished warm silver rim. A large beautifully sculpted silver numeral '1' is the clear central subject, with a small white page-shaped emblem behind its lower edge, two tidy laurel sprigs and one tiny gold star. Fresh, welcoming, celebratory. Exactly one digit: 1. No other letters or words. Keep the numeral fully legible and the entire badge uncropped."
+    },
+    {
+      "key": "page-age-2",
+      "file": "page-age-2-v1.png",
+      "title": "Два года на связи",
+      "description": "Два года общих историй и своих людей на этой странице.",
+      "type": "AUTOMATIC",
+      "pageAgeYears": 2,
+      "prompt": "Create the SECOND anniversary medal in the same coherent family as a premium circular enamel anniversary medal: rich sapphire-blue and icy cyan enamel with a polished silver rim. A large beautifully sculpted silver numeral '2' is the clear central subject, with a small white page-shaped emblem behind its lower edge, two tidy laurel sprigs and two tiny gold stars. Joyful, confident, collectible. Exactly one digit: 2. No other letters or words. Keep the numeral fully legible and the entire badge uncropped."
+    },
+    {
+      "key": "page-age-3",
+      "file": "page-age-3-v1.png",
+      "title": "Три года своей истории",
+      "description": "Странице три года. Здесь уже накопилось что вспомнить.",
+      "type": "AUTOMATIC",
+      "pageAgeYears": 3,
+      "prompt": "Create the THIRD anniversary medal in the same coherent premium circular enamel medal family: rich amethyst-purple and lilac enamel with a polished rose-gold rim. A large beautifully sculpted rose-gold numeral '3' is the clear central subject, with a small white page-shaped emblem behind its lower edge, two tidy laurel sprigs and three tiny gold stars. Elegant, warm, celebratory. Exactly one digit: 3. No other letters or words. Keep the numeral fully legible and the entire badge uncropped."
+    },
+    {
+      "key": "page-age-4",
+      "file": "page-age-4-v1.png",
+      "title": "Четыре года в компании",
+      "description": "Четыре года среди своих — уже отдельная глава общей истории.",
+      "type": "AUTOMATIC",
+      "pageAgeYears": 4,
+      "prompt": "Create the FOURTH anniversary medal in the same coherent premium circular enamel medal family: deep ruby-red and coral enamel with a polished pale-gold rim. A large beautifully sculpted pale-gold numeral '4' is the clear central subject, with a small white page-shaped emblem behind its lower edge, two tidy laurel sprigs and four tiny gold stars. Rich, playful, celebratory. Exactly one digit: 4. No other letters or words. Keep the numeral fully legible and the entire badge uncropped."
+    },
+    {
+      "key": "page-age-5",
+      "file": "page-age-5-v1.png",
+      "title": "Пять лет. Уже легенда",
+      "description": "Первый большой юбилей: страница существует пять лет.",
+      "type": "AUTOMATIC",
+      "pageAgeYears": 5,
+      "prompt": "Create the FIFTH anniversary medal, the prestigious capstone of the same coherent circular enamel anniversary family: honey-gold and amber enamel, rich champagne highlights, a thick polished gold rim and a small tasteful crown at the top. A large beautifully sculpted ivory-and-gold numeral '5' is the clear central subject, with a small white page-shaped emblem behind its lower edge, two elegant gold laurel sprigs and five tiny jewel stars. Luxurious but cheerful, an earned five-year celebration. Exactly one digit: 5. No other letters or words. Keep the numeral fully legible and the entire badge uncropped."
+    },
+    {
+      "key": "drink-lover",
+      "file": "drink-lover-v1.png",
+      "title": "Любитель выпить",
+      "description": "Знает, с кем поднять бокал и какую историю рассказать за столом.",
+      "type": "MANUAL",
+      "prompt": "A warm amber-and-copper rounded-square enamel badge: two small frosty glass beer mugs clink together, with beautifully sculpted creamy foam and a few tiny celebratory sparkles. Charming playful collectible, golden translucent-looking enamel beer, thick copper rim, violet accents connecting it to the existing collection. No person, no brand, no lettering, no numbers. One coherent emblem with a clean readable silhouette."
+    },
+    {
+      "key": "borrow-lover",
+      "file": "borrow-lover-v2.png",
+      "title": "Любитель занимать",
+      "description": "«До завтра» — его любимая единица времени.",
+      "type": "MANUAL",
+      "identityReference": "Evgeniy (consented reference, original not included)",
+      "fullPrompt": "Use case: identity-preserve. Asset type: replacement collectible achievement badge «Любитель занимать» for the friends community website «Те ещё люди». Image 1 is the consenting adult Evgeniy's FACE IDENTITY REFERENCE. Image 2 is the OLD BADGE and STYLE/PALETTE REFERENCE. Replace the fox mascot with Evgeniy's unmistakable sad face. Preserve his actual facial identity and proportions: very short dark brown hair brushed upward, high forehead, broad oval face, straight nose, dark eyes and characteristic lips. Make a believable melancholy, pleading expression with slightly raised inner eyebrows and gently downturned mouth, looking directly at us. Keep him recognizable and handsome, with realistic facial relief rather than a generic man or caricature. His beige hoodie may appear as a small bust below the head. He presents one open EMPTY purple wallet toward the viewer; a small polished golden return arrow curves beside it, visually suggesting borrowing and 'I'll return it tomorrow'. The face is the main subject and fills most of the badge, the wallet is a clear secondary symbol. Match the old collection's premium playful glossy sculpted enamel style: rich turquoise and lime enamel, purple accents, a thick rounded polished teal-and-gold circular/rounded-shield rim, smooth 3D relief with crisp readable silhouette at 96px. Warm sympathetic humor, visibly SAD rather than smiling. One centered compact coherent badge, complete uncropped silhouette, near-frontal view, generous clear margins on square canvas. Genuine transparent alpha outside the emblem. No fox, bird, animal, other person, scenery, rectangular background, floor, cast shadow outside badge, money amounts, currency symbols, words, numbers or watermark. The identity photo is only a face reference; do not copy its classroom, ceiling or camera angle."
+    },
+    {
+      "key": "daylight-fear",
+      "file": "daylight-fear-v1.png",
+      "title": "Боится дневного света",
+      "description": "Просыпается ближе к вечеру. Солнце пока в списке подозреваемых.",
+      "type": "MANUAL",
+      "prompt": "A midnight-navy and icy-lavender rounded shield enamel badge: one adorable sleepy vampire bat wraps itself in its wings and peeks from behind a tiny purple curtain, shielding its eyes from one small cheerful golden sun at the upper corner. A silver crescent moon balances the lower corner. Funny nocturnal homebody mood, not frightening. Thick polished silver rim, glossy dimensional enamel, strong compact silhouette. No human portrait, words, letters, or digits. One coherent emblem, no scenery outside it."
+    },
+    {
+      "key": "old-miller-lightweight",
+      "file": "old-miller-lightweight-v1.png",
+      "title": "Улетает со Старого Мельника",
+      "description": "Достаточно вдохнуть рядом — и вечер уже поплыл.",
+      "type": "MANUAL",
+      "identityReference": "Vadim (consented reference, original not included)",
+      "fullPrompt": "Use case: identity-preserve. Asset type: one individual collectible achievement badge for the friends community website «Те ещё люди». Image 1 is the consenting adult Vadim's FACE IDENTITY REFERENCE. Image 2 is a STYLE REFERENCE only. Create a beautiful humorous achievement «Улетает со Старого Мельника»: Vadim gets tipsy merely from smelling the beer. His very recognizable face from Image 1 is the main sculpted enamel portrait of this badge: preserve his distinctive long light-brown side-parted hair, long nose, eye spacing, facial proportions and characteristic downturned pout; remove the white cream from his face and preserve the face underneath. He has rosy cheeks, heavy tipsy eyelids and a comically blissful dazed expression. A small opened green beer bottle next to his cheek gives off a tiny aromatic curl toward his nose; he has not taken a sip. On the cream bottle label show a small windmill and «Старый Мельник». Two tiny gold stars and a little upward swoosh suggest he is instantly floating. NO bird, animal or substitute mascot. His face must remain convincingly the SAME Vadim rather than a generic cartoon man. Premium playful glossy 3D enamel relief matching Image 2, thick rounded polished champagne-silver rim, cobalt-blue and turquoise rounded shield silhouette, warm amber accents. One compact coherent emblem, near-frontal view, centered on square canvas, entirely uncropped with generous margins. True transparent alpha outside emblem. No rectangular background, scene, floor, cast shadow outside badge, watermark, extra words or numbers. Readable at 96 pixels.\n"
+    }
+  ]
+}

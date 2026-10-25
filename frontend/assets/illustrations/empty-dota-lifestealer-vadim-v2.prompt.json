@@ -1,0 +1,9 @@
+{
+    "tool": "image_gen.imagegen",
+    "date": "2026-10-23",
+    "reference": "illustrations/cookies-vadim-v1.webp",
+    "consent": "Existing consented Vadim asset from the current task; no original photograph included.",
+    "prompt": "Use only Vadim's face from the reference. Vadim as Lifestealer from Dota, crouching with a monstrous body and claws, looking at his hands. Preserve his uncovered recognizable human head. Isolated UI illustration on transparent background, no branding, no logo, no outline, no glow, no cast shadow.",
+    "output": "empty-dota-lifestealer-vadim-v2.webp",
+    "postprocessing": "Resize within 640x640 and WebP encoding only; alpha retained."
+}

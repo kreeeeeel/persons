@@ -1,0 +1,30 @@
+{
+    "name": "@persons/assets",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "test": "node --test tests/*.test.mts"
+    },
+    "files": [
+        "fonts.ts",
+        "brand.ts",
+        "copyAssetIfChanged.mjs",
+        "copyAssetIfChanged.d.mts",
+        "fonts/GolosText.woff2",
+        "fonts/OFL-GolosText.txt",
+        "*.svg",
+        "icons/",
+        "illustrations/",
+        "README.md",
+        "social/"
+    ],
+    "exports": {
+        "./brand": "./brand.ts",
+        "./fonts": "./fonts.ts",
+        "./copyAssetIfChanged": "./copyAssetIfChanged.mjs",
+        "./*": "./*"
+    },
+    "peerDependencies": {
+        "next": "^16.4.0"
+    }
+}

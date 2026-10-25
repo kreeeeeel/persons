@@ -1,0 +1,56 @@
+.anchor {
+    position: fixed;
+    left: max(12px, env(safe-area-inset-left));
+    top: 50%;
+    z-index: 90;
+    transform: translateY(-50%);
+}
+
+.trigger {
+    --g-button-height: 48px;
+    --g-button-padding: 0;
+
+    width: 48px;
+    height: 48px;
+    color: var(--g-color-text-brand);
+    background: transparent;
+    box-shadow: none;
+}
+
+.trigger::before,
+.trigger:hover::before,
+.trigger:active::before {
+    background: transparent;
+}
+
+.trigger > :global([class~="g-button__text"]) {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: 0;
+    line-height: 0;
+}
+
+.trigger svg path {
+    stroke: currentcolor;
+    stroke-width: 0.3px;
+    stroke-linejoin: round;
+}
+
+.popup {
+    z-index: 100;
+    max-width: calc(100vw - 24px);
+}
+
+@media (width <= 600px) {
+    .anchor {
+        left: 8px;
+    }
+
+    .trigger {
+        --g-button-height: 40px;
+
+        width: 40px;
+        height: 40px;
+    }
+}

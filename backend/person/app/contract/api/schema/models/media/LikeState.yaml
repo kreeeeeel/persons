@@ -1,0 +1,18 @@
+LikeState:
+  type: object
+  required:
+    - count
+    - liked
+  properties:
+    count:
+      type: integer
+      format: int64
+      minimum: 0
+    liked:
+      type: boolean
+    dislikes:
+      type: integer
+      format: int64
+      minimum: 0
+    disliked:
+      type: boolean

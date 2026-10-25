@@ -1,0 +1,28 @@
+DynamicProperty:
+  type: "object"
+  required:
+    - "key"
+    - "type"
+    - "value"
+    - "revision"
+  properties:
+    key:
+      type: "string"
+      maxLength: 120
+    type:
+      $ref: "./PropertyType.yaml#/PropertyType"
+    value:
+      type: "string"
+      description: "The JSON-encoded current value."
+    revision:
+      type: "integer"
+      format: "int64"
+    defaultValue:
+      type: "string"
+    description:
+      type: "string"
+    publicValue:
+      type: "boolean"
+    updatedAt:
+      type: "string"
+      format: "date-time"

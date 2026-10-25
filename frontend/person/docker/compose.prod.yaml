@@ -1,0 +1,7 @@
+services:
+  person-web:
+    build:
+      target: runtime
+    image: persons-person-web:local
+    environment:
+      APP_ENV: prod

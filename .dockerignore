@@ -1,0 +1,15 @@
+.git
+**/.git
+.idea
+.build
+**/.build
+**/build
+**/node_modules
+**/.gradle
+**/.next
+**/.idea
+**/test-results
+**/playwright-report
+frontend/*/docker
+**/.env*
+.env

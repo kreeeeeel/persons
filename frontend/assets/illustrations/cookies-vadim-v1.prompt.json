@@ -1,0 +1,7 @@
+{
+  "tool": "Built-in image_gen",
+  "reference": "empty-loans-vadim-v3.webp (existing consented illustration)",
+  "file": "cookies-vadim-v1.webp",
+  "prompt": "Edit the provided existing consented brand illustration of Vadim. Preserve the EXACT recognizable facial identity, light brown long fringe hairstyle, skin tone, purple hoodie and polished warm painted illustration style. Create a compact waist-up cutout illustration for a website cookie choice banner: Vadim is happily taking a bite from a large chocolate chip cookie held near his mouth, looking slightly amused at the viewer. Remove the wallet and empty-hand gesture entirely. Natural anatomically correct hands. One person only, no other objects, no writing, no logos. Transparent background with clean alpha edges, no backdrop and no floor. Portrait/square compact composition, whole head and shoulders fit with a little margin; cookie clearly visible even at 120 pixels tall. New facial expression can be subtly pleased while preserving the same face. Output one finished transparent image.",
+  "preparation": "WebP at 384px for the 112px cookie notice; original generated PNG stays outside the repository."
+}

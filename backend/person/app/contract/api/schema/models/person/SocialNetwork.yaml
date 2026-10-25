@@ -1,0 +1,6 @@
+SocialNetwork:
+  type: string
+  enum:
+    - TELEGRAM
+    - STEAM
+    - DISCORD

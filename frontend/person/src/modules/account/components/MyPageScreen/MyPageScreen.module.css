@@ -1,0 +1,27 @@
+.page {
+    min-height: 100dvh;
+    background: var(--persons-background);
+}
+
+.content {
+    width: min(100% - 32px, 680px);
+    min-height: 100dvh;
+    margin-inline: auto;
+    padding-block: 120px 40px;
+    justify-content: center;
+    text-align: center;
+}
+
+.content h1 {
+    margin: 0;
+}
+
+.art {
+    width: min(100%, 380px);
+}
+
+.description {
+    max-width: 560px;
+    font-size: 18px;
+    line-height: 1.6;
+}

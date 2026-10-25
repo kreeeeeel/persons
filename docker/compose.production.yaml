@@ -1,0 +1,110 @@
+# Requires Docker Compose >= 2.24.4 for !reset. Runtime values live only on the server.
+services:
+  mailpit:
+    profiles: [local-mail]
+  minio-init:
+    build: !reset null
+    image: ${IMAGE_PREFIX:?Registry image prefix is required}/assets:${ASSETS_IMAGE_TAG:-${RELEASE_SHA:?Release SHA is required}}
+    volumes: !reset []
+  id:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/id:${ID_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: -XX:+ExitOnOutOfMemoryError
+      YANDEX_REDIRECT_URI: ${YANDEX_REDIRECT_URI:-}
+  mail:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/mail:${MAIL_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: -XX:+ExitOnOutOfMemoryError
+      SMTP_HOST: ${SMTP_HOST:?SMTP_HOST is required}
+      SMTP_PORT: ${SMTP_PORT:?SMTP_PORT is required}
+      MAIL_FROM: ${MAIL_FROM:?MAIL_FROM is required}
+    depends_on: !override
+      postgres:
+        condition: service_healthy
+  i18n:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/i18n:${I18N_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: -XX:+ExitOnOutOfMemoryError
+  person:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/person:${PERSON_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: -XX:+ExitOnOutOfMemoryError
+  person-worker:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/person-worker:${PERSON_WORKER_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: -XX:+ExitOnOutOfMemoryError
+  id-web:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/id-web:${ID_WEB_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:3000:3000
+    environment:
+      SESSION_COOKIE_DOMAIN: ${SESSION_COOKIE_DOMAIN:?SESSION_COOKIE_DOMAIN is required}
+      PUBLIC_URL: ${PUBLIC_ID_URL:?PUBLIC_ID_URL is required}
+      ID_PUBLIC_URL: ${PUBLIC_ID_URL}
+      ADMIN_PUBLIC_URL: ${PUBLIC_ADMIN_URL:?PUBLIC_ADMIN_URL is required}
+      PERSON_PUBLIC_URL: ${PUBLIC_PERSON_URL:?PUBLIC_PERSON_URL is required}
+  person-web:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/person-web:${PERSON_WEB_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:3002:3000
+    environment:
+      SESSION_COOKIE_DOMAIN: ${SESSION_COOKIE_DOMAIN}
+      PUBLIC_URL: ${PUBLIC_PERSON_URL}
+      ID_PUBLIC_URL: ${PUBLIC_ID_URL}
+      ADMIN_PUBLIC_URL: ${PUBLIC_ADMIN_URL}
+  person-admin-web:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/person-admin-web:${PERSON_ADMIN_WEB_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:3001:3000
+    environment:
+      SESSION_COOKIE_DOMAIN: ${SESSION_COOKIE_DOMAIN}
+      PUBLIC_URL: ${PUBLIC_ADMIN_URL}
+      ID_PUBLIC_URL: ${PUBLIC_ID_URL}
+      PERSON_PUBLIC_URL: ${PUBLIC_PERSON_URL}
+  postgres:
+    restart: unless-stopped
+  minio:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/minio:${MINIO_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+  web-gateway:
+    profiles: [local-gateway]
+    ports: !reset []
+  properties-redis:
+    restart: unless-stopped
+    ports: !reset []
+  redis:
+    restart: unless-stopped
+    ports: !reset []
+  restrictions:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/restrictions:${RESTRICTIONS_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+    mem_limit: 512m
+    memswap_limit: 1024m
+    environment:
+      JAVA_TOOL_OPTIONS: -XX:MaxRAMPercentage=50 -XX:+ExitOnOutOfMemoryError
+  gateway:
+    build: !reset null
+    image: ${IMAGE_PREFIX}/gateway:${GATEWAY_IMAGE_TAG:-${RELEASE_SHA}}
+    restart: unless-stopped
+    mem_limit: 512m
+    memswap_limit: 1024m
+    environment:
+      JAVA_TOOL_OPTIONS: -XX:MaxRAMPercentage=50 -XX:+ExitOnOutOfMemoryError

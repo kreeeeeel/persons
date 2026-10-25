@@ -1,0 +1,8 @@
+project:
+  internal:
+    jwt-secret: tests-internal-jwt-secret-at-least-thirty-two-characters
+spring:
+  datasource:
+    url: jdbc:h2:mem:i18n;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ''

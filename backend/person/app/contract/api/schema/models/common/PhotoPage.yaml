@@ -1,0 +1,22 @@
+PhotoPage:
+  type: object
+  required:
+    - items
+    - total
+    - page
+    - size
+  properties:
+    items:
+      type: array
+      items:
+        $ref: ../media/Photo.yaml#/Photo
+    total:
+      type: integer
+      format: int64
+      minimum: 0
+    page:
+      type: integer
+      minimum: 0
+    size:
+      type: integer
+      minimum: 1

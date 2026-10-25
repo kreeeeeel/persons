@@ -1,0 +1,32 @@
+{
+  "ru": {
+    "registerTitle": "Подтвердим вашу почту",
+    "registerText": "Остался один шаг до ваших Персонажей. Введите этот код в приложении.",
+    "registerSubject": "Персонажи — подтверждение почты",
+    "recoveryTitle": "Вернём доступ к аккаунту",
+    "recoveryText": "Введите код, чтобы задать новый пароль.",
+    "recoverySubject": "Персонажи — восстановление доступа",
+    "emailChangeTitle": "Новая почта для вашего аккаунта",
+    "emailChangeText": "Введите код для подтверждения нового адреса.",
+    "emailChangeSubject": "Персонажи — смена почты",
+    "codeLabel": "Ваш код",
+    "expiry": "Код действует 10 минут. Никому его не сообщайте.",
+    "ignore": "Если вы не запрашивали это письмо, просто проигнорируйте его.",
+    "footer": "Персонажи · Сделано для своих"
+  },
+  "en": {
+    "registerTitle": "Confirm your email",
+    "registerText": "You are one step away. Enter this code in the app.",
+    "registerSubject": "Персонажи — confirm your email",
+    "recoveryTitle": "Recover your account",
+    "recoveryText": "Enter this code to set a new password.",
+    "recoverySubject": "Персонажи — password recovery",
+    "emailChangeTitle": "Confirm your new email",
+    "emailChangeText": "Enter this code to confirm your new address.",
+    "emailChangeSubject": "Персонажи — new email",
+    "codeLabel": "Your code",
+    "expiry": "This code expires in 10 minutes. Keep it private.",
+    "ignore": "If you did not request this email, you can ignore it.",
+    "footer": "Персонажи · Made for your people"
+  }
+}

@@ -1,0 +1,18 @@
+.results {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.option {
+    height: auto;
+    padding: 8px;
+    text-align: start;
+}
+
+.option :global([class~='g-button__text']) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+}

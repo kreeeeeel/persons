@@ -1,0 +1,100 @@
+spec:
+  inputs:
+    component_project:
+      type: string
+      default: ''
+      description: 'Source project triggering integration; empty for infrastructure changes.'
+    component_sha:
+      type: string
+      default: ''
+      regex: '^([0-9a-f]{40})?$'
+    component_release:
+      type: string
+      default: 'false'
+      options: ['false', 'true']
+---
+stages: [prepare, integration]
+
+variables:
+  GIT_SUBMODULE_STRATEGY: none
+  UPSTREAM_PROJECT: '$[[ inputs.component_project ]]'
+  UPSTREAM_SHA: '$[[ inputs.component_sha ]]'
+  UPSTREAM_RELEASE: '$[[ inputs.component_release ]]'
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
+
+default:
+  interruptible: true
+  tags: [persons-local]
+
+include:
+  - local: ci/jobs.yml
+
+resolve:
+  stage: prepare
+  image: docker:28.5.1-cli
+  before_script:
+    - apk add --no-cache nodejs
+    - git config --global url."https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/".insteadOf "https://${CI_SERVER_HOST}/"
+    - printf '%s' "$CI_REGISTRY_PASSWORD" | docker login --username "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+  script:
+    - sh ci/workspace.sh resolve
+    - node ci/build-plan.mjs
+  artifacts:
+    expire_in: 2 days
+    paths: [workspace.lock, images.env, build-plan.json, generated-pipeline.yml]
+
+operations:
+  extends: .docker
+  stage: prepare
+  before_script:
+    - apk add --no-cache nodejs bash coreutils python3
+  script:
+    - sh -n scripts/op scripts/install-op.sh scripts/deploy-release.sh scripts/ci-deploy.sh scripts/render-nginx.sh scripts/update-geoip.sh scripts/migrate-restrictions.sh ci/build-backend.sh ci/build-frontend.sh ci/build-clients.sh
+    - node --test ci/tests/*.test.mjs
+    - sh scripts/tests/op.test.sh
+    - sh scripts/tests/deploy.test.sh
+    - sh scripts/tests/transfer-images.test.sh
+    - sh ci/tests/workspace.test.sh
+    - sh ci/tests/deploy-bundle.test.sh
+    - sh ci/tests/clients.test.sh
+    - sh scripts/tests/nginx.test.sh
+
+restriction-migration:
+  extends: .docker
+  stage: prepare
+  rules:
+    - if: '$UPSTREAM_PROJECT == ""'
+      changes:
+        - scripts/migrate-restrictions.sh
+        - scripts/tests/restrictions-migration.test.sh
+        - .gitlab-ci.yml
+  before_script:
+    - git config --global url."https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/".insteadOf "https://${CI_SERVER_HOST}/"
+    - git submodule update --init backend/restrictions
+  script:
+    - sh scripts/tests/restrictions-migration.test.sh
+
+components:
+  stage: integration
+  inherit:
+    default: false
+  interruptible: true
+  needs:
+    - resolve
+    - operations
+    - job: restriction-migration
+      optional: true
+  trigger:
+    include:
+      - artifact: generated-pipeline.yml
+        job: resolve
+    strategy: mirror
+    forward:
+      yaml_variables: true
+      pipeline_variables: false

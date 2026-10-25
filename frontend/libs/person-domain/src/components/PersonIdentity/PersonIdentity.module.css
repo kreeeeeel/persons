@@ -1,0 +1,31 @@
+.identity {
+    min-width: 0;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.text {
+    min-width: 0;
+}
+
+.identity + .identity {
+    margin-inline-start: 12px;
+}
+
+.name,
+.tag {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.name {
+    font-weight: 600;
+}
+
+.prominent {
+    font-size: 20px;
+    font-weight: 650;
+    line-height: 1.4;
+}

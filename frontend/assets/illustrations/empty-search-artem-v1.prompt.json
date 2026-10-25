@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-10-23",
+  "tool": "built-in image_gen",
+  "asset": "illustrations/empty-search-artem-v1.webp",
+  "identityReference": "артем.png (consented local reference at C:/Users/kreeeeeel/Desktop/люди/артем.png; not committed)",
+  "styleReferences": [
+    "illustrations/empty-wall-krel-v2.webp",
+    "illustrations/empty-comments-slava-v1.webp"
+  ],
+  "transparentBackground": true,
+  "prompt": "Use case: illustration-story. Asset type: one branded empty search / people catalog / recommendations state illustration for the Persons website «Те ещё люди».\nInput images: Image 1 is the ONLY identity reference: the consented photograph of Artem. Images 2 and 3 are STYLE references only, not identity references. Match their polished hand-painted editorial cartoon illustration, soft textured shading, clean silhouette and tasteful violet accents.\nPrimary request: draw the same recognizable adult man Artem from Image 1, leaning toward a small open card-index cabinet and examining its empty upright cream cards with a round magnifying glass. The cards must be plain and completely blank. His other hand holds up a blank card. He has mild friendly surprise and an inquisitive half-smile: he is looking carefully but has found no people yet. Keep the scene warm, playful and readable when displayed at 220 pixels wide.\nIdentity: preserve Artem's original facial proportions and distinct features from Image 1: extremely short dark buzz-cut hair with visible scalp, high broad forehead, dark pronounced eyebrows, pale skin, long oval face, slender straight nose with rounded tip, thin lips and slight asymmetrical knowing smile. Maintain an adult appearance and the same face; do not substitute a generic handsome man, beard, spectacles, long hair or different facial structure. Show the face fully, with the magnifying glass held near the cards, never hiding or magnifying the face. Clothing: simple muted purple crewneck sweatshirt.\nComposition: compact square composition with a waist-up Artem and the small open card-index box close to him, the face visually dominant. Entire hands, card box and magnifying glass visible, generous clear transparent margin on every side, no cropping. Only one man, one magnifying glass, one small card box, three blank cards.\nStyle: detailed recognizable portrait adapted into the friendly cartoon editorial painting style of Images 2 and 3; natural anatomy, clear warm linework, restrained violet and warm cream colors, soft brush shading limited to the objects themselves.\nBackground and constraints: genuinely transparent background, isolated alpha cutout. No cast shadow or ground shadow, no floor, no halo, no glow, no white sticker outline, no backdrop shape, no colored cloud or rectangle, no opaque background, no checkerboard drawn into the image. Absolutely no text, letters, numbers, logos, labels, watermark, symbol decoration or additional people. The empty state explanatory text will be rendered separately in the UI.",
+  "generation": {
+    "source": "C:/Users/kreeeeeel/.codex/generated_images/01a165bc-f114-7551-bc78-732706994110/exec-f4d8a534-1a4d-4290-9899-3cc1f3b41b13.png",
+    "referenced_image_paths": [
+      "C:/Users/kreeeeeel/Desktop/люди/артем.png",
+      "C:/Users/kreeeeeel/Desktop/persons/frontend/assets/illustrations/empty-wall-krel-v2.webp",
+      "C:/Users/kreeeeeel/Desktop/persons/frontend/assets/illustrations/empty-comments-slava-v1.webp"
+    ],
+    "transparent_background": true
+  },
+  "output": {
+    "width": 640,
+    "height": 640,
+    "format": "webp",
+    "hasAlpha": true
+  },
+  "encoding": {
+    "tool": "sharp",
+    "resize": {
+      "width": 640,
+      "height": 640,
+      "fit": "inside",
+      "withoutEnlargement": true
+    },
+    "webp": {
+      "quality": 92,
+      "alphaQuality": 100,
+      "effort": 6
+    }
+  }
+}

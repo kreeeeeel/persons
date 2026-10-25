@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:person;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ''
+project:
+  gateway:
+    enforced: false
+    jwt-secret: tests-gateway-jwt-secret-with-at-least-thirty-two-characters
+  id-client:
+    base-uri: http://127.0.0.1:1
+  internal:
+    jwt-secret: tests-internal-jwt-secret-with-at-least-thirty-two-characters
+s3:
+  endpoint: http://127.0.0.1:1
+  region: us-east-1
+  bucket: tests
+  credentials:
+    access-key: tests-access
+    secret-key: tests-secret
+
+dynamic-properties:
+  storage: memory

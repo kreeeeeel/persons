@@ -1,0 +1,33 @@
+AdminPerson:
+  type: object
+  required:
+    - id
+    - tag
+    - fullName
+    - published
+    - pendingChanges
+  properties:
+    id:
+      type: string
+      format: uuid
+    tag:
+      type: string
+      maxLength: 32
+    fullName:
+      type: string
+      maxLength: 250
+    published:
+      type: boolean
+    ownerAccountId:
+      type: string
+      format: uuid
+    pendingChanges:
+      type: integer
+      format: int64
+      minimum: 0
+    avatarMediaId: {type: string, format: uuid}
+    ownerName: {type: string}
+    ownerTag: {type: string}
+    ownerAvatarUrl: {type: string}
+    status:
+      $ref: ../content/AdminContentStatus.yaml#/AdminContentStatus

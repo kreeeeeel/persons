@@ -1,0 +1,19 @@
+RatingInput:
+  type: object
+  properties:
+    optionId:
+      type: string
+      format: uuid
+    value:
+      type: integer
+      minimum: 1
+      maximum: 5
+      default: 5
+    emoji:
+      type: string
+      minLength: 1
+      maxLength: 16
+      description: One emoji from RatingState.availableEmojis, or a configured optionId.
+    comment:
+      type: string
+      maxLength: 1000

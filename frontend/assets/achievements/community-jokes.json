@@ -1,0 +1,137 @@
+{
+  "generator": "Built-in image_gen; transparent_background: true",
+  "assets": [
+    {
+      "key": "long-liver",
+      "file": "long-liver-v1.png",
+      "title": "Долгожитель",
+      "description": "Пережил все прогнозы и ещё успевает спорить с врачами.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the friends website «Те ещё люди». Match the style reference's playful premium glossy 3D enamel, rounded polished metal rim and sculpted relief, clear at 96px. One centered complete emblem in square composition with generous transparent margins, occupying 75 percent. Genuine transparent alpha outside emblem. No background, scene outside badge, floor, rectangular backdrop, watermark or words. Image 1 is STYLE ONLY. Image 2 is the consented identity reference Nikita. Depict Nikita humorously transformed into a VERY elderly angry grandpa lying propped up in a compact hospital bed INSIDE a round teal enamel badge. Preserve his recognizable broad face, eye spacing, nose and dark messy wavy hair from the NEW reference; age his face with wrinkles and grey-white wavy hair. Deep wrinkles, bushy white eyebrows, sparse white hair. He scowls fiercely and raises one clenched fist; a small bedside heart monitor is visible. Non-graphic, no wounds, no suffering or medical text. Funny stubborn longevity. Silver rim, turquoise and warm ivory accents.",
+      "referenceRoles": [
+        "pleasant-person-v1.png",
+        "никита.jpg"
+      ]
+    },
+    {
+      "key": "lil-peep-listener",
+      "file": "lil-peep-listener-v1.png",
+      "title": "Преданный слушатель Lil Peep",
+      "description": "В наушниках снова Lil Peep. Эта музыка останется навсегда.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the friends website «Те ещё люди». Match the style reference's playful premium glossy 3D enamel, rounded polished metal rim and sculpted relief, clear at 96px. One centered complete emblem in square composition with generous transparent margins, occupying 75 percent. Genuine transparent alpha outside emblem. No background, scene outside badge, floor, rectangular backdrop, watermark or words. Image 1 is STYLE ONLY. A recognizable respectful portrait of the adult musician Lil Peep: his distinctive half pastel-pink half dark hair, slender face, characteristic small facial tattoos and tattooed neck, gentle pensive expression. Bust with headphones around neck, sculpted enamel within a rounded-square violet and dusty pink badge with silver rim. A clearly visible BLACK MOURNING RIBBON must be placed at the BOTTOM RIGHT of the badge, diagonally across the lower-right corner; matte black ribbon contrasts with glossy portrait. Commemorative music fan badge. No dates or writing.",
+      "referenceRoles": [
+        "pleasant-person-v1.png"
+      ],
+      "editPrompt": "Replace the mourning ribbon with one simple flat straight matte black diagonal strip across the bottom-right corner. No loop, bow, knot or tails. Preserve the portrait, badge and transparent alpha."
+    },
+    {
+      "key": "big-person",
+      "file": "big-person-v1.png",
+      "title": "Жирный",
+      "description": "Большой человек с большим запасом хорошего настроения.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the friends website «Те ещё люди». Match the style reference's playful premium glossy 3D enamel, rounded polished metal rim and sculpted relief, clear at 96px. One centered complete emblem in square composition with generous transparent margins, occupying 75 percent. Genuine transparent alpha outside emblem. No background, scene outside badge, floor, rectangular backdrop, watermark or words. Image 1 is STYLE ONLY. Image 2 is the consented identity reference Krel. Friendly humorous caricature of the same ADULT Krel, preserving short brown hair, facial proportions and recognizable smile, imagined as a very fat broad round-bodied adult with a pronounced round belly under a plain lilac T-shirt. Hands on hips, confident cheerful expression, cropped upper body showing full large belly. No food, no nudity, no labels. Rounded-square orange-and-gold enamel emblem with small violet accents. Clearly read as one large-bodied person, not a pig or animal.",
+      "referenceRoles": [
+        "pleasant-person-v1.png",
+        "крел.png"
+      ]
+    },
+    {
+      "key": "smelly",
+      "file": "smelly-v1.png",
+      "title": "Вонючий",
+      "description": "Его появление замечают даже с закрытыми глазами.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge for the friends website «Те ещё люди». Match the style reference's playful premium glossy 3D enamel, rounded polished metal rim and sculpted relief, clear at 96px. One centered complete emblem in square composition with generous transparent margins, occupying 75 percent. Genuine transparent alpha outside emblem. No background, scene outside badge, floor, rectangular backdrop, watermark or words. Image 1 is STYLE ONLY. Image 2 is the consented identity reference Vadim. Recognizable adult Vadim with long light-brown side-parted hair, long nose, same eye spacing and characteristic pout, remove cream on face. He comically pinches his own nose, wearing a plain purple T-shirt; three cartoon green odor wisps rise from the shoulders, a tiny fly near the edge. Humorous exaggerated stinky-person emblem, no dirt or bodily fluids. Round lime-green and dark-violet glossy enamel badge, silver rim, portrait is dominant and easily recognizable.",
+      "referenceRoles": [
+        "pleasant-person-v1.png",
+        "вадим.png"
+      ]
+    },
+    {
+      "key": "sexy",
+      "file": "sexy-v1.png",
+      "title": "Сексуальный",
+      "description": "Одного взгляда достаточно, чтобы оказаться в центре внимания.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: one individual achievement badge titled «Сексуальный» for the friends website «Те ещё люди». Image 1 is STYLE REFERENCE ONLY. Image 2 is the consented identity reference of adult Yurchik, the long-haired man holding a toy on the LEFT of the photo; do NOT use the cropped man on the right. Preserve Yurchik's recognizable face, eye spacing, nose, expressive eyebrows, subtle playful smirk and dark hair swept back into a tied ponytail. A flattering charming head-and-shoulders enamel portrait of the SAME person, fully clothed in a plain black shirt, self-assured playful smile, shoulders relaxed. Two small rose-pink sculpted hearts and a tiny sparkle surround the portrait. No toy, extra people, setting or exposed torso. Premium playful glossy 3D enamel relief matching Image 1, round ruby-rose badge with polished champagne-silver rim and violet accents. ONE centered complete emblem, square canvas, generous transparent margins, crisp at 96 pixels. Genuine transparent alpha outside emblem. No background, floor, shadow outside emblem, text, labels or watermark.",
+      "referenceRoles": [
+        "pleasant-person-v1.png",
+        "Yurchik (consented, original not included)"
+      ]
+    },
+    {
+      "key": "under-the-heel",
+      "file": "under-the-heel-v1.png",
+      "title": "Каблук",
+      "description": "С друзьями бы встретился, но сначала надо спросить разрешения.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: ONE individual achievement badge titled «Каблук» for the friends website «Те ещё люди». Input image 1 is STYLE reference: glossy enamel portrait badge of Evgeny. Input image 2 is the consented identity reference of the SAME adult Evgeny. Preserve his recognizable short upright brown hair, broad oval face, eye spacing, straight nose and proportions. New humorous affectionate scene: Evgeny's head and shoulders in his beige hoodie, comically resigned raised eyebrows and slight pout, with ONE oversized glossy ruby-red high-heeled shoe perched above his head, its thick heel lightly resting on the TOP of his hair like the Russian idiom 'under her heel'. No injury, pain or deformation. The entire red pump shoe must be clearly visible in profile, with heel and toe unmistakable, entirely INSIDE the circular badge; no leg, foot or other person. Evgeny's face remains prominent and unobscured. Two small rose hearts beside his shoulders. Premium polished sculpted 3D enamel relief, rounded rose-gold metal rim, rich violet and ruby-rose enamel. Match the existing project badge style and portrait likeness, friendly humorous collectible emblem, legible at 96px. ONE centered complete round emblem, square 1024px canvas, generous transparent margins around badge occupying 80 percent of canvas. Genuine transparent alpha outside emblem. No text, lettering, watermark, scenery, rectangular background, floor, shadow outside emblem, wallet or arrows.",
+      "referenceRoles": [
+        "borrow-lover-v2.png",
+        "евгений.jpg"
+      ]
+    },
+    {
+      "key": "imprisoned",
+      "file": "imprisoned-v1.png",
+      "title": "Тюрьма",
+      "description": "В заточении. На связь выходит только через решётку.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: a single circular enamel achievement pin for a playful friends website. Draw a wholly cartoon, chibi 3D illustration of Evgeny from the reference, with recognizable short brown upright hair, oval face, straight eyebrows and nose. He wears an orange long-sleeved tracksuit zipped up to his neck. The pin shows him as a bored cartoon prisoner behind a tiny silver barred window, gently holding two bars. Keep the round face fully visible between the bars. Small silver padlock at bottom. Style: premium glossy enamel toy collectible, metallic silver outer rim, sculpted blue and violet interior. Friendly harmless visual joke titled «Тюрьма», expressing being locked up. No writing on the actual badge. One person only. Square canvas, whole badge visible, 10% transparent margin on all sides. Transparent alpha outside badge.",
+      "referenceRoles": [
+        "borrow-lover-v2.png (Evgeny identity and style reference)"
+      ]
+    },
+    {
+      "key": "online-footballer",
+      "file": "online-footballer-v1.png",
+      "title": "Онлайн-футболист",
+      "description": "На поле выходит через интернет. Ещё один матч в REMATCH — и точно спать.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: ONE achievement badge «Онлайн-футболист» for the friends website «Те ещё люди». Image 1 is ONLY a STYLE reference for the project's glossy enamel portrait badges; do not copy its person or shoe. Image 2 is the consented identity reference of the adult Artem. Preserve Artem's recognizable face, very short dark buzzcut, wide forehead, straight dark eyebrows, eye spacing, nose and subtle playful smirk. New scene: head-and-chest portrait of Artem as an ONLINE football gamer, in a futuristic cyan football jersey with orange trim and a compact gaming headset. One white football with dark indigo polygon panels is tucked under his left forearm in the lower right of the image; a small violet game controller appears at the bottom center. His face is large, clear and recognizable. Behind him inside the badge is a simple stylized bright-green football pitch with white goal outline and a few dynamic blue/orange speed streaks, evoking the vivid energetic arcade football game REMATCH. No real club marks and no product wordmarks. Premium playful polished sculpted 3D enamel relief, thick circular polished silver rim, dominant turquoise and electric blue with lime-green and orange accents, smooth glossy metal outlines. Friendly confident expression. Square canvas, ONE centered complete round badge, sufficient transparent margins on all sides, crisp at 96 pixels. Genuine transparent alpha outside the emblem. No words, lettering, numbers, watermark, extra people, background outside badge, ground plane, hearts or shoe.",
+      "referenceRoles": [
+        "under-the-heel-v1.png (style only)",
+        "артем.png (Artem identity reference)"
+      ],
+      "inspirationUrl": "https://www.playrematch.com/"
+    },
+    {
+      "key": "dementia",
+      "file": "dementia-nikita-v1.png",
+      "title": "Деменция",
+      "description": "Зашёл за чем-то. Забыл за чем. Вышел. Повторил.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: ONE humorous achievement badge titled «Деменция» for the private friends community website «Те ещё люди». Image 1 is STYLE ONLY, an existing glossy sculpted enamel portrait badge; do not copy its person, hearts or shoe. Image 2 is the consented identity reference of the adult friend Nikita. Use the SAME recognizable Nikita: messy medium-length dark curly hair, oval face, actual eye spacing and nose, subtle moustache and small goatee. Keep him his current adult age. A friendly fictional forgetfulness meme: head-and-shoulders Nikita in a plain dark violet T-shirt, mildly puzzled raised eyebrows, looking upward, with his right hand gently scratching his temple as though he forgot why he entered a room. One small lavender enamel thought-cloud above his head contains a golden jigsaw puzzle with ONE clearly missing piece; that matching loose puzzle piece floats next to the cloud. One simple rounded golden question mark beside the cloud. No medical props or factual diagnosis, no injuries, fear or distress. Clear charming visual joke about forgetting. Premium polished playful 3D enamel relief matching the project, round polished silver rim, rich amethyst and lilac enamel, warm gold puzzle accents, large unobstructed recognizable face. ONE complete centered circular badge on square canvas with generous transparent margins on every side, crisp at 96 pixels. Genuine transparent alpha outside badge. No words, labels, captions, watermark, other people, background outside badge, floor, cast shadow, football, controller or shoe.",
+      "referenceRoles": [
+        "under-the-heel-v1.png (style only)",
+        "никита.jpg (Nikita identity reference)"
+      ]
+    },
+    {
+      "key": "dota-player",
+      "file": "dota-player-v1.png",
+      "title": "Игрок в Доту",
+      "description": "Ещё одна катка в Dota 2. На этот раз точно последняя.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: ONE achievement badge «Игрок в Доту» for the friends website «Те ещё люди». Image 1 is STYLE ONLY: glossy sculpted enamel collectible portrait badge. Do not copy its person, hearts or shoe. Image 2 is the consented identity reference of adult Stepa. Preserve the SAME recognizable Stepa's slender oval face, fair skin, light blue eyes, straight small nose, thin lips, black soft cap with his DISTINCTIVE red-and-white checked head scarf underneath. His checked scarf and cap must remain clearly visible and recognizable. New scene: head-and-upper-body Stepa as a very focused Dota 2 PC gamer, slight confident grin, wearing a plain black zip-up track jacket with simple white shoulder stripes and an over-ear gaming headset over his cap. His hands naturally placed at a small violet backlit keyboard and mouse at the lower edge of the badge, ONE keyboard and ONE mouse. Behind his right shoulder a clearly recognizable RED Dota 2 rune emblem: red square tablet containing its diagonal slash and two small square cutouts. Keep the emblem unobstructed, no lettering. Behind the other shoulder a small stylized red-and-green fantasy lane and gold victory sparkle, contained entirely inside the medal. Main portrait remains dominant. Premium playful polished 3D sculpted enamel relief matching the project's existing portrait medals, polished warm silver rim with thin gold outline, deep burgundy and violet enamel with red and subtle emerald accents. ONE complete centered circular badge, square canvas, generous transparent margins, clear at 96 pixels. Genuine transparent alpha outside emblem. No words, lettering, watermark, product packaging, extra people, scenery outside badge, floor, shadow outside emblem, football, shoe or hearts.",
+      "referenceRoles": [
+        "under-the-heel-v1.png (style only)",
+        "степа.jpg (Stepa identity reference)"
+      ]
+    },
+    {
+      "key": "ural-dumplings-fan",
+      "file": "ural-dumplings-fan-v1.png",
+      "title": "Любитель уральских пельменей",
+      "description": "Знает любимые номера наизусть и всё равно смеётся как в первый раз.",
+      "type": "MANUAL",
+      "prompt": "Use case: stylized-concept. Asset type: ONE individual achievement badge titled «Любитель уральских пельменей» for the private friends community website «Те ещё люди», also used as a Telegram sticker. Image 1 is the consented FACE IDENTITY reference of adult Vadim; use ONLY his identity, recognizable long side-swept light brown fringe, face proportions, nose, lips and eye spacing. Do not copy the tears, white liquid, sad expression, armor or background. Image 2 is STYLE ONLY: the existing glossy sculpted enamel portrait achievement. Keep the same recognizable Vadim, not a generic man. NEW SCENE: a head-and-upper-body portrait of Vadim laughing with a warm delighted broad smile, happy squinting eyes and raised cheeks, wearing a simple burgundy T-shirt, holding one wide ivory sign with BOTH hands in front of his chest. Both hands naturally grip the lower left and right edges; the face remains fully visible above the sign. The sign celebrates the Russian comedy TV SHOW «Уральские пельмени», not food: absolutely no dumplings, bowls or cooking. Very prominent perfectly legible exact Cyrillic sign text, split into exactly two centered lines: «УРАЛЬСКИЕ» on line 1 and «ПЕЛЬМЕНИ» on line 2, bold friendly red and orange lettering. Spell every letter correctly: У Р А Л Ь С К И Е / П Е Л Ь М Е Н И. No other words. A subtle stylized burgundy and violet theatre backdrop with two tiny warm gold stage spotlights is contained INSIDE the badge, expressing comedy-show fandom. Premium playful polished sculpted 3D enamel collectible badge, thick rounded polished silver rim with thin warm gold trim, rich raspberry-red and purple enamel, tactile glossy relief, large recognizable face, ivory sign taking the lower third. Match the project's existing badge style and quality. ONE complete centered coherent rounded-square or circular emblem on a square canvas, no cropping, 8-10 percent clear transparent margin on all sides, crisp readable silhouette at 96 pixels. Genuine transparent alpha outside the whole emblem. No beer, bottle, stars obscuring sign, watermark, extra people, extra signs, scenery outside badge, rectangle background, floor or cast shadow outside the emblem.",
+      "referenceRoles": [
+        "вадим.png (Vadim identity reference; original outside repository)",
+        "old-miller-lightweight-v1.png (style only)"
+      ]
+    }
+  ]
+}

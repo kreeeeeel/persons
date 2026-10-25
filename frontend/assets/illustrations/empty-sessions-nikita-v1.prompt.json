@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-10-23",
+  "tool": "built-in image_gen",
+  "asset": "illustrations/empty-sessions-nikita-v1.webp",
+  "identityReference": "C:/Users/kreeeeeel/Desktop/люди/никита.jpg (consented local reference; not committed)",
+  "styleReferences": [
+    "illustrations/empty-comments-slava-v1.webp",
+    "illustrations/empty-media-nikita-v2.webp"
+  ],
+  "transparentBackground": true,
+  "prompt": "Use case: illustration-story.\nAsset type: Persons website empty state for no other active device sessions.\nPrimary request: Create ONE polished editorial cartoon illustration of exactly the adult man Nikita from reference image 1, sitting comfortably beside one open laptop and gently presenting an EMPTY two-slot device stand with his open hand. The visual meaning is reassuring: this laptop is the only active session, there are no other devices. The stand is visibly empty, with no phone, no tablet, no duplicate laptop.\nInput images: Image 1 is the ONLY identity reference, a consented local photograph of Nikita. Preserve his recognizable rounded rectangular face, slightly hooded almond eyes, natural broad nose, small subtle mustache and chin stubble, thick tousled curly dark hair with one loose forehead curl; do not replace him with a generic handsome model. Image 2 is a style reference only for the Persons hand-painted illustrated finish; Image 3 is a secondary style/identity-consistency reference of the SAME Nikita. Prioritize the actual photograph for his likeness.\nSubject and composition: One person, Nikita, wearing a simple dark violet-black T-shirt. He is seated, shown from upper thighs up with both arms and hands anatomically natural; compact centered square composition. One open muted violet laptop on a small cropped floating desktop surface beside him, screen completely blank without text, and an empty light-violet device stand at the other side. Nikita has a calm friendly slightly amused expression toward the viewer, one hand lightly near his laptop and the other palm-open toward the empty stand. Keep the face large and clearly recognizable at small UI size. Full silhouette comfortably inside canvas with transparent margins.\nStyle/medium: polished hand-painted digital cartoon editorial illustration, recognizable facial detail, clean readable silhouette, soft textured brush shading, restrained natural proportions, warm skin tones, muted violet accents matching existing Persons illustrations. Not photorealistic, not plastic 3D, not emoji.\nBackdrop: genuine transparent background; isolated cutout. Nothing behind the subject. No circle, badge, color block, gradient, glow, haze, halo, backdrop or cast shadow. Natural internal shading only. No decorative floating icons.\nText: none.\nConstraints: exactly one person and one laptop; empty additional-device stand; no written words, numbers, labels, letters, UI typography, logos, watermarks or brand marks; no extra people, extra hands, distorted fingers, halos or external shadows. Preserve actual generated alpha.",
+  "sourceOutput": "C:/Users/kreeeeeel/.codex/generated_images/01a165be-af8e-76c1-acbf-030ef7fe5a2b/exec-a65e7236-3f67-4eaf-bd9d-1b3e84837bcb.png",
+  "output": {
+    "path": "frontend/assets/illustrations/empty-sessions-nikita-v1.webp",
+    "format": "webp",
+    "maxWidth": 640,
+    "maxHeight": 640,
+    "alpha": "preserved",
+    "encoding": {
+      "tool": "sharp",
+      "quality": 90,
+      "effort": 6,
+      "alphaQuality": 100
+    }
+  }
+}

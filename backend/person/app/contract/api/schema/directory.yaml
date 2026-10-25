@@ -1,0 +1,25 @@
+/v1/persons/directory:
+  get:
+    tags: [persons]
+    operationId: listDirectory
+    description: Published, non-deleted pages with real public statistics. Sorting and pagination are applied by the server.
+    parameters:
+      - name: page
+        in: query
+        schema: {type: integer, minimum: 0, maximum: 10000, default: 0}
+      - name: size
+        in: query
+        schema: {type: integer, minimum: 1, maximum: 60, default: 12}
+      - name: order
+        in: query
+        schema:
+          $ref: ./models/person/DirectoryOrder.yaml#/DirectoryOrder
+    responses:
+      '200':
+        description: Public directory
+        content:
+          application/json:
+            schema:
+              $ref: ./models/person/DirectoryPage.yaml#/DirectoryPage
+      '400':
+        description: Invalid pagination

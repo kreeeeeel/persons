@@ -1,0 +1,11 @@
+RestrictionLookup:
+  type: object
+  required: [userIds]
+  properties:
+    userIds:
+      type: array
+      maxItems: 100
+      uniqueItems: true
+      items:
+        type: string
+        format: uuid

@@ -1,0 +1,12 @@
+Verification:
+  type: object
+  required:
+  - grant
+  - expiresAt
+  properties:
+    grant:
+      type: string
+    expiresAt:
+      type: string
+      format: date-time
+

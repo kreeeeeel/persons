@@ -1,0 +1,6 @@
+project:
+  restrictions-client:
+    base-uri: "${RESTRICTIONS_BASE_URL}"
+    connect-timeout-ms: 1000
+    read-timeout-ms: 20000
+    max-buffer-size: 1048576

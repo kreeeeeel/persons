@@ -1,0 +1,23 @@
+.viewport {
+    --persons-header-height: 88px;
+
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--persons-background);
+    isolation: isolate;
+}
+
+@media (width <= 700px), (height <= 500px) {
+    .viewport {
+        --persons-header-height: 72px;
+    }
+}
+
+.canvas {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}

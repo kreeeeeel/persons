@@ -1,0 +1,227 @@
+"/v1/persons/{id}/games/dota2/matches":
+  get:
+    tags:
+      - "games"
+    operationId: "listDotaMatches"
+    parameters:
+      -
+        name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+          format: "uuid"
+      -
+        name: "page"
+        in: "query"
+        required: false
+        schema:
+          type: "integer"
+          default: 0
+          minimum: 0
+          maximum: 1000000
+      -
+        name: "size"
+        in: "query"
+        required: false
+        schema:
+          type: "integer"
+          default: 12
+          minimum: 1
+          maximum: 60
+    responses:
+      "200":
+        description: "Saved Dota 2 matches, newest first. No provider requests occur on the API path."
+        content:
+          "application/json":
+            schema:
+              $ref: "./models/games/DotaMatchPage.yaml#/DotaMatchPage"
+      "400":
+        description: "Invalid pagination"
+      "404":
+        description: "Page not found"
+
+"/v1/persons/{id}/games/dota2/matches/{matchId}":
+  get:
+    tags: [games]
+    operationId: getDotaMatch
+    description: Returns one saved Dota match from a published page by its identifier.
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: matchId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: '^[1-9][0-9]{0,18}$'
+    responses:
+      '200':
+        description: Saved match
+        content:
+          application/json:
+            schema:
+              $ref: ./models/games/DotaMatch.yaml#/DotaMatch
+      '400':
+        description: Invalid identifier
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Published page or saved match not found
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+
+"/v1/persons/{id}/games/cs2/matches/{matchId}":
+  get:
+    tags: [games]
+    operationId: getCsMatch
+    description: Returns one saved CS match using the same page and source-validation rules as its history.
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: matchId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Saved match
+        content:
+          application/json:
+            schema:
+              $ref: ./models/games/CsMatch.yaml#/CsMatch
+      '400':
+        description: Invalid identifier
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Published page or saved match not found, or source validation expired
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+"/v1/games/dota2/events":
+  get:
+    tags:
+      - "games"
+    operationId: "listDotaMatchEvents"
+    parameters:
+      -
+        name: "page"
+        in: "query"
+        required: false
+        schema:
+          type: "integer"
+          default: 0
+          minimum: 0
+          maximum: 1000000
+      -
+        name: "size"
+        in: "query"
+        required: false
+        schema:
+          type: "integer"
+          default: 12
+          minimum: 1
+          maximum: 60
+    responses:
+      "200":
+        description: "Saved Dota 2 matches, newest first. No provider requests occur on the API path."
+        content:
+          "application/json":
+            schema:
+              $ref: "./models/games/DotaMatchEventPage.yaml#/DotaMatchEventPage"
+      "400":
+        description: "Invalid pagination"
+
+"/v1/persons/{id}/games/cs2/matches":
+  get:
+    tags:
+      - "games"
+    operationId: "listCsMatches"
+    parameters:
+      -
+        name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+          format: "uuid"
+      -
+        name: "page"
+        in: "query"
+        required: false
+        schema:
+          type: "integer"
+          default: 0
+          minimum: 0
+          maximum: 1000000
+      -
+        name: "size"
+        in: "query"
+        required: false
+        schema:
+          type: "integer"
+          default: 12
+          minimum: 1
+          maximum: 60
+    responses:
+      "200":
+        description: "Saved Counter-Strike 2 matches, newest first. No provider requests occur on the API path."
+        content:
+          "application/json":
+            schema:
+              $ref: "./models/games/CsMatchPage.yaml#/CsMatchPage"
+      "400":
+        description: "Invalid pagination"
+      "404":
+        description: "Page not found"
+"/v1/games/cs2/events":
+  get:
+    tags:
+      - "games"
+    operationId: "listCsMatchEvents"
+    parameters:
+      -
+        name: "page"
+        in: "query"
+        required: false
+        schema:
+          type: "integer"
+          default: 0
+          minimum: 0
+          maximum: 1000000
+      -
+        name: "size"
+        in: "query"
+        required: false
+        schema:
+          type: "integer"
+          default: 12
+          minimum: 1
+          maximum: 60
+    responses:
+      "200":
+        description: "Saved Counter-Strike 2 matches, newest first. No provider requests occur on the API path."
+        content:
+          "application/json":
+            schema:
+              $ref: "./models/games/CsMatchEventPage.yaml#/CsMatchEventPage"
+      "400":
+        description: "Invalid pagination"

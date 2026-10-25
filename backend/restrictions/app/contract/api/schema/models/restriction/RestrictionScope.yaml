@@ -1,0 +1,10 @@
+RestrictionScope:
+  type: string
+  enum:
+    - ACCOUNT
+    - COMMENTS
+    - RATINGS
+    - LOANS
+    - MEDIA
+    - PROFILE
+    - REACTIONS

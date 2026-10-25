@@ -1,0 +1,22 @@
+CompleteRegistration:
+  type: object
+  required:
+  - challengeId
+  - grant
+  - password
+  properties:
+    challengeId:
+      type: string
+      format: uuid
+    grant:
+      type: string
+      minLength: 32
+      maxLength: 128
+    password:
+      type: string
+      minLength: 10
+      maxLength: 72
+    avatarBase64:
+      type: string
+      maxLength: 400000
+

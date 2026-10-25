@@ -1,0 +1,6 @@
+UserModerationSettings:
+  type: object
+  required: [forceModeration]
+  properties:
+    forceModeration:
+      type: boolean

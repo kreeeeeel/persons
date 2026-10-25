@@ -1,0 +1,7 @@
+.code {
+    --g-pin-input-item-gap: 10px;
+    --g-text-input-border-radius: 12px;
+
+    width: 100%;
+    margin-top: 4px;
+}

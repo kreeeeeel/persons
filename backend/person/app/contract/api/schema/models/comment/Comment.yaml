@@ -1,0 +1,57 @@
+Comment:
+  type: object
+  required:
+    - id
+    - text
+    - authorName
+    - createdAt
+    - canRemove
+  properties:
+    id:
+      type: string
+      format: uuid
+    text:
+      type: string
+      maxLength: 2000
+    authorName:
+      type: string
+      maxLength: 250
+    createdAt:
+      type: string
+      format: date-time
+    canRemove:
+      type: boolean
+    momentId:
+      type: string
+      format: uuid
+    mediaId:
+      type: string
+      format: uuid
+    authorId:
+      type: string
+      format: uuid
+    authorTag:
+      type: string
+      maxLength: 32
+    authorAvatarMediaId:
+      type: string
+      format: uuid
+    canEdit:
+      type: boolean
+    moderationStatus:
+      $ref: ../moderation/ModerationStatus.yaml#/ModerationStatus
+    likes:
+      type: integer
+      format: int64
+      minimum: 0
+    likedByMe:
+      type: boolean
+    dislikes:
+      type: integer
+      format: int64
+      minimum: 0
+    dislikedByMe:
+      type: boolean
+    authorAvatarUrl:
+      type: string
+      description: Current account avatar URL, versioned when account details change.

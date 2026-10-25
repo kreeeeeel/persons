@@ -1,0 +1,11 @@
+AccountRestrictionPage:
+  type: object
+  required: [items, total, page, size]
+  properties:
+    items:
+      type: array
+      items:
+        $ref: ./AccountRestriction.yaml#/AccountRestriction
+    total: {type: integer, format: int64}
+    page: {type: integer}
+    size: {type: integer}

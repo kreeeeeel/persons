@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:restrictions;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ''
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 1
+      password: tests
+project:
+  id-client:
+    base-uri: http://127.0.0.1:1
+  internal:
+    jwt-secret: tests-internal-jwt-secret-with-at-least-thirty-two-characters

@@ -1,0 +1,3 @@
+project:
+  person-client:
+    base-uri: ${PERSON_BASE_URL:http://localhost:8085}

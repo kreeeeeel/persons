@@ -1,0 +1,17 @@
+Challenge:
+  type: object
+  required:
+  - id
+  - expiresAt
+  - resendAt
+  properties:
+    id:
+      type: string
+      format: uuid
+    expiresAt:
+      type: string
+      format: date-time
+    resendAt:
+      type: string
+      format: date-time
+

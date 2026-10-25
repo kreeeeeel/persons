@@ -1,0 +1,65 @@
+.controls {
+    --g-button-border-radius: 999px;
+
+    width: fit-content;
+}
+
+.dotButton {
+    --g-button-padding: 0;
+    --g-button-background-color: transparent;
+    --g-button-background-color-hover: transparent;
+
+    width: 32px;
+    min-width: 32px;
+}
+
+.dot {
+    overflow: hidden;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 99px;
+    background: var(--g-color-text-secondary);
+    vertical-align: middle;
+    transition:
+        width 300ms ease,
+        background-color 300ms ease;
+}
+
+.active {
+    width: 22px;
+    background: var(--g-color-base-selection);
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--g-color-base-brand);
+    transform-origin: left;
+    animation: fill linear both;
+}
+
+.static {
+    animation: none;
+}
+
+@keyframes fill {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dot {
+        transition: none;
+    }
+
+    .fill {
+        animation: none;
+    }
+}

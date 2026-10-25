@@ -1,0 +1,21 @@
+.root {
+    width: min(650px, 85%);
+    margin: calc(var(--persons-header-height) + 32px) 5% 0;
+}
+
+.title {
+    width: 85%;
+    height: clamp(100px, 12vw, 190px);
+    border-radius: 20px;
+}
+
+.input {
+    height: 72px;
+    border-radius: 999px;
+}
+
+.description {
+    width: 75%;
+    height: 44px;
+    border-radius: 12px;
+}

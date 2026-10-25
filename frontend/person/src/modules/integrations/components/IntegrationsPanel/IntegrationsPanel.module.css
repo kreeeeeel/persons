@@ -1,0 +1,109 @@
+.root {
+    width: 100%;
+    min-width: 0;
+}
+
+.detailsDialog {
+    height: min(720px, calc(100dvh - 40px));
+}
+
+.detailsLoading {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.histories {
+    display: grid;
+    min-height: 480px;
+}
+
+.history {
+    grid-area: 1 / 1;
+    min-width: 0;
+    align-self: start;
+}
+
+.history[data-active='false'] {
+    display: none;
+}
+
+.attribution {
+    margin-top: 24px;
+    font-size: 16px;
+}
+
+.empty {
+    max-width: 560px;
+    margin: 24px auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.emptyTitle {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.emptyArt {
+    width: min(100%, 320px);
+}
+
+.services {
+    width: fit-content;
+    margin-bottom: 32px;
+    font-size: 16px;
+}
+
+.service {
+    font-size: 16px;
+}
+
+.heading {
+    margin-bottom: 24px;
+    font-size: 16px;
+}
+
+.title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+}
+
+.date {
+    margin-block: 12px 14px;
+    color: var(--g-color-text-secondary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.hint {
+    max-width: 600px;
+    margin: 24px 0 0;
+    color: var(--g-color-text-secondary);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+@media (width <= 600px) {
+    .heading {
+        align-items: flex-start;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+}
+
+@media (width <= 380px) {
+    .heading {
+        flex-direction: column;
+        gap: 16px;
+    }
+}

@@ -1,0 +1,66 @@
+.materialCell {
+    min-width: 172px;
+    width: 25%;
+}
+
+.identityCell {
+    min-width: 128px;
+    width: 20%;
+}
+
+.statusCell {
+    min-width: 112px;
+}
+
+.dateCell {
+    min-width: 104px;
+    width: 12%;
+}
+
+.sizeCell {
+    min-width: 72px;
+    white-space: nowrap;
+}
+
+.material {
+    --g-button-padding: 0;
+    --g-button-background-color-hover: transparent;
+
+    height: auto;
+    width: 100%;
+    text-align: start;
+}
+
+.material :global([class~='g-button__text']) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+}
+
+.preview {
+    width: 64px;
+    height: 48px;
+    flex: 0 0 64px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--g-color-base-generic);
+}
+
+.excerpt {
+    min-width: 0;
+    max-width: 320px;
+}
+
+.clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    line-height: 22px;
+}
+
+.bytes {
+    white-space: nowrap;
+}

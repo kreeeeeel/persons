@@ -1,0 +1,26 @@
+openapi: 3.0.3
+info:
+  title: Restrictions API
+  version: 0.1.0
+servers:
+  - url: /
+paths:
+  /v1/users/{userId}/restriction:
+    $ref: ./restrictions.yaml#/userRestriction
+  /v1/users/{userId}/access:
+    $ref: ./restrictions.yaml#/accountAccess
+  /v1/restrictions/lookup:
+    $ref: ./restrictions.yaml#/lookup
+  /v1/restrictions/expire:
+    $ref: ./restrictions.yaml#/expire
+  /v1/restrictions:
+    $ref: ./restriction-list.yaml#/~1v1~1restrictions
+components:
+  securitySchemes:
+    service:
+      type: apiKey
+      in: header
+      name: X-Service-Authorization
+    session:
+      type: http
+      scheme: bearer

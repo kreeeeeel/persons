@@ -1,0 +1,58 @@
+export const photoEditorMessages = {
+    ru: {
+        id: {
+            upload: 'Выбрать фотографию',
+            avatarHint: 'JPG, PNG или WebP, от 256×256, до 10 МБ.',
+        },
+        editor: {
+            title: 'Редактирование фотографии',
+            selection: 'Область обрезки',
+            moveSelection: 'Переместить область обрезки',
+            topLeft: 'Изменить область обрезки: верхний левый угол',
+            topRight: 'Изменить область обрезки: верхний правый угол',
+            bottomLeft: 'Изменить область обрезки: нижний левый угол',
+            bottomRight: 'Изменить область обрезки: нижний правый угол',
+            rotate: 'Повернуть на 90°',
+            flipHorizontal: 'Отразить по горизонтали',
+            flipVertical: 'Отразить по вертикали',
+            apply: 'Применить',
+            cancel: 'Отмена',
+            image: 'Редактируемая фотография',
+            loading: 'Подготавливаем фотографию…',
+            error: 'Не удалось обработать фотографию',
+            choose: 'Выбрать файл',
+            invalidFile: 'Выберите фотографию в формате JPG, PNG или WebP.',
+            fileTooLarge: 'Фотография слишком большая. Выберите файл до 10 МБ.',
+            invalidDimensions:
+                'Выберите фото от 256×256 до 8192 пикселей по стороне, до 40 Мп. Слишком узкие изображения не подходят.',
+        },
+    },
+    en: {
+        id: {
+            upload: 'Choose a photo',
+            avatarHint: 'JPG, PNG or WebP, at least 256×256, up to 10 MB.',
+        },
+        editor: {
+            title: 'Edit photo',
+            selection: 'Crop selection',
+            moveSelection: 'Move crop selection',
+            topLeft: 'Resize crop: top left',
+            topRight: 'Resize crop: top right',
+            bottomLeft: 'Resize crop: bottom left',
+            bottomRight: 'Resize crop: bottom right',
+            rotate: 'Rotate 90°',
+            flipHorizontal: 'Flip horizontally',
+            flipVertical: 'Flip vertically',
+            apply: 'Apply',
+            cancel: 'Cancel',
+            image: 'Photo being edited',
+            loading: 'Preparing photo…',
+            error: 'Could not process the photo',
+            choose: 'Choose a file',
+            invalidFile: 'Choose a JPG, PNG or WebP photo.',
+            fileTooLarge: 'Choose a photo up to 10 MB.',
+            invalidDimensions:
+                'Choose a photo from 256×256 to 8192 pixels per side, up to 40 MP. Very narrow images are not supported.',
+        },
+    },
+};

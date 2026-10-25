@@ -1,0 +1,41 @@
+/* Keep layout stable during the body lock. html overflow must stay visible for viewport locking. */
+@supports (scrollbar-gutter: stable) {
+    html {
+        scrollbar-gutter: stable;
+    }
+
+    body {
+        width: calc(100% + var(--floating-ui-scrollbar-width, 0px));
+        overflow-x: clip;
+    }
+}
+
+/* Chromium's standard scrollbar-width overrides its custom scrollbar buttons. */
+@supports not selector(::-webkit-scrollbar) {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--g-color-line-generic) transparent;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--g-color-line-generic);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-button:single-button {
+    display: none;
+    width: 0;
+    height: 0;
+}

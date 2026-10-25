@@ -1,0 +1,10 @@
+DecisionInput:
+  type: object
+  required:
+    - decision
+  properties:
+    decision:
+      $ref: ../moderation/Decision.yaml#/Decision
+    reason:
+      type: string
+      maxLength: 1000

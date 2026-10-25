@@ -1,0 +1,26 @@
+.session {
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--g-color-base-generic);
+}
+
+.ip {
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
+}
+
+.device {
+    display: flex;
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    color: var(--g-color-text-brand);
+    background: var(--g-color-base-selection);
+}
+
+.details {
+    min-width: 0;
+}

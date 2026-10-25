@@ -1,0 +1,89 @@
+server:
+  port: 8081
+  forward-headers-strategy: none
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  application:
+    name: persons-id
+  profiles:
+    default: dev
+  jackson:
+    default-property-inclusion: non_null
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 1MB
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+  config:
+    import:
+    - classpath:persons-mail-client.yaml
+    - classpath:persons-i18n-client.yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+springdoc:
+  enable-default-api-docs: false
+  swagger-ui:
+    url: /openapi/api.yaml
+project:
+  observability:
+    bodies-enabled: ${PROJECT_LOG_BODIES:false}
+    max-body-bytes: 65536
+    masked-fields:
+    - email
+    - recipient
+    - html
+    - avatarBase64
+    - currentPassword
+    masked-headers:
+    - x-service-authorization
+  id:
+    pepper: ${ID_PEPPER}
+    session-days: 30
+    challenge-minutes: 10
+    resend-seconds: 60
+    max-code-attempts: 5
+    max-login-attempts: 5
+    lock-minutes: 15
+    jwt-secret: ${ID_JWT_SECRET}
+  internal:
+    jwt-secret: ${PROJECT_INTERNAL_JWT_SECRET}
+
+s3:
+  endpoint: ${S3_ENDPOINT}
+  region: ${S3_REGION}
+  bucket: ${S3_BUCKET}
+  object-prefix: ${S3_OBJECT_PREFIX:avatars}
+  credentials:
+    access-key: ${S3_ACCESS_KEY}
+    secret-key: ${S3_SECRET_KEY}
+
+---
+project:
+  oauth:
+    yandex:
+      client-id: ${YANDEX_CLIENT_ID:}
+      client-secret: ${YANDEX_CLIENT_SECRET:}
+      redirect-uri: ${YANDEX_REDIRECT_URI:http://localhost:3000/api/oauth/yandex/callback}
+
+---
+project:
+  admin:
+    bootstrap-email: ${PERSONS_ADMIN_EMAIL:}

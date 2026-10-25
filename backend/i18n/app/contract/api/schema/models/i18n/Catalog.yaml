@@ -1,0 +1,18 @@
+Catalog:
+  type: object
+  required:
+  - locale
+  - namespace
+  - version
+  - messages
+  properties:
+    locale:
+      type: string
+    namespace:
+      type: string
+    version:
+      type: string
+    messages:
+      type: object
+      additionalProperties:
+        type: string

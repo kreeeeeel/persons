@@ -1,0 +1,27 @@
+{
+  "name": "@persons/dynamic-properties",
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./server": "./src/server.ts",
+    "./DynProperty": "./src/DynProperty.ts",
+    "./DynPropertyBuilder": "./src/DynPropertyBuilder.ts",
+    "./DynPropertyFactory": "./src/DynPropertyFactory.ts",
+    "./DynPropertyClient": "./src/DynPropertyClient.ts",
+    "./DynPropertyProvider": "./src/DynPropertyProvider.tsx",
+    "./types": "./src/types.ts",
+    "./dynamicPropertyError": "./src/dynamicPropertyError.ts",
+    "./ServerDynPropertyClient": "./src/ServerDynPropertyClient.ts"
+  },
+  "dependencies": {
+    "server-only": "0.0.1",
+    "@persons/dynamic-properties-client": "file:../../../backend/libs/dynamic-properties/contract/client/typescript"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

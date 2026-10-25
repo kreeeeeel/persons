@@ -1,0 +1,74 @@
+/v1/catalogs/{locale}/{namespace}:
+  get:
+    tags:
+    - i18n
+    operationId: getCatalog
+    parameters: &id001
+    - name: locale
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$
+        maxLength: 35
+    - name: namespace
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^[a-z][a-z0-9_-]{0,63}$
+    responses:
+      '200': &id002
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/i18n/Catalog.yaml#/Catalog
+      '400': &id003
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404': &id004
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '401': &id005
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '503': &id006
+        description: Request failed
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+/internal/v1/catalogs/{locale}/{namespace}:
+  put:
+    tags:
+    - i18n
+    operationId: upsertCatalog
+    description: Add or update supplied keys. Omitted keys are preserved. No translation
+      content is seeded by migrations.
+    security:
+    - serviceJwt: []
+    parameters: *id001
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/i18n/CatalogUpdate.yaml#/CatalogUpdate
+    responses:
+      '200': *id002
+      '400': *id003
+      '404': *id004
+      '401': *id005
+      '503': *id006
+      '409':
+        description: Concurrent update; retry the request

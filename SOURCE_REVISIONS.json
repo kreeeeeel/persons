@@ -1,0 +1,154 @@
+[
+  {
+    "path": ".",
+    "commit": "f42489946b0320d248c60adfb1e24b01b96c7400",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/infrastructure.git",
+    "bundle": "infrastructure.bundle",
+    "bundleVerified": true,
+    "bytes": 28950140
+  },
+  {
+    "path": "backend/id",
+    "commit": "75f60ef4027a6d7f94354b91c85ae86c46d56cc1",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/id.git",
+    "bundle": "backend--id.bundle",
+    "bundleVerified": true,
+    "bytes": 153300
+  },
+  {
+    "path": "backend/mail",
+    "commit": "814b55bf23992507188adaf17b65548e8b7dca94",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/mail.git",
+    "bundle": "backend--mail.bundle",
+    "bundleVerified": true,
+    "bytes": 72568
+  },
+  {
+    "path": "backend/i18n",
+    "commit": "14a1bb2fb5ce7b3b85312c04b58a146fa39e5903",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/i18n.git",
+    "bundle": "backend--i18n.bundle",
+    "bundleVerified": true,
+    "bytes": 72549
+  },
+  {
+    "path": "backend/person",
+    "commit": "29f2adb5276d040855b19a6ba7503070b329dd51",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/person.git",
+    "bundle": "backend--person.bundle",
+    "bundleVerified": true,
+    "bytes": 411703
+  },
+  {
+    "path": "backend/person-worker",
+    "commit": "c65c7a13b930736b6a487a6c0403853b98914f64",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/personal-worker.git",
+    "bundle": "backend--person-worker.bundle",
+    "bundleVerified": true,
+    "bytes": 118352
+  },
+  {
+    "path": "backend/libs/id-context",
+    "commit": "47d9f0d61ce3d7beec0b25fb9af5c69b55f328d2",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/libs/id-context.git",
+    "bundle": "backend--libs--id-context.bundle",
+    "bundleVerified": true,
+    "bytes": 53645
+  },
+  {
+    "path": "backend/libs/request-observability",
+    "commit": "dbda7e0b5dd1b509aa65267747ca3778801caccb",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/libs/request-observability.git",
+    "bundle": "backend--libs--request-observability.bundle",
+    "bundleVerified": true,
+    "bytes": 60203
+  },
+  {
+    "path": "frontend/id",
+    "commit": "940417d76b3031868697158c7015cfdc6b1b6852",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/id.git",
+    "bundle": "frontend--id.bundle",
+    "bundleVerified": true,
+    "bytes": 317226
+  },
+  {
+    "path": "frontend/person",
+    "commit": "6f1e76ac2dad8ebd7ff2e62444102a860b68233e",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/person.git",
+    "bundle": "frontend--person.bundle",
+    "bundleVerified": true,
+    "bytes": 2491545
+  },
+  {
+    "path": "frontend/person-admin",
+    "commit": "b454f01498c6a1170baa2fa864ba1fa5ac0341ad",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/person-admin.git",
+    "bundle": "frontend--person-admin.bundle",
+    "bundleVerified": true,
+    "bytes": 444513
+  },
+  {
+    "path": "frontend/assets",
+    "commit": "c615d8fc7156b767ea2566573d18564345790dd5",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/assets.git",
+    "bundle": "frontend--assets.bundle",
+    "bundleVerified": true,
+    "bytes": 68342006
+  },
+  {
+    "path": "frontend/libs/i18n",
+    "commit": "539e599024ec8a35aa0f4587462adf4add280839",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/libs/i18n.git",
+    "bundle": "frontend--libs--i18n.bundle",
+    "bundleVerified": true,
+    "bytes": 688332
+  },
+  {
+    "path": "frontend/libs/person-domain",
+    "commit": "50185e65fdff3973b6fb28cb591378d21220883d",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/libs/person-domain.git",
+    "bundle": "frontend--libs--person-domain.bundle",
+    "bundleVerified": true,
+    "bytes": 284510
+  },
+  {
+    "path": "frontend/libs/photo-editor",
+    "commit": "2b74c332e7dfebcdd4bb3aece6e91578bd55fbcf",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/libs/photo-editor.git",
+    "bundle": "frontend--libs--photo-editor.bundle",
+    "bundleVerified": true,
+    "bytes": 20517
+  },
+  {
+    "path": "frontend/libs/theme",
+    "commit": "9095edd6fa2f2aee630e80dfb993fb651b5a84ce",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/libs/theme.git",
+    "bundle": "frontend--libs--theme.bundle",
+    "bundleVerified": true,
+    "bytes": 9347
+  },
+  {
+    "path": "frontend/libs/ui",
+    "commit": "3216a59769b1a6b736bc54dbc4485c2c69af3d0b",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/libs/ui.git",
+    "bundle": "frontend--libs--ui.bundle",
+    "bundleVerified": true,
+    "bytes": 48713
+  },
+  {
+    "path": "backend/restrictions",
+    "commit": "08d40786fe3b24b17cb2f58d7adf4e2205e59730",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/restrictions.git",
+    "bundle": "backend--restrictions.bundle",
+    "bundleVerified": true,
+    "bytes": 92461
+  },
+  {
+    "path": "backend/gateway",
+    "commit": "bb7f296c036947e117aa8ca95b8940d2c8671a3d",
+    "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/gateway.git",
+    "bundle": "backend--gateway.bundle",
+    "bundleVerified": true,
+    "bytes": 94324
+  }
+]

@@ -1,0 +1,5 @@
+AchievementType:
+  type: string
+  enum:
+    - MANUAL
+    - AUTOMATIC

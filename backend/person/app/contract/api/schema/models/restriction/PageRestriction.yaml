@@ -1,0 +1,22 @@
+PageRestriction:
+  type: object
+  required: [id, userId, personId, personTag, personName, scopes, reason, createdAt, active]
+  properties:
+    id: {type: string, format: uuid}
+    userId: {type: string, format: uuid}
+    personId: {type: string, format: uuid}
+    personTag: {type: string}
+    personName: {type: string}
+    scopes:
+      type: array
+      uniqueItems: true
+      items:
+        $ref: ./PageRestrictionScope.yaml#/PageRestrictionScope
+    reason: {type: string}
+    expiresAt: {type: string, format: date-time}
+    createdAt: {type: string, format: date-time}
+    active: {type: boolean}
+    userName: {type: string}
+    userTag: {type: string}
+    userAvatarUrl: {type: string}
+    personAvatarMediaId: {type: string, format: uuid}

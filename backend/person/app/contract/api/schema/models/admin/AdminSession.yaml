@@ -1,0 +1,41 @@
+AdminSession:
+  type: object
+  required:
+    - id
+    - ip
+    - browser
+    - os
+    - osVersion
+    - device
+    - origin
+    - region
+    - createdAt
+    - lastSeenAt
+    - expiresAt
+  properties:
+    id:
+      type: string
+      format: uuid
+    ip:
+      type: string
+    browser:
+      type: string
+    os:
+      type: string
+    osVersion:
+      type: string
+    device:
+      type: string
+    origin:
+      type: string
+    region:
+      type: string
+    createdAt:
+      type: string
+      format: date-time
+    lastSeenAt:
+      type: string
+      format: date-time
+    expiresAt:
+      type: string
+      format: date-time

@@ -1,0 +1,27 @@
+NotificationPage:
+  type: object
+  required:
+    - items
+    - total
+    - page
+    - size
+    - unread
+  properties:
+    items:
+      type: array
+      items:
+        $ref: ../notification/Notification.yaml#/Notification
+    total:
+      type: integer
+      format: int64
+      minimum: 0
+    page:
+      type: integer
+      minimum: 0
+    size:
+      type: integer
+      minimum: 1
+    unread:
+      type: integer
+      format: int64
+      minimum: 0

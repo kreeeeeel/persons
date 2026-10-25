@@ -1,0 +1,25 @@
+.preview {
+    width: 100%;
+    min-width: 0;
+    overflow: visible;
+    border-radius: 16px;
+    background: #17131e;
+}
+
+.preview img {
+    max-height: 52dvh;
+    object-fit: contain;
+}
+
+.preview > :first-child {
+    max-height: 50dvh;
+}
+
+.filename {
+    overflow-wrap: anywhere;
+    font-size: 16px;
+}
+
+.modal {
+    --g-modal-border-radius: 24px;
+}

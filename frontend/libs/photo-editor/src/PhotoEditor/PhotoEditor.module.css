@@ -1,0 +1,196 @@
+.modal {
+    background-color: rgb(10 15 18 / 0.94);
+    backdrop-filter: blur(12px);
+
+    --g-modal-margin: 16px;
+    --g-modal-width: min(600px, calc(100vw - 32px));
+    --g-modal-border-radius: 0;
+    --g-color-base-modal: transparent;
+}
+
+.content {
+    background: transparent;
+    clip-path: none;
+}
+
+.panel {
+    gap: 28px;
+    padding: 8px;
+}
+
+.cropper {
+    position: relative;
+    width: min(100%, 560px, calc(100dvh - 136px));
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #11171b;
+}
+
+.cropper .viewport {
+    cursor: grab;
+}
+
+.viewport:active {
+    cursor: grabbing;
+}
+
+.cropper:focus-visible {
+    outline: 2px solid #65d6bc;
+    outline-offset: 6px;
+}
+
+.cropper .cropArea {
+    display: none;
+}
+
+.imageSkeleton {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+.toolbar {
+    max-width: 100%;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 999px;
+    background: rgb(0 0 0 / 0.42);
+}
+
+.functions {
+    flex-shrink: 0;
+    gap: 2px;
+}
+
+.tool,
+.cancel,
+.apply {
+    flex-shrink: 0;
+
+    --g-button-text-color: #f7f9f7;
+    --g-button-text-color-hover: #fff;
+    --g-button-background-color: transparent;
+    --g-button-background-color-hover: rgb(255 255 255 / 0.12);
+    --g-button-font-size: 16px;
+    --g-button-border-radius: 999px;
+}
+
+.tool {
+    width: 44px;
+
+    --g-button-padding: 0;
+}
+
+.selected {
+    --g-button-text-color: #65d6bc;
+    --g-button-background-color: rgb(101 214 188 / 0.16);
+}
+
+.verticalIcon {
+    transform: rotate(90deg);
+}
+
+.cancelIcon {
+    display: none;
+}
+
+.cancelContent {
+    display: grid;
+    height: 100%;
+    place-items: center;
+}
+
+.cancelLabel {
+    line-height: 1;
+}
+
+.apply {
+    --g-button-text-color: #65d6bc;
+    --g-button-text-color-hover: #83e1cb;
+}
+
+.applyContent {
+    display: grid;
+    height: 100%;
+    place-items: center;
+}
+
+.applyLabel,
+.progress {
+    grid-area: 1 / 1;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.spinner {
+    --g-spin-color: #65d6bc;
+}
+
+.error {
+    max-width: 100%;
+}
+
+@media (width <= 480px) {
+    .modal {
+        --g-modal-margin: 8px;
+        --g-modal-width: calc(100vw - 16px);
+    }
+
+    .panel {
+        gap: 20px;
+        padding: 0;
+    }
+
+    .toolbar {
+        gap: 2px;
+        padding: 4px;
+    }
+
+    .tool,
+    .cancel {
+        width: 40px;
+
+        --g-button-height: 40px;
+        --g-button-padding: 0;
+    }
+
+    .apply {
+        --g-button-height: 40px;
+        --g-button-padding: 8px;
+    }
+
+    .functions {
+        gap: 0;
+    }
+
+    .cancelLabel {
+        display: none;
+    }
+
+    .cancelIcon {
+        display: inline-flex;
+    }
+}
+
+.embedded {
+    width: 100%;
+    min-width: 0;
+    gap: 16px;
+    padding: 0;
+}
+
+.embedded .cropper {
+    width: min(100%, 320px);
+}
+
+.embedded .toolbar {
+    background: #202831;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 16px;
+}

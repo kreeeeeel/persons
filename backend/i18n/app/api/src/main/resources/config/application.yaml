@@ -1,0 +1,45 @@
+server:
+  port: 8082
+  forward-headers-strategy: none
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  application:
+    name: persons-i18n
+  profiles:
+    default: dev
+  jackson:
+    default-property-inclusion: non_null
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 1MB
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+springdoc:
+  enable-default-api-docs: false
+  swagger-ui:
+    url: /openapi/api.yaml
+project:
+  observability:
+    bodies-enabled: ${PROJECT_LOG_BODIES:false}
+    max-body-bytes: 65536
+    masked-fields:
+    - email
+    - recipient
+    - html
+    - avatarBase64
+    masked-headers:
+    - x-service-authorization
+  internal:
+    jwt-secret: ${PROJECT_INTERNAL_JWT_SECRET}

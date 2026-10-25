@@ -1,0 +1,10 @@
+DotaMatchEvent:
+  type: "object"
+  required:
+    - "page"
+    - "match"
+  properties:
+    page:
+      $ref: "../person/PersonSummary.yaml#/PersonSummary"
+    match:
+      $ref: "./DotaMatch.yaml#/DotaMatch"

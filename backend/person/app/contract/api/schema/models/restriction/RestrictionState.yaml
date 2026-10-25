@@ -1,0 +1,8 @@
+RestrictionState:
+  type: object
+  required: [signedIn]
+  properties:
+    signedIn:
+      type: boolean
+    restriction:
+      $ref: ./AccountRestriction.yaml#/AccountRestriction

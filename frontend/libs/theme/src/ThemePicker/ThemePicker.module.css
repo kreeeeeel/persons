@@ -1,0 +1,9 @@
+.popup {
+    --g-popup-border-width: 0px;
+}
+
+@media (pointer: coarse) {
+    .switcher {
+        --g-button-height: 44px;
+    }
+}

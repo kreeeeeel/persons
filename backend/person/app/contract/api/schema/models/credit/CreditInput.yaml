@@ -1,0 +1,12 @@
+CreditInput:
+  type: object
+  required:
+    - kind
+    - description
+  properties:
+    kind:
+      $ref: ../credit/CreditKind.yaml#/CreditKind
+    description:
+      type: string
+      maxLength: 1000
+      minLength: 1

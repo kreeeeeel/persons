@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: Persons I18N API
+  version: 0.1.0
+servers:
+- url: /
+paths:
+  /v1/catalogs/{locale}/{namespace}:
+    $ref: ./i18n.yaml#/~1v1~1catalogs~1{locale}~1{namespace}
+  /internal/v1/catalogs/{locale}/{namespace}:
+    $ref: ./i18n.yaml#/~1internal~1v1~1catalogs~1{locale}~1{namespace}
+components:
+  securitySchemes:
+    session:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Signed JWT backed by a revocable session. Browsers use a same-origin
+        BFF and HttpOnly cookie.
+    serviceJwt:
+      type: apiKey
+      in: header
+      name: X-Service-Authorization

@@ -1,0 +1,53 @@
+server:
+  port: 8086
+spring:
+  config:
+    import: classpath:persons-restrictions-client.yaml
+  application:
+    name: persons-person-worker
+  profiles:
+    default: dev
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  flyway:
+    enabled: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  task:
+    scheduling:
+      pool:
+        size: 3
+project:
+  internal:
+    jwt-secret: ${PROJECT_INTERNAL_JWT_SECRET}
+  observability:
+    bodies-enabled: false
+    masked-headers:
+      - x-service-authorization
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+s3:
+  endpoint: ${S3_ENDPOINT}
+  region: ${S3_REGION}
+  bucket: ${S3_BUCKET}
+  credentials:
+    access-key: ${S3_ACCESS_KEY}
+    secret-key: ${S3_SECRET_KEY}
+jobs:
+  video-delay: ${VIDEO_TRANSCODE_DELAY:PT10S}
+  video-initial-delay: ${VIDEO_TRANSCODE_INITIAL_DELAY:PT45S}
+  achievements-delay: ${ACHIEVEMENTS_DELAY:PT5M}
+  achievements-initial-delay: ${ACHIEVEMENTS_INITIAL_DELAY:PT30S}
+  aggregates-delay: ${AGGREGATES_DELAY:PT2S}
+  restrictions-delay: ${RESTRICTIONS_DELAY:PT30S}
+  media-delay: ${MEDIA_CLEANUP_DELAY:PT1M}
+integrations:
+  leetify:
+    api-key: ${LEETIFY_API_KEY:}

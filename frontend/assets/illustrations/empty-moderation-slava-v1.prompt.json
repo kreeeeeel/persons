@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-10-23",
+  "tool": "built-in image_gen",
+  "asset": "illustrations/empty-moderation-slava-v1.webp",
+  "identityReference": "слава.png (consented local reference; not committed)",
+  "styleReference": "illustrations/empty-comments-slava-v1.webp",
+  "transparentBackground": true,
+  "output": {
+    "format": "webp",
+    "width": 640,
+    "height": 640,
+    "hasAlpha": true
+  },
+  "prompt": "Use case: illustration-story.\nAsset type: one polished isolated empty-state illustration for the Persons website, empty moderation queue / no pending changes.\nInput images: Image 1 is the ONLY identity reference: the original consented photograph of the adult man Slava. Image 2 is ONLY an illustration style and violet clothing reference; DO NOT derive the face from Image 2.\nPrimary request: Draw the unmistakably recognizable man Slava from Image 1, seated comfortably behind a small minimal desk. At his side on the desk is one clearly completely empty shallow incoming document tray, visibly open inside with absolutely no papers or objects in it. He holds a small plain rubber stamp loosely in one hand near the desk, with a relaxed satisfied expression, having finished checking everything. The other forearm rests naturally on the desk. One person only. A calm friendly pose that makes the empty tray immediately readable.\nSubject identity: Preserve his exact recognizable broad dark side-parted hair, softly rectangular head shape, narrow eyes behind black rectangular eyeglasses, pronounced straight nose, slightly asymmetric gentle smile and original facial proportions from Image 1. He wears the simple muted violet sweatshirt from the style reference. Do not substitute a generic handsome cartoon face, do not enlarge eyes, do not add facial hair.\nStyle/medium: Polished editorial hand-painted digital illustration, clean silhouette, soft textured brush shading, detailed recognizable facial features and natural adult anatomy, matching Image 2. Tasteful violet and warm neutral accents. Keep scene compact and simple, upper body, entire small desk and every object fully visible, readable at 220 px display width, centered square composition, generous transparent margin.\nBackground: GENUINELY TRANSPARENT alpha background. Isolated person, desk and empty tray as one compact cutout. No backdrop, no white rectangle, no floor, no horizon, no ground shadow, no cast shadow outside silhouette, no glow, no halo, no purple outer rim, no background texture or decorative shapes.\nText: none. No letters, numbers, labels, badges, symbols, logos or watermark. No other people. No paper in the tray. No tablet, monitor, floating checkmarks or random props. Render all explanatory wording in the website separately, never in the image.",
+  "originalReference": "C:/Users/kreeeeeel/Desktop/люди/слава.png"
+}

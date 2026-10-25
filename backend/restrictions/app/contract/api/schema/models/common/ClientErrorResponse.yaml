@@ -1,0 +1,16 @@
+ClientErrorResponse:
+  type: object
+  required:
+    - code
+    - requestId
+  properties:
+    code:
+      type: string
+      maxLength: 64
+    requestId:
+      type: string
+      maxLength: 64
+    scope:
+      $ref: ../restriction/RestrictionScope.yaml#/RestrictionScope
+    restriction:
+      $ref: ../restriction/AccountRestriction.yaml#/AccountRestriction

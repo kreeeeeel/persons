@@ -1,0 +1,85 @@
+/v1/access:
+  get:
+    tags:
+      - restrictions
+    operationId: getAccessState
+    responses:
+      '200':
+        description: Result
+        content:
+          application/json:
+            schema:
+              $ref: ./models/restriction/RestrictionState.yaml#/RestrictionState
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+/v1/admin/users/{id}/restriction:
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  get:
+    tags:
+      - restrictions
+    operationId: getUserRestriction
+    security:
+      - session: []
+    responses:
+      '200':
+        description: Result
+        content:
+          application/json:
+            schema:
+              $ref: ./models/restriction/RestrictionState.yaml#/RestrictionState
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+  put:
+    tags:
+      - restrictions
+    operationId: setUserRestriction
+    security:
+      - session: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./models/restriction/RestrictionInput.yaml#/RestrictionInput
+    responses:
+      '200':
+        description: Result
+        content:
+          application/json:
+            schema:
+              $ref: ./models/restriction/AccountRestriction.yaml#/AccountRestriction
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+  delete:
+    tags:
+      - restrictions
+    operationId: revokeUserRestriction
+    security:
+      - session: []
+    responses:
+      '204':
+        description: Result
+      '403':
+        description: Access denied or account action restricted
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse

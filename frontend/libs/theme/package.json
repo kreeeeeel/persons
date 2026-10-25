@@ -1,0 +1,27 @@
+{
+    "name": "@persons/theme",
+    "version": "0.1.0",
+    "private": false,
+    "type": "module",
+    "exports": {
+        "./useThemeMenuItems": "./src/useThemeMenuItems.tsx",
+        "./useThemeMenuItems.module.css": "./src/useThemeMenuItems.module.css",
+        ".": "./src/index.ts",
+        "./provider": "./src/provider.tsx",
+        "./postcss": {
+            "types": "./tools/gravity-css-layer.d.cts",
+            "default": "./tools/gravity-css-layer.cjs"
+        },
+        "./typography.css": "./src/typography.css",
+        "./scrollbar.css": "./src/scrollbar.css",
+        "./ThemePicker/ThemePicker": "./src/ThemePicker/ThemePicker.tsx",
+        "./ThemePicker/ThemePicker.module.css": "./src/ThemePicker/ThemePicker.module.css"
+    },
+    "peerDependencies": {
+        "react": "^19.0.0",
+        "@gravity-ui/uikit": "^7.51.0",
+        "@gravity-ui/icons": "^2.22.0",
+        "postcss": "^8.5.0"
+    },
+    "dependencies": {}
+}

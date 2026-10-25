@@ -1,0 +1,15 @@
+{
+  "model": "imagegen",
+  "date": "2026-10-19",
+  "transparentBackground": true,
+  "images": [
+    {
+      "file": "error-page-stepa-slava-v1.webp",
+      "prompt": "Use consented Stepa and Slava photographs as identity references, existing project illustration as style reference only. Preserve their faces. Two sad friends shrugging helplessly, Stepa on the left wearing his red checked headscarf and black cap, Slava on the right wearing his rectangular glasses. Waist-up centered cutout, generous transparent margins, purple accent lighting, warm editorial illustration. No text, UI, watermark or cropped heads."
+    },
+    {
+      "file": "error-modal-nikita-v1.webp",
+      "prompt": "Use the updated consented Nikita photograph as identity reference and existing project illustration as style reference only. Preserve curly dark hair, broad face and short beard. Sad apologetic Nikita seated cross-legged in three-quarter view, holding a disconnected purple power plug beside an empty wall socket. No sparks or danger. Transparent cutout with purple accents and generous margins. No text, UI, full wall or background panel."
+    }
+  ]
+}

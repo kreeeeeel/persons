@@ -1,0 +1,62 @@
+.frame {
+    display: inline-flex;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.avatar {
+    display: inline-flex;
+    position: relative;
+    width: var(--persons-avatar-size, 100px);
+    height: var(--persons-avatar-size, 100px);
+
+    --g-avatar-size: var(--persons-avatar-size, 100px);
+    --g-avatar-font-size: max(16px, calc(var(--persons-avatar-size, 100px) / 3));
+}
+
+.responsive {
+    display: block;
+    overflow: hidden;
+}
+
+.responsive img {
+    position: absolute;
+    inset: 0;
+}
+
+.avatar > * {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.skeleton {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.visible {
+    animation: reveal 240ms ease both;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .visible {
+        animation: none;
+    }
+}

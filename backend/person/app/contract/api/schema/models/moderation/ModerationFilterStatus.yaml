@@ -1,0 +1,3 @@
+ModerationFilterStatus:
+  type: string
+  enum: [PENDING, APPROVED, REJECTED, ALL]

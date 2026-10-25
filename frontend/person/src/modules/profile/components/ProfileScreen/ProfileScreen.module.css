@@ -1,0 +1,235 @@
+.page {
+    position: relative;
+    min-height: 100dvh;
+
+    --persons-header-height: 88px;
+
+    background: var(--persons-background);
+}
+
+.main {
+    width: min(100% - 48px, 1080px);
+    margin-inline: auto;
+    padding-block: 130px calc(64px + var(--persons-bottom-marquee-height, 0px));
+}
+
+.identity {
+    display: grid;
+    grid-template-columns: 184px minmax(0, 1fr);
+    align-items: center;
+    gap: 40px;
+    width: min(100%, 900px);
+    margin-inline: auto;
+    padding-block: 16px;
+    text-align: left;
+}
+
+.biography {
+    min-width: 0;
+    align-items: flex-start;
+}
+
+.avatarColumn {
+    min-width: 0;
+    width: 184px;
+}
+
+.claim {
+    align-items: center;
+    max-width: 100%;
+    height: auto;
+    min-height: 36px;
+    padding-block: 8px;
+    line-height: 20px;
+
+    --g-button-padding: 8px;
+    --g-button-icon-offset: 6px;
+}
+
+.claim > :global([class~='g-button__text']) {
+    white-space: normal;
+}
+
+.claim > :global([class~='g-button__icon']) {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.avatar {
+    position: relative;
+    width: 184px;
+    height: 184px;
+}
+
+.verified {
+    position: absolute;
+    left: 148px;
+    bottom: 0;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    height: 32px;
+    padding: 0 4px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 999px;
+    background: var(--persons-background);
+    color: var(--g-color-text-brand);
+    cursor: help;
+    transition:
+        padding 220ms ease,
+        gap 220ms ease,
+        box-shadow 220ms ease;
+}
+
+.verified svg {
+    display: block;
+    flex: 0 0 24px;
+}
+
+.verifiedText {
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 24px;
+    transition:
+        max-width 220ms ease,
+        opacity 180ms ease;
+}
+
+.verified:hover,
+.verified:focus-visible {
+    gap: 6px;
+    padding-inline: 4px 10px;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.1);
+}
+
+.verified:hover .verifiedText,
+.verified:focus-visible .verifiedText {
+    max-width: min(250px, calc(50vw - 80px));
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .verified,
+    .verifiedText {
+        transition: none;
+    }
+}
+
+.identity h1,
+.identity p {
+    margin: 0;
+}
+
+.name {
+    font-size: clamp(30px, 5vw, 48px);
+    font-weight: 750;
+    line-height: 1.18;
+    letter-spacing: -1px;
+    overflow-wrap: anywhere;
+}
+
+.description {
+    max-width: 720px;
+    font-size: 20px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 12px;
+    border-radius: 24px;
+    background: var(--persons-surface);
+    text-align: center;
+}
+
+.number {
+    font-size: clamp(24px, 3vw, 30px);
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.panel {
+    width: min(100%, 900px);
+    margin-inline: auto;
+    min-height: 300px;
+}
+
+@media (width <= 700px) {
+    .page {
+        --persons-header-height: 72px;
+    }
+
+    .main {
+        width: calc(100% - 32px);
+        padding-block: 100px 32px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .description {
+        font-size: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .identity {
+        animation: appear 420ms ease both;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    min-width: 0;
+    width: 100%;
+}
+
+.reputation {
+    font-size: 18px;
+    line-height: 28px;
+
+    --g-label-height: 36px;
+}
+
+@media (width <= 600px) {
+    .identity {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+    }
+
+    .avatarColumn,
+    .avatar {
+        justify-self: center;
+    }
+}

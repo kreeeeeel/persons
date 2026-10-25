@@ -1,0 +1,74 @@
+.pill {
+    position: relative;
+    height: 48px;
+    box-sizing: border-box;
+    padding: 4px;
+    border-radius: 999px;
+    background: var(--g-color-base-generic);
+}
+
+.action {
+    --g-button-height: 40px;
+    --g-button-padding: 0;
+
+    width: var(--media-share-action-width, 40px);
+    min-width: var(--media-share-action-width, 40px);
+    height: 40px;
+}
+
+.action > :global([class~="g-button__text"]) {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: 0;
+    line-height: 0;
+}
+
+.icon {
+    animation: change-icon 180ms ease-out;
+}
+
+.notice {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    z-index: 3;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--g-color-base-background);
+    box-shadow: 0 6px 24px rgb(0 0 0 / 0.15);
+    white-space: nowrap;
+    font-size: 16px;
+    animation: show-notice 180ms ease-out;
+}
+
+@keyframes change-icon {
+    from {
+        opacity: 0;
+        transform: scale(0.6) rotate(-20deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+@keyframes show-notice {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .icon,
+    .notice {
+        animation: none;
+    }
+}

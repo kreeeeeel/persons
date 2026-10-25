@@ -1,0 +1,8 @@
+AdminContentStatistics:
+  type: object
+  required: [published, pending, hidden, draft]
+  properties:
+    published: {type: integer, format: int64}
+    pending: {type: integer, format: int64}
+    hidden: {type: integer, format: int64}
+    draft: {type: integer, format: int64}

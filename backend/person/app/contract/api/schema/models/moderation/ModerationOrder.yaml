@@ -1,0 +1,3 @@
+ModerationOrder:
+  type: string
+  enum: [OLDEST, NEWEST, AUTHOR, TYPE]

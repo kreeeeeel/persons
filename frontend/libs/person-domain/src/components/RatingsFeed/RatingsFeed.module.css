@@ -1,0 +1,19 @@
+.row {
+    padding-block: 20px;
+    border-bottom: 1px solid var(--g-color-line-generic);
+}
+
+.emoji {
+    font-size: 26px;
+    letter-spacing: 3px;
+}
+
+.comment {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.row > :global([class~="g-label"]) {
+    align-self: flex-start;
+    max-width: 100%;
+}

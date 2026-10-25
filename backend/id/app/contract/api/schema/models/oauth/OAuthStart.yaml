@@ -1,0 +1,16 @@
+OAuthStart:
+  type: object
+  required:
+  - browserBinding
+  - locale
+  properties:
+    browserBinding:
+      type: string
+      minLength: 43
+      maxLength: 128
+      pattern: ^[A-Za-z0-9_-]+$
+    locale:
+      type: string
+      enum:
+      - ru
+      - en

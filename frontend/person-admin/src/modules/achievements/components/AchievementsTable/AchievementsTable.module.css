@@ -1,0 +1,17 @@
+.title {
+    min-width: 220px;
+    width: 26%;
+}
+
+.description {
+    min-width: 260px;
+    width: 40%;
+}
+
+.clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    line-height: 24px;
+}
