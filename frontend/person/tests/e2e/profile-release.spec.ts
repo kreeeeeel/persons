@@ -15,7 +15,7 @@ test.beforeEach(async ({ context, baseURL, page }) => {
 
 for (const locale of ['ru', 'en'] as const) {
     for (const theme of ['light', 'dark'] as const) {
-        for (const width of [320, 390, 1440]) {
+        for (const width of [320, 390, 768, 1440]) {
             test(`profile layout ${locale} ${theme} ${width}`, async ({ page, context, baseURL }) => {
                 await context.addCookies([
                     { name: 'PERSONS_THEME', value: theme, url: baseURL ?? 'http://localhost:3002' },
@@ -42,6 +42,8 @@ for (const locale of ['ru', 'en'] as const) {
                     expect((await sidebar.boundingBox())?.y).toBeCloseTo(identity?.y ?? 0, 0);
                 } else {
                     expect(description?.y).toBeGreaterThan((identity?.y ?? 0) + (identity?.height ?? 0));
+                }
+                if (width <= 700) {
                     const menu = page.getByRole('button', { name: locale === 'ru' ? 'Открыть меню' : 'Open menu' });
                     await menu.click();
                     const drawer = page.getByRole('dialog', { name: locale === 'ru' ? 'Меню' : 'Menu' });
