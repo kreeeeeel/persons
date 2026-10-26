@@ -1,18 +1,12 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import {
-    Box,
-    Button,
-    Flex,
-    Icon,
-    Pagination,
-    Skeleton,
-} from "@gravity-ui/uikit";
+import { Box, Button, Flex, Icon, Skeleton } from "@gravity-ui/uikit";
 import { FileArrowUp } from "@gravity-ui/icons";
 import { useTranslate } from "@persons/i18n";
 import { personClient } from "@persons/person-domain/api/browser";
-import { usePersonData } from "@persons/person-domain/hooks/usePersonData";
+import { useInfinitePersonData } from "@persons/person-domain/hooks/useInfinitePersonData";
+import { InfiniteFeedLoader } from "@persons/person-domain/InfiniteFeedLoader";
 import { useUploadEvents } from "@persons/person-domain/uploads/useUploadEvents";
 import { FeedContent } from "@persons/person-domain/FeedContent";
 import { MediaCard } from "@persons/person-domain/MediaCard";
@@ -33,7 +27,6 @@ export function Gallery({
     onCloseMedia,
 }: GalleryProps) {
     const t = useTranslate("person");
-    const [page, setPage] = useState(1);
     const [uploading, setUploading] = useState(false);
     const [localSelection, setLocalSelection] =
         useState<GalleryProps["selectedMedia"]>();
@@ -41,14 +34,14 @@ export function Gallery({
     const open = (kind: "PHOTO" | "MOMENT", id: string) =>
         onOpenMedia ? onOpenMedia(kind, id) : setLocalSelection({ kind, id });
     const load = useCallback(
-        (signal: AbortSignal) =>
+        (page: number, signal: AbortSignal) =>
             personClient.gallery.listGallery(
-                { id: personId, page: page - 1, size: PAGE_SIZE },
+                { id: personId, page, size: PAGE_SIZE },
                 { signal },
             ),
-        [personId, page],
+        [personId],
     );
-    const resource = usePersonData(`gallery:${personId}:${page}`, load);
+    const resource = useInfinitePersonData(`gallery:${personId}`, load);
     useUploadEvents(personId, resource.refresh);
     return (
         <Flex direction="column" gap="4">
@@ -105,22 +98,7 @@ export function Gallery({
                     ))}
                 </Box>
             </FeedContent>
-            {((resource.data?.total ?? 0) > PAGE_SIZE || page > 1) && (
-                <Box
-                    as="nav"
-                    aria-label={t("galleryPages")}
-                    className={styles.pagination}
-                >
-                    <Pagination
-                        page={page}
-                        pageSize={PAGE_SIZE}
-                        total={resource.data?.total}
-                        size="l"
-                        compact
-                        onUpdate={setPage}
-                    />
-                </Box>
-            )}
+            <InfiniteFeedLoader {...resource} />
             {selected && (
                 <MediaViewer
                     mediaId={selected.id}

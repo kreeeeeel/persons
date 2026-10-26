@@ -7,7 +7,7 @@ import styles from '@persons/ui/PageLoader/PageLoader.module.css';
 
 export function PageLoader({ label }: PageLoaderProps) {
     return (
-        <Flex alignItems="center" justifyContent="center" className={styles.page}>
+        <Flex alignItems="center" justifyContent="center" className={styles.page} data-page-loading>
             <BrandLoader label={label} size={80} />
         </Flex>
     );

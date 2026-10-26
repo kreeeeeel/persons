@@ -14,7 +14,7 @@ Omitting `ProfileInput.dates` preserves stored dates; `{}` clears them. Future b
 
 `GET /v1/persons/{id}/gallery?page=0&size=12` returns a single page of photos and moments from `person_media`, ordered by `createdAt DESC, id DESC`. Existing publication and moderation visibility applies. Other uploaders' pending files, deleted media, avatars and proof files are excluded.
 
-The public profile and CMS share `Gallery` with simple pagination. Upload appears above the grid on the left and opens the common file picker directly. Mixed selections use the original photo/video preview for each file, preserving captions, people tags and the upload queue. Views appear at the upper right of previews; video duration stays at the lower right.
+The public profile and CMS share `Gallery` with automatic loading on downward scroll. Upload appears above the grid on the left and opens the common file picker directly. Mixed selections use the original photo/video preview for each file, preserving captions, people tags and the upload queue. Views appear at the upper right of previews; video duration stays at the lower right.
 
 The original viewer retains playback, comments, reactions, author information, editing and `?photo=`/`?video=` links. `GET /v1/media/{id}/details?mixed=true` supplies cross-kind neighbors and their kinds across page boundaries. Legacy callers retain same-kind navigation without this parameter. The BFF forwards it using the generated client.
 

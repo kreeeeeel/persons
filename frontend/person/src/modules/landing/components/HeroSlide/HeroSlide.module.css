@@ -40,14 +40,14 @@
     .image {
         inset: calc(var(--persons-header-height) + 8px) 0 auto auto;
         width: 175%;
-        height: 36dvh;
+        height: var(--persons-hero-art-height, 30svh);
         object-fit: cover;
         object-position: right center;
         mask-image: linear-gradient(to bottom, #000 85%, transparent);
     }
 }
 
-@media (height <= 500px) {
+@media (height <= 500px) and (aspect-ratio > 4/5) {
     .image {
         inset: 0;
         width: 100%;

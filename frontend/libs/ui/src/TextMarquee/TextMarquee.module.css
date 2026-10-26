@@ -129,4 +129,33 @@
     .repetition {
         display: none;
     }
+
+    .root[data-view='glass'] {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .root[data-view='glass'] .track {
+        display: flex;
+        width: max-content;
+    }
+
+    .root[data-view='glass'] .cycle {
+        display: flex;
+    }
+
+    .root[data-view='glass'] .group {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding: 10px 16px;
+    }
+
+    .root[data-view='glass'] .item {
+        white-space: nowrap;
+        overflow-wrap: normal;
+    }
+
+    .root[data-view='glass'] .item::after {
+        display: inline;
+    }
 }

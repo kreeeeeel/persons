@@ -130,13 +130,11 @@ test('mixed gallery preserves original dialogs and navigates across kinds with v
     await expect(dialog.locator('video')).toHaveCount(0);
     await page.screenshot({ path: 'test-results/gallery-real-photo.png' });
     await page.keyboard.press('Escape');
-    await panel
-        .getByRole('navigation', { name: 'Страницы галереи' })
-        .getByRole('button', { name: '2', exact: true })
-        .click();
+    await expect(panel.getByRole('navigation', { name: 'Страницы галереи' })).toHaveCount(0);
     const secondPage = await (await page.request.get(`${galleryUrl}&page=1`)).json();
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
     await expect(panel.getByRole('button', { name: secondPage.items[0].title, exact: true })).toBeVisible();
-    await expect(panel.getByRole('button', { name: item.title, exact: true })).toHaveCount(0);
+    await expect(panel.getByRole('button', { name: item.title, exact: true })).toBeVisible();
 });
 
 test('uploads mixed files through one picker and selects the original preview by file', async ({ page }) => {
@@ -168,6 +166,22 @@ test('uploads mixed files through one picker and selects the original preview by
     await dialog.getByRole('button', { name: 'Отправить', exact: true }).click();
     await expect(dialog.getByText('Проверка комментария после загрузки', { exact: true })).toBeVisible();
     await page.screenshot({ path: 'test-results/gallery-real-mobile-comments.png' });
+});
+
+test('CMS gallery appends the next page on scroll and retains loaded media', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('http://localhost:3001/ru/persons/krel');
+    await page.getByRole('tab', { name: /^Фото и моменты/ }).click();
+    const panel = page.getByRole('main');
+    const profiles = JSON.parse(await readFile(path.resolve('../../.cache/feature-profiles.json'), 'utf8'));
+    const url = `http://localhost:3001/api/person/v1/persons/${profiles.krel}/gallery?size=12`;
+    const first = await (await page.request.get(url)).json();
+    const next = await (await page.request.get(`${url}&page=1`)).json();
+    await expect(panel.getByRole('button', { name: first.items[0].title, exact: true })).toBeVisible();
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    await expect(panel.getByRole('button', { name: next.items[0].title, exact: true })).toBeVisible();
+    await expect(panel.getByRole('button', { name: first.items[0].title, exact: true })).toBeVisible();
+    await expect(panel.getByRole('navigation')).toHaveCount(0);
 });
 
 test('edits calendar dates in the CMS and publishes them through the API', async ({ page }) => {

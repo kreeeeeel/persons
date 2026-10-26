@@ -15,9 +15,3 @@
     width: 72%;
     height: 28px;
 }
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    min-width: 0;
-}

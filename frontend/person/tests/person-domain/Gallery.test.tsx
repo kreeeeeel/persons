@@ -1,10 +1,11 @@
-import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, cleanup, fireEvent, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { Gallery } from '@persons/person-domain/Gallery';
 import { Button } from '@gravity-ui/uikit';
 import { renderUi } from '@test/render';
 
 const api = vi.hoisted(() => ({ list: vi.fn(), viewer: vi.fn(), uploader: vi.fn() }));
+let intersect: IntersectionObserverCallback | undefined;
 vi.mock('@persons/person-domain/api/browser', () => ({
     personClient: { gallery: { listGallery: api.list } },
     personError: async () => 'UNAVAILABLE',
@@ -28,6 +29,17 @@ vi.mock('@persons/person-domain/MediaUploader', () => ({
 }));
 
 beforeEach(() => {
+    intersect = undefined;
+    vi.stubGlobal(
+        'IntersectionObserver',
+        class {
+            constructor(callback: IntersectionObserverCallback) {
+                intersect = callback;
+            }
+            observe = vi.fn();
+            disconnect = vi.fn();
+        },
+    );
     api.list.mockImplementation(async ({ page }) => ({
         page,
         size: 12,
@@ -41,9 +53,10 @@ beforeEach(() => {
 afterEach(() => {
     cleanup();
     vi.clearAllMocks();
+    vi.unstubAllGlobals();
 });
 
-it('loads one mixed page and changes pages through simple pagination', async () => {
+it('appends the next mixed page when the scroll sentinel appears and retains existing cards', async () => {
     renderUi(<Gallery personId="person" personTag="person" signedIn />);
     expect(screen.getByRole('status')).toHaveAttribute('aria-busy', 'true');
     expect(await screen.findByRole('button', { name: 'Photo page 0' })).toBeVisible();
@@ -52,9 +65,31 @@ it('loads one mixed page and changes pages through simple pagination', async () 
         { id: 'person', page: 0, size: 12 },
         expect.objectContaining({ signal: expect.any(AbortSignal) }),
     );
-    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '2' })).not.toBeInTheDocument();
+    act(() => intersect?.([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver));
     expect(await screen.findByRole('button', { name: 'Photo page 1' })).toBeVisible();
-    expect(screen.queryByRole('button', { name: 'Photo page 0' })).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Photo page 0' })).toBeVisible();
+    expect(api.list).toHaveBeenLastCalledWith(
+        { id: 'person', page: 1, size: 12 },
+        expect.objectContaining({ signal: expect.any(AbortSignal) }),
+    );
+});
+
+it('preserves loaded cards after a next-page error and retries the same page', async () => {
+    const load = api.list.getMockImplementation();
+    if (!load) {
+        throw new Error('Gallery fixture loader is missing');
+    }
+    api.list.mockImplementationOnce(load).mockRejectedValueOnce(new Error('Offline')).mockImplementation(load);
+    renderUi(<Gallery personId="person" personTag="person" signedIn />);
+    await screen.findByRole('button', { name: 'Photo page 0' });
+    act(() => intersect?.([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver));
+    const error = await screen.findByRole('alert');
+    expect(screen.getByRole('button', { name: 'Photo page 0' })).toBeVisible();
+    fireEvent.click(within(error).getByRole('button'));
+    await screen.findByRole('button', { name: 'Photo page 1' });
+    expect(api.list.mock.calls.map(([request]) => request.page)).toEqual([0, 1, 1]);
 });
 
 it('opens the shared picker without choosing a kind and delegates cross-kind navigation to the original viewer', async () => {

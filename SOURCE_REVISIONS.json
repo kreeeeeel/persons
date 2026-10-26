@@ -1,7 +1,7 @@
 [
   {
     "path": ".",
-    "commit": "9b07d45aed0b8c2d89fafafe1c892aeff2090da1",
+    "commit": "d75d99d0b8d703baa25fa93bd596c69791282d3f",
     "gitlab": "https://gitlab.com/te-eshche-lyudi/infrastructure.git"
   },
   {
@@ -56,7 +56,7 @@
   },
   {
     "path": "frontend/person",
-    "commit": "de56fc4f96900446f59188acbf6c8945362fcfda",
+    "commit": "16534b88109cb94339aeb26292475e1711b109c2",
     "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/person.git"
   },
   {
@@ -76,7 +76,7 @@
   },
   {
     "path": "frontend/libs/person-domain",
-    "commit": "395311557b3904e475ca83a2d6bb8a9361fd6920",
+    "commit": "171170f74b36e67c80d01c18d6568c04ecb8f4e2",
     "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/libs/person-domain.git"
   },
   {
@@ -91,7 +91,7 @@
   },
   {
     "path": "frontend/libs/ui",
-    "commit": "3216a59769b1a6b736bc54dbc4485c2c69af3d0b",
+    "commit": "e7fa185b4d38fcbf92d01e98b82aca6597e54f5f",
     "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/libs/ui.git"
   }
 ]

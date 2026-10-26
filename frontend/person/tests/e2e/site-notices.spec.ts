@@ -1,5 +1,11 @@
 import { expect, test } from '@playwright/test';
 
+test.beforeEach(async ({ context, baseURL }) => {
+    await context.addCookies([
+        { name: 'PERSONS_OPTIONAL_COOKIES', value: 'rejected', url: baseURL ?? 'http://localhost:3002' },
+    ]);
+});
+
 (['ru', 'en'] as const).forEach((locale) => {
     (['light', 'dark'] as const).forEach((theme) => {
         test(`${locale} ${theme}: fixed glass ticker, responsive layout and reduced motion`, async ({
@@ -47,6 +53,7 @@ import { expect, test } from '@playwright/test';
                     { width: 1440, height: 1000 },
                 ]) {
                     await page.setViewportSize(viewport);
+                    await expect(page.getByRole('heading', { level: 1 }).locator('..')).toHaveCSS('opacity', '1');
                     await expect
                         .poll(async () => {
                             const strip = await ticker.boundingBox();
@@ -55,15 +62,29 @@ import { expect, test } from '@playwright/test';
                                     name: locale === 'ru' ? 'Управление слайдами' : 'Slideshow controls',
                                 })
                                 .boundingBox();
+                            const search = await page.getByRole('combobox').boundingBox();
                             return Boolean(
                                 strip &&
                                 controls &&
+                                search &&
+                                strip.height <= 48 &&
                                 Math.abs(strip.y + strip.height - viewport.height) < 1 &&
-                                controls.y + controls.height <= strip.y,
+                                controls.y + controls.height <= strip.y &&
+                                (controls.y >= search.y + search.height || controls.x >= search.x + search.width),
                             );
                         })
                         .toBe(true);
                     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+                    const rows = await ticker
+                        .getByRole('listitem')
+                        .evaluateAll((items) => items.map((item) => item.getBoundingClientRect().y));
+                    expect(rows[0]).toBeCloseTo(rows[1], 0);
+                    if (viewport.width < 400) {
+                        await page.screenshot({
+                            path: `test-results/mobile-ticker-${locale}-${theme}-${viewport.width}-${reducedMotion}.png`,
+                            animations: 'disabled',
+                        });
+                    }
                 }
             }
 
@@ -75,10 +96,23 @@ import { expect, test } from '@playwright/test';
 });
 
 test('does not render the ticker while page illustrations are loading', async ({ page }) => {
-    await page.route('**/media/play-*', (route) => route.abort());
-    await page.goto('/ru');
-    await expect(page.getByRole('status', { name: 'Загрузка…', exact: true })).toBeVisible();
-    await expect(page.locator('[data-view="glass"]')).toHaveCount(0);
+    let release: () => void = () => {};
+    const pending = new Promise<void>((resolve) => {
+        release = resolve;
+    });
+    await page.route('**/media/play-*', async (route) => {
+        await pending;
+        await route.abort();
+    });
+    try {
+        await page.goto('/ru', { waitUntil: 'domcontentloaded' });
+        await expect(page.getByRole('status', { name: 'Загрузка…', exact: true })).toBeVisible();
+        await expect(page.locator('[data-view="glass"]')).toBeHidden();
+    } finally {
+        release();
+    }
+    await expect(page.getByRole('combobox')).toBeVisible();
+    await expect(page.locator('[data-view="glass"]')).toBeVisible();
 });
 
 test('does not render the ticker on a utility error page', async ({ page }) => {
