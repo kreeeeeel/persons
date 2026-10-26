@@ -408,6 +408,13 @@ export async function handlePersonRequest(
                         size,
                     });
                     break;
+                case "GET v1/persons/{id}/gallery":
+                    response = await api.gallery.listGalleryRaw({
+                        id,
+                        page,
+                        size,
+                    });
+                    break;
                 case "GET v1/persons/{id}/games/dota2/matches":
                     response = await api.games.listDotaMatchesRaw({
                         id,
@@ -521,7 +528,12 @@ export async function handlePersonRequest(
                     response = await api.media.deleteMediaRaw({ id });
                     break;
                 case "GET v1/media/{id}/details":
-                    response = await api.gallery.getMediaDetailRaw({ id });
+                    response = await api.gallery.getMediaDetailRaw({
+                        id,
+                        ...(url.searchParams.get("mixed") === "true"
+                            ? { mixed: true }
+                            : {}),
+                    });
                     break;
                 case "GET v1/media/{id}/qualities":
                     response = await api.mediaQuality.listMediaQualitiesRaw({

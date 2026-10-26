@@ -71,3 +71,28 @@ it('keeps captions separate when switching selected files', () => {
     fireEvent.click(screen.getByRole('button', { name: '1' }));
     expect(screen.getByRole('textbox', { name: 'Подпись' })).toHaveValue('First caption');
 });
+
+it('opens the common picker directly and chooses each preview from its file in a mixed selection', () => {
+    let id = 0;
+    vi.spyOn(URL, 'createObjectURL').mockImplementation(() => `blob:mixed-${id++}`);
+    renderUi(<MediaUploader personId="person" onClose={vi.fn()} onSaved={vi.fn()} />);
+    const picker = screen.getByLabelText('Выбрать файл', { selector: 'input' });
+    expect(picker).toHaveAttribute('accept', expect.stringContaining('image/jpeg'));
+    expect(picker).toHaveAttribute('accept', expect.stringContaining('video/mp4'));
+    expect(screen.queryByRole('textbox', { name: 'Подпись' })).not.toBeInTheDocument();
+    fireEvent.change(picker, {
+        target: {
+            files: [
+                new File(['photo'], 'photo.jpg', { type: 'image/jpeg' }),
+                new File(['video'], 'video.mp4', { type: 'video/mp4' }),
+            ],
+        },
+    });
+    expect(screen.getByText('Предпросмотр фотографии')).toBeVisible();
+    fireEvent.change(screen.getByRole('textbox', { name: 'Подпись' }), { target: { value: 'Photo caption' } });
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    expect(screen.getByText('Предпросмотр видео')).toBeVisible();
+    expect(document.querySelector('video')).toHaveAttribute('src', 'blob:mixed-1');
+    fireEvent.click(screen.getByRole('button', { name: '1' }));
+    expect(screen.getByRole('textbox', { name: 'Подпись' })).toHaveValue('Photo caption');
+});

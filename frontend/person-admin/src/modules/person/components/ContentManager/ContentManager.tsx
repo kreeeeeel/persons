@@ -12,13 +12,13 @@ import { FeedContent } from '@persons/person-domain/FeedContent';
 import { RatingsPanel } from '@persons/person-domain/RatingsPanel';
 import { CommentsFeed } from '@persons/person-domain/CommentsFeed';
 import { CreditFeed } from '@persons/person-domain/CreditFeed';
-import { MediaGrid } from '@persons/person-domain/MediaGrid';
+import { Gallery } from '@persons/person-domain/Gallery';
 import { AchievementsFeed } from '@persons/person-domain/AchievementsFeed';
 import { MutationFeedback } from '@persons/person-domain/MutationFeedback';
 import { PersonAdminTools } from '@persons/person-domain/PersonAdminTools';
 import { useUploadEvents } from '@persons/person-domain/uploads/useUploadEvents';
 
-const TABS = ['wall', 'ratings', 'photos', 'moments', 'credit', 'achievements'] as const;
+const TABS = ['wall', 'ratings', 'gallery', 'credit', 'achievements'] as const;
 
 export function ContentManager({ tag, publicUrl }: { readonly tag: string; readonly publicUrl: string }) {
     const t = useTranslate('person');
@@ -75,23 +75,8 @@ export function ContentManager({ tag, publicUrl }: { readonly tag: string; reado
                         />
                     )}
                     {tab === 'credit' && <CreditFeed personId={profile.id} signedIn publicUrl={publicUrl} />}
-                    {tab === 'photos' && (
-                        <MediaGrid
-                            personId={profile.id}
-                            personTag={profile.tag}
-                            kind="PHOTO"
-                            signedIn
-                            publicUrl={publicUrl}
-                        />
-                    )}
-                    {tab === 'moments' && (
-                        <MediaGrid
-                            personId={profile.id}
-                            personTag={profile.tag}
-                            kind="MOMENT"
-                            signedIn
-                            publicUrl={publicUrl}
-                        />
+                    {tab === 'gallery' && (
+                        <Gallery personId={profile.id} personTag={profile.tag} signedIn publicUrl={publicUrl} />
                     )}
                     {tab === 'achievements' && (
                         <AchievementsFeed personId={profile.id} canManage revision={adminRevision} />

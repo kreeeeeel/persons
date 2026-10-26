@@ -20,6 +20,7 @@ export function MediaViewer({
     kind,
     signedIn,
     publicUrl,
+    mixedGallery = false,
     onClose,
     onNavigate,
     onChanged,
@@ -28,7 +29,7 @@ export function MediaViewer({
     const load = useCallback(
         async (signal: AbortSignal) => {
             const result = await personClient.gallery.getMediaDetail(
-                { id: mediaId },
+                { id: mediaId, ...(mixedGallery ? { mixed: true } : {}) },
                 { signal },
             );
             if (result.personId !== personId || result.kind !== kind) {
@@ -41,10 +42,10 @@ export function MediaViewer({
             }
             return result;
         },
-        [mediaId, personId, kind],
+        [mediaId, personId, kind, mixedGallery],
     );
     const resource = usePersonData(
-        `media:${personId}:${kind}:${mediaId}`,
+        `media:${personId}:${kind}:${mediaId}:${mixedGallery}`,
         load,
     );
     const detail = resource.data;
@@ -73,7 +74,14 @@ export function MediaViewer({
                     view="normal-contrast"
                     className={`${styles.navigation} ${styles.previous}`}
                     aria-label={t("previousMedia")}
-                    onClick={() => onNavigate(previousId)}
+                    onClick={() =>
+                        onNavigate(
+                            previousId,
+                            detail?.previousMediaKind === "MOMENT"
+                                ? "MOMENT"
+                                : "PHOTO",
+                        )
+                    }
                 >
                     <Icon data={ChevronLeft} size={36} />
                 </Button>
@@ -84,7 +92,14 @@ export function MediaViewer({
                     view="normal-contrast"
                     className={`${styles.navigation} ${styles.next}`}
                     aria-label={t("nextMedia")}
-                    onClick={() => onNavigate(nextId)}
+                    onClick={() =>
+                        onNavigate(
+                            nextId,
+                            detail?.nextMediaKind === "MOMENT"
+                                ? "MOMENT"
+                                : "PHOTO",
+                        )
+                    }
                 >
                     <Icon data={ChevronRight} size={36} />
                 </Button>

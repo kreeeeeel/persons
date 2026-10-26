@@ -221,7 +221,12 @@
     "./settings/siteProperties": "./src/settings/siteProperties.ts",
     "./EmptyState": "./src/components/EmptyState/EmptyState.tsx",
     "./EmptyState/EmptyState.types": "./src/components/EmptyState/EmptyState.types.ts",
-    "./EmptyState/EmptyState.module.css": "./src/components/EmptyState/EmptyState.module.css"
+    "./EmptyState/EmptyState.module.css": "./src/components/EmptyState/EmptyState.module.css",
+    "./Gallery": "./src/components/Gallery/Gallery.tsx",
+    "./Gallery/Gallery.types": "./src/components/Gallery/Gallery.types.ts",
+    "./Gallery/Gallery.module.css": "./src/components/Gallery/Gallery.module.css",
+    "./media/uploadFileKind": "./src/media/uploadFileKind.ts",
+    "./ProfileEditor/ProfileEditor.module.css": "./src/components/ProfileEditor/ProfileEditor.module.css"
   },
   "peerDependencies": {
     "@persons/person-client": "0.1.0",

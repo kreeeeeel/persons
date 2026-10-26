@@ -1,13 +1,14 @@
 "use client";
 
 import { useId, useState, useTransition } from "react";
-import { Alert, Dialog, Flex, Text, TextArea } from "@gravity-ui/uikit";
+import { Alert, Box, Dialog, Flex, Text, TextArea } from "@gravity-ui/uikit";
 import { LabeledTextInput as TextInput } from "@persons/ui/LabeledTextInput";
 import { useTranslate } from "@persons/i18n";
 import type { ProfileInput, SocialNetwork } from "@persons/person-client";
 import { personClient, personError } from "@persons/person-domain/api/browser";
 import type { ProfileEditorProps } from "@persons/person-domain/ProfileEditor/ProfileEditor.types";
 import dialogStyles from "@persons/person-domain/FormDialog/FormDialog.module.css";
+import styles from "@persons/person-domain/ProfileEditor/ProfileEditor.module.css";
 
 const NETWORKS: readonly SocialNetwork[] = ["TELEGRAM", "STEAM", "DISCORD"];
 const MAX_NAME_LENGTH = 10;
@@ -32,6 +33,7 @@ export function ProfileEditor({
         lastName: profile?.lastName ?? "",
         patronymic: profile?.patronymic ?? "",
         description: profile?.description ?? "",
+        dates: profile?.dates ?? {},
         tags: profile?.tags ?? [],
         searchKeywords: profile?.searchKeywords ?? [],
         socialLinks: profile?.socialLinks ?? [],
@@ -174,6 +176,48 @@ export function ProfileEditor({
                             />
                         ),
                     )}
+                    {(
+                        [
+                            "birthDate",
+                            "militaryDepartureDate",
+                            "militaryReturnDate",
+                        ] as const
+                    ).map((field) => (
+                        <Flex key={field} direction="column" gap="2">
+                            <Text
+                                as="label"
+                                htmlFor={`${descriptionId}-${field}`}
+                            >
+                                {t(field)}
+                            </Text>
+                            <Box
+                                as="input"
+                                id={`${descriptionId}-${field}`}
+                                type="date"
+                                className={styles.date}
+                                value={
+                                    draft.dates?.[field]
+                                        ?.toISOString()
+                                        .slice(0, 10) ?? ""
+                                }
+                                onChange={(event) => {
+                                    const value = (
+                                        event.currentTarget as unknown as HTMLInputElement
+                                    ).value;
+                                    setDraft({
+                                        ...draft,
+                                        dates: {
+                                            ...draft.dates,
+                                            [field]: value
+                                                ? new Date(`${value}T00:00:00Z`)
+                                                : undefined,
+                                        },
+                                    });
+                                }}
+                                disabled={pending}
+                            />
+                        </Flex>
+                    ))}
                     <Text as="label" htmlFor={descriptionId}>
                         {t("description")}
                     </Text>

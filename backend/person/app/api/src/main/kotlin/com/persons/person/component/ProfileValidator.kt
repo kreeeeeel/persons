@@ -7,6 +7,9 @@ import com.persons.person.exception.impl.InvalidInputException
 import org.springframework.stereotype.Component
 import java.net.URI
 import java.net.URISyntaxException
+import java.time.Clock
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.Locale
 
 private val RESERVED_TAGS = setOf("ru", "en", "api", "media", "assets", "person", "admin", "my-page", "blocked")
@@ -22,7 +25,7 @@ private val SOCIAL_HOSTS = mapOf(
 )
 
 @Component
-class ProfileValidator {
+class ProfileValidator(private val clock: Clock = Clock.systemUTC()) {
     fun normalize(input: ProfileInput): ProfileInput {
         val normalized = input.copy(
             firstName = input.firstName.trim(),
@@ -64,6 +67,17 @@ class ProfileValidator {
         }
 
         normalized.socialLinks.stream().forEach(::validateSocial)
+        normalized.dates?.let { dates ->
+            val birth = dates.birthDate
+            val departure = dates.militaryDepartureDate
+            val returning = dates.militaryReturnDate
+            if ((birth != null && birth > LocalDate.now(clock.withZone(ZoneId.of("Europe/Moscow")))) ||
+                (birth != null && departure != null && departure <= birth) ||
+                (returning != null && (departure == null || returning <= departure))
+            ) {
+                throw InvalidInputException()
+            }
+        }
         normalized.searchKeywords?.let { keywords ->
             if (keywords.size > MAX_SEARCH_KEYWORDS ||
                 keywords.stream().anyMatch { it.isBlank() || it.length > MAX_SEARCH_KEYWORD_LENGTH }

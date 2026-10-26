@@ -2,6 +2,6 @@
     position: fixed;
     right: max(20px, env(safe-area-inset-right));
     bottom: max(20px, env(safe-area-inset-bottom));
-    z-index: 20000;
+    z-index: 900;
     width: min(440px, calc(100vw - 32px));
 }

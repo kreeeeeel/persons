@@ -5,6 +5,8 @@ info:
 servers:
   - url: /
 paths:
+  /v1/persons/{id}/gallery:
+    $ref: ./gallery.yaml#/~1v1~1persons~1{id}~1gallery
   /v1/feed:
     $ref: ./feed.yaml#/~1v1~1feed
   /v1/persons/directory:

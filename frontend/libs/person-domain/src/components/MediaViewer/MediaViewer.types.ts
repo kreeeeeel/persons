@@ -5,7 +5,8 @@ export interface MediaViewerProps {
     readonly kind: "PHOTO" | "MOMENT";
     readonly signedIn: boolean;
     readonly publicUrl?: string;
+    readonly mixedGallery?: boolean;
     readonly onClose: () => void;
-    readonly onNavigate?: (mediaId: string) => void;
+    readonly onNavigate?: (mediaId: string, kind: "PHOTO" | "MOMENT") => void;
     readonly onChanged?: () => void;
 }

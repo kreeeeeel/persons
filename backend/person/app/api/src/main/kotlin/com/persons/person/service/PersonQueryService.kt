@@ -3,6 +3,7 @@ package com.persons.person.service
 import com.persons.person.contract.dto.AdminContentStatus
 import com.persons.person.contract.dto.AdminPerson
 import com.persons.person.contract.dto.AdminPersonPage
+import com.persons.person.contract.dto.PersonDates
 import com.persons.person.contract.dto.PersonProfile
 import com.persons.person.contract.dto.PersonSearchPage
 import com.persons.person.contract.dto.PersonSummary
@@ -73,6 +74,7 @@ class PersonQueryService(
             lastName = row.lastName,
             patronymic = row.patronymic,
             description = row.description,
+            dates = PersonDates(row.birthDate, row.militaryDepartureDate, row.militaryReturnDate),
             tags = tags.byPerson(row.id).stream().map { it.label }.toList(),
             searchKeywords = keywords.byPerson(row.id).stream().map { it.keyword }.toList(),
             socialLinks = links.byPerson(row.id).stream().map {

@@ -1,5 +1,7 @@
 package com.persons.person.service
 
+import com.persons.person.contract.dto.GalleryItem
+import com.persons.person.contract.dto.GalleryPage
 import com.persons.person.contract.dto.MediaDetail
 import com.persons.person.contract.dto.MediaEditInput
 import com.persons.person.contract.dto.MediaKind
@@ -17,6 +19,8 @@ import com.persons.person.domain.MediaStatus
 import com.persons.person.domain.PageRestrictionScope
 import com.persons.person.exception.impl.ForbiddenException
 import com.persons.person.exception.impl.NotFoundException
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.ZoneOffset
@@ -41,7 +45,37 @@ class GalleryService(
     private val pageRestrictions: PageRestrictionService,
 ) {
     @Transactional(readOnly = true)
-    fun detail(id: UUID, actor: Actor?): MediaDetail {
+    fun page(personId: UUID, page: Int, size: Int, actor: Actor?): GalleryPage {
+        val person = access.visible(personId, actor)
+        val result = rows.gallery(
+            personId, null, actor,
+            PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt", "id")),
+        )
+        val counts = views.counts(result.content.stream().map { it.id }.toList())
+        return GalleryPage(
+            items = result.content.stream().map { row ->
+                val published = row.status == MediaStatus.PUBLISHED
+                GalleryItem(
+                    id = row.id,
+                    mediaId = row.id,
+                    kind = MediaKind.valueOf(row.kind.name),
+                    title = row.caption,
+                    createdAt = row.createdAt.atOffset(ZoneOffset.UTC),
+                    canRemove = published && (actor?.id == row.uploaderId || access.canEdit(person, actor)),
+                    views = counts[row.id] ?: 0,
+                    durationSeconds = row.durationSeconds,
+                    previewAvailable = row.previewObjectKey != null,
+                    moderationStatus = if (published) ModerationStatus.APPROVED else ModerationStatus.PENDING,
+                )
+            }.toList(),
+            total = result.totalElements,
+            page = page,
+            propertySize = size,
+        )
+    }
+
+    @Transactional(readOnly = true)
+    fun detail(id: UUID, actor: Actor?, mixed: Boolean = false): MediaDetail {
         val row = media.readable(id, actor)
         if (row.kind !in setOf(
                 DomainMediaKind.PHOTO,
@@ -54,6 +88,8 @@ class GalleryService(
         val person = access.visible(row.personId, actor)
         val editable = published && actor != null && (row.uploaderId == actor.id || access.canEdit(person, actor))
         val author = authors.profiles(mapOf(row.uploaderId to row.uploaderName)).getValue(row.uploaderId)
+        val previous = rows.adjacent(row, true, actor, mixed)
+        val next = rows.adjacent(row, false, actor, mixed)
         return MediaDetail(
             id = row.id,
             personId = row.personId,
@@ -72,8 +108,10 @@ class GalleryService(
             authorAvatarMediaId = author.authorAvatarMediaId,
             authorAvatarUrl = author.authorAvatarUrl,
             views = views.total(id),
-            previousMediaId = rows.adjacent(row, true, actor),
-            nextMediaId = rows.adjacent(row, false, actor),
+            previousMediaId = previous?.id,
+            nextMediaId = next?.id,
+            previousMediaKind = previous?.let { MediaKind.valueOf(it.kind.name) },
+            nextMediaKind = next?.let { MediaKind.valueOf(it.kind.name) },
             moderationStatus = if (published) ModerationStatus.APPROVED else ModerationStatus.PENDING,
             canInteract = published,
         )

@@ -1,0 +1,14 @@
+PersonDates:
+  type: object
+  description: Calendar dates without a time zone. An empty object clears all dates.
+  properties:
+    birthDate:
+      type: string
+      format: date
+    militaryDepartureDate:
+      type: string
+      format: date
+    militaryReturnDate:
+      type: string
+      format: date
+      description: Actual or expected return date. Must follow departure date.

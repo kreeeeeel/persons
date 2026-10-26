@@ -38,13 +38,12 @@
 
 @media (aspect-ratio <= 4/5) {
     .image {
-        inset: auto 0 0 auto;
-        width: 170%;
-        height: auto;
-        aspect-ratio: 16 / 9;
-        object-fit: contain;
-        object-position: right bottom;
-        mask-image: linear-gradient(to bottom, transparent, #000 20%);
+        inset: calc(var(--persons-header-height) + 8px) 0 auto auto;
+        width: 175%;
+        height: 36dvh;
+        object-fit: cover;
+        object-position: right center;
+        mask-image: linear-gradient(to bottom, #000 85%, transparent);
     }
 }
 

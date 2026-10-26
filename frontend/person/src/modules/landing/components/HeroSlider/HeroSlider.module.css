@@ -64,8 +64,12 @@
 }
 
 @media (aspect-ratio <= 4/5) {
+    .hero {
+        min-height: 680px;
+    }
+
     .content {
-        top: calc(var(--persons-header-height) + 32px);
+        top: calc(var(--persons-header-height) + 36dvh + 20px);
         left: 24px;
         right: 24px;
         width: auto;
@@ -87,7 +91,7 @@
     .content {
         left: 16px;
         right: 16px;
-        top: calc(var(--persons-header-height) + 16px);
+        top: calc(var(--persons-header-height) + 36dvh + 12px);
         gap: 16px;
     }
 }

@@ -21,3 +21,15 @@
     flex: 1;
     min-height: 0;
 }
+
+@media (aspect-ratio <= 4/5) {
+    .viewport {
+        height: auto;
+        min-height: 100dvh;
+        overflow: clip;
+    }
+
+    .canvas {
+        min-height: max(680px, 100dvh);
+    }
+}

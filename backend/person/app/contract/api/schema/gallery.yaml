@@ -1,3 +1,47 @@
+/v1/persons/{id}/gallery:
+  get:
+    tags: [gallery]
+    operationId: listGallery
+    summary: List photos and moments ordered by creation date and id descending
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: size
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 12
+    responses:
+      '200':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/GalleryPage.yaml#/GalleryPage
+      '400':
+        description: Invalid pagination
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
+      '404':
+        description: Person not found
+        content:
+          application/json:
+            schema:
+              $ref: ./models/common/ClientErrorResponse.yaml#/ClientErrorResponse
 /v1/media/{id}/details:
   get:
     tags:
@@ -5,6 +49,12 @@
     operationId: getMediaDetail
     summary: getMediaDetail
     parameters:
+      - name: mixed
+        in: query
+        description: Navigate through both photos and moments. False preserves the legacy kind-specific gallery.
+        schema:
+          type: boolean
+          default: false
       - name: id
         in: path
         required: true

@@ -92,19 +92,19 @@ export function MediaCard({
                         {t("onModeration")}
                     </Label>
                 )}
-            </Box>
-            <Text className={styles.caption}>{item.title || t(kind)}</Text>
-            {showViews && (
-                <Flex alignItems="center" gap="2">
-                    <Icon data={Eye} size={18} />
-                    <Text
-                        color="secondary"
+                {showViews && (
+                    <Flex
+                        alignItems="center"
+                        gap="1"
+                        className={styles.views}
                         aria-label={t("mediaViews", { count: item.views ?? 0 })}
                     >
-                        {compactCount(item.views ?? 0, locale)}
-                    </Text>
-                </Flex>
-            )}
+                        <Icon data={Eye} size={18} />
+                        <Text>{compactCount(item.views ?? 0, locale)}</Text>
+                    </Flex>
+                )}
+            </Box>
+            <Text className={styles.caption}>{item.title || t(kind)}</Text>
         </Flex>
     );
 }

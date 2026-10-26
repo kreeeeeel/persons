@@ -9,6 +9,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 import jakarta.persistence.Version
 import java.time.Instant
+import java.time.LocalDate
 import java.util.UUID
 
 @Entity
@@ -19,6 +20,9 @@ class PersonEntity(
     var firstName: String = "",
     var lastName: String = "",
     var patronymic: String? = null,
+    var birthDate: LocalDate? = null,
+    var militaryDepartureDate: LocalDate? = null,
+    var militaryReturnDate: LocalDate? = null,
     @Column(columnDefinition = "text") var description: String = "",
     var ownerAccountId: UUID? = null,
     var verified: Boolean = false,

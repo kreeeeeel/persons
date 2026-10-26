@@ -300,6 +300,13 @@ export const personMessages = {
         MOMENT: "Видеомомент",
         caption: "Подпись",
         chooseFile: "Выбрать файл",
+        gallery: "Фото и моменты",
+        galleryPages: "Страницы галереи",
+        emptyGallery: "Пока нет фото и моментов",
+        birthDate: "Дата рождения",
+        militaryDepartureDate: "Дата ухода в армию",
+        militaryReturnDate: "Дата возвращения из армии",
+        mediaHint: "JPEG, PNG до 32 МБ; MP4, WebM или MOV до 512 МБ на файл.",
         imageHint: "JPEG или PNG до 32 МБ на файл.",
         videoHint: "MP4, WebM или MOV до 512 МБ.",
         movHint:
@@ -704,6 +711,14 @@ export const personMessages = {
         MOMENT: "Video moment",
         caption: "Caption",
         chooseFile: "Choose file",
+        gallery: "Photos and moments",
+        galleryPages: "Gallery pages",
+        emptyGallery: "No photos or moments yet",
+        birthDate: "Date of birth",
+        militaryDepartureDate: "Military departure date",
+        militaryReturnDate: "Military return date",
+        mediaHint:
+            "JPEG, PNG up to 32 MB; MP4, WebM or MOV up to 512 MB per file.",
         imageHint: "JPEG or PNG up to 32 MB per file.",
         videoHint: "MP4, WebM or MOV up to 512 MB.",
         movHint:

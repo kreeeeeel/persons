@@ -1,0 +1,12 @@
+.root {
+    flex-wrap: nowrap;
+    color: var(--g-color-text-secondary);
+}
+
+.value {
+    font-size: 18px;
+    font-weight: 550;
+    line-height: 26px;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}

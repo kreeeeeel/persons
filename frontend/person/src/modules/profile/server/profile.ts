@@ -6,6 +6,11 @@ import { getLocale } from 'next-intl/server';
 import { accountAccess } from '@/modules/account/server/access';
 import { ResponseError } from '@persons/person-client';
 import { personApi } from '@/shared/api/person';
+import { militaryServiceToday } from '@/modules/profile/model/serviceCalendar';
+
+export function profileToday() {
+    return militaryServiceToday(Date.now());
+}
 
 export const getProfile = cache(async (tag: string) => {
     if ((await accountAccess()).restriction?.scopes.includes('ACCOUNT')) {

@@ -13,6 +13,21 @@
     padding-block: 130px calc(64px + var(--persons-bottom-marquee-height, 0px));
 }
 
+.columns,
+.content {
+    display: contents;
+}
+
+.sidebarName {
+    max-width: 100%;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
 .identity {
     display: grid;
     grid-template-columns: 184px minmax(0, 1fr);
@@ -31,7 +46,18 @@
 
 .avatarColumn {
     min-width: 0;
-    width: 184px;
+    width: 100%;
+}
+
+.facts {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+.facts:empty {
+    display: none;
 }
 
 .claim {
@@ -58,13 +84,13 @@
 
 .avatar {
     position: relative;
-    width: 184px;
-    height: 184px;
+    width: 128px;
+    height: 128px;
 }
 
 .verified {
     position: absolute;
-    left: 148px;
+    left: 96px;
     bottom: 0;
     z-index: 1;
     display: inline-flex;
@@ -226,10 +252,94 @@
     .identity {
         grid-template-columns: minmax(0, 1fr);
         gap: 24px;
+        padding-block: 0;
     }
 
     .avatarColumn,
     .avatar {
         justify-self: center;
+    }
+
+    .facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .facts > :only-child {
+        grid-column: 1 / -1;
+    }
+
+    .main {
+        padding-top: 92px;
+    }
+
+    .tabs {
+        justify-content: flex-start;
+        position: sticky;
+        top: 72px;
+        z-index: 2;
+        padding-block: 8px;
+        background: var(--persons-background);
+    }
+}
+
+@media (width >= 1101px) {
+    .main {
+        width: min(100% - 64px, 1320px);
+        padding-top: 112px;
+    }
+
+    .columns {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        grid-template-rows: auto minmax(0, 1fr);
+        align-items: start;
+        gap: 28px 40px;
+    }
+
+    .identity {
+        display: contents;
+    }
+
+    .avatarColumn {
+        position: sticky;
+        top: 112px;
+        grid-column: 1;
+        grid-row: 1 / 3;
+        align-self: start;
+        width: 100%;
+    }
+
+    .avatar {
+        width: 128px;
+        height: 128px;
+    }
+
+    .verified {
+        left: 96px;
+    }
+
+    .biography {
+        grid-column: 2;
+        grid-row: 1;
+        gap: 20px;
+    }
+
+    .description {
+        max-width: none;
+    }
+
+    .content {
+        display: flex;
+        grid-column: 2;
+        grid-row: 2;
+        min-width: 0;
+    }
+
+    .tabs {
+        justify-content: flex-start;
+    }
+
+    .panel {
+        width: 100%;
     }
 }

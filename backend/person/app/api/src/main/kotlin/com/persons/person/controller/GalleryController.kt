@@ -3,6 +3,7 @@ package com.persons.person.controller
 import com.persons.person.component.ActorResolver
 import com.persons.person.component.PersonMediaStore
 import com.persons.person.contract.api.GalleryApi
+import com.persons.person.contract.dto.GalleryPage
 import com.persons.person.contract.dto.MediaDetail
 import com.persons.person.contract.dto.MediaEditInput
 import com.persons.person.contract.dto.MediaReactionInput
@@ -32,10 +33,13 @@ class GalleryController(
     private val store: PersonMediaStore,
     private val views: MediaViewService,
 ) : GalleryApi {
+    override fun listGallery(id: UUID, page: Int, size: Int): ResponseEntity<GalleryPage> =
+        ResponseEntity.ok(gallery.page(id, page, size, actors.optional()))
+
     override fun recordMediaView(id: UUID, viewInput: ViewInput): ResponseEntity<MediaViewState> =
         ResponseEntity.ok(views.record(id, viewInput.visitorId, actors.optional()))
-    override fun getMediaDetail(id: UUID): ResponseEntity<MediaDetail> =
-        ResponseEntity.ok(gallery.detail(id, actors.optional()))
+    override fun getMediaDetail(id: UUID, mixed: Boolean): ResponseEntity<MediaDetail> =
+        ResponseEntity.ok(gallery.detail(id, actors.optional(), mixed))
 
     override fun editMedia(id: UUID, mediaEditInput: MediaEditInput): ResponseEntity<ModerationReceipt> =
         ResponseEntity.accepted().body(gallery.proposeEdit(id, mediaEditInput, actors.required()))

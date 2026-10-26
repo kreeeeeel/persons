@@ -1,6 +1,18 @@
 import { expect, it } from 'vitest';
 import { reviewChanges } from '@/modules/moderation/model/reviewChanges';
 
+it('shows changed and cleared calendar dates separately and preserves omitted dates', () => {
+    const previous = { dates: { birthDate: '2001-05-14', militaryDepartureDate: '2026-06-01' } };
+    expect(
+        reviewChanges({ dates: { birthDate: '2001-05-14', militaryDepartureDate: '2026-07-01' } }, previous),
+    ).toEqual([{ key: 'militaryDepartureDate', before: '2026-06-01', after: '2026-07-01' }]);
+    expect(reviewChanges({ dates: {} }, previous)).toEqual([
+        { key: 'birthDate', before: '2001-05-14', after: undefined },
+        { key: 'militaryDepartureDate', before: '2026-06-01', after: undefined },
+    ]);
+    expect(reviewChanges({}, previous)).toEqual([]);
+});
+
 it('shows only changed editable fields, including categories and search names', () => {
     const previous = {
         firstName: 'Кирилл',

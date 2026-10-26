@@ -7,9 +7,13 @@ import { directoryMessages } from '@/modules/directory/model/directoryMessages';
 import { feedMessages } from '@/modules/feed/model/feedMessages';
 import { integrationMessages } from '@/modules/integrations/model/integrationMessages';
 import { publicationMessages } from '@/modules/publications/model/publicationMessages';
+import { militaryServiceMessages } from '@/modules/profile/model/militaryServiceMessages';
+import { profileDetailsMessages } from '@/modules/profile/model/profileDetailsMessages';
 
 export const defaultMessages = {
     ru: {
+        profileDetails: profileDetailsMessages.ru,
+        militaryService: militaryServiceMessages.ru,
         publications: publicationMessages.ru,
         integrations: integrationMessages.ru,
         feed: feedMessages.ru,
@@ -25,7 +29,15 @@ export const defaultMessages = {
             error: 'Не удалось сохранить выбор. Попробуйте ещё раз.',
         },
         directory: directoryMessages.ru,
-        navigation: { privacy: 'Конфиденциальность', privacyShort: 'О данных', feed: 'Лента' },
+        navigation: {
+            privacy: 'Конфиденциальность',
+            privacyShort: 'О данных',
+            feed: 'Лента',
+            people: 'Люди',
+            menu: 'Меню',
+            openMenu: 'Открыть меню',
+            closeMenu: 'Закрыть меню',
+        },
         ...photoEditorMessages.ru,
         person: personMessages.ru,
         common: {
@@ -85,6 +97,8 @@ export const defaultMessages = {
         },
     },
     en: {
+        profileDetails: profileDetailsMessages.en,
+        militaryService: militaryServiceMessages.en,
         publications: publicationMessages.en,
         integrations: integrationMessages.en,
         feed: feedMessages.en,
@@ -100,7 +114,15 @@ export const defaultMessages = {
             error: 'Could not save your choice. Please try again.',
         },
         directory: directoryMessages.en,
-        navigation: { privacy: 'Privacy policy', privacyShort: 'Privacy', feed: 'Feed' },
+        navigation: {
+            privacy: 'Privacy policy',
+            privacyShort: 'Privacy',
+            feed: 'Feed',
+            people: 'People',
+            menu: 'Menu',
+            openMenu: 'Open menu',
+            closeMenu: 'Close menu',
+        },
         ...photoEditorMessages.en,
         person: personMessages.en,
         common: {

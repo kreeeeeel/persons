@@ -10,6 +10,10 @@ ProfileInput:
     - ratingOptions
     - version
   properties:
+    dates:
+      description: Omitted preserves stored dates; an empty object clears them.
+      allOf:
+        - $ref: ./PersonDates.yaml#/PersonDates
     tag:
       type: string
       maxLength: 32

@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { getProfile } from '@/modules/profile/server/profile';
+import { getProfile, profileToday } from '@/modules/profile/server/profile';
 import { ProfileScreen } from '@/modules/profile/components/ProfileScreen/ProfileScreen';
 import { currentUser } from '@/modules/account/server/currentUser';
 import { HeaderAccount } from '@/modules/account/components/HeaderAccount/HeaderAccount';
@@ -34,6 +34,7 @@ export default async function ProfilePage({
             key={`${profile.id}:${integrationsPreview}`}
             profile={profile}
             integrationsPreview={integrationsPreview}
+            today={profileToday()}
             signedIn={Boolean(user)}
             administrator={user?.role === 'ADMIN'}
             account={

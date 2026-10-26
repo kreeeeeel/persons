@@ -63,6 +63,10 @@ MediaDetail:
     previousMediaId:
       type: string
       format: uuid
+    previousMediaKind:
+      $ref: ./MediaKind.yaml#/MediaKind
+    nextMediaKind:
+      $ref: ./MediaKind.yaml#/MediaKind
     nextMediaId:
       type: string
       format: uuid

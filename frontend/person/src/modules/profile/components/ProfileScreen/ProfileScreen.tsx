@@ -1,7 +1,6 @@
 'use client';
 
 import { SocialLinks } from '@/modules/profile/components/SocialLinks/SocialLinks';
-import { ProfileStats } from '@/modules/profile/components/ProfileStats/ProfileStats';
 
 import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -28,18 +27,23 @@ import { SiteHeader } from '@/shared/ui/SiteHeader/SiteHeader';
 import { ScrollToTop } from '@/shared/ui/ScrollToTop/ScrollToTop';
 import { CommentsPanel } from '@/modules/profile/components/CommentsPanel/CommentsPanel';
 import { RatingsPanel } from '@/modules/profile/components/RatingsPanel/RatingsPanel';
-import { MomentsPanel } from '@/modules/profile/components/MomentsPanel/MomentsPanel';
-import { PhotosPanel } from '@/modules/profile/components/PhotosPanel/PhotosPanel';
 import { CreditPanel } from '@/modules/profile/components/CreditPanel/CreditPanel';
 import { IntegrationsPanel } from '@/modules/integrations/components/IntegrationsPanel/IntegrationsPanel';
 import { MutationFeedback } from '@/modules/profile/components/MutationFeedback/MutationFeedback';
+import { MilitaryServiceDate } from '@/modules/profile/components/MilitaryServiceDate';
+import { MilitaryServiceCountdown } from '@/modules/profile/components/MilitaryServiceCountdown';
+import { ProfileBirthDate } from '@/modules/profile/components/ProfileBirthDate';
+import { ProfileMetrics } from '@/modules/profile/components/ProfileMetrics';
+import { ProfileDescription } from '@/modules/profile/components/ProfileDescription/ProfileDescription';
+import { Gallery } from '@persons/person-domain/Gallery';
+import { militaryServiceToday } from '@/modules/profile/model/serviceCalendar';
 import type { ProfileScreenProps } from '@/modules/profile/components/ProfileScreen/ProfileScreen.types';
 import styles from '@/modules/profile/components/ProfileScreen/ProfileScreen.module.css';
 
 const AGGREGATE_POLL_DELAY = 2000;
 const AGGREGATE_RETRY_DELAY = 5000;
 
-const TABS = ['wall', 'ratings', 'moments', 'photos', 'credit', 'achievements'] as const;
+const TABS = ['wall', 'ratings', 'media', 'credit', 'achievements'] as const;
 
 export function ProfileScreen({
     profile: initialProfile,
@@ -47,26 +51,28 @@ export function ProfileScreen({
     account,
     administrator,
     integrationsPreview = false,
+    today: providedToday,
 }: ProfileScreenProps) {
     const t = useTranslate('person');
     const integrationText = useTranslate('integrations');
+    const details = useTranslate('profileDetails');
+    const [today] = useState(() => providedToday ?? militaryServiceToday(Date.now()));
     const router = useRouter();
     const [selectedTab, setTab] = useState(integrationsPreview ? 'integrations' : 'wall');
     const games = useDynProperty(gamesEnabled);
     const tabs = games ? [...TABS, 'integrations'] : TABS;
     const mediaLocation = useMediaLocation(initialProfile.tag);
     const contentLocation = useContentLocation(initialProfile.tag);
+    const selected = selectedTab;
     const tab = contentLocation.content
         ? games
             ? 'integrations'
             : 'wall'
         : mediaLocation.media
-          ? mediaLocation.media.kind === 'PHOTO'
-              ? 'photos'
-              : 'moments'
-          : selectedTab === 'integrations' && !games
+          ? 'media'
+          : selected === 'integrations' && !games
             ? 'wall'
-            : selectedTab;
+            : selected;
     const [editor, setEditor] = useState(false);
     const [avatar, setAvatar] = useState(false);
     const [notice, setNotice] = useState(false);
@@ -79,6 +85,16 @@ export function ProfileScreen({
     );
     const resource = usePersonData(`profile:${initialProfile.id}:${initialProfile.version}`, load, initialProfile);
     const profile = resource.data ?? initialProfile;
+    const fullName = profile.fullName;
+    const description = profile.description;
+    const birthDate = profile.dates?.birthDate?.toISOString().slice(0, 10);
+    const departureDate = profile.dates?.militaryDepartureDate?.toISOString().slice(0, 10);
+    const service = departureDate
+        ? {
+              departureDate,
+              returnDate: profile.dates?.militaryReturnDate?.toISOString().slice(0, 10),
+          }
+        : undefined;
     useUploadEvents(profile.id, () => resource.refresh());
 
     useEffect(() => {
@@ -121,148 +137,150 @@ export function ProfileScreen({
         <Box className={styles.page}>
             <SiteHeader>{account}</SiteHeader>
             <Flex as="main" direction="column" gap="6" className={styles.main}>
-                <Box className={styles.identity}>
-                    <Flex direction="column" gap="3" alignItems="center" className={styles.avatarColumn}>
-                        <Box className={styles.avatar}>
-                            <LoadedAvatar
-                                size={184}
-                                name={profile.fullName}
-                                src={profile.avatarMediaId ? mediaHref(profile.avatarMediaId) : undefined}
-                            />
-                            {profile.verified && (
-                                <Box
-                                    as="button"
-                                    type="button"
-                                    aria-label={t('verifiedProfile')}
-                                    className={styles.verified}
+                <Box className={styles.columns}>
+                    <Box className={styles.identity}>
+                        <Flex
+                            as="aside"
+                            aria-label={details('sidebar')}
+                            direction="column"
+                            gap="3"
+                            alignItems="center"
+                            className={styles.avatarColumn}
+                        >
+                            <Box className={styles.avatar}>
+                                <LoadedAvatar
+                                    size={128}
+                                    name={profile.fullName}
+                                    src={profile.avatarMediaId ? mediaHref(profile.avatarMediaId) : undefined}
+                                />
+                                {profile.verified && (
+                                    <Box
+                                        as="button"
+                                        type="button"
+                                        aria-label={t('verifiedProfile')}
+                                        className={styles.verified}
+                                    >
+                                        <VerifiedMark />
+                                        <Text className={styles.verifiedText}>{t('verifiedShort')}</Text>
+                                    </Box>
+                                )}
+                            </Box>
+                            <Text as="h1" className={styles.sidebarName}>
+                                {fullName}
+                            </Text>
+                            <ProfileMetrics stats={profile.stats} />
+                            <Box className={styles.facts}>
+                                {birthDate && <ProfileBirthDate birthDate={birthDate} today={today} />}
+                                {service && <MilitaryServiceDate service={service} today={today} showDepartureDate />}
+                            </Box>
+                            {service && <MilitaryServiceCountdown service={service} today={today} />}
+                            {signedIn && profile.canClaim && (
+                                <Button
+                                    size="l"
+                                    view="action"
+                                    className={styles.claim}
+                                    disabled={profile.claimPending}
+                                    onClick={() => setClaim(true)}
                                 >
-                                    <VerifiedMark />
-                                    <Text className={styles.verifiedText}>{t('verifiedShort')}</Text>
-                                </Box>
+                                    <Icon data={Person} size={20} />
+                                    {t(profile.claimPending ? 'claimPending' : 'claimPage')}
+                                </Button>
+                            )}
+                        </Flex>
+                        <Flex direction="column" gap="2" className={styles.biography}>
+                            {!!profile.tags.length && (
+                                <Flex gap="2" wrap justifyContent="flex-start">
+                                    {profile.tags.map((tag) => (
+                                        <Label key={tag} size="m" theme="info">
+                                            {tag}
+                                        </Label>
+                                    ))}
+                                </Flex>
+                            )}
+                            <ProfileDescription description={description} />
+                            <SocialLinks links={profile.socialLinks} />
+                            {profile.canEdit && !administrator && (
+                                <Flex gap="3" wrap justifyContent="flex-start">
+                                    <Button size="xl" onClick={() => setEditor(true)}>
+                                        {t('edit')}
+                                    </Button>
+                                    <Button size="xl" onClick={() => setAvatar(true)}>
+                                        {t('changeAvatar')}
+                                    </Button>
+                                </Flex>
+                            )}
+                        </Flex>
+                    </Box>
+                    <Flex direction="column" gap="6" className={styles.content}>
+                        <MutationFeedback notice={notice} published={published} error={resource.error} />
+                        <Box className={styles.tabs}>
+                            <SegmentedTabs
+                                label={profile.fullName}
+                                value={tab}
+                                onUpdate={setTab}
+                                items={tabs.map((value) => ({
+                                    value,
+                                    label:
+                                        (value === 'integrations'
+                                            ? integrationText('title')
+                                            : value === 'media'
+                                              ? details('media')
+                                              : t(value)) +
+                                        (value === 'media' ? ` · ${profile.stats.photos + profile.stats.moments}` : ''),
+                                }))}
+                            />
+                        </Box>
+                        <Box
+                            role="tabpanel"
+                            aria-label={
+                                tab === 'integrations'
+                                    ? integrationText('title')
+                                    : tab === 'media'
+                                      ? details('media')
+                                      : t(tab)
+                            }
+                            className={styles.panel}
+                        >
+                            {tab === 'integrations' && games && (
+                                <IntegrationsPanel personId={profile.id} personTag={profile.tag} />
+                            )}
+                            {tab === 'wall' && <CommentsPanel personId={profile.id} signedIn={signedIn} />}
+                            {tab === 'media' && (
+                                <Gallery
+                                    personId={profile.id}
+                                    personTag={profile.tag}
+                                    signedIn={signedIn}
+                                    selectedMedia={mediaLocation.media}
+                                    onOpenMedia={(kind, id) => {
+                                        setTab('media');
+                                        mediaLocation.open(kind, id);
+                                    }}
+                                    onCloseMedia={() => {
+                                        setTab('media');
+                                        mediaLocation.close();
+                                    }}
+                                />
+                            )}
+                            {tab === 'ratings' && (
+                                <RatingsPanel
+                                    key={profile.id}
+                                    personId={profile.id}
+                                    signedIn={signedIn}
+                                    initialOptions={profile.ratingOptions}
+                                    initialRating={profile.rating}
+                                    onChange={resource.refresh}
+                                />
+                            )}
+                            {tab === 'credit' && <CreditPanel personId={profile.id} signedIn={signedIn} />}
+                            {tab === 'achievements' && (
+                                <AchievementsFeed
+                                    personId={profile.id}
+                                    revision={adminRevision}
+                                    canManage={administrator}
+                                />
                             )}
                         </Box>
-                        {signedIn && profile.canClaim && (
-                            <Button
-                                size="l"
-                                view="action"
-                                className={styles.claim}
-                                disabled={profile.claimPending}
-                                onClick={() => setClaim(true)}
-                            >
-                                <Icon data={Person} size={20} />
-                                {t(profile.claimPending ? 'claimPending' : 'claimPage')}
-                            </Button>
-                        )}
                     </Flex>
-                    <Flex direction="column" gap="2" className={styles.biography}>
-                        <Box>
-                            <Text as="h1" className={styles.name}>
-                                {profile.fullName}
-                            </Text>
-                        </Box>
-                        {!!profile.tags.length && (
-                            <Flex gap="2" wrap justifyContent="flex-start">
-                                {profile.tags.map((tag) => (
-                                    <Label key={tag} size="m" theme="info">
-                                        {tag}
-                                    </Label>
-                                ))}
-                            </Flex>
-                        )}
-                        <Text
-                            as="p"
-                            className={styles.description}
-                            color={profile.description ? 'primary' : 'secondary'}
-                        >
-                            {profile.description || t('noDescription')}
-                        </Text>
-                        <SocialLinks links={profile.socialLinks} />
-                        {profile.canEdit && !administrator && (
-                            <Flex gap="3" wrap justifyContent="flex-start">
-                                <Button size="xl" onClick={() => setEditor(true)}>
-                                    {t('edit')}
-                                </Button>
-                                <Button size="xl" onClick={() => setAvatar(true)}>
-                                    {t('changeAvatar')}
-                                </Button>
-                            </Flex>
-                        )}
-                    </Flex>
-                </Box>
-                <MutationFeedback notice={notice} published={published} error={resource.error} />
-                <ProfileStats stats={profile.stats} />
-                <Box className={styles.tabs}>
-                    <SegmentedTabs
-                        label={profile.fullName}
-                        value={tab}
-                        onUpdate={setTab}
-                        items={tabs.map((value) => ({
-                            value,
-                            label:
-                                (value === 'integrations' ? integrationText('title') : t(value)) +
-                                (value === 'moments'
-                                    ? ` · ${profile.stats.moments}`
-                                    : value === 'photos'
-                                      ? ` · ${profile.stats.photos}`
-                                      : ''),
-                        }))}
-                    />
-                </Box>
-                <Box
-                    role="tabpanel"
-                    aria-label={tab === 'integrations' ? integrationText('title') : t(tab)}
-                    className={styles.panel}
-                >
-                    {tab === 'integrations' && games && (
-                        <IntegrationsPanel personId={profile.id} personTag={profile.tag} />
-                    )}
-                    {tab === 'wall' && <CommentsPanel personId={profile.id} signedIn={signedIn} />}
-                    {tab === 'ratings' && (
-                        <RatingsPanel
-                            key={profile.id}
-                            personId={profile.id}
-                            signedIn={signedIn}
-                            initialOptions={profile.ratingOptions}
-                            initialRating={profile.rating}
-                            onChange={resource.refresh}
-                        />
-                    )}
-                    {tab === 'moments' && (
-                        <MomentsPanel
-                            personId={profile.id}
-                            personTag={profile.tag}
-                            signedIn={signedIn}
-                            selectedMediaId={mediaLocation.media?.id}
-                            onOpenMedia={(id) => {
-                                setTab('moments');
-                                mediaLocation.open('MOMENT', id);
-                            }}
-                            onCloseMedia={() => {
-                                setTab('moments');
-                                mediaLocation.close();
-                            }}
-                        />
-                    )}
-                    {tab === 'photos' && (
-                        <PhotosPanel
-                            personId={profile.id}
-                            personTag={profile.tag}
-                            signedIn={signedIn}
-                            selectedMediaId={mediaLocation.media?.id}
-                            onOpenMedia={(id) => {
-                                setTab('photos');
-                                mediaLocation.open('PHOTO', id);
-                            }}
-                            onCloseMedia={() => {
-                                setTab('photos');
-                                mediaLocation.close();
-                            }}
-                        />
-                    )}
-                    {tab === 'credit' && <CreditPanel personId={profile.id} signedIn={signedIn} />}
-                    {tab === 'achievements' && (
-                        <AchievementsFeed personId={profile.id} revision={adminRevision} canManage={administrator} />
-                    )}
                 </Box>
             </Flex>
             {administrator && (

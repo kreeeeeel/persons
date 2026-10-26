@@ -7,4 +7,5 @@ export interface ProfileScreenProps {
     readonly account: ReactNode;
     readonly administrator?: boolean;
     readonly integrationsPreview?: boolean;
+    readonly today?: string;
 }

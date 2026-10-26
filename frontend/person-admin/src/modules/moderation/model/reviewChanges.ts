@@ -2,6 +2,9 @@ export const reviewFieldLabels: Record<string, string> = {
     firstName: 'firstName',
     lastName: 'lastName',
     patronymic: 'patronymic',
+    birthDate: 'birthDate',
+    militaryDepartureDate: 'militaryDepartureDate',
+    militaryReturnDate: 'militaryReturnDate',
     tag: 'tag',
     description: 'description',
     tags: 'tags',
@@ -36,14 +39,31 @@ function comparable(value: unknown): string {
     return String(value);
 }
 
+function expandDates(value: Record<string, unknown> = {}): Record<string, unknown> {
+    const dates = value.dates;
+    return {
+        ...value,
+        ...(dates && typeof dates === 'object'
+            ? Object.fromEntries(
+                  ['birthDate', 'militaryDepartureDate', 'militaryReturnDate'].map((key) => [
+                      key,
+                      (dates as Record<string, unknown>)[key],
+                  ]),
+              )
+            : {}),
+    };
+}
+
 export function reviewChanges(proposed: Record<string, unknown>, previous?: Record<string, unknown>) {
-    return Object.entries(proposed)
+    const expanded = expandDates(proposed);
+    const before = expandDates(previous);
+    return Object.entries(expanded)
         .filter(
             ([key, value]) =>
                 key in reviewFieldLabels &&
                 !(key === 'searchKeywords' && value == null) &&
                 !(key === 'taggedPersonIds' && Array.isArray(proposed.taggedNames)) &&
-                (!previous || comparable(value) !== comparable(previous[key])),
+                (!previous || comparable(value) !== comparable(before[key])),
         )
-        .map(([key, after]) => ({ key, before: previous?.[key], after }));
+        .map(([key, after]) => ({ key, before: before[key], after }));
 }

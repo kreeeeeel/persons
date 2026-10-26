@@ -1,5 +1,7 @@
 # person landing page
 
+[Local military service dates and countdown preview](military-service_en.md).
+
 `frontend/person` is a separate Next.js/Gravity UI application at `http://localhost:3002/ru` or `/en`. It shares Golos Text, themes, i18n, assets and generated API clients. Search uses backend/person after a 350 ms typing pause and opens clean persona URLs. See the [domain guide](domain_en.md).
 
 The page occupies `100dvh` without document scrolling. The transparent header overlays the illustration, so there is no separate colored strip above the canvas. Portrait layouts place the illustrations below the copy to preserve faces. The large heading types into two explicit lines without extra wrapping; its font size follows the content width. Eight scenes crossfade every nine seconds. Transparent controls are centered at the bottom: pause/resume on the left, followed by scene dots, with no arrows. Focusing search changes the icon color without adding a border. Input focus, an inactive browser tab and `prefers-reduced-motion` stop automatic movement. Loading states cover the page, account, heading and artwork.

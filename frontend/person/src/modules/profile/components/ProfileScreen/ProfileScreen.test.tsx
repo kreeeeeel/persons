@@ -20,6 +20,8 @@ const api = vi.hoisted(() => ({
     csGames: vi.fn().mockResolvedValue({ items: [], page: 0, size: 12, total: 0 }),
     csMatch: vi.fn(),
 }));
+const viewport = vi.hoisted(() => ({ desktop: false }));
+vi.mock('@/shared/hooks/useMediaQuery', () => ({ useMediaQuery: () => viewport.desktop }));
 vi.mock('next/navigation', () => ({
     useRouter: () => ({ refresh: api.routeRefresh, replace: api.replace }),
     usePathname: () => '/krel',
@@ -48,6 +50,7 @@ vi.mock('@persons/person-domain/api/browser', () => ({
     personError: async () => 'UNAVAILABLE',
 }));
 beforeEach(() => {
+    viewport.desktop = false;
     api.settings.mockResolvedValue({ marqueeEnabled: false });
     api.view.mockResolvedValue(undefined);
 });
@@ -167,7 +170,7 @@ it('opens ownership verification from the avatar column for an eligible signed-i
     const { rerender } = renderUi(<ProfileScreen profile={claimable} signedIn account={null} />);
     const button = screen.getByRole('button', { name: 'Это моя страница' });
     const heading = screen.getByRole('heading', { name: 'Крел' });
-    expect(button.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(heading.compareDocumentPosition(button) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     fireEvent.click(button);
     expect(screen.getByRole('dialog')).toBeVisible();
     expect(screen.getByRole('textbox', { name: 'Как подтвердить, что это вы' })).toBeVisible();
@@ -187,4 +190,42 @@ it('keeps a pending ownership claim disabled for a signed-in user', () => {
 it('hides ownership actions from signed-in users without claim eligibility', () => {
     renderUi(<ProfileScreen profile={{ ...profile, canClaim: false }} signedIn account={null} />);
     expect(screen.queryByRole('button', { name: 'Это моя страница' })).not.toBeInTheDocument();
+});
+
+it('places the desktop identity, birthday, metrics and service timer together and removes the statistic cards', () => {
+    viewport.desktop = true;
+    renderUi(
+        <ProfileScreen
+            profile={{
+                ...profile,
+                fullName: 'Кирилл Александрович Миронов',
+                description: 'Большое описание человека',
+                dates: {
+                    birthDate: new Date('2001-05-14'),
+                    militaryDepartureDate: new Date('2026-06-01'),
+                    militaryReturnDate: new Date('2027-06-01'),
+                },
+            }}
+            signedIn={false}
+            account={null}
+            today="2026-10-26"
+        />,
+    );
+    const sidebar = screen.getByRole('complementary', { name: 'Информация о человеке' });
+    expect(sidebar).toContainElement(screen.getByRole('heading', { name: 'Кирилл Александрович Миронов' }));
+    expect(sidebar).toContainElement(screen.getByText('Дата рождения'));
+    expect(sidebar).toContainElement(screen.getByRole('group', { name: 'Просмотры и оценка' }));
+    expect(sidebar).toContainElement(screen.getByRole('region', { name: 'до дембеля' }));
+    expect(sidebar).not.toContainElement(screen.getByText('Большое описание человека'));
+    expect(sidebar).not.toContainElement(screen.getByRole('tablist'));
+    expect(screen.queryByRole('button', { name: 'Загрузить' })).not.toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: /^Фото и моменты/ })).toBeVisible();
+    expect(screen.queryByRole('tab', { name: /^Фотографии/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole('tab', { name: /^Моменты/ })).not.toBeInTheDocument();
+    const metrics = screen.getByRole('group', { name: 'Просмотры и оценка' });
+    expect(
+        metrics.compareDocumentPosition(screen.getByText('Дата рождения')) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(screen.queryByText('Репутация')).not.toBeInTheDocument();
+    expect(screen.queryByText('Хорошая')).not.toBeInTheDocument();
 });

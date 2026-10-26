@@ -37,6 +37,36 @@ const profile: PersonProfile = {
     },
 };
 
+it('edits and clears calendar dates through the generated profile input', async () => {
+    api.update.mockResolvedValue({ id: 'receipt', status: 'APPROVED' });
+    renderUi(
+        <ProfileEditor
+            administrator
+            profile={{ ...profile, dates: { birthDate: new Date('2001-05-14') } }}
+            onClose={vi.fn()}
+            onSaved={vi.fn()}
+        />,
+    );
+    expect(screen.getByLabelText('Дата рождения')).toHaveValue('2001-05-14');
+    fireEvent.change(screen.getByLabelText('Дата рождения'), { target: { value: '' } });
+    fireEvent.change(screen.getByLabelText('Дата ухода в армию'), { target: { value: '2026-06-01' } });
+    fireEvent.change(screen.getByLabelText('Дата возвращения из армии'), { target: { value: '2027-06-01' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Сохранить' }));
+    await waitFor(() =>
+        expect(api.update).toHaveBeenCalledWith(
+            expect.objectContaining({
+                profileInput: expect.objectContaining({
+                    dates: {
+                        birthDate: undefined,
+                        militaryDepartureDate: new Date('2026-06-01'),
+                        militaryReturnDate: new Date('2027-06-01'),
+                    },
+                }),
+            }),
+        ),
+    );
+});
+
 it.each(['Имя', 'Фамилия', 'Отчество'])('limits %s on page forms and rejects overlong legacy values', async (label) => {
     renderUi(<ProfileEditor administrator profile={profile} onClose={vi.fn()} onSaved={vi.fn()} />);
     const input = screen.getByRole('textbox', { name: label });

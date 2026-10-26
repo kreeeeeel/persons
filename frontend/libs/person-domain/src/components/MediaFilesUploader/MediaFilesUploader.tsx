@@ -9,11 +9,11 @@ import { LabeledTextInput as TextInput } from "@persons/ui/LabeledTextInput";
 import { useTranslate } from "@persons/i18n";
 import { PersonPicker } from "@persons/person-domain/PersonPicker";
 import {
-    isVideoFile,
     isQuickTimeFile,
     videoUploadAccept,
 } from "@persons/person-domain/media/videoFiles";
 import { mediaUploadLimits } from "@persons/person-domain/media/uploadLimits";
+import { uploadFileKind } from "@persons/person-domain/media/uploadFileKind";
 import { useVideoLabels } from "@persons/person-domain/media/useVideoLabels";
 import { useUploadQueue } from "@persons/person-domain/uploads/UploadQueueContext";
 import type { UploadDraft } from "@persons/person-domain/MediaFilesUploader/UploadDraft";
@@ -25,7 +25,7 @@ export function MediaFilesUploader({
     kind,
     onClose,
 }: Omit<MediaUploaderProps, "onSaved"> & {
-    readonly kind: "PHOTO" | "MOMENT";
+    readonly kind?: "PHOTO" | "MOMENT";
 }) {
     const t = useTranslate("person");
     const labels = useVideoLabels();
@@ -40,19 +40,25 @@ export function MediaFilesUploader({
     );
     const current = drafts[index];
     const accept =
-        kind === "MOMENT" ? videoUploadAccept : "image/jpeg,image/png";
+        kind === "MOMENT"
+            ? videoUploadAccept
+            : kind === "PHOTO"
+              ? "image/jpeg,image/png"
+              : `image/jpeg,image/png,${videoUploadAccept}`;
     function select(files: File[]) {
         if (!files.length) {
             return;
         }
-        const issue = files.some((file) => file.size > mediaUploadLimits[kind])
+        const issue = files.some((file) => {
+            const selectedKind = uploadFileKind(file);
+            return selectedKind && file.size > mediaUploadLimits[selectedKind];
+        })
             ? "MEDIA_TOO_LARGE"
             : files.some(
                     (file) =>
                         !file.size ||
-                        (kind === "MOMENT"
-                            ? !isVideoFile(file)
-                            : !accept.split(",").includes(file.type)),
+                        !uploadFileKind(file) ||
+                        (kind !== undefined && uploadFileKind(file) !== kind),
                 )
               ? "INVALID_MEDIA"
               : undefined;
@@ -64,7 +70,13 @@ export function MediaFilesUploader({
             files.map((file): UploadDraft => {
                 const url = URL.createObjectURL(file);
                 urls.current.push(url);
-                return { file, url, caption: "", people: [] };
+                return {
+                    file,
+                    url,
+                    kind: uploadFileKind(file) as "PHOTO" | "MOMENT",
+                    caption: "",
+                    people: [],
+                };
             }),
         );
         setIndex(0);
@@ -82,7 +94,13 @@ export function MediaFilesUploader({
                 title={t("uploadFile")}
                 description={t("dropFileDescription")}
                 chooseLabel={t("chooseFile")}
-                hint={t(kind === "MOMENT" ? "videoHint" : "imageHint")}
+                hint={t(
+                    kind === "MOMENT"
+                        ? "videoHint"
+                        : kind === "PHOTO"
+                          ? "imageHint"
+                          : "mediaHint",
+                )}
                 accept={accept}
                 multiple
                 illustration="/media/upload-evgeny-v1.webp"
@@ -106,7 +124,9 @@ export function MediaFilesUploader({
             aria-label={t("uploadPreview")}
         >
             <Dialog.Header
-                caption={t(kind === "PHOTO" ? "photoPreview" : "videoPreview")}
+                caption={t(
+                    current.kind === "PHOTO" ? "photoPreview" : "videoPreview",
+                )}
             />
             <Dialog.Body>
                 <Flex direction="column" gap="4">
@@ -125,11 +145,12 @@ export function MediaFilesUploader({
                         </Flex>
                     )}
                     <Text className={styles.filename}>{current.file.name}</Text>
-                    {kind === "MOMENT" && isQuickTimeFile(current.file) && (
-                        <Text color="secondary">{t("movHint")}</Text>
-                    )}
+                    {current.kind === "MOMENT" &&
+                        isQuickTimeFile(current.file) && (
+                            <Text color="secondary">{t("movHint")}</Text>
+                        )}
                     <Flex justifyContent="center" className={styles.preview}>
-                        {kind === "MOMENT" ? (
+                        {current.kind === "MOMENT" ? (
                             <VideoPlayer
                                 key={current.url}
                                 src={current.url}
@@ -171,7 +192,7 @@ export function MediaFilesUploader({
                     queue.enqueue(
                         drafts.map((draft) => ({
                             personId,
-                            kind,
+                            kind: draft.kind,
                             file: draft.file,
                             caption: draft.caption,
                             taggedPersonIds: draft.people.map(({ id }) => id),

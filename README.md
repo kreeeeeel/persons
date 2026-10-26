@@ -8,7 +8,7 @@
 
 Страницы друзей, общие воспоминания, достижения и игровые истории.
 
-[![Status](https://img.shields.io/badge/status-development%20archived-7860E8?style=flat-square)](docs/wiki/Archive.md)
+[![Status](https://img.shields.io/badge/status-active%20development-7860E8?style=flat-square)](docs/wiki/Archive.md)
 [![Kotlin](https://img.shields.io/badge/Kotlin-Spring%20Boot-7F52FF?style=flat-square&logo=kotlin&logoColor=white)](backend)
 [![Next.js](https://img.shields.io/badge/Next.js-TypeScript-171717?style=flat-square&logo=nextdotjs&logoColor=white)](frontend)
 [![Gravity UI](https://img.shields.io/badge/UI-Gravity%20UI-FFBE5C?style=flat-square)](frontend/libs/ui)
@@ -24,7 +24,7 @@
 
 «Те ещё люди» — небольшой социальный проект для компании друзей. У каждого человека есть своя страница: с историями на стене, фотографиями, моментами, отзывами и достижениями. Отдельные ID и CMS отвечают за аккаунты и управление сообществом.
 
-**Развитие завершено 25 октября 2026 года.** Этот публичный репозиторий сохраняет итоговый срез исходников и документацию. Действующий сайт остаётся работать самостоятельно; новые функции, сроки поддержки и исправления не обещаются. Исходные репозитории с историей сохранены в [GitLab](https://gitlab.com/te-eshche-lyudi).
+**Разработка возобновлена 26 октября 2026 года.** Добавлены [даты профиля, армейский таймер, общая галерея и мобильная компоновка](docs/person/military-service_ru.md). Этот репозиторий содержит полную копию исходников; история компонентов и production CI остаются в [GitLab](https://gitlab.com/te-eshche-lyudi). Архивный релиз от 25 октября сохранён.
 
 ## Что умеет
 
