@@ -7,6 +7,7 @@ import { mediaHref } from "@persons/person-domain/api/browser";
 import { MediaUploader } from "@persons/person-domain/MediaUploader";
 import { PersonOwnerDialog } from "@persons/person-domain/PersonOwnerDialog";
 import { AuthorIdentity } from "@persons/person-domain/AuthorIdentity";
+import { PersonIdentity } from "@persons/person-domain/PersonIdentity";
 import type { ProfileEditorProps } from "@persons/person-domain/ProfileEditor/ProfileEditor.types";
 import { useProfileEditor } from "@persons/person-domain/hooks/useProfileEditor";
 import { ProfileMainFields } from "@persons/person-domain/ProfileEditor/components/ProfileMainFields/ProfileMainFields";
@@ -40,6 +41,24 @@ export function ProfileEditor(props: ProfileEditorProps) {
         <>
             <ProfileEditorLayout
                 title={t(current ? "editPerson" : "createPerson")}
+                identity={
+                    <PersonIdentity
+                        person={{
+                            id: current?.id ?? "draft",
+                            tag: draft.tag,
+                            fullName:
+                                [
+                                    draft.lastName,
+                                    draft.firstName,
+                                    draft.patronymic,
+                                ]
+                                    .filter(Boolean)
+                                    .join(" ") || t("createPerson"),
+                            avatarMediaId: current?.avatarMediaId,
+                        }}
+                        showTag={Boolean(draft.tag)}
+                    />
+                }
                 section={section}
                 onSelect={setSection}
                 pending={pending}

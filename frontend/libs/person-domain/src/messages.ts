@@ -1,5 +1,9 @@
 export const personMessages = {
     ru: {
+        editorProfile: "Информация о странице",
+        editorGrouppage: "Страница",
+        editorGroupstatus: "Статусы",
+        editorGroupcontacts: "Видимость и контакты",
         editorSections: "Разделы",
         editorSectionmain: "Основное",
         editorSectionavatar: "Аватар",
@@ -457,6 +461,10 @@ export const personMessages = {
         DELETE_MEDIA: "Удаление материала",
     },
     en: {
+        editorProfile: "Page information",
+        editorGrouppage: "Page",
+        editorGroupstatus: "Statuses",
+        editorGroupcontacts: "Visibility and contacts",
         editorSections: "Sections",
         editorSectionmain: "General",
         editorSectionavatar: "Avatar",

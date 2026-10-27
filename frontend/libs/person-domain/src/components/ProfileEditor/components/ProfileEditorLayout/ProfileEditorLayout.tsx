@@ -15,21 +15,15 @@ import { Xmark } from "@gravity-ui/icons";
 import { useTranslate } from "@persons/i18n";
 import type { ProfileEditorLayoutProps } from "@persons/person-domain/ProfileEditor/components/ProfileEditorLayout/ProfileEditorLayout.types";
 import type { ProfileEditorSection } from "@persons/person-domain/ProfileEditor/ProfileEditor.types";
+import {
+    profileEditorGroups,
+    profileEditorSections,
+} from "@persons/person-domain/ProfileEditor/components/ProfileEditorLayout/profileEditorSections";
 import styles from "@persons/person-domain/ProfileEditor/components/ProfileEditorLayout/ProfileEditorLayout.module.css";
-
-const SECTIONS: readonly ProfileEditorSection[] = [
-    "main",
-    "avatar",
-    "account",
-    "description",
-    "army",
-    "presence",
-    "search",
-    "social",
-];
 
 export function ProfileEditorLayout({
     title,
+    identity,
     section,
     onSelect,
     pending,
@@ -90,26 +84,51 @@ export function ProfileEditorLayout({
                     ref={navigation}
                     onKeyDown={navigate}
                 >
-                    <Text
-                        variant="subheader-2"
-                        className={styles.navigationTitle}
+                    <Flex
+                        className={styles.identity}
+                        role="group"
+                        aria-label={t("editorProfile")}
                     >
-                        {t("editorSections")}
-                    </Text>
+                        {identity}
+                    </Flex>
                     <Menu
                         size="xl"
                         aria-label={t("editorSections")}
                         className={styles.navigation}
                     >
-                        {SECTIONS.map((id) => (
-                            <Menu.Item
-                                key={id}
-                                active={section === id}
-                                disabled={pending}
-                                onClick={() => onSelect(id)}
+                        {profileEditorGroups.map((group) => (
+                            <Menu.Group
+                                key={group.id}
+                                label={t(`editorGroup${group.id}`)}
+                                className={styles.navigationGroup}
                             >
-                                {t(`editorSection${id}`)}
-                            </Menu.Item>
+                                {profileEditorSections
+                                    .filter((item) =>
+                                        group.sections.some(
+                                            (id) => id === item.id,
+                                        ),
+                                    )
+                                    .map(({ id, icon }) => (
+                                        <Menu.Item
+                                            key={id}
+                                            className={styles.navigationItem}
+                                            selected={section === id}
+                                            disabled={pending}
+                                            iconStart={
+                                                <Icon data={icon} size={18} />
+                                            }
+                                            extraProps={{
+                                                "aria-current":
+                                                    section === id
+                                                        ? "page"
+                                                        : undefined,
+                                            }}
+                                            onClick={() => onSelect(id)}
+                                        >
+                                            {t(`editorSection${id}`)}
+                                        </Menu.Item>
+                                    ))}
+                            </Menu.Group>
                         ))}
                     </Menu>
                 </Flex>
@@ -136,14 +155,17 @@ export function ProfileEditorLayout({
                             aria-label={t("editorSections")}
                             value={[section]}
                             disabled={pending}
-                            options={SECTIONS.map((value) => ({
-                                value,
-                                content: t(`editorSection${value}`),
+                            options={profileEditorGroups.map((group) => ({
+                                label: t(`editorGroup${group.id}`),
+                                options: group.sections.map((value) => ({
+                                    value,
+                                    content: t(`editorSection${value}`),
+                                })),
                             }))}
                             onUpdate={([value]) => {
                                 if (
-                                    SECTIONS.includes(
-                                        value as ProfileEditorSection,
+                                    profileEditorSections.some(
+                                        (item) => item.id === value,
                                     )
                                 ) {
                                     onSelect(value as ProfileEditorSection);

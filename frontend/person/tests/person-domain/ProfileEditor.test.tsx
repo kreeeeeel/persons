@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, expect, it, vi } from 'vitest';
 import { ProfileEditor } from '@persons/person-domain/ProfileEditor';
 import { renderUi } from '@test/render';
@@ -42,6 +42,24 @@ const profile: PersonProfile = {
         reputation: 'UNKNOWN',
     },
 };
+
+it('shows page identity and grouped navigation with a persistent selected section', () => {
+    renderUi(<ProfileEditor administrator profile={profile} onClose={vi.fn()} onSaved={vi.fn()} />);
+    const identity = screen.getByRole('group', { name: 'Информация о странице' });
+    expect(within(identity).getByText('Персона')).toBeVisible();
+    expect(within(identity).getByText('@person')).toBeVisible();
+    const navigation = screen.getByRole('menu', { name: 'Разделы' });
+    ['Страница', 'Статусы', 'Видимость и контакты'].forEach((label) => {
+        expect(within(navigation).getByText(label)).toBeVisible();
+    });
+    const main = within(navigation).getByRole('menuitem', { name: 'Основное' });
+    expect(main).toHaveAttribute('aria-current', 'page');
+    const army = within(navigation).getByRole('menuitem', { name: 'Армия' });
+    fireEvent.click(army);
+    expect(army).toHaveAttribute('aria-current', 'page');
+    expect(main).not.toHaveAttribute('aria-current');
+    expect(screen.getByRole('region', { name: 'Армия' })).toBeVisible();
+});
 
 it('edits and clears calendar dates through the generated profile input', async () => {
     api.update.mockResolvedValue({ id: 'receipt', status: 'APPROVED' });

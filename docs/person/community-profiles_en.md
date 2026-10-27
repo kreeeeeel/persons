@@ -2,6 +2,10 @@
 
 The shared site/CMS editor has eight sections: main details, avatar, account linking, description and tags, military service, contact status, search, and social networks. Unsaved fields survive section changes. Avatar and linking reuse existing dialogs; creation saves the profile first. Mobile uses a section selector.
 
+The editor's top-left identity shows the page name, avatar and handle. Navigation groups are Page, Statuses, and Visibility and contacts; the selected item keeps its rounded background. Mobile uses the same groups. Birth and departure date cards stack vertically at every width.
+
+All feed and publication event headers use compact 30 px avatars with 14 px names and action labels, as requested. Other consumers of shared identity components keep their existing sizing. Card containers use `gap: 16px` between post text and reactions, independently of CSS loading order.
+
 `PersonProfile.presence` contains `status` (`MISSING` or `UNRESPONSIVE`) and calendar `since`. Both are required together; future dates are rejected. Omitting `presence` in `ProfileInput` preserves it; `{}` clears it. The borderless notice appears below the timer without affecting permissions.
 
 `linkedAccount` exposes only public `id`, `handle`, `fullName`, and `avatarUrl`, without email or account settings. Its card links to author publications. The restriction service supplies `restriction`: one notice above the description shows the profile name, reason and expiry. Its borderless information button reveals scopes on hover, focus or click. A full restriction strikes through the name. Restriction-service failures return 503.

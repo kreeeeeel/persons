@@ -44,28 +44,34 @@ export function MediaCommentCard({
             data-created-at={comment.createdAt.toISOString()}
         >
             <Button view="flat" className={styles.open} aria-label={label} onClick={() => setSelected(mediaId)} />
-            <Flex alignItems="center" gap="3" className={styles.header}>
-                <Flex alignItems="center" gap="3" wrap className={styles.identities}>
+            <Flex alignItems="center" gap="2" className={styles.header}>
+                <Flex alignItems="center" gap="2" wrap className={styles.identities}>
                     <CommentAuthor
                         comment={{ ...comment, authorName: comment.authorName || person('unknownAuthor') }}
                         compactName
-                        prominent
+                        density="compact"
                     />
-                    <Flex gap="2" alignItems="center" className={styles.context}>
-                        <Text color="secondary" className={styles.contextText}>
-                            {t('onPage')}
-                        </Text>
-                        <Text className={`${styles.contextText} ${styles.mediaKind}`}>
-                            {t(kind === 'PHOTO' ? 'onPhoto' : 'onMoment')}
-                        </Text>
+                    <Flex gap="2" alignItems="center" className={styles.destination}>
+                        <Flex gap="2" alignItems="center" className={styles.context}>
+                            <Text color="secondary" className={styles.contextText}>
+                                {t('onPage')}
+                            </Text>
+                            <Text className={`${styles.contextText} ${styles.mediaKind}`}>
+                                {t(kind === 'PHOTO' ? 'onPhoto' : 'onMoment')}
+                            </Text>
+                        </Flex>
+                        <AppLink href={`/${locale}/person/${page.tag}`} className={styles.page}>
+                            <PersonIdentity person={page} density="compact" compactName />
+                        </AppLink>
                     </Flex>
-                    <AppLink href={`/${locale}/person/${page.tag}`} className={styles.page}>
-                        <PersonIdentity person={page} size={36} compactName prominent />
-                    </AppLink>
                 </Flex>
-                <Icon data={kind === 'PHOTO' ? Picture : Video} size={20} className={styles.icon} />
+                <Icon data={kind === 'PHOTO' ? Picture : Video} size={14} className={styles.icon} />
             </Flex>
-            {pending && <Label theme="warning">{person('onModeration')}</Label>}
+            {pending && (
+                <Label theme="warning" className={styles.moderation}>
+                    {person('onModeration')}
+                </Label>
+            )}
             <ContentText className={styles.text} text={comment.text} />
             <Flex gap="3" alignItems="center" justifyContent="space-between" wrap className={styles.footer}>
                 {!pending && (

@@ -59,7 +59,7 @@ export function FeedMedia({
                             metadata={
                                 <Flex gap="3" alignItems="center" className={styles.stats}>
                                     <Flex gap="2" alignItems="center">
-                                        <Icon data={Eye} size={18} />
+                                        <Icon data={Eye} size={14} />
                                         <Text
                                             aria-label={t('mediaViews', {
                                                 count: detail.views ?? 0,
@@ -69,7 +69,7 @@ export function FeedMedia({
                                         </Text>
                                     </Flex>
                                     <Flex gap="2" alignItems="center">
-                                        <Icon data={CommentIcon} size={18} />
+                                        <Icon data={CommentIcon} size={14} />
                                         <Text aria-label={feed('commentsCount', { count: detail.comments })}>
                                             {compactCount(detail.comments, locale)}
                                         </Text>

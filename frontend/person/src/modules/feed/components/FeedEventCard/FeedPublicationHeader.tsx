@@ -22,15 +22,15 @@ export function FeedPublicationHeader({
     const locale = useLocale();
     const t = useTranslate('feed');
     return (
-        <Flex alignItems="flex-start" gap="3" className={styles.header}>
-            <Flex alignItems="center" gap="3" wrap className={styles.publisher}>
-                <CommentAuthor comment={author} prominent compactName />
-                <Flex alignItems="center" gap="3" className={styles.destinationPage}>
+        <Flex alignItems="center" gap="2" className={styles.header}>
+            <Flex alignItems="center" gap="2" wrap className={styles.publisher}>
+                <CommentAuthor comment={author} density="compact" compactName />
+                <Flex alignItems="center" gap="2" className={styles.destinationPage}>
                     <Text color="secondary" className={styles.onPage}>
                         {t('onPage')}
                     </Text>
                     <AppLink href={`/${locale}/person/${page.tag}`} className={styles.page}>
-                        <PersonIdentity person={page} size={44} prominent compactName />
+                        <PersonIdentity person={page} density="compact" compactName />
                     </AppLink>
                 </Flex>
             </Flex>

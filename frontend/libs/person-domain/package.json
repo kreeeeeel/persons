@@ -250,7 +250,8 @@
     "./ProfileEditor/components/ProfileSocialFields/ProfileSocialFields": "./src/components/ProfileEditor/components/ProfileSocialFields/ProfileSocialFields.tsx",
     "./tags/TagDictionaryContext": "./src/tags/TagDictionaryContext.ts",
     "./tags/TagDictionaryProvider": "./src/tags/TagDictionaryProvider.tsx",
-    "./hooks/useProfileEditor": "./src/hooks/useProfileEditor.ts"
+    "./hooks/useProfileEditor": "./src/hooks/useProfileEditor.ts",
+    "./ProfileEditor/components/ProfileEditorLayout/profileEditorSections": "./src/components/ProfileEditor/components/ProfileEditorLayout/profileEditorSections.ts"
   },
   "peerDependencies": {
     "@persons/person-client": "0.1.0",

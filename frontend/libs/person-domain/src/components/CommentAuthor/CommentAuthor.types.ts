@@ -15,5 +15,6 @@ export interface CommentAuthorProps {
     readonly interactive?: boolean;
     readonly prominent?: boolean;
     readonly compactName?: boolean;
+    readonly density?: "default" | "compact";
     readonly metadata?: ReactNode;
 }

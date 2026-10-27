@@ -1,11 +1,10 @@
 import { Box, Flex, Text } from '@gravity-ui/uikit';
 import type { PersonSummary } from '@persons/person-client';
-import { LoadedAvatar, LoadedImage } from '@persons/ui';
+import { LoadedImage } from '@persons/ui';
 import { AppLink } from '@persons/ui/AppLink';
 import { useLocale, useTranslate } from '@persons/i18n';
 import { ContentTime } from '@persons/person-domain/ContentTime';
-import { compactPersonName } from '@persons/person-domain/format/compactPersonName';
-import { mediaHref } from '@persons/person-domain/api/browser';
+import { PersonIdentity } from '@persons/person-domain/PersonIdentity';
 import styles from '@/modules/feed/components/FeedEventCard/FeedEventCard.module.css';
 
 export function FeedGameHeader({
@@ -22,17 +21,10 @@ export function FeedGameHeader({
     const href = `/${locale}/person/${page.tag}`;
 
     return (
-        <Flex alignItems="center" gap="3" className={styles.gameHeader}>
-            <AppLink href={href} aria-label={page.fullName}>
-                <LoadedAvatar
-                    size={44}
-                    name={page.fullName}
-                    src={page.avatarMediaId ? mediaHref(page.avatarMediaId) : undefined}
-                />
-            </AppLink>
-            <Flex alignItems="baseline" gap="2" wrap className={styles.gameIdentity}>
-                <AppLink href={href} className={styles.page} title={page.fullName}>
-                    {compactPersonName(page.fullName, 'family-first')}
+        <Flex alignItems="center" gap="2" className={styles.gameHeader}>
+            <Flex alignItems="center" gap="2" wrap className={styles.gameIdentity}>
+                <AppLink href={href} className={styles.page} aria-label={page.fullName}>
+                    <PersonIdentity person={page} density="compact" compactName />
                 </AppLink>
                 <Text color="secondary" className={styles.gameAction}>
                     {t('eventGame')}
@@ -44,8 +36,8 @@ export function FeedGameHeader({
                                     : '/assets/integrations/dotabuff/dota-logo.svg'
                             }
                             alt=""
-                            width={18}
-                            height={18}
+                            width={12}
+                            height={12}
                         />
                         {t(game)}
                     </Flex>

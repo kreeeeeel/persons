@@ -19,23 +19,44 @@
 }
 
 .sidebar {
-    width: 232px;
+    width: 248px;
     flex-shrink: 0;
     min-height: 0;
+    overflow: hidden;
     background: var(--persons-background);
 }
 
-.navigationTitle {
-    padding: 28px 24px 16px;
+.identity {
+    flex-shrink: 0;
+    min-width: 0;
+    padding: 24px 20px 12px;
 }
 
 .navigation {
+    flex: 1;
     min-height: 0;
     padding: 0 12px 20px;
     overflow: auto;
     background: transparent;
     box-shadow: none;
     border: 0;
+}
+
+.navigationGroup {
+    padding-block: 12px;
+}
+
+.navigationGroup :global([class~="g-menu__group-label"]) {
+    padding: 0 12px 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--g-color-text-secondary);
+    white-space: normal;
+}
+
+.navigationItem {
+    margin-block: 2px;
+    border-radius: 10px;
 }
 
 .navigation :global([class~="g-menu__item-content"]) {

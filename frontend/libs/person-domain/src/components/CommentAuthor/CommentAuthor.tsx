@@ -18,6 +18,7 @@ export function CommentAuthor({
     interactive = false,
     prominent = false,
     compactName = false,
+    density = "default",
     metadata,
 }: CommentAuthorProps) {
     const t = useTranslate("person");
@@ -25,9 +26,13 @@ export function CommentAuthor({
     const handle = comment.authorTag ?? comment.authorId;
     const [open, setOpen] = useState(false);
     const content = (
-        <Flex alignItems="center" gap="3">
+        <Flex
+            alignItems="center"
+            gap={density === "compact" ? "2" : "3"}
+            className={styles.identity}
+        >
             <LoadedAvatar
-                size={44}
+                size={density === "compact" ? 30 : 44}
                 name={comment.authorName}
                 src={
                     comment.authorAvatarUrl ??
@@ -46,7 +51,13 @@ export function CommentAuthor({
                     <Text
                         title={comment.authorName}
                         variant="subheader-2"
-                        className={prominent ? styles.prominent : undefined}
+                        className={
+                            density === "compact"
+                                ? styles.compact
+                                : prominent
+                                  ? styles.prominent
+                                  : undefined
+                        }
                     >
                         {compactName
                             ? compactPersonName(

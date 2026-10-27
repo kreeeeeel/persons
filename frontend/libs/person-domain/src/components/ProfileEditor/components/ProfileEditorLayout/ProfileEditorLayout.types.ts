@@ -3,6 +3,7 @@ import type { ProfileEditorSection } from "@persons/person-domain/ProfileEditor/
 
 export interface ProfileEditorLayoutProps {
     readonly title: string;
+    readonly identity: ReactNode;
     readonly section: ProfileEditorSection;
     readonly pending: boolean;
     readonly administrator?: boolean;

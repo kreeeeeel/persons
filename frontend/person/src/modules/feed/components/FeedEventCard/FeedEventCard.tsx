@@ -103,7 +103,9 @@ export function FeedEventCard({
                         author={{ ...event.content, authorName: event.content.authorName || person('unknownAuthor') }}
                     />
                     {(pending || (event.kind === 'rating' && event.content.commentStatus === 'PENDING')) && (
-                        <Label theme="warning">{person('onModeration')}</Label>
+                        <Label theme="warning" className={styles.moderation}>
+                            {person('onModeration')}
+                        </Label>
                     )}
                     {(event.kind === 'wall' || event.kind === 'comment') && (
                         <ContentText className={styles.prose} text={event.content.text} />
@@ -145,9 +147,9 @@ export function FeedEventCard({
             )}
             {event.kind === 'achievement' && (
                 <>
-                    <Flex alignItems="center" gap="3" wrap className={styles.header}>
+                    <Flex alignItems="center" gap="2" wrap className={styles.header}>
                         <AppLink href={`/${locale}/person/${event.page.tag}`} className={styles.page}>
-                            <PersonIdentity person={event.page} size={44} prominent compactName />
+                            <PersonIdentity person={event.page} density="compact" compactName />
                         </AppLink>
                         <Text color="secondary" className={styles.onPage}>
                             {t('eventAchievement')}

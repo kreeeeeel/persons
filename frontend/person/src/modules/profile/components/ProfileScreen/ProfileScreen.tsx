@@ -147,7 +147,7 @@ export function ProfileScreen({
                             as="aside"
                             aria-label={details('sidebar')}
                             direction="column"
-                            gap="3"
+                            gap="2"
                             alignItems="center"
                             className={styles.avatarColumn}
                         >

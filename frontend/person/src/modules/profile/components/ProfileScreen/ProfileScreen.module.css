@@ -66,8 +66,8 @@
 
 .facts {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
     width: 100%;
 }
 
@@ -279,10 +279,6 @@
         justify-self: center;
     }
 
-    .facts {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .facts > :only-child {
         grid-column: 1 / -1;
     }
@@ -312,10 +308,6 @@
     .avatarColumn {
         justify-self: center;
         width: min(100%, 600px);
-    }
-
-    .facts {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .facts > :only-child {

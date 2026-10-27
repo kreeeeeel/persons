@@ -15,6 +15,17 @@
     min-width: 0;
 }
 
+.identity {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.compact {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
 .prominent {
     font-size: 20px;
     font-weight: 650;

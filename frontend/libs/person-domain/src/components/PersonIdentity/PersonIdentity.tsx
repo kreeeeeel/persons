@@ -7,7 +7,8 @@ import styles from "@persons/person-domain/PersonIdentity/PersonIdentity.module.
 
 export function PersonIdentity({
     person,
-    size = 36,
+    density = "default",
+    size = density === "compact" ? 30 : 36,
     showTag = false,
     prominent = false,
     compactName = false,
@@ -17,7 +18,7 @@ export function PersonIdentity({
             as="span"
             inline
             alignItems="center"
-            gap={size === 24 ? "2" : "3"}
+            gap={size <= 30 ? "2" : "3"}
             className={styles.identity}
         >
             <LoadedAvatar
@@ -32,7 +33,7 @@ export function PersonIdentity({
             <Flex as="span" direction="column" gap="1" className={styles.text}>
                 <Text
                     title={person.fullName}
-                    className={`${styles.name} ${prominent ? styles.prominent : ""}`}
+                    className={`${styles.name} ${density === "compact" ? styles.compact : prominent ? styles.prominent : ""}`}
                 >
                     {compactName
                         ? compactPersonName(person.fullName, "family-first")
