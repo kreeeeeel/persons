@@ -31,7 +31,7 @@ class DotabuffHttp internal constructor(
             .setConnectionManager(
                 PoolingHttpClientConnectionManagerBuilder
                     .create()
-                    .setDnsResolver(dnsResolver)
+                    .setDnsResolver(RotatingDnsResolver(dnsResolver))
                     .setDefaultConnectionConfig(
                         ConnectionConfig
                             .custom()

@@ -14,8 +14,45 @@ import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.net.URI
 import java.time.Duration
+import java.util.concurrent.atomic.AtomicInteger
 
 class DotabuffHttpTest {
+    @Test
+    fun `retries another DNS address when TCP connects but the provider closes the response`() {
+        val good = HttpServer.create(InetSocketAddress("127.0.0.1", 0), 0)
+        val bad = HttpServer.create(InetSocketAddress("127.0.0.2", good.address.port), 0)
+        val failures = AtomicInteger()
+        good.createContext("/history") { exchange ->
+            val body = "recovered".toByteArray()
+            exchange.sendResponseHeaders(200, body.size.toLong())
+            exchange.responseBody.use { it.write(body) }
+            exchange.close()
+        }
+        bad.createContext("/history") { exchange ->
+            failures.incrementAndGet()
+            exchange.close()
+        }
+        good.start()
+        bad.start()
+        try {
+            val resolver = Mockito.mock(DnsResolver::class.java, Mockito.CALLS_REAL_METHODS)
+            Mockito.`when`(resolver.resolve("provider.test")).thenReturn(
+                arrayOf(InetAddress.getByName("127.0.0.2"), InetAddress.getByName("127.0.0.1")),
+            )
+            DotabuffHttp(
+                DotabuffProperties(
+                    openDotaBaseUrl = URI("http://provider.test:${good.address.port}"),
+                    requestInterval = Duration.ZERO,
+                ),
+                resolver,
+            ).use { http -> assertThat(http.opendota("/history")).isEqualTo("recovered") }
+            assertThat(failures.get()).isEqualTo(1)
+        } finally {
+            bad.stop(0)
+            good.stop(0)
+        }
+    }
+
     @Test
     fun `tries the next DNS address when the first provider endpoint is unavailable`() {
         val server = HttpServer.create(InetSocketAddress("127.0.0.1", 0), 0)

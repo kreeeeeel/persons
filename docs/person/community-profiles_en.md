@@ -20,6 +20,8 @@ The shared site/CMS editor has eight sections: main details, avatar, account lin
 
 OpenDota parsing reads the selected player's `players[].rank_tier`, never match `average_rank`. Missing or invalid ranks remain absent. Medal names support ru/en. Flyway V28 adds presence, the dictionary, and a verified-rank flag. Unverified old ranks stay hidden; the worker repairs up to five matches during scheduled integration updates while preserving statistics and inventory.
 
+The HTTP client rotates addresses from fresh DNS answers between connection attempts. It can recover when the first address accepts TCP but stalls or closes TLS/the response. No provider IP is pinned; bounded retries and TLS verification remain enabled.
+
 Person requires `RESTRICTIONS_BASE_URL` and the trusted shared service JWT; Compose supplies the address. Back up the database before production migration. No demonstration data is inserted.
 
 Validation includes both frontend `npm run check` suites, Person API, worker, gateway, dotabuff-integration tests, and `E2E_REAL_PROFILE=true npx playwright test community-profile.spec.ts profile-release.spec.ts site-notices.spec.ts` against the isolated local stack. Mutation tests must not run against production.
