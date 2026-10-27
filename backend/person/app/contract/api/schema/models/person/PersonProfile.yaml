@@ -14,6 +14,12 @@ PersonProfile:
     - canEdit
     - version
   properties:
+    presence:
+      $ref: ./PersonPresence.yaml#/PersonPresence
+    linkedAccount:
+      $ref: ../publication/PublicAuthor.yaml#/PublicAuthor
+    restriction:
+      $ref: ../restriction/AccountRestriction.yaml#/AccountRestriction
     dates:
       $ref: ./PersonDates.yaml#/PersonDates
     id:

@@ -1,4 +1,24 @@
-import type { ModerationReceipt, PersonProfile } from "@persons/person-client";
+import type {
+    ModerationReceipt,
+    PersonProfile,
+    ProfileInput,
+} from "@persons/person-client";
+
+export interface ProfileEditorFieldsProps {
+    readonly draft: ProfileInput;
+    readonly disabled: boolean;
+    readonly onChange: (draft: ProfileInput) => void;
+}
+
+export type ProfileEditorSection =
+    | "main"
+    | "avatar"
+    | "account"
+    | "description"
+    | "army"
+    | "presence"
+    | "search"
+    | "social";
 
 export interface ProfileEditorProps {
     readonly profile?: PersonProfile;

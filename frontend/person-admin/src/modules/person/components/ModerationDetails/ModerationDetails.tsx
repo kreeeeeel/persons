@@ -49,6 +49,9 @@ export function ModerationDetails({ payload, item }: { readonly payload: string;
               : t(reviewFieldLabels[key]);
     }
     function display(key: string, value: unknown) {
+        if (key === 'presenceStatus' && (value === 'MISSING' || value === 'UNRESPONSIVE')) {
+            return t(value === 'MISSING' ? 'presenceMissing' : 'presenceUnresponsive');
+        }
         return key === 'kind' && typeof value === 'string' && TRANSLATED_KINDS.has(value) ? t(value) : valueText(value);
     }
     const media = item

@@ -23,6 +23,8 @@ class PersonEntity(
     var birthDate: LocalDate? = null,
     var militaryDepartureDate: LocalDate? = null,
     var militaryReturnDate: LocalDate? = null,
+    var presenceStatus: String? = null,
+    var presenceSince: LocalDate? = null,
     @Column(columnDefinition = "text") var description: String = "",
     var ownerAccountId: UUID? = null,
     var verified: Boolean = false,

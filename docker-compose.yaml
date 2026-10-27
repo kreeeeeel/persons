@@ -189,6 +189,7 @@ services:
       DB_USER: persons
       DB_PASSWORD: ${DB_PASSWORD}
       ID_BASE_URL: http://id:8081
+      RESTRICTIONS_BASE_URL: http://restrictions:8088
       S3_ENDPOINT: http://minio:9000
       S3_REGION: us-east-1
       S3_BUCKET: persons

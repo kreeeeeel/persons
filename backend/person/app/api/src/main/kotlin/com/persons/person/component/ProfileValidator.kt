@@ -12,7 +12,8 @@ import java.time.LocalDate
 import java.time.ZoneId
 import java.util.Locale
 
-private val RESERVED_TAGS = setOf("ru", "en", "api", "media", "assets", "person", "admin", "my-page", "blocked")
+private val RESERVED_TAGS =
+    setOf("ru", "en", "api", "media", "assets", "person", "admin", "my-page", "blocked", "publications")
 private val TAG_PATTERN = Regex("^[a-z][a-z0-9-]{1,31}$")
 private val KEYWORD_WHITESPACE = Regex("\\s+")
 private const val MAX_SEARCH_KEYWORDS = 20
@@ -67,6 +68,13 @@ class ProfileValidator(private val clock: Clock = Clock.systemUTC()) {
         }
 
         normalized.socialLinks.stream().forEach(::validateSocial)
+        normalized.presence?.let { presence ->
+            if ((presence.status == null) != (presence.since == null) ||
+                presence.since?.isAfter(LocalDate.now(clock.withZone(ZoneId.of("Europe/Moscow")))) == true
+            ) {
+                throw InvalidInputException()
+            }
+        }
         normalized.dates?.let { dates ->
             val birth = dates.birthDate
             val departure = dates.militaryDepartureDate

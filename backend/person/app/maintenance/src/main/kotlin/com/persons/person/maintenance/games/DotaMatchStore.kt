@@ -1,6 +1,7 @@
 package com.persons.person.maintenance.games
 
 import com.persons.dotabuff.domain.DotaItem
+import com.persons.dotabuff.domain.DotaMatchReference
 import com.persons.dotabuff.domain.DotaPlayerMatch
 import com.persons.person.dao.entity.PersonEntity
 import com.persons.person.maintenance.dao.entity.DotaItemEntity
@@ -38,7 +39,13 @@ class DotaMatchStore(
 
     // Parent match and all inventory rows form one immutable imported event.
     fun insert(person: UUID, match: DotaPlayerMatch) {
-        if (matches.existsById(DotaMatchId(person, match.matchId))) {
+        val existing = matches.findById(DotaMatchId(person, match.matchId)).orElse(null)
+        if (existing != null) {
+            if (!existing.playerRankVerified) {
+                existing.rankName = match.rank
+                existing.playerRankVerified = true
+                matches.save(existing)
+            }
             return
         }
         val record = DotaMatchEntity(
@@ -48,6 +55,7 @@ class DotaMatchStore(
             match.score, match.opponentScore,
         )
         record.person = persons.getReferenceById(person)
+        record.playerRankVerified = true
         matches.saveAndFlush(record)
         items.saveAll(
             match.items.stream().map {
@@ -79,6 +87,17 @@ class DotaMatchStore(
         ).content
         return stored(records)
     }
+
+    fun ranksToRepair(person: UUID, account: Long, limit: Int): List<DotaMatchReference> = matches.findAll(
+        { row, _, builder ->
+            builder.and(
+                builder.equal(row.get<UUID>("personId"), person),
+                builder.equal(row.get<Long>("accountId"), account),
+                builder.isFalse(row.get("playerRankVerified")),
+            )
+        },
+        PageRequest.of(0, limit, Sort.by(Sort.Direction.DESC, "playedAt", "matchId")),
+    ).content.stream().map { DotaMatchReference(it.matchId, it.playedAt) }.toList()
 
     fun selected(ids: List<DotaMatchId>): List<StoredDotaMatch> =
         if (ids.isEmpty()) emptyList() else stored(matches.findAllById(ids))
@@ -114,7 +133,10 @@ class DotaMatchStore(
                 owner.avatarMediaId,
                 DotaPlayerMatch(
                     row.matchId, row.accountId, row.playedAt, row.durationSeconds,
-                    row.heroKey, row.heroName, row.won, row.kills, row.deaths, row.assists, row.rankName,
+                    row.heroKey, row.heroName, row.won, row.kills, row.deaths, row.assists,
+                    row.rankName.takeIf {
+                        row.playerRankVerified
+                    },
                     inventory[key].orEmpty().stream().sorted(compareBy { it.slot }).map {
                         DotaItem(it.itemKey, it.itemName, it.slot, it.acquiredAtSeconds)
                     }.toList(),

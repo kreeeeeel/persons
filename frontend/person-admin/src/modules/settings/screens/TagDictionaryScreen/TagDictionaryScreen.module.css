@@ -1,0 +1,17 @@
+.entry {
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--persons-surface);
+    min-width: 0;
+}
+
+.entry > :first-child > :first-child {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (width <= 600px) {
+    .entry {
+        padding: 16px;
+    }
+}

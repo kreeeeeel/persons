@@ -28,6 +28,21 @@
     overflow-wrap: anywhere;
 }
 
+.blockedName {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    color: var(--g-color-text-secondary);
+}
+
+.linkedAccount {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border-radius: 12px;
+    background: var(--persons-surface);
+}
+
 .identity {
     display: grid;
     grid-template-columns: 184px minmax(0, 1fr);
@@ -51,13 +66,17 @@
 
 .facts {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     width: 100%;
 }
 
 .facts:empty {
     display: none;
+}
+
+.facts > :only-child {
+    grid-column: 1 / -1;
 }
 
 .claim {

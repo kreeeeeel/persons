@@ -39,6 +39,7 @@ export function PersonAvatarUploader({
     return (
         <Dialog
             open
+            aria-label={t("AVATAR")}
             hasCloseButton
             fullWidth
             maxWidth="s"

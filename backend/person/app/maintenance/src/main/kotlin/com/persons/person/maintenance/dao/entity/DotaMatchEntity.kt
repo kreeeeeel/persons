@@ -32,6 +32,7 @@ class DotaMatchEntity(
     var buildingDamage: Int? = null,
     var score: Int? = null,
     var opponentScore: Int? = null,
+    var playerRankVerified: Boolean = false,
 ) {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id", insertable = false, updatable = false)

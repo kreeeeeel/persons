@@ -8,6 +8,9 @@ CreditEntry:
     - createdAt
     - canRemove
   properties:
+    authorId:
+      type: string
+      format: uuid
     id:
       type: string
       format: uuid

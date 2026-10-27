@@ -32,7 +32,7 @@ beforeEach(() => {
 afterEach(cleanup);
 
 it('uses the feed card with a destination link and a pending moderation state', async () => {
-    renderUi(<PublicationsScreen />);
+    renderUi(<PublicationsScreen author={{ id: 'author', handle: 'author', fullName: 'Крел' }} signedIn />);
     const article = await screen.findByRole('article');
     expect(within(article).getByText('Увидимся вечером')).toBeVisible();
     expect(within(article).getByText('Вадим').closest('a')).toHaveAttribute('href', '/ru/person/vadim');
@@ -42,7 +42,7 @@ it('uses the feed card with a destination link and a pending moderation state', 
 });
 
 it('filters by type without a search field or search query', async () => {
-    renderUi(<PublicationsScreen />);
+    renderUi(<PublicationsScreen author={{ id: 'author', handle: 'author', fullName: 'Крел' }} signedIn />);
     await screen.findByRole('article');
     mocks.list.mockResolvedValue({ items: [], page: 0, size: 12, total: 0 });
     fireEvent.click(screen.getByRole('tab', { name: 'Фотографии' }));
@@ -59,10 +59,14 @@ it('filters by type without a search field or search query', async () => {
 it('shows the normal empty state in English and recovers after a failed request', async () => {
     mocks.list.mockRejectedValueOnce(new Error('unavailable'));
     mocks.list.mockResolvedValue({ items: [], page: 0, size: 12, total: 0 });
-    renderUi(<PublicationsScreen />, 'en', 'dark');
+    renderUi(
+        <PublicationsScreen author={{ id: 'author', handle: 'author', fullName: 'Крел' }} signedIn />,
+        'en',
+        'dark',
+    );
     expect(await screen.findByText('Unable to load the data')).toBeVisible();
     fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
-    expect(await screen.findByText('Your publications will appear here')).toBeVisible();
+    expect(await screen.findByText('No publications yet')).toBeVisible();
     expect(screen.getByAltText('Krel prepares blank sheets for the first publications')).toHaveAttribute(
         'src',
         '/media/empty-publications-krel-v1.webp',
@@ -77,7 +81,7 @@ it('loads additional pages and resets pagination when the filter changes', async
         size: 1,
         total: kind ? 0 : 2,
     }));
-    renderUi(<PublicationsScreen />);
+    renderUi(<PublicationsScreen author={{ id: 'author', handle: 'author', fullName: 'Крел' }} signedIn />);
     await screen.findByRole('article');
     fireEvent.click(screen.getByRole('button', { name: 'Загрузить ещё' }));
     await waitFor(() => expect(screen.getAllByRole('article')).toHaveLength(2));

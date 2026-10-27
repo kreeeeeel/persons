@@ -21,10 +21,12 @@ import {
     GamesApi,
     PublicationsApi,
     FeedApi,
+    TagsApi,
 } from "@persons/person-client";
 
 export function createPersonClients(configuration: Configuration) {
     return {
+        tags: new TagsApi(configuration),
         feed: new FeedApi(configuration),
         publications: new PublicationsApi(configuration),
         games: new GamesApi(configuration),

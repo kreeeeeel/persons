@@ -1,9 +1,10 @@
 "use client";
 
-import { Flex, Label, Text } from "@gravity-ui/uikit";
+import { Flex, Label } from "@gravity-ui/uikit";
 import { useTranslate } from "@persons/i18n";
 import { CommentAuthor } from "@persons/person-domain/CommentAuthor";
 import { ContentTime } from "@persons/person-domain/ContentTime";
+import { ContentText } from "@persons/person-domain/ContentText";
 import { ContentActions } from "@persons/person-domain/ContentActions";
 import { ContentLike } from "@persons/person-domain/ContentLike";
 import type { CommentCardProps } from "@persons/person-domain/CommentCard/CommentCard.types";
@@ -47,7 +48,7 @@ export function CommentCard({
                     {comment.moderationStatus === "PENDING" && (
                         <Label theme="warning">{t("pendingModeration")}</Label>
                     )}
-                    <Text className={styles.prose}>{comment.text}</Text>
+                    <ContentText className={styles.prose} text={comment.text} />
                     <ContentActions
                         pending={pending}
                         onEdit={onEdit}

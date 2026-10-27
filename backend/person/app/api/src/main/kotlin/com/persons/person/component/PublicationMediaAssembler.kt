@@ -27,7 +27,7 @@ class PublicationMediaAssembler(
     private val comments: CommentRepository,
     private val reactions: MediaReactionService,
 ) {
-    fun assemble(rows: List<AdminContentItem>, actor: Actor, pages: Map<UUID, PersonSummary>): List<MyPublication> {
+    fun assemble(rows: List<AdminContentItem>, actor: Actor?, pages: Map<UUID, PersonSummary>): List<MyPublication> {
         val ids = rows.stream().filter { it.kind == AdminContentKind.PHOTO || it.kind == AdminContentKind.MOMENT }
             .map { it.id }.toList()
         if (ids.isEmpty()) {
@@ -39,12 +39,13 @@ class PublicationMediaAssembler(
         return media.findAllById(ids).stream().map {
             val date = it.createdAt.atOffset(ZoneOffset.UTC)
             val published = it.status == MediaStatus.PUBLISHED
+            val editable = published && (actor?.id == it.uploaderId || actor?.administrator == true)
             val status = if (published) ModerationStatus.APPROVED else ModerationStatus.PENDING
             if (it.kind == MediaKind.PHOTO) {
                 MyPublication(
                     it.id, PublicationKind.PHOTO, pages.getValue(it.personId), date,
                     photo = Photo(
-                        id = it.id, mediaId = it.id, title = it.caption, createdAt = date, canRemove = published,
+                        id = it.id, mediaId = it.id, title = it.caption, createdAt = date, canRemove = editable,
                         views = counts[it.id] ?: 0, moderationStatus = status,
                     ),
                 )
@@ -55,7 +56,7 @@ class PublicationMediaAssembler(
                     moment = Moment(
                         id = it.id, mediaId = it.id, title = it.caption, authorName = it.uploaderName, createdAt = date,
                         likes = vote?.likes ?: 0, liked = vote?.reaction == MediaReaction.LIKE,
-                        comments = commentCounts[it.id] ?: 0, canRemove = published,
+                        comments = commentCounts[it.id] ?: 0, canRemove = editable,
                         durationSeconds = it.durationSeconds, previewAvailable = it.previewObjectKey != null,
                         views = counts[it.id] ?: 0, moderationStatus = status,
                     ),

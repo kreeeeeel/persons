@@ -1,9 +1,11 @@
 package com.persons.person.service
 
+import com.persons.person.component.ProfileRestrictions
 import com.persons.person.contract.dto.AdminContentStatus
 import com.persons.person.contract.dto.AdminPerson
 import com.persons.person.contract.dto.AdminPersonPage
 import com.persons.person.contract.dto.PersonDates
+import com.persons.person.contract.dto.PersonPresence
 import com.persons.person.contract.dto.PersonProfile
 import com.persons.person.contract.dto.PersonSearchPage
 import com.persons.person.contract.dto.PersonSummary
@@ -43,6 +45,8 @@ class PersonQueryService(
     private val reactions: ReactionService,
     private val stats: StatsService,
     private val authors: AuthorProfileService,
+    private val publicAuthors: PublicAuthorService,
+    private val restrictions: ProfileRestrictions,
 ) {
     fun recommendations(actor: Actor?, size: Int): List<PersonSummary> = persons.recommendations(actor?.id, size)
         .stream().map { it.toSummary() }.toList()
@@ -74,6 +78,9 @@ class PersonQueryService(
             lastName = row.lastName,
             patronymic = row.patronymic,
             description = row.description,
+            presence = PersonPresence(row.presenceStatus?.let { PersonPresence.Status.valueOf(it) }, row.presenceSince),
+            linkedAccount = row.ownerAccountId?.let { publicAuthors.byId(it, name(row)) },
+            restriction = restrictions.current(row.ownerAccountId),
             dates = PersonDates(row.birthDate, row.militaryDepartureDate, row.militaryReturnDate),
             tags = tags.byPerson(row.id).stream().map { it.label }.toList(),
             searchKeywords = keywords.byPerson(row.id).stream().map { it.keyword }.toList(),

@@ -11,7 +11,6 @@ import { useInfinitePersonData } from "@persons/person-domain/hooks/useInfiniteP
 import type { FeedSort } from "@persons/person-client";
 import { FeedSortControl } from "@persons/person-domain/FeedSortControl";
 import { ContentActions } from "@persons/person-domain/ContentActions";
-import { ContentTime } from "@persons/person-domain/ContentTime";
 import { ContentLike } from "@persons/person-domain/ContentLike";
 import { CreditEntryContent } from "@persons/person-domain/CreditEntryContent";
 import { FeedContent } from "@persons/person-domain/FeedContent";
@@ -179,13 +178,6 @@ export function CreditFeed({ personId, signedIn, publicUrl }: PanelProps) {
                             composer
                         ) : (
                             <>
-                                <Flex
-                                    justifyContent="space-between"
-                                    gap="3"
-                                    wrap
-                                >
-                                    <ContentTime date={item.createdAt} />
-                                </Flex>
                                 <CreditEntryContent entry={item} />
                                 <CommentAuthor
                                     comment={item}

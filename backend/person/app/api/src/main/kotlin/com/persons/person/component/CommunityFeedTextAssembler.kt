@@ -108,6 +108,7 @@ class CommunityFeedTextAssembler(
                 rating = PersonRating(
                     id = row.id, value = row.value, emoji = row.emoji, authorName = author.authorName,
                     mine = actor?.id == row.userId, createdAt = row.createdAt.atOffset(ZoneOffset.UTC),
+                    authorId = row.userId,
                     comment = row.comment,
                     authorTag = author.authorTag, authorAvatarUrl = author.authorAvatarUrl,
                     commentStatus = row.comment?.let { ModerationStatus.APPROVED },
@@ -141,7 +142,8 @@ class CommunityFeedTextAssembler(
             selected.getValue(row.id).event(page.toSummary()).copy(
                 credit = CreditEntry(
                     row.id, CreditKind.valueOf(row.kind.name), row.description, author.authorName,
-                    row.createdAt.atOffset(ZoneOffset.UTC), canEdit, authorTag = author.authorTag,
+                    row.createdAt.atOffset(ZoneOffset.UTC), canEdit,
+                    authorTag = author.authorTag, authorId = row.authorId,
                     authorAvatarUrl = author.authorAvatarUrl,
                     moderationStatus = ModerationStatus.APPROVED,
                     likes = vote.count, likedByMe = vote.liked, dislikes = vote.dislikes, dislikedByMe = vote.disliked,

@@ -9,7 +9,9 @@ spring:
   profiles:
     default: dev
   config:
-    import: classpath:persons-id-client.yaml
+    import:
+      - classpath:persons-id-client.yaml
+      - classpath:persons-restrictions-client.yaml
   jackson:
     default-property-inclusion: non_null
   datasource:

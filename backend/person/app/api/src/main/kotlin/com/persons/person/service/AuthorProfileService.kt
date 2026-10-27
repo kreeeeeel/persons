@@ -24,7 +24,7 @@ class AuthorProfileService(private val persons: PersonRepository, private val ac
                         listOfNotNull(person?.firstName, person?.lastName, person?.patronymic).stream()
                             .filter { name -> name.isNotBlank() }.collect(Collectors.joining(" "))
                     },
-                    authorTag = person?.tag,
+                    authorTag = person?.takeIf { it.published && !it.deleted }?.tag,
                     authorAvatarUrl = account?.takeIf { profile -> profile.hasAvatar }?.let { profile ->
                         "/api/person/v1/authors/${profile.id}/avatar?v=${profile.version}"
                     },

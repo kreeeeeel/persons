@@ -1,0 +1,42 @@
+definitions:
+  get:
+    tags: [tags]
+    operationId: listTagDefinitions
+    responses:
+      '200':
+        description: Dictionary for rendering tags and their explanations.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ./models/settings/TagDefinition.yaml#/TagDefinition
+admin:
+  put:
+    tags: [tags]
+    operationId: updateTagDefinitions
+    security:
+      - session: []
+        serviceJwt: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: array
+            maxItems: 200
+            items:
+              $ref: ./models/settings/TagDefinition.yaml#/TagDefinition
+    responses:
+      '200':
+        description: Saved dictionary.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ./models/settings/TagDefinition.yaml#/TagDefinition
+      '400':
+        description: Invalid or duplicated tag
+      '403':
+        description: Administrator required

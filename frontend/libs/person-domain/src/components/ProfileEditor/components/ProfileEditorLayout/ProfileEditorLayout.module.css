@@ -1,0 +1,114 @@
+.modal {
+    --g-modal-border-radius: 20px;
+    --g-modal-margin: 20px;
+}
+
+.dialog {
+    padding: 0;
+    overflow: hidden;
+}
+
+.shell {
+    position: relative;
+    height: min(740px, calc(100dvh - 48px));
+    min-height: 0;
+    overflow: hidden;
+    background: var(--persons-surface);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.sidebar {
+    width: 232px;
+    flex-shrink: 0;
+    min-height: 0;
+    background: var(--persons-background);
+}
+
+.navigationTitle {
+    padding: 28px 24px 16px;
+}
+
+.navigation {
+    min-height: 0;
+    padding: 0 12px 20px;
+    overflow: auto;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+}
+
+.navigation :global([class~="g-menu__item-content"]) {
+    white-space: normal;
+}
+
+.main {
+    min-width: 0;
+    min-height: 0;
+    flex: 1;
+}
+
+.header {
+    padding: 24px 64px 20px 24px;
+}
+
+.header h1,
+.panel h2 {
+    margin: 0;
+}
+
+.panel {
+    flex: 1;
+    min-height: 0;
+    padding: 0 24px 24px;
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.footer {
+    flex-shrink: 0;
+    padding: 16px 24px;
+}
+
+.close {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+}
+
+.mobileNavigation {
+    display: none;
+}
+
+@media (width <= 760px) {
+    .modal:global([class~="g-modal"]) {
+        --g-modal-margin: 0px;
+        --g-modal-border-radius: 0px;
+
+        overflow: hidden;
+    }
+
+    .shell {
+        height: 100dvh;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .mobileNavigation {
+        display: block;
+    }
+
+    .header {
+        padding: 20px 64px 20px 20px;
+    }
+
+    .panel {
+        padding-inline: 20px;
+    }
+
+    .footer {
+        padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+    }
+}

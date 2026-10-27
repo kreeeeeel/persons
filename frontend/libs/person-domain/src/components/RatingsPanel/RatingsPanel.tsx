@@ -1,5 +1,7 @@
 "use client";
 
+import { ContentText } from "@persons/person-domain/ContentText";
+
 import { useState } from "react";
 import { Box, Button, Flex, Icon, Label, Text } from "@gravity-ui/uikit";
 import { Pencil, TrashBin } from "@gravity-ui/icons";
@@ -116,7 +118,10 @@ export function RatingsPanel({
                         {savedEmoji.repeat(rating.value)}
                     </Text>
                     {rating.comment && (
-                        <Text className={styles.comment}>{rating.comment}</Text>
+                        <ContentText
+                            className={styles.comment}
+                            text={rating.comment}
+                        />
                     )}
                     {rating.commentStatus === "PENDING" && (
                         <Label theme="warning">{t("onModeration")}</Label>

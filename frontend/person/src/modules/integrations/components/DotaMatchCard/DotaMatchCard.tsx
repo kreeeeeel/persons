@@ -7,6 +7,7 @@ import { LoadedImage } from '@persons/ui';
 import type { DotaMatch } from '@/modules/integrations/model/DotaMatch';
 import styles from '@/modules/integrations/components/DotaMatchCard/DotaMatchCard.module.css';
 import { dotaRankImage, dotaRankStars } from '@/modules/integrations/model/dotaRankImage';
+import { dotaRankLabel } from '@/modules/integrations/model/dotaRankLabel';
 
 export function DotaMatchCard({ match, onOpen }: { readonly match: DotaMatch; readonly onOpen: () => void }) {
     const t = useTranslate('integrations');
@@ -54,7 +55,7 @@ export function DotaMatchCard({ match, onOpen }: { readonly match: DotaMatch; re
                             </Box>
                         )}
                     </Box>
-                    <Text>{match.rank === 'legend4' ? t('legend4') : (match.rank ?? t('unknownRank'))}</Text>
+                    <Text>{dotaRankLabel(match.rank, t)}</Text>
                 </Flex>
             </Flex>
             <Flex direction="column" gap="2" alignItems="flex-end" className={styles.result}>

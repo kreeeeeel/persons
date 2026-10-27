@@ -19,7 +19,9 @@ class AuthorsController(
 ) : AuthorsApi {
     override fun getAuthorAvatar(id: UUID): ResponseEntity<Resource> {
         actors.requireService()
-        access.requireParticipant(id)
+        if (actors.optional()?.id != id) {
+            access.requireParticipant(id)
+        }
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG)
             .header("Cache-Control", "private, no-store")
             .header("X-Content-Type-Options", "nosniff")

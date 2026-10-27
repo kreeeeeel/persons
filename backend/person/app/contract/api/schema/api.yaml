@@ -5,6 +5,16 @@ info:
 servers:
   - url: /
 paths:
+  /v1/authors/me:
+    $ref: ./author-publications.yaml#/me
+  /v1/authors/by-handle/{handle}:
+    $ref: ./author-publications.yaml#/author
+  /v1/publications/by-author/{handle}:
+    $ref: ./author-publications.yaml#/publications
+  /v1/tag-definitions:
+    $ref: ./tag-definitions.yaml#/definitions
+  /v1/admin/tag-definitions:
+    $ref: ./tag-definitions.yaml#/admin
   /v1/persons/{id}/gallery:
     $ref: ./gallery.yaml#/~1v1~1persons~1{id}~1gallery
   /v1/feed:

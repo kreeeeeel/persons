@@ -1,6 +1,18 @@
 import { expect, it } from 'vitest';
 import { reviewChanges } from '@/modules/moderation/model/reviewChanges';
 
+it('shows contact status changes and explicit clearing while preserving omitted presence', () => {
+    const previous = { presence: { status: 'MISSING', since: '2026-01-01' } };
+    expect(reviewChanges({ presence: { status: 'UNRESPONSIVE', since: '2026-01-01' } }, previous)).toEqual([
+        { key: 'presenceStatus', before: 'MISSING', after: 'UNRESPONSIVE' },
+    ]);
+    expect(reviewChanges({ presence: {} }, previous)).toEqual([
+        { key: 'presenceStatus', before: 'MISSING', after: undefined },
+        { key: 'presenceSince', before: '2026-01-01', after: undefined },
+    ]);
+    expect(reviewChanges({}, previous)).toEqual([]);
+});
+
 it('shows changed and cleared calendar dates separately and preserves omitted dates', () => {
     const previous = { dates: { birthDate: '2001-05-14', militaryDepartureDate: '2026-06-01' } };
     expect(

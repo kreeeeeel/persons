@@ -25,7 +25,7 @@ it('uses the account avatar and updates existing author content when identity ch
             }}
         />,
     );
-    expect(screen.getByRole('link', { name: 'Система' })).toHaveAttribute('href', '/krel');
+    expect(screen.getByRole('link', { name: 'Система' })).toHaveAttribute('href', '/ru/publications/krel');
     expect(container.querySelector('img')).toHaveAttribute('src', '/api/person/v1/authors/account/avatar?v=2');
     expect(screen.queryByText('Старое имя')).not.toBeInTheDocument();
 });

@@ -6,8 +6,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useDynProperty } from '@persons/dynamic-properties';
 import { gamesEnabled } from '@/shared/dynamicProperties/definitions';
-import { Box, Button, Flex, Icon, Label, Text } from '@gravity-ui/uikit';
-import { Person } from '@gravity-ui/icons';
+import { Box, Button, Flex, Icon, Text } from '@gravity-ui/uikit';
+import { PersonPencil } from '@gravity-ui/icons';
 import { VerifiedMark } from '@persons/ui/VerifiedMark';
 import { LoadedAvatar } from '@persons/ui';
 import { SegmentedTabs } from '@persons/ui/SegmentedTabs';
@@ -36,6 +36,10 @@ import { ProfileBirthDate } from '@/modules/profile/components/ProfileBirthDate'
 import { ProfileMetrics } from '@/modules/profile/components/ProfileMetrics';
 import { ProfileDescription } from '@/modules/profile/components/ProfileDescription/ProfileDescription';
 import { Gallery } from '@persons/person-domain/Gallery';
+import { AuthorIdentity } from '@persons/person-domain/AuthorIdentity';
+import { TagLabel } from '@persons/person-domain/TagLabel';
+import { ProfileRestriction } from '@/modules/profile/components/ProfileRestriction/ProfileRestriction';
+import { ProfilePresence } from '@/modules/profile/components/ProfilePresence/ProfilePresence';
 import { militaryServiceToday } from '@/modules/profile/model/serviceCalendar';
 import type { ProfileScreenProps } from '@/modules/profile/components/ProfileScreen/ProfileScreen.types';
 import styles from '@/modules/profile/components/ProfileScreen/ProfileScreen.module.css';
@@ -165,7 +169,10 @@ export function ProfileScreen({
                                     </Box>
                                 )}
                             </Box>
-                            <Text as="h1" className={styles.sidebarName}>
+                            <Text
+                                as="h1"
+                                className={`${styles.sidebarName} ${profile.restriction?.scopes.includes('ACCOUNT') ? styles.blockedName : ''}`}
+                            >
                                 {fullName}
                             </Text>
                             <ProfileMetrics stats={profile.stats} />
@@ -173,27 +180,34 @@ export function ProfileScreen({
                                 {birthDate && <ProfileBirthDate birthDate={birthDate} today={today} />}
                                 {service && <MilitaryServiceDate service={service} today={today} showDepartureDate />}
                             </Box>
+                            {profile.linkedAccount && (
+                                <Box className={styles.linkedAccount}>
+                                    <AuthorIdentity author={profile.linkedAccount} description={t('linkedProfile')} />
+                                </Box>
+                            )}
                             {service && <MilitaryServiceCountdown service={service} today={today} />}
+                            {profile.presence && <ProfilePresence presence={profile.presence} />}
                             {signedIn && profile.canClaim && (
                                 <Button
                                     size="l"
-                                    view="action"
+                                    view="flat"
                                     className={styles.claim}
                                     disabled={profile.claimPending}
                                     onClick={() => setClaim(true)}
                                 >
-                                    <Icon data={Person} size={20} />
+                                    <Icon data={PersonPencil} size={20} />
                                     {t(profile.claimPending ? 'claimPending' : 'claimPage')}
                                 </Button>
                             )}
                         </Flex>
                         <Flex direction="column" gap="2" className={styles.biography}>
+                            {profile.restriction && (
+                                <ProfileRestriction restriction={profile.restriction} name={profile.fullName} />
+                            )}
                             {!!profile.tags.length && (
                                 <Flex gap="2" wrap justifyContent="flex-start">
                                     {profile.tags.map((tag) => (
-                                        <Label key={tag} size="m" theme="info">
-                                            {tag}
-                                        </Label>
+                                        <TagLabel key={tag} tag={tag} />
                                     ))}
                                 </Flex>
                             )}
@@ -296,14 +310,7 @@ export function ProfileScreen({
                     }}
                 />
             )}
-            {editor && (
-                <ProfileEditor
-                    key={profile.version}
-                    profile={profile}
-                    onClose={() => setEditor(false)}
-                    onSaved={saved}
-                />
-            )}
+            {editor && <ProfileEditor profile={profile} onClose={() => setEditor(false)} onSaved={saved} />}
             {avatar && (
                 <MediaUploader personId={profile.id} kind="AVATAR" onClose={() => setAvatar(false)} onSaved={saved} />
             )}

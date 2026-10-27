@@ -11,6 +11,34 @@ const config = {
 const id = 'b4b00d6a-e38b-4d16-820c-80209aecfb15';
 const transport = vi.fn<typeof fetch>();
 
+it.each(['authors/by-handle/friend', `authors/by-handle/${id}`, 'publications/by-author/friend', 'tag-definitions'])(
+    'forwards public author and glossary routes through generated clients: %s',
+    async (route) => {
+        transport.mockResolvedValue(
+            Response.json(
+                route.startsWith('authors/')
+                    ? { id, handle: 'friend', fullName: 'Friend' }
+                    : route === 'tag-definitions'
+                      ? []
+                      : { items: [], page: 2, size: 12, total: 0 },
+            ),
+        );
+        const response = await handlePersonRequest(
+            new Request(`https://people.example/api/person/v1/${route}?page=2&size=12&kind=COMMENT`),
+            ['v1', ...route.split('/')],
+            { ...config, sessionToken: undefined },
+        );
+        expect(response.status).toBe(200);
+        const upstream = new URL(String(transport.mock.calls[0][0]));
+        expect(upstream.pathname).toBe(`/v1/${route}`);
+        if (route.startsWith('publications/')) {
+            expect(upstream.searchParams.get('page')).toBe('2');
+            expect(upstream.searchParams.get('kind')).toBe('COMMENT');
+        }
+        expect(new Headers(transport.mock.calls[0][1]?.headers).get('Authorization')).toBeNull();
+    },
+);
+
 it.each([
     ['persons/directory', 'order=RATING'],
     ['feed', 'kind=WALL'],

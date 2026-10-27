@@ -9,6 +9,8 @@ project:
     jwt-secret: tests-gateway-jwt-secret-with-at-least-thirty-two-characters
   id-client:
     base-uri: http://127.0.0.1:1
+  restrictions-client:
+    base-uri: http://127.0.0.1:1
   internal:
     jwt-secret: tests-internal-jwt-secret-with-at-least-thirty-two-characters
 s3:

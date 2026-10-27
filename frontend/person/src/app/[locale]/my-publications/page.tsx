@@ -7,6 +7,7 @@ import { HeaderSkeleton } from '@/shared/ui/HeaderSkeleton/HeaderSkeleton';
 import { PublicationsScreen } from '@/modules/publications/screens/PublicationsScreen/PublicationsScreen';
 import { getServerConfig } from '@/shared/config/server';
 import { currentUser } from '@/modules/account/server/currentUser';
+import { personApi } from '@/shared/api/person';
 
 export async function generateMetadata({ params }: { readonly params: Promise<{ locale: string }> }) {
     const { locale } = await params;
@@ -30,7 +31,7 @@ export default async function Page({ params }: { readonly params: Promise<{ loca
                 </Suspense>
             }
         >
-            <PublicationsScreen />
+            <PublicationsScreen author={await (await personApi()).publications.getMyPublicAuthor()} signedIn />
         </ContentPage>
     );
 }

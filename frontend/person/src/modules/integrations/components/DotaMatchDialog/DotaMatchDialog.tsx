@@ -1,5 +1,7 @@
 'use client';
 
+import { dotaRankLabel } from '@/modules/integrations/model/dotaRankLabel';
+
 import { Box, Button, Dialog, Flex, Icon, Label, Text, Tooltip } from '@gravity-ui/uikit';
 import { ArrowUpRightFromSquare } from '@gravity-ui/icons';
 import { LoadedImage } from '@persons/ui';
@@ -29,7 +31,7 @@ export function DotaMatchDialog({
     }).format(new Date(match.playedAt));
     const facts = [
         { label: t('duration'), value: match.duration },
-        { label: t('rank'), value: match.rank === 'legend4' ? t('legend4') : (match.rank ?? '—') },
+        { label: t('rank'), value: dotaRankLabel(match.rank, t) },
         {
             label: 'HD',
             description: t('heroDamage'),

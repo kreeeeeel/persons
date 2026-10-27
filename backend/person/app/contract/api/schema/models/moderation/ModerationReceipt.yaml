@@ -4,6 +4,9 @@ ModerationReceipt:
     - id
     - status
   properties:
+    personId:
+      type: string
+      format: uuid
     id:
       type: string
       format: uuid

@@ -1,0 +1,9 @@
+.root {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--g-color-base-warning-light);
+    font-size: 16px;
+    line-height: 1.5;
+}

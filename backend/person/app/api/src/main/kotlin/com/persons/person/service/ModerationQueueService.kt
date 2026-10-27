@@ -80,7 +80,7 @@ class ModerationQueueService(
         if (request.status == ReviewStatus.PENDING && requests.pendingForAuthor(actor.id) > MAX_PENDING_PER_ACCOUNT) {
             throw PendingLimitException()
         }
-        return ModerationReceipt(request.id, ModerationStatus.valueOf(request.status.name))
+        return ModerationReceipt(request.id, ModerationStatus.valueOf(request.status.name), personId = person.id)
     }
 
     fun reviewSubmission(request: ModerationEntity, administrator: Boolean = false) {

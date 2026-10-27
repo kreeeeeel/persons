@@ -26,6 +26,17 @@ class OpenDotaParserTest {
         """.trimIndent()
 
     @Test
+    fun `uses the selected players rank and never the average match rank`() {
+        val reference = parser.matches("""[{"match_id":123,"start_time":1792685540,"average_rank":75}]""", 100).matches.single()
+        val ranked = body.replace("\"account_id\":42,", "\"account_id\":42,\"rank_tier\":43,")
+        assertThat(parser.match(ranked, 42, reference, catalog).rank).isEqualTo("Archon 3")
+        assertThat(parser.match(body, 42, reference, catalog).rank).isNull()
+        listOf(0, 10, 16, 79, 81).stream().forEach { tier ->
+            assertThat(parser.match(ranked.replace("\"rank_tier\":43", "\"rank_tier\":$tier"), 42, reference, catalog).rank).isNull()
+        }
+    }
+
+    @Test
     fun `maps the actual player team score hero inventory and neutral item`() {
         val match = parser.match(body, 42, reference, catalog)
         assertThat(match.heroKey).isEqualTo("juggernaut")

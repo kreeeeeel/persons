@@ -7,6 +7,7 @@ import type { Comment, PersonSummary } from '@persons/person-client';
 import { useLocale, useTranslate } from '@persons/i18n';
 import { AppLink } from '@persons/ui/AppLink';
 import { CommentAuthor } from '@persons/person-domain/CommentAuthor';
+import { ContentText } from '@persons/person-domain/ContentText';
 import { ContentLike } from '@persons/person-domain/ContentLike';
 import { ContentTime } from '@persons/person-domain/ContentTime';
 import { MediaViewer } from '@persons/person-domain/MediaViewer';
@@ -65,9 +66,7 @@ export function MediaCommentCard({
                 <Icon data={kind === 'PHOTO' ? Picture : Video} size={20} className={styles.icon} />
             </Flex>
             {pending && <Label theme="warning">{person('onModeration')}</Label>}
-            <Text as="p" className={styles.text}>
-                {comment.text}
-            </Text>
+            <ContentText className={styles.text} text={comment.text} />
             <Flex gap="3" alignItems="center" justifyContent="space-between" wrap className={styles.footer}>
                 {!pending && (
                     <ContentLike

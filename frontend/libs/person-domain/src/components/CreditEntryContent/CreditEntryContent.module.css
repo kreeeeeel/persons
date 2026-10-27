@@ -1,3 +1,12 @@
+.header {
+    width: 100%;
+}
+
+.header > time {
+    margin-left: auto;
+    text-align: right;
+}
+
 .prose {
     white-space: pre-wrap;
     overflow-wrap: anywhere;

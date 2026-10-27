@@ -3,11 +3,17 @@ import { afterEach, expect, it, vi } from 'vitest';
 import { ProfileEditor } from '@persons/person-domain/ProfileEditor';
 import { renderUi } from '@test/render';
 import type { PersonProfile } from '@persons/person-client';
+import { Flex } from '@gravity-ui/uikit';
 
-const api = vi.hoisted(() => ({ update: vi.fn() }));
+const api = vi.hoisted(() => ({ update: vi.fn(), create: vi.fn(), get: vi.fn() }));
 vi.mock('@persons/person-domain/api/browser', () => ({
-    personClient: { persons: { updatePerson: api.update } },
+    personClient: { persons: { updatePerson: api.update, createPerson: api.create, getPerson: api.get } },
     personError: vi.fn(),
+}));
+vi.mock('@persons/person-domain/MediaUploader', () => ({
+    MediaUploader: ({ personId, kind }: { personId: string; kind: string }) => (
+        <Flex role="dialog" aria-label="Avatar picker">{`${personId}:${kind}`}</Flex>
+    ),
 }));
 afterEach(() => {
     cleanup();
@@ -49,6 +55,7 @@ it('edits and clears calendar dates through the generated profile input', async 
     );
     expect(screen.getByLabelText('Дата рождения')).toHaveValue('2001-05-14');
     fireEvent.change(screen.getByLabelText('Дата рождения'), { target: { value: '' } });
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Армия' }));
     fireEvent.change(screen.getByLabelText('Дата ухода в армию'), { target: { value: '2026-06-01' } });
     fireEvent.change(screen.getByLabelText('Дата возвращения из армии'), { target: { value: '2027-06-01' } });
     fireEvent.click(screen.getByRole('button', { name: 'Сохранить' }));
@@ -94,6 +101,7 @@ it('removes rating configuration from a personal page request', () => {
 
 it('keeps a legacy Discord contact visible and lets the user replace or clear it', () => {
     renderUi(<ProfileEditor profile={profile} onClose={vi.fn()} onSaved={vi.fn()} />);
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Социальные сети' }));
     const discord = screen.getByRole('textbox', { name: 'Discord · тег' });
     expect(discord).toHaveValue('https://discord.com/users/123');
     fireEvent.change(discord, { target: { value: 'my_username' } });
@@ -136,6 +144,7 @@ it.each([true, false])(
                 onSaved={saved}
             />,
         );
+        fireEvent.click(screen.getByRole('menuitem', { name: 'Поиск' }));
         const input = screen.getByRole('textbox', { name: 'Ключевые слова для поиска' });
         expect(input).toHaveValue('старое имя');
         fireEvent.change(input, { target: { value: ' кирилл, немтырев, ' } });
@@ -157,6 +166,7 @@ it.each([true, false])(
                 onSaved={saved}
             />,
         );
+        fireEvent.click(screen.getByRole('menuitem', { name: 'Поиск' }));
         fireEvent.change(screen.getByRole('textbox', { name: 'Ключевые слова для поиска' }), { target: { value: '' } });
         fireEvent.click(screen.getByRole('button', { name: 'Сохранить' }));
         await waitFor(() =>
@@ -169,6 +179,7 @@ it.each([true, false])(
 
 it('explains excessive search keywords before submitting', async () => {
     renderUi(<ProfileEditor administrator profile={profile} onClose={vi.fn()} onSaved={vi.fn()} />);
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Поиск' }));
     fireEvent.change(screen.getByRole('textbox', { name: 'Ключевые слова для поиска' }), {
         target: { value: Array.from({ length: 21 }, (_, index) => `слово${index}`).join(', ') },
     });
@@ -177,4 +188,55 @@ it('explains excessive search keywords before submitting', async () => {
         await screen.findByText('Укажите не больше 20 ключевых слов или фраз, до 80 символов каждое.'),
     ).toBeVisible();
     expect(api.update).not.toHaveBeenCalled();
+});
+
+it('keeps description drafts when saving a dated presence status, and explicitly clears it', async () => {
+    api.update.mockResolvedValue({ id: 'receipt', status: 'APPROVED' });
+    renderUi(
+        <ProfileEditor
+            administrator
+            profile={{ ...profile, presence: { status: 'MISSING', since: new Date('2026-01-02') } }}
+            onClose={vi.fn()}
+            onSaved={vi.fn()}
+        />,
+    );
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Описание и теги' }));
+    fireEvent.change(screen.getByRole('textbox', { name: 'Описание' }), { target: { value: 'Сохранённое описание' } });
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Пропал без вести' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Сохранить' }));
+    await waitFor(() =>
+        expect(api.update).toHaveBeenCalledWith(
+            expect.objectContaining({
+                profileInput: expect.objectContaining({
+                    description: 'Сохранённое описание',
+                    presence: { status: 'MISSING', since: new Date('2026-01-02') },
+                }),
+            }),
+        ),
+    );
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Сохранить' })).toBeEnabled());
+    fireEvent.click(screen.getByRole('combobox', { name: 'Статус связи' }));
+    fireEvent.click(screen.getByRole('option', { name: 'На связи' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Сохранить' }));
+    await waitFor(() =>
+        expect(api.update).toHaveBeenLastCalledWith(
+            expect.objectContaining({
+                profileInput: expect.objectContaining({ presence: {} }),
+            }),
+        ),
+    );
+});
+
+it('creates a profile before opening the existing avatar uploader with its real person id', async () => {
+    api.create.mockResolvedValueOnce({ id: 'receipt', status: 'APPROVED', personId: profile.id });
+    api.get.mockResolvedValueOnce(profile);
+    const saved = vi.fn();
+    renderUi(<ProfileEditor administrator onClose={vi.fn()} onSaved={saved} />);
+    fireEvent.change(screen.getByRole('textbox', { name: 'Имя' }), { target: { value: 'Персона' } });
+    fireEvent.change(screen.getByRole('textbox', { name: 'Тег страницы' }), { target: { value: 'person' } });
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Аватар' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Сохранить и выбрать аватар' }));
+    expect(await screen.findByRole('dialog', { name: 'Avatar picker' })).toHaveTextContent('person:AVATAR');
+    expect(api.create).toHaveBeenCalledOnce();
+    expect(saved).not.toHaveBeenCalled();
 });

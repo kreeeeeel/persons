@@ -72,10 +72,11 @@ it('creates a persona with an optional last name and predefined rating choices',
     const view = renderUi(<ProfileEditor onClose={vi.fn()} onSaved={saved} />);
     fireEvent.change(screen.getByRole('textbox', { name: 'Тег страницы' }), { target: { value: 'new-person' } });
     fireEvent.change(screen.getByRole('textbox', { name: 'Имя' }), { target: { value: 'Новый' } });
+    expect(screen.getByRole('textbox', { name: 'Фамилия' })).not.toBeRequired();
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Социальные сети' }));
     const discord = screen.getByRole('textbox', { name: 'Discord · тег' });
     expect(discord).toHaveAttribute('type', 'text');
     fireEvent.change(discord, { target: { value: ' some_user ' } });
-    expect(screen.getByRole('textbox', { name: 'Фамилия' })).not.toBeRequired();
     expect(screen.queryByRole('textbox', { name: 'Значение' })).not.toBeInTheDocument();
     fireEvent.submit(view.container.ownerDocument.querySelector('form')!);
     await waitFor(() => expect(saved).toHaveBeenCalledOnce());

@@ -1,0 +1,17 @@
+TagDefinition:
+  type: object
+  required: [tag, descriptions]
+  properties:
+    tag:
+      type: string
+      minLength: 1
+      maxLength: 32
+      pattern: '^[\p{L}\p{N}_-]+$'
+    descriptions:
+      type: object
+      minProperties: 1
+      maxProperties: 2
+      additionalProperties:
+        type: string
+        minLength: 1
+        maxLength: 500

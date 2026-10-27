@@ -1,0 +1,38 @@
+.label,
+.button {
+    display: inline-block;
+    max-width: 100%;
+    padding: 2px 8px;
+    border-radius: 7px;
+    background: var(--g-color-base-info-light);
+    color: var(--g-color-text-info);
+    font-size: 16px;
+    line-height: 1.5;
+    vertical-align: baseline;
+    overflow-wrap: anywhere;
+}
+
+.button {
+    height: auto;
+    min-height: 28px;
+
+    --g-button-padding: 0px;
+}
+
+.button :global([class~="g-button__text"]) {
+    overflow: visible;
+    white-space: normal;
+}
+
+.popup {
+    padding: 16px;
+    max-width: min(340px, calc(100vw - 48px));
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.skeleton {
+    width: 220px;
+    height: 48px;
+}

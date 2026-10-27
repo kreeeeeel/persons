@@ -5,6 +5,8 @@ export const reviewFieldLabels: Record<string, string> = {
     birthDate: 'birthDate',
     militaryDepartureDate: 'militaryDepartureDate',
     militaryReturnDate: 'militaryReturnDate',
+    presenceStatus: 'presenceStatus',
+    presenceSince: 'presenceSince',
     tag: 'tag',
     description: 'description',
     tags: 'tags',
@@ -41,8 +43,15 @@ function comparable(value: unknown): string {
 
 function expandDates(value: Record<string, unknown> = {}): Record<string, unknown> {
     const dates = value.dates;
+    const presence = value.presence;
     return {
         ...value,
+        ...(presence && typeof presence === 'object'
+            ? {
+                  presenceStatus: (presence as Record<string, unknown>).status,
+                  presenceSince: (presence as Record<string, unknown>).since,
+              }
+            : {}),
         ...(dates && typeof dates === 'object'
             ? Object.fromEntries(
                   ['birthDate', 'militaryDepartureDate', 'militaryReturnDate'].map((key) => [

@@ -26,7 +26,7 @@ export const backendInputs = {
     id: ['backend/id', ...contract('mail'), ...contract('i18n'), 'backend/libs/id-context', ...observability],
     mail: ['backend/mail', ...observability],
     i18n: ['backend/i18n', ...observability],
-    person: ['backend/person', ...contract('id'), 'backend/libs/id-context', ...observability, ...integrations],
+    person: ['backend/person', ...contract('id'), ...contract('restrictions'), 'backend/libs/id-context', ...observability, ...integrations],
     restrictions: ['backend/restrictions', ...contract('id'), 'backend/libs/id-context', ...observability],
     gateway: [
         'backend/gateway', ...contract('id'), ...contract('person'), ...contract('restrictions'),

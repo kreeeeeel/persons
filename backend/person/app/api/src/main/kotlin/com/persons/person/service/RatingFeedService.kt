@@ -46,6 +46,7 @@ class RatingFeedService(
                 PersonRating(
                     id = it.id, value = it.value, emoji = it.emoji, authorName = authors.getValue(it.userId).authorName,
                     mine = it.userId == actor?.id,
+                    authorId = it.userId,
                     createdAt = it.createdAt.atOffset(ZoneOffset.UTC), authorTag = authors[it.userId]?.authorTag,
                     authorAvatarUrl = authors[it.userId]?.authorAvatarUrl,
                     comment = drafts[it.id] ?: it.comment,

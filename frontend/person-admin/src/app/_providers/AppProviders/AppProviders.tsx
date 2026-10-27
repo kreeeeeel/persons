@@ -6,6 +6,7 @@ import { I18nProvider, useLocale, useTranslate } from '@persons/i18n';
 import { LoadingFailureProvider } from '@persons/ui/loading/LoadingFailureProvider';
 import { RestrictionFeedback } from '@persons/person-domain/RestrictionFeedback';
 import { UploadQueueProvider } from '@persons/person-domain/UploadQueueProvider';
+import { TagDictionaryProvider } from '@persons/person-domain/tags/TagDictionaryProvider';
 import { PersonsThemeProvider } from '@persons/theme';
 import { DynPropertyProvider } from '@persons/dynamic-properties';
 import { dynamicProperties } from '@/shared/dynamicProperties/definitions';
@@ -29,7 +30,9 @@ function LoadingFeedback({
                 illustrationSrc="/media/error-modal-nikita-v1.webp"
             >
                 <RestrictionFeedback>
-                    <UploadQueueProvider>{children}</UploadQueueProvider>
+                    <TagDictionaryProvider>
+                        <UploadQueueProvider>{children}</UploadQueueProvider>
+                    </TagDictionaryProvider>
                 </RestrictionFeedback>
             </LoadingFailureProvider>
         </PersonsThemeProvider>

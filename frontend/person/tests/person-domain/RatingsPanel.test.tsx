@@ -33,7 +33,7 @@ it('shows Yuri and the invitation when nobody has rated the page', async () => {
 
 it('shows public ratings and links each identified author to their page', async () => {
     renderUi(<RatingsPanel personId="krel" signedIn={false} initialOptions={[]} onChange={vi.fn()} />);
-    expect(await screen.findByRole('link', { name: 'Вадим' })).toHaveAttribute('href', '/vadim');
+    expect(await screen.findByRole('link', { name: 'Вадим' })).toHaveAttribute('href', '/ru/publications/vadim');
     expect(screen.getByLabelText('Оценка: 3 из 5')).toHaveTextContent('🐰🐰🐰');
     expect(screen.getByRole('button', { name: 'Эмодзи оценки' })).toBeDisabled();
     expect(screen.queryByRole('img', { name: 'Юрий ждёт первую оценку' })).not.toBeInTheDocument();

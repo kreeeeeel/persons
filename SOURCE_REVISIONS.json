@@ -1,7 +1,7 @@
 [
   {
     "path": ".",
-    "commit": "d75d99d0b8d703baa25fa93bd596c69791282d3f",
+    "commit": "feb2e830578b6a4db02b9a47410b09c134b39d41",
     "gitlab": "https://gitlab.com/te-eshche-lyudi/infrastructure.git"
   },
   {
@@ -21,12 +21,12 @@
   },
   {
     "path": "backend/person",
-    "commit": "792d55b18f73485fb483aa31f9166ac4cabb1ad8",
+    "commit": "ac5fbb2a80f3059198d4e586c987b9962b09dd59",
     "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/person.git"
   },
   {
     "path": "backend/person-worker",
-    "commit": "c65c7a13b930736b6a487a6c0403853b98914f64",
+    "commit": "b84fdd95df72dcee5fde446b80076b9fae4bb9bd",
     "gitlab": "https://gitlab.com/te-eshche-lyudi/backend/personal-worker.git"
   },
   {
@@ -56,12 +56,12 @@
   },
   {
     "path": "frontend/person",
-    "commit": "16534b88109cb94339aeb26292475e1711b109c2",
+    "commit": "a84fb15e66636f24315bf4bdcada6ec8f70a402e",
     "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/person.git"
   },
   {
     "path": "frontend/person-admin",
-    "commit": "77d4dc689973bc4913e622093a8cdacac9040bde",
+    "commit": "e7e57b3c58e34bb15e2c97d9c257e3dd02b4345a",
     "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/person-admin.git"
   },
   {
@@ -76,7 +76,7 @@
   },
   {
     "path": "frontend/libs/person-domain",
-    "commit": "171170f74b36e67c80d01c18d6568c04ecb8f4e2",
+    "commit": "74fe4e45a9b83c57b5a00b62868d39c167d24513",
     "gitlab": "https://gitlab.com/te-eshche-lyudi/frontend/libs/person-domain.git"
   },
   {

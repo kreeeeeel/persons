@@ -1,6 +1,7 @@
 package com.persons.person
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.persons.id.client.generated.model.UserProfile
 import com.persons.person.component.AccountProfiles
 import com.persons.person.component.ActorResolver
 import com.persons.person.dao.entity.CommentEntity
@@ -78,6 +79,42 @@ class MyPublicationsIntegrationTest {
     fun authenticate() {
         `when`(actors.required()).thenReturn(author)
         `when`(accounts.profiles(setOf(author.id))).thenReturn(emptyMap())
+    }
+
+    @Test
+    fun `public author pages exclude pending hidden and private content and never grant author actions to visitors`() {
+        `when`(actors.optional()).thenReturn(null)
+        `when`(accounts.profiles(setOf(author.id))).thenReturn(
+            mapOf(
+                author.id to UserProfile(author.id, author.name, false, 0),
+            ),
+        )
+        val page = person("public-author", owner = author.id)
+        val visible = comment(page, text = "Public text")
+        comment(page, text = "Pending text", published = false)
+        comment(person("private-author", published = false, owner = other))
+        comment(person("removed-author", deleted = true))
+        upload(page, MediaKind.PHOTO, MediaStatus.PENDING)
+        moderation.saveAndFlush(
+            ModerationEntity(
+                personId = page.id, personTag = page.tag, targetId = visible.id, kind = ChangeKind.UPDATE_COMMENT,
+                authorId = author.id, authorName = author.name,
+                payload = "{\"text\":\"Private pending edit\"}", createdAt = created,
+            ),
+        )
+        mvc.perform(get("/v1/authors/by-handle/public-author"))
+            .andExpect(status().isOk).andExpect(jsonPath("$.id").value(author.id.toString()))
+            .andExpect(jsonPath("$.handle").value("public-author")).andExpect(jsonPath("$.email").doesNotExist())
+        mvc.perform(get("/v1/publications/by-author/${author.id}"))
+            .andExpect(status().isOk).andExpect(jsonPath("$.total").value(1))
+            .andExpect(jsonPath("$.items[0].comment.text").value("Public text"))
+            .andExpect(jsonPath("$.items[0].comment.canRemove").value(false))
+            .andExpect(jsonPath("$.items[0].comment.canEdit").value(false))
+        `when`(actors.optional()).thenReturn(author)
+        mvc.perform(get("/v1/publications/by-author/public-author").param("kind", "COMMENT"))
+            .andExpect(status().isOk).andExpect(jsonPath("$.total").value(2))
+        mvc.perform(get("/v1/authors/by-handle/${UUID.randomUUID()}"))
+            .andExpect(status().isNotFound)
     }
 
     @Test

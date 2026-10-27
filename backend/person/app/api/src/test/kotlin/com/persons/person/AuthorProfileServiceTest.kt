@@ -18,7 +18,15 @@ class AuthorProfileServiceTest {
         val accounts = mock(AccountProfiles::class.java)
         `when`(accounts.profiles(setOf(owner))).thenReturn(emptyMap())
         `when`(persons.byOwners(listOf(owner))).thenReturn(
-            listOf(PersonEntity(tag = "kirill", firstName = "Кирилл", lastName = "Немтырев", ownerAccountId = owner)),
+            listOf(
+                PersonEntity(
+                    tag = "kirill",
+                    firstName = "Кирилл",
+                    lastName = "Немтырев",
+                    ownerAccountId = owner,
+                    published = true,
+                ),
+            ),
         )
 
         val profile = AuthorProfileService(persons, accounts).profiles(mapOf(owner to "")).getValue(owner)

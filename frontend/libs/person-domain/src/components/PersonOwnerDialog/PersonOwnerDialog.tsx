@@ -23,6 +23,7 @@ export function PersonOwnerDialog({
     return (
         <Dialog
             open
+            aria-label={t("owner")}
             maxWidth="s"
             fullWidth
             contentOverflow="auto"

@@ -10,6 +10,7 @@ dependencies {
     implementation(project(":app:contract:api"))
     implementation(project(":app:maintenance"))
     implementation("com.persons.id.app.contract:client:0.1.0")
+    implementation("com.persons.restrictions.app.contract:client:0.1.0")
     implementation("com.persons.requestobservability:request-observability:0.1.0")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")

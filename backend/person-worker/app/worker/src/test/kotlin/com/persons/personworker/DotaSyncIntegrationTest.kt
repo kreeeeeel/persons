@@ -92,6 +92,35 @@ class DotaSyncIntegrationTest {
     }
 
     @Test
+    fun `repairs cached average ranks without replacing existing stats or inventory`() {
+        val reference = DotaMatchReference(321, now.minusSeconds(60))
+        fixtures.save(
+            DotaMatchEntity(
+                personId = person, matchId = 321, accountId = 42,
+                playedAt = reference.playedAt, durationSeconds = 2500, heroKey = "juggernaut", heroName = "Juggernaut",
+                kills = 7, deaths = 2, assists = 5, rankName = "Divine 5",
+            ),
+        )
+        fixtures.save(DotaItemEntity(person, 321, 0, "blink", "Blink Dagger", 60))
+        assertThat(matches.page(person, 0, 12).single().match.rank).isNull()
+        Mockito.`when`(resolver.resolve(source)).thenReturn(42)
+        Mockito.`when`(client.matches(42, 1)).thenReturn(DotaMatchPage(listOf(reference), false))
+        Mockito.`when`(client.match(42, reference)).thenReturn(
+            DotaPlayerMatch(
+                321, 42, reference.playedAt, 2538, "juggernaut", "Juggernaut", true,
+                99, 1, 1, "Archon 3", emptyList(),
+            ),
+        )
+        integration.synchronize()
+        val repaired = matches.page(person, 0, 12).single().match
+        assertThat(repaired.rank).isEqualTo("Archon 3")
+        assertThat(repaired.kills).isEqualTo(7)
+        assertThat(repaired.items.single().name).isEqualTo("Blink Dagger")
+        assertThat(matches.ranksToRepair(person, 42, 5)).isEmpty()
+        Mockito.verify(client, Mockito.times(1)).match(42, reference)
+    }
+
+    @Test
     fun `imports eligible matches once and preserves pagination for a later run`() {
         val reference = DotaMatchReference(123, now.minusSeconds(60))
         Mockito.`when`(resolver.resolve(source)).thenReturn(42)

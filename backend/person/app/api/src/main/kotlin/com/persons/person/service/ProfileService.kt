@@ -3,6 +3,7 @@ package com.persons.person.service
 import com.persons.person.component.ProfileValidator
 import com.persons.person.contract.dto.ModerationReceipt
 import com.persons.person.contract.dto.PersonDates
+import com.persons.person.contract.dto.PersonPresence
 import com.persons.person.contract.dto.ProfileInput
 import com.persons.person.contract.dto.RatingOptionInput
 import com.persons.person.contract.dto.SocialLink
@@ -129,6 +130,10 @@ class ProfileService(
         person.lastName = normalized.lastName
         person.patronymic = normalized.patronymic
         person.description = normalized.description
+        normalized.presence?.let { presence ->
+            person.presenceStatus = presence.status?.value
+            person.presenceSince = presence.since
+        }
         normalized.dates?.let { dates ->
             person.birthDate = dates.birthDate
             person.militaryDepartureDate = dates.militaryDepartureDate
@@ -188,6 +193,12 @@ class ProfileService(
         lastName = person.lastName,
         patronymic = person.patronymic,
         description = person.description,
+        presence = PersonPresence(
+            person.presenceStatus?.let {
+                PersonPresence.Status.valueOf(it)
+            },
+            person.presenceSince,
+        ),
         dates = PersonDates(person.birthDate, person.militaryDepartureDate, person.militaryReturnDate),
         tags = tags.byPerson(person.id).stream().map { it.label }.toList(),
         searchKeywords = keywords.byPerson(person.id).stream().map { it.keyword }.toList(),

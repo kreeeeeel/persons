@@ -1,0 +1,10 @@
+PersonPresence:
+  type: object
+  description: Omitted on update preserves the status; an empty object clears it. Status and date must be set together.
+  properties:
+    status:
+      type: string
+      enum: [MISSING, UNRESPONSIVE]
+    since:
+      type: string
+      format: date

@@ -53,7 +53,7 @@ test('contract and transitive Kotlin dependencies invalidate their consumers', (
 
 test('restriction implementation is isolated while its contract reaches gateway and worker', () => {
     assert.deepEqual(affected('backend/restrictions/app/api/src/main/Service.kt'), ['restrictions']);
-    assert.deepEqual(affected('backend/restrictions/app/contract/api/schema/api.yaml'), ['person-worker', 'restrictions', 'gateway']);
+    assert.deepEqual(affected('backend/restrictions/app/contract/api/schema/api.yaml'), ['person', 'person-worker', 'restrictions', 'gateway']);
     assert.deepEqual(affected('backend/gateway/app/api/src/main/Policy.kt'), ['gateway']);
 });
 

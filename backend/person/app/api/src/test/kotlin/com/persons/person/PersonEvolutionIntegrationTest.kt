@@ -70,6 +70,8 @@ class PersonEvolutionIntegrationTest {
 
     @MockitoBean private lateinit var actors: ActorResolver
 
+    @MockitoBean private lateinit var profileRestrictions: com.persons.person.component.ProfileRestrictions
+
     @MockitoBean private lateinit var store: PersonMediaStore
 
     private val admin = Actor(UUID.randomUUID(), "Администратор", true)

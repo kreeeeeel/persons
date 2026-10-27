@@ -86,8 +86,15 @@ class CreditService(
                     drafts[it.id] ?: it.description,
                     profiles.getValue(it.authorId).authorName, it.createdAt.atOffset(ZoneOffset.UTC),
                     it.published && (actor?.id == it.authorId || access.canEdit(person, actor)),
-                    profiles[it.authorId]?.authorTag, profiles[it.authorId]?.authorAvatarMediaId,
-                    if (!it.published || it.id in drafts) ModerationStatus.PENDING else ModerationStatus.APPROVED,
+                    authorId = it.authorId, authorTag = profiles[it.authorId]?.authorTag,
+                    authorAvatarMediaId = profiles[it.authorId]?.authorAvatarMediaId,
+                    moderationStatus = if (!it.published ||
+                        it.id in drafts
+                    ) {
+                        ModerationStatus.PENDING
+                    } else {
+                        ModerationStatus.APPROVED
+                    },
                     likes = votes[it.id]?.count ?: 0, likedByMe = votes[it.id]?.liked ?: false,
                     dislikes = votes[it.id]?.dislikes ?: 0, dislikedByMe = votes[it.id]?.disliked ?: false,
                     authorAvatarUrl = profiles[it.authorId]?.authorAvatarUrl,

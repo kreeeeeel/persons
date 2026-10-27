@@ -11,6 +11,7 @@ import {
     DecisionInputFromJSON,
     OwnerLinkInputFromJSON,
     ProfileInputFromJSON,
+    TagDefinitionFromJSON,
     RatingInputFromJSON,
     ResponseError,
     MediaEditInputFromJSON,
@@ -87,6 +88,13 @@ export async function handlePersonRequest(
     const routePath = parts
         .map((part, index) => {
             if (
+                index === 3 &&
+                ((parts[1] === "authors" && parts[2] === "by-handle") ||
+                    (parts[1] === "publications" && parts[2] === "by-author"))
+            ) {
+                return "{handle}";
+            }
+            if (
                 parts[1] === "persons" &&
                 parts[3] === "games" &&
                 parts[4] === "dota2" &&
@@ -135,6 +143,35 @@ export async function handlePersonRequest(
             response = await api.persons.getPersonRaw({ tag: parts[3] });
         } else {
             switch (route) {
+                case "GET v1/authors/me":
+                    response = await api.publications.getMyPublicAuthorRaw();
+                    break;
+                case "GET v1/authors/by-handle/{handle}":
+                    response = await api.publications.getPublicAuthorRaw({
+                        handle: parts[3],
+                    });
+                    break;
+                case "GET v1/publications/by-author/{handle}":
+                    response = await api.publications.listAuthorPublicationsRaw(
+                        {
+                            handle: parts[3],
+                            page,
+                            size,
+                            kind: (url.searchParams.get("kind") ??
+                                undefined) as PublicationKind | undefined,
+                        },
+                    );
+                    break;
+                case "GET v1/tag-definitions":
+                    response = await api.tags.listTagDefinitionsRaw();
+                    break;
+                case "PUT v1/admin/tag-definitions":
+                    response = await api.tags.updateTagDefinitionsRaw({
+                        tagDefinition: (await request.json()).map(
+                            TagDefinitionFromJSON,
+                        ),
+                    });
+                    break;
                 case "GET v1/authors/{id}/avatar":
                     response = await api.authors.getAuthorAvatarRaw({ id });
                     break;

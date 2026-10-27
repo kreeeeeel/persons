@@ -35,7 +35,17 @@ import java.util.stream.Collectors
 class ContentCatalogDao(private val entityManager: EntityManager, private val sources: ContentCatalogSources) {
     private val builder: HibernateCriteriaBuilder get() = entityManager.criteriaBuilder as HibernateCriteriaBuilder
 
-    fun authored(actor: Actor, kind: PublicationKind?, query: String, page: Int, size: Int): Page<AdminContentItem> {
+    fun authored(actor: Actor, kind: PublicationKind?, query: String, page: Int, size: Int): Page<AdminContentItem> =
+        authoredBy(actor.id, actor, kind, query, page, size)
+
+    fun authoredBy(
+        authorId: UUID,
+        actor: Actor?,
+        kind: PublicationKind?,
+        query: String,
+        page: Int,
+        size: Int,
+    ): Page<AdminContentItem> {
         val catalog = base()
         val source = catalog.source
         val person = catalog.person
@@ -45,22 +55,24 @@ class ContentCatalogDao(private val entityManager: EntityManager, private val so
             builder.equal(media.get<UUID>("id"), source.get<UUID>("contextMediaId")),
             builder.equal(media.get<MediaStatus>("status"), MediaStatus.PUBLISHED),
         )
-        val access = if (actor.administrator) {
+        val mine = actor?.id == authorId
+        val access = if (mine && actor?.administrator == true) {
             builder.conjunction()
         } else {
-            builder.or(
-                builder.isTrue(person.get("published")),
-                builder.equal(person.get<UUID>("ownerAccountId"), actor.id),
-            )
+            if (mine) {
+                builder.or(
+                    builder.isTrue(person.get("published")),
+                    builder.equal(person.get<UUID>("ownerAccountId"), authorId),
+                )
+            } else {
+                builder.isTrue(person.get("published"))
+            }
         }
         val conditions = listOfNotNull(
             builder.equal(person.get<UUID>("id"), source.get<UUID>("personId")),
-            builder.equal(source.get<UUID>("authorId"), actor.id),
+            builder.equal(source.get<UUID>("authorId"), authorId),
             source.get<String>("kind").`in`("COMMENT", "RATING", "PHOTO", "MOMENT", "CREDIT"),
-            source.get<String>("sourceStatus").`in`(
-                "PUBLISHED",
-                "PENDING",
-            ),
+            source.get<String>("sourceStatus").`in`(if (mine) listOf("PUBLISHED", "PENDING") else listOf("PUBLISHED")),
             builder.isFalse(person.get("deleted")),
             access,
 

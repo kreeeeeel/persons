@@ -1,5 +1,7 @@
 "use client";
 
+import { ContentText } from "@persons/person-domain/ContentText";
+
 import { useCallback, useState } from "react";
 import { Flex, Label, Text } from "@gravity-ui/uikit";
 import { useTranslate } from "@persons/i18n";
@@ -100,9 +102,10 @@ export function RatingsFeed({
                             <RatingValue value={item.value} precision={0} />
                         </Flex>
                         {item.comment && (
-                            <Text className={styles.comment}>
-                                {item.comment}
-                            </Text>
+                            <ContentText
+                                className={styles.comment}
+                                text={item.comment}
+                            />
                         )}
                         {item.commentStatus === "PENDING" && (
                             <Label theme="warning">{t("onModeration")}</Label>

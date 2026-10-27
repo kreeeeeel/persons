@@ -18,11 +18,12 @@ export function ListPageHeader({
 }) {
     const path = usePathname() ?? '';
     const t = useTranslate('cms');
-    const section = path.includes('/settings')
-        ? 'settingsSection'
-        : /\/(content|moderation|achievements)/.test(path)
-          ? 'contentSection'
-          : 'community';
+    const section =
+        path.includes('/settings') || path.includes('/tag-dictionary')
+            ? 'settingsSection'
+            : /\/(content|moderation|achievements)/.test(path)
+              ? 'contentSection'
+              : 'community';
     return (
         <Flex alignItems="flex-start" justifyContent="space-between" gap="4" wrap>
             <Flex direction="column" gap="2" className={styles.heading}>

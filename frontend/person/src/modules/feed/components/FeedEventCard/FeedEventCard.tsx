@@ -1,5 +1,7 @@
 'use client';
 
+import { ContentText } from '@persons/person-domain/ContentText';
+
 import { Box, Flex, Label, Text } from '@gravity-ui/uikit';
 import { useState } from 'react';
 import { DotaMatchCard } from '@/modules/integrations/components/DotaMatchCard/DotaMatchCard';
@@ -104,9 +106,7 @@ export function FeedEventCard({
                         <Label theme="warning">{person('onModeration')}</Label>
                     )}
                     {(event.kind === 'wall' || event.kind === 'comment') && (
-                        <Text as="p" className={styles.prose}>
-                            {event.content.text}
-                        </Text>
+                        <ContentText className={styles.prose} text={event.content.text} />
                     )}
                     {event.kind === 'loan' && <CreditEntryContent entry={event.content} />}
                     {event.kind === 'rating' && (
@@ -116,9 +116,7 @@ export function FeedEventCard({
                                 <RatingValue value={event.content.value} precision={0} />
                             </Flex>
                             {event.content.comment && (
-                                <Text as="p" className={styles.prose}>
-                                    {event.content.comment}
-                                </Text>
+                                <ContentText className={styles.prose} text={event.content.comment} />
                             )}
                         </>
                     )}
@@ -141,7 +139,7 @@ export function FeedEventCard({
                                 signedIn={signedIn}
                             />
                         )}
-                        <ContentTime date={event.createdAt} className={styles.date} />
+                        {event.kind !== 'loan' && <ContentTime date={event.createdAt} className={styles.date} />}
                     </Flex>
                 </>
             )}

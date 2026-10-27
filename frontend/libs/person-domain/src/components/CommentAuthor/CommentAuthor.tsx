@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button, Dialog, Flex, Text } from "@gravity-ui/uikit";
-import { useTranslate } from "@persons/i18n";
+import { useLocale, useTranslate } from "@persons/i18n";
 import { AppLink } from "@persons/ui/AppLink";
 import { LoadedAvatar } from "@persons/ui";
 import { mediaHref } from "@persons/person-domain/api/browser";
@@ -21,6 +21,8 @@ export function CommentAuthor({
     metadata,
 }: CommentAuthorProps) {
     const t = useTranslate("person");
+    const locale = useLocale();
+    const handle = comment.authorTag ?? comment.authorId;
     const [open, setOpen] = useState(false);
     const content = (
         <Flex alignItems="center" gap="3">
@@ -59,7 +61,7 @@ export function CommentAuthor({
             </Flex>
         </Flex>
     );
-    if (!comment.authorTag) {
+    if (!handle) {
         return interactive ? (
             <>
                 <Button
@@ -94,9 +96,8 @@ export function CommentAuthor({
             content
         );
     }
-    const href = publicUrl
-        ? new URL(`/${comment.authorTag}`, publicUrl).href
-        : `/${comment.authorTag}`;
+    const path = `/${locale}/publications/${encodeURIComponent(handle)}`;
+    const href = publicUrl ? new URL(path, publicUrl).href : path;
     return (
         <AppLink
             href={href}

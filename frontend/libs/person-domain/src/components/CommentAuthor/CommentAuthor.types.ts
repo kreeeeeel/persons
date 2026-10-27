@@ -4,7 +4,11 @@ import type { ReactNode } from "react";
 export interface CommentAuthorProps {
     readonly comment: Pick<
         Comment,
-        "authorName" | "authorTag" | "authorAvatarMediaId" | "authorAvatarUrl"
+        | "authorName"
+        | "authorTag"
+        | "authorAvatarMediaId"
+        | "authorAvatarUrl"
+        | "authorId"
     >;
     readonly publicUrl?: string;
     readonly description?: ReactNode;

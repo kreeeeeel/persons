@@ -1,0 +1,14 @@
+PublicAuthor:
+  type: object
+  required: [id, handle, fullName]
+  properties:
+    id:
+      type: string
+      format: uuid
+    handle:
+      type: string
+      description: Linked public page tag, or stable account UUID when no page is linked.
+    fullName:
+      type: string
+    avatarUrl:
+      type: string

@@ -1,0 +1,63 @@
+author:
+  get:
+    tags: [publications]
+    operationId: getPublicAuthor
+    parameters:
+      - name: handle
+        in: path
+        required: true
+        schema: {type: string, maxLength: 36}
+    responses:
+      '200':
+        description: Public identity of a participant. Never includes email or account permissions.
+        content:
+          application/json:
+            schema:
+              $ref: ./models/publication/PublicAuthor.yaml#/PublicAuthor
+      '404':
+        description: Public author not found
+me:
+  get:
+    tags: [publications]
+    operationId: getMyPublicAuthor
+    security:
+      - session: []
+        serviceJwt: []
+    responses:
+      '200':
+        description: Current public account identity, including accounts with no publications yet.
+        content:
+          application/json:
+            schema:
+              $ref: ./models/publication/PublicAuthor.yaml#/PublicAuthor
+      '401':
+        description: Authentication required
+publications:
+  get:
+    tags: [publications]
+    operationId: listAuthorPublications
+    description: Publicly visible publications by this author. The author also sees their own pending publications; visitors never see pending or inaccessible content.
+    parameters:
+      - name: handle
+        in: path
+        required: true
+        schema: {type: string, maxLength: 36}
+      - name: kind
+        in: query
+        schema:
+          $ref: ./models/publication/PublicationKind.yaml#/PublicationKind
+      - name: page
+        in: query
+        schema: {type: integer, default: 0, minimum: 0, maximum: 1000000}
+      - name: size
+        in: query
+        schema: {type: integer, default: 12, minimum: 1, maximum: 60}
+    responses:
+      '200':
+        description: Newest first with deterministic ordering; suitable for infinite scrolling.
+        content:
+          application/json:
+            schema:
+              $ref: ./models/publication/MyPublicationPage.yaml#/MyPublicationPage
+      '404':
+        description: Public author not found

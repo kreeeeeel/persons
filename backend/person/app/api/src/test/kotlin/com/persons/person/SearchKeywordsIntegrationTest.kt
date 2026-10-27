@@ -40,6 +40,8 @@ class SearchKeywordsIntegrationTest {
 
     @MockitoBean private lateinit var actors: ActorResolver
 
+    @MockitoBean private lateinit var profileRestrictions: com.persons.person.component.ProfileRestrictions
+
     @MockitoBean private lateinit var accountProfiles: com.persons.person.component.AccountProfiles
     private val admin = Actor(UUID.randomUUID(), "Администратор", true)
     private val owner = Actor(UUID.randomUUID(), "Владелец", false)

@@ -77,8 +77,8 @@ test('uses real service dates and hides the return notice after seven days', asy
     await expect(page.getByRole('complementary').getByRole('region')).toHaveCount(0);
     await expect(page.getByText('Ушёл в армию', { exact: true })).toBeVisible();
     await page.goto('/ru/person/slava');
-    await expect(page.getByRole('complementary').getByRole('region')).toHaveCount(0);
-    await expect(page.getByRole('complementary').locator('time')).toHaveCount(1);
+    await expect(page.getByRole('region', { name: /^(до призыва|до дембеля|Уже дома)$/ })).toHaveCount(0);
+    await expect(page.getByRole('complementary').locator('time[datetime="2000-01-02"]')).toBeVisible();
 });
 
 for (const width of [320, 390]) {
@@ -170,11 +170,11 @@ test('uploads mixed files through one picker and selects the original preview by
 
 test('CMS gallery appends the next page on scroll and retains loaded media', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto('http://localhost:3001/ru/persons/krel');
+    await page.goto(`${process.env.E2E_ADMIN_URL ?? 'http://localhost:3001'}/ru/persons/krel`);
     await page.getByRole('tab', { name: /^Фото и моменты/ }).click();
     const panel = page.getByRole('main');
     const profiles = JSON.parse(await readFile(path.resolve('../../.cache/feature-profiles.json'), 'utf8'));
-    const url = `http://localhost:3001/api/person/v1/persons/${profiles.krel}/gallery?size=12`;
+    const url = `${process.env.E2E_ADMIN_URL ?? 'http://localhost:3001'}/api/person/v1/persons/${profiles.krel}/gallery?size=12`;
     const first = await (await page.request.get(url)).json();
     const next = await (await page.request.get(`${url}&page=1`)).json();
     await expect(panel.getByRole('button', { name: first.items[0].title, exact: true })).toBeVisible();
@@ -186,11 +186,12 @@ test('CMS gallery appends the next page on scroll and retains loaded media', asy
 
 test('edits calendar dates in the CMS and publishes them through the API', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto('http://localhost:3001/ru/persons/slava');
+    await page.goto(`${process.env.E2E_ADMIN_URL ?? 'http://localhost:3001'}/ru/persons/slava`);
     await page.getByRole('button', { name: 'Управление страницей', exact: true }).click();
     await page.getByRole('menuitem', { name: 'Редактирование страницы', exact: true }).click();
     const editor = page.getByRole('dialog');
     await editor.getByLabel('Дата рождения', { exact: true }).fill('2000-01-02');
+    await editor.getByRole('menuitem', { name: 'Армия', exact: true }).click();
     await editor.getByLabel('Дата ухода в армию', { exact: true }).fill('2027-06-01');
     await editor.getByLabel('Дата возвращения из армии', { exact: true }).fill('2028-06-01');
     await editor.getByRole('button', { name: 'Сохранить', exact: true }).click();
@@ -201,9 +202,10 @@ test('edits calendar dates in the CMS and publishes them through the API', async
     await page.getByRole('button', { name: 'Управление страницей', exact: true }).click();
     await page.getByRole('menuitem', { name: 'Редактирование страницы', exact: true }).click();
     const dates = page.getByRole('dialog');
+    await dates.getByRole('menuitem', { name: 'Армия', exact: true }).click();
     await dates.getByLabel('Дата ухода в армию', { exact: true }).fill('');
     await dates.getByLabel('Дата возвращения из армии', { exact: true }).fill('');
     await dates.getByRole('button', { name: 'Сохранить', exact: true }).click();
     await expect(dates).toHaveCount(0);
-    await expect(page.getByRole('complementary').getByRole('region')).toHaveCount(0);
+    await expect(page.getByRole('region', { name: /^(до призыва|до дембеля|Уже дома)$/ })).toHaveCount(0);
 });

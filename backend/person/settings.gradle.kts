@@ -6,5 +6,6 @@ includeBuild("../id")
 includeBuild("../libs/dotabuff-integration")
 includeBuild("../libs/lettify-integration")
 includeBuild("../libs/dynamic-properties")
+includeBuild("../restrictions")
 
 include(":app:maintenance")

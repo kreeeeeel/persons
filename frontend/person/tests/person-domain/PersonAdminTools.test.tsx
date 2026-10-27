@@ -41,7 +41,9 @@ it('opens all page tools in a dropdown and keeps emoji configuration out of the 
     });
     fireEvent.click(screen.getByRole('menuitem', { name: 'Редактирование страницы' }));
     expect(screen.getByRole('textbox', { name: 'Тег страницы' })).toHaveValue('friend');
-    await waitFor(() => expect(screen.queryByRole('menu')).not.toBeInTheDocument());
+    await waitFor(() =>
+        expect(screen.queryByRole('menuitem', { name: 'Редактирование страницы' })).not.toBeInTheDocument(),
+    );
     expect(screen.queryByText('Оценки')).not.toBeInTheDocument();
     expect(screen.queryByRole('textbox', { name: 'Эмодзи' })).not.toBeInTheDocument();
     expect(screen.queryByRole('textbox', { name: 'Значение' })).not.toBeInTheDocument();

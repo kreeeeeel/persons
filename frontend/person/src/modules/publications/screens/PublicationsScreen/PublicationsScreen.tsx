@@ -2,7 +2,8 @@
 
 import { useCallback, useState } from 'react';
 import { Box, Flex, Text } from '@gravity-ui/uikit';
-import type { PublicationKind } from '@persons/person-client';
+import type { PublicationKind, PublicAuthor } from '@persons/person-client';
+import { AuthorIdentity } from '@persons/person-domain/AuthorIdentity';
 import { useTranslate } from '@persons/i18n';
 import { SegmentedTabs } from '@persons/ui/SegmentedTabs';
 import { FeedContent } from '@persons/person-domain/FeedContent';
@@ -16,35 +17,45 @@ import styles from '@/modules/publications/screens/PublicationsScreen/Publicatio
 
 const KINDS = ['all', 'MOMENT', 'PHOTO', 'RATING', 'COMMENT', 'CREDIT'] as const;
 
-export function PublicationsScreen() {
+export function PublicationsScreen({
+    author,
+    signedIn,
+    handle,
+}: {
+    readonly author: PublicAuthor;
+    readonly signedIn: boolean;
+    readonly handle?: string;
+}) {
     const t = useTranslate('publications');
     const [kind, setKind] = useState<PublicationKind | 'all'>('all');
     const load = useCallback(
         async (page: number, signal: AbortSignal) => {
-            const result = await personClient.publications.listMyPublications(
-                {
-                    kind: kind === 'all' ? undefined : kind,
-                    page,
-                    size: 12,
-                },
-                { signal },
-            );
+            const options = {
+                kind: kind === 'all' ? undefined : kind,
+                page,
+                size: 12,
+            };
+            const result = handle
+                ? await personClient.publications.listAuthorPublications({ handle, ...options }, { signal })
+                : await personClient.publications.listMyPublications(
+                      {
+                          kind: kind === 'all' ? undefined : kind,
+                          page,
+                          size: 12,
+                      },
+                      { signal },
+                  );
             return { ...result, items: result.items.map(toPublicationEvent) };
         },
-        [kind],
+        [kind, handle],
     );
-    const resource = useInfinitePersonData(`my-publications:${kind}`, load);
+    const resource = useInfinitePersonData(`publications:${author.id}:${handle ?? 'mine'}:${kind}`, load);
     useUploadEvents(undefined, resource.refresh);
     const filtered = kind !== 'all';
     return (
         <Flex direction="column" gap="5" className={styles.root}>
             <Box className={styles.heading}>
-                <Text as="h1" className={styles.title}>
-                    {t('title')}
-                </Text>
-                <Text as="p" color="secondary" className={styles.description}>
-                    {t('description')}
-                </Text>
+                <AuthorIdentity author={author} centered />
             </Box>
             <Flex direction="column" gap="4" alignItems="center" className={styles.filters}>
                 <SegmentedTabs
@@ -70,7 +81,7 @@ export function PublicationsScreen() {
             >
                 <Flex direction="column" gap="5" aria-label={t('title')}>
                     {resource.data?.items.map((event) => (
-                        <FeedEventCard key={event.id} event={event} signedIn onChanged={resource.refresh} />
+                        <FeedEventCard key={event.id} event={event} signedIn={signedIn} onChanged={resource.refresh} />
                     ))}
                 </Flex>
             </FeedContent>

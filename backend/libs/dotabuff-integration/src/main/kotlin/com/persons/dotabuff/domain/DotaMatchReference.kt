@@ -5,5 +5,4 @@ import java.time.Instant
 data class DotaMatchReference(
     val matchId: Long,
     val playedAt: Instant,
-    val rank: String? = null,
 )

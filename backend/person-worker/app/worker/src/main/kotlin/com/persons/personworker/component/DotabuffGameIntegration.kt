@@ -10,8 +10,11 @@ import com.persons.personworker.domain.GameIntegration
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import java.time.Duration
+import java.util.stream.Collectors
+import java.util.stream.Stream
 
 private const val PROFILE_BATCH = 5
+private const val RANK_REPAIR_BATCH = 5
 
 @Component
 class DotabuffGameIntegration(
@@ -48,12 +51,13 @@ class DotabuffGameIntegration(
                     !it.playedAt.isBefore(lease.scanFrom)
                 }.toList()
             val known = matches.known(lease.personId, eligible.stream().map { it.matchId }.toList())
-            val records = eligible.stream()
-                .filter {
-                    it.matchId !in known
-                }.map {
-                    client.match(account, it)
-                }.toList()
+            val references = Stream.concat(
+                eligible.stream().filter { it.matchId !in known },
+                matches.ranksToRepair(lease.personId, account, RANK_REPAIR_BATCH).stream(),
+            ).collect(Collectors.toMap({ it.matchId }, { it }, { first, _ -> first }, { linkedMapOf() }))
+            val records = references.values.stream().map {
+                client.match(account, it)
+            }.toList()
             val newest = page.matches.stream().map { it.playedAt }.max(Comparator.naturalOrder()).orElse(null)
             states.complete(
                 lease, account, records, newest,

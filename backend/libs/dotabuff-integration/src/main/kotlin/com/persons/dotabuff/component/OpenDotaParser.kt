@@ -33,7 +33,6 @@ class OpenDotaParser(
                     DotaMatchReference(
                         positiveLong(it, "match_id"),
                         Instant.ofEpochSecond(positiveLong(it, "start_time")),
-                        rank(optionalInteger(it, "average_rank")),
                     )
                 }.toList()
         if (references.zipWithNext().stream().anyMatch { it.first.playedAt.isBefore(it.second.playedAt) }) {
@@ -110,7 +109,7 @@ class OpenDotaParser(
             integer(player, "kills"),
             integer(player, "deaths"),
             integer(player, "assists"),
-            reference.rank,
+            rank(optionalInteger(player, "rank_tier")),
             inventory,
             optionalInteger(player, "hero_damage"),
             optionalInteger(player, "tower_damage"),
@@ -146,6 +145,9 @@ class OpenDotaParser(
 
     private fun rank(tier: Int?): String? {
         if (tier == null || tier == 0) {
+            return null
+        }
+        if (tier != 80 && (tier / 10 !in 1..7 || tier % 10 !in 1..5)) {
             return null
         }
         val name =

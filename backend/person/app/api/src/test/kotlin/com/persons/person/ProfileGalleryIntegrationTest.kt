@@ -54,6 +54,8 @@ class ProfileGalleryIntegrationTest {
 
     @MockitoBean private lateinit var actors: ActorResolver
 
+    @MockitoBean private lateinit var profileRestrictions: com.persons.person.component.ProfileRestrictions
+
     @MockitoBean private lateinit var accounts: AccountProfiles
 
     private val admin = Actor(UUID.randomUUID(), "Admin", true)

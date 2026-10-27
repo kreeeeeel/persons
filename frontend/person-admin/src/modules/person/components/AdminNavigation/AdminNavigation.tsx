@@ -25,7 +25,10 @@ const GROUPS = [
     },
     {
         key: 'settingsSection',
-        items: [{ key: 'variables', icon: Gear, suffix: '/settings' }],
+        items: [
+            { key: 'variables', icon: Gear, suffix: '/settings' },
+            { key: 'tagDictionary', icon: FileText, suffix: '/tag-dictionary' },
+        ],
     },
 ] as const;
 

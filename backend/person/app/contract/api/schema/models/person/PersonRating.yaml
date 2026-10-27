@@ -7,6 +7,9 @@ PersonRating:
     - authorName
     - createdAt
   properties:
+    authorId:
+      type: string
+      format: uuid
     mine:
       type: boolean
       description: Whether this rating belongs to the current user.
